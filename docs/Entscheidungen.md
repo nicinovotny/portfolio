@@ -66,6 +66,13 @@ Festlegungen hier haben Vorrang vor dem Projektbriefing.
 - GitHub Pages aus dem Branch `main`, Ordner `/` (root), zunächst unter `https://nicinovotny.github.io/portfolio/`. Eigene Domain `nicolasnovotny.de` später (Schritte in `docs/Anleitung.md`).
 - `.nojekyll` im Repo: GitHub liefert die Dateien unverändert aus, ohne Jekyll-Verarbeitung.
 
+## Bilder einpflegen (15.10.2026)
+- Projekt-Skill `.claude/skills/bilder-einpflegen/` + Werkzeug `tools/images.mjs` (Node, `sharp` + `exif-reader`, nur lokal – die Seite selbst bleibt ohne Build-Schritt).
+- Eingangsordner `images/_eingang/` (Inhalt per `.gitignore` ausgeschlossen); verarbeitete Originale nach `_eingang/erledigt/`.
+- Ausgabe: `<album>-NN.webp` (lange Kante 2400, Qualität 82) und `<album>-NN-1200.webp` (1200 breit, Qualität 75), nach EXIF gedreht, sRGB, ohne Metadaten (auch kein GPS). Nicht hochgerechnet.
+- Claude schlägt Album (GPS, unter ca. 150 km), Titel und Alt-Text vor, Nici bestätigt. Demo-Bilder eines Albums: jedes Mal nachfragen, ob ersetzen oder behalten.
+- HEIC nur am Mac (über `sips`), am PC als JPEG exportieren.
+
 ## Bibliotheken (14.10.2026)
 - GSAP 3.12.5 inkl. ScrollTrigger wird **selbst gehostet** (`vendor/gsap/`) statt per CDN – wie die Schriften, damit beim Seitenaufruf keine IP-Adressen an fremde Server gehen. Gilt auch für alle künftigen Bibliotheken.
 - Einzige externe Quelle bleibt picsum.photos für die Demo-Bilder; entfällt, sobald alle eigenen Bilder eingefügt sind.

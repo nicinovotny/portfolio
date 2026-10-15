@@ -2,12 +2,15 @@
   "name": "portfolio-map-tools",
   "private": true,
   "type": "module",
-  "description": "Rechnet Natural-Earth-Daten einmalig in schlanke SVG-Pfade für die Karte um. Nur nötig, wenn sich die Karte ändern soll.",
+  "description": "Lokale Werkzeuge: Kartendaten aus Natural Earth erzeugen (build-map) und Bilder fürs Portfolio umwandeln und prüfen (images.mjs). Nicht Teil der Seite.",
   "scripts": {
-    "build-map": "node build-map.mjs"
+    "build-map": "node build-map.mjs",
+    "bilder": "node --no-warnings images.mjs"
   },
   "dependencies": {
     "d3-geo": "^3.1.1",
+    "exif-reader": "^2.0.3",
+    "sharp": "^0.35.5",
     "topojson-client": "^3.1.0",
     "topojson-simplify": "^3.0.3",
     "world-atlas": "^2.0.2"

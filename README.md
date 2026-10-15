@@ -32,9 +32,11 @@ favicon.svg         Seitensymbol
 data/albums.json    Alle Orte und Bilder – die einzige Datenquelle
 data/map/           Kartendaten (erzeugt von tools/build-map.mjs)
 js/map*.js          Karte: Darstellung, Zoomstufen, Projektion
-tools/              Kartendaten-Generator (Node, nur bei Kartenänderungen nötig)
+tools/              Node-Werkzeuge: Kartendaten (build-map.mjs), Bilder umwandeln/prüfen (images.mjs)
+.claude/skills/     Claude-Skill „bilder-einpflegen“
 serve.json          Einstellung für den lokalen Server (npx serve)
 images/<ort-id>/    Eigene Bilder (siehe images/README.md)
+images/_eingang/    Eingangsordner für neue Exporte (wird nicht hochgeladen)
 fonts/              Geist und Geist Mono (selbst gehostet, SIL OFL)
 vendor/gsap/        GSAP + ScrollTrigger (selbst gehostet)
 docs/               Briefing, Entscheidungen, Mockups

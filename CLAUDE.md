@@ -24,7 +24,8 @@ Lies Briefing und Entscheidungen, bevor du Code schreibst oder Designentscheidun
 - Offene Platzhalter für Nici: LinkedIn-URL (alle Seiten), Porträt, Texte „Über mich“, Ausrüstung, Werdegang, Impressum-Anschrift und E-Mail, Datenschutz-Details, Texte in `albums.json`, Einstiegstext auf der Startseite.
 - Phase 3 (15.10.2026): Anleitung `docs/Anleitung.md` (Arbeitsablauf, eigene Bilder, neue Orte, GitHub Pages, eigene Domain, Checkliste). Projekt aus Google Drive ins Git-Repo umgezogen (siehe Arbeitsweise), `.nojekyll` für GitHub Pages.
 - ✅ Live seit 15.10.2026: <https://nicinovotny.github.io/portfolio/> (GitHub Pages, main, root). Alle Seiten geprüft, keine fehlenden Dateien, keine Konsolenfehler.
-- **Als Nächstes:** eigene Bilder und Texte einpflegen (Checkliste in `docs/Anleitung.md`, Abschnitt 5). Später ggf. eigene Domain `nicolasnovotny.de`.
+- ✅ Skill „bilder-einpflegen“ (15.10.2026): `.claude/skills/bilder-einpflegen/SKILL.md` + `tools/images.mjs` (inspect / convert / check), Eingangsordner `images/_eingang/`. An Testbildern durchgespielt (EXIF-Drehung, GPS-Zuordnung, HEIC, Demo ersetzen, neuer Ort).
+- **Als Nächstes:** eigene Bilder (per Skill) und Texte einpflegen (Checkliste in `docs/Anleitung.md`, Abschnitt 5). Später ggf. eigene Domain `nicolasnovotny.de`.
 
 ## Rahmen (gilt immer)
 - Vanilla HTML/CSS/JS + GSAP (inkl. ScrollTrigger) selbst gehostet in `vendor/gsap/`, kein Framework, kein Build-Schritt für die Seite, Hosting auf GitHub Pages, alle Pfade relativ.
@@ -39,7 +40,7 @@ Lies Briefing und Entscheidungen, bevor du Code schreibst oder Designentscheidun
 - Arbeite inkrementell: ein Feature oder Schritt pro Iteration, das Ergebnis soll danach lokal testbar sein. Sag am Ende jedes Schritts, wie Nici ihn testet.
 - Nenne bei jeder Änderung zuerst, welche Dateien betroffen sind.
 - Größere Architektur- oder Designänderungen schlägst du kurz vor und wartest auf Bestätigung.
-- Wenn Nici neue Bilder oder Orte liefert: `albums.json` aktualisieren, Ordner und Dateinamen nennen, Export-Hinweise geben (groß: lange Kante 2400 px, klein: 1200 px breit mit Zusatz `-1200`, WebP – siehe `docs/Anleitung.md`).
+- Wenn Nici neue Bilder oder Orte liefert: Skill `bilder-einpflegen` verwenden (Eingangsordner `images/_eingang/`, Werkzeug `tools/images.mjs`).
 - Wenn etwas Wichtiges festgelegt wird (Farben, Schriften, Kartenstil, Architektur), trag es in `docs/Entscheidungen.md` ein.
 - Git: Das Projekt liegt im Repo `nicinovotny/portfolio` (Mac: `~/Documents/GitHub/portfolio`, PC: eigener Klon über GitHub Desktop). Abgleich zwischen den Geräten nur über GitHub, der alte Google-Drive-Ordner ist Archiv. Commits nur, wenn Nici darum bittet; gepusht wird über GitHub Desktop (dort ist Nici angemeldet), jeder Push auf `main` geht sofort live.
 - Nach jedem abgeschlossenen Schritt hier unter „Stand“ festhalten, was erledigt ist und was als Nächstes kommt.

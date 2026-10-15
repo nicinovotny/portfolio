@@ -20,7 +20,26 @@ Nach dem Push ist die Seite nach etwa einer Minute online aktualisiert.
 
 ## 2. Eigene Bilder einfügen
 
-### Exportieren (z. B. aus Lightroom)
+### Am einfachsten: mit Claude
+
+1. Exporte in voller Auflösung (JPEG, TIFF, PNG, HEIC oder WebP) nach **`images/_eingang/`** legen.
+2. Claude Code im Projektordner öffnen und sagen: **„Bilder einpflegen“**.
+3. Claude sieht sich die Bilder an und schlägt pro Bild Album (per GPS aus den Bilddaten), Titel und Alt-Text vor, fragt nach Demo-Bildern und Titelbild – du bestätigst oder änderst.
+4. Claude wandelt um (`images/<album>/<album>-NN.webp` + `-1200.webp`), trägt alles in `albums.json` ein und prüft das Ergebnis. Originale landen in `images/_eingang/erledigt/` (wird nicht hochgeladen, kann geleert werden).
+
+Der Skill steht in `.claude/skills/bilder-einpflegen/SKILL.md`, das Werkzeug dahinter in `tools/images.mjs`. Einmalig vorher: `cd tools && npm install`.
+
+### Ohne Claude: Werkzeug direkt nutzen
+
+```bash
+node --no-warnings tools/images.mjs inspect                                   # was liegt im Eingang? Maße, Datum, GPS, nächstes Album
+node --no-warnings tools/images.mjs convert --album faroe DSC_1001.jpg DSC_1002.jpg   # umwandeln
+node --no-warnings tools/images.mjs check                                     # albums.json gegen die Dateien prüfen
+```
+
+`convert` gibt für jedes Bild `file`, `width` und `height` aus – diese Werte in `albums.json` eintragen (siehe unten).
+
+### Von Hand exportieren (z. B. aus Lightroom)
 
 Pro Bild **zwei Dateien** mit demselben Namen, die kleine mit dem Zusatz `-1200`:
 
