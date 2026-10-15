@@ -14,6 +14,7 @@
   <link rel="preload" href="data/map/world.json" as="fetch" crossorigin>
   <script defer src="vendor/gsap/gsap.min.js"></script>
   <script type="module" src="js/nav.js"></script>
+  <script type="module" src="js/transitions.js"></script>
   <script type="module" src="js/map.js"></script>
 </head>
 <body>
@@ -60,11 +61,11 @@
 
       <!-- Vorschau beim Überfahren eines Album-Markers -->
       <div class="map-card" data-map-card aria-hidden="true" hidden>
-        <div class="map-card__image"><img data-map-card-img alt="" width="268" height="150"></div>
+        <div class="map-card__image"><img data-map-card-img alt="" width="268" height="150" crossorigin="anonymous"></div>
         <div class="map-card__body">
           <p class="map-card__meta" data-map-card-meta></p>
           <p class="map-card__name" data-map-card-name></p>
-          <a class="map-card__link" data-map-card-link href="#" tabindex="-1">Album öffnen →</a>
+          <a class="map-card__link" data-map-card-link href="#" tabindex="-1" data-cover-from="[data-map-card-img]">Album öffnen →</a>
         </div>
       </div>
 

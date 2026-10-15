@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="css/album.css">
   <link rel="preconnect" href="https://fastly.picsum.photos">
   <script defer src="vendor/gsap/gsap.min.js"></script>
+  <script defer src="vendor/gsap/ScrollTrigger.min.js"></script>
   <script type="module" src="js/nav.js"></script>
   <script type="module" src="js/album.js"></script>
 </head>
@@ -41,36 +42,67 @@
   </header>
 
   <!-- Inhalt wird aus data/albums.json befüllt (?ort=<id>) -->
-  <main id="inhalt" class="page album" data-album>
-    <header class="album-head">
-      <div class="album-head__title-block">
-        <p class="label" data-album-label>&nbsp;</p>
-        <h1 class="album-head__title" data-album-title>&nbsp;</h1>
+  <main id="inhalt" class="album" data-album>
+    <!-- Bühne: Titelbild über die ganze Fläche. Beim Scrollen bleibt sie stehen, der Inhalt schiebt sich darüber. -->
+    <section class="album-stage" data-album-stage aria-labelledby="album-title">
+      <div class="album-stage__media">
+        <img class="album-stage__img" data-album-cover alt="" crossorigin="anonymous" fetchpriority="high" decoding="async">
       </div>
-      <div class="album-head__info">
-        <p class="album-head__text" data-album-text></p>
-        <dl class="album-facts" data-album-facts></dl>
-        <div class="album-head__links">
-          <a class="line-link" data-album-map href="karte.html">Zurück zur Karte</a>
-          <a class="album-head__secondary" href="alben.html">Alle Alben</a>
+      <div class="album-stage__shade" aria-hidden="true"></div>
+      <span class="album-stage__corner album-stage__corner--bl" aria-hidden="true"></span>
+      <span class="album-stage__corner album-stage__corner--br" aria-hidden="true"></span>
+
+      <div class="album-stage__caption" data-album-caption>
+        <p class="label" data-album-label>&nbsp;</p>
+        <h1 class="album-stage__title" id="album-title"><span class="album-stage__title-inner" data-album-title>&nbsp;</span></h1>
+      </div>
+      <script>
+        // Kommt man per Klick auf ein Album (js/transitions.js), stehen Bild und Titel im sessionStorage.
+        // Sofort setzen, damit beides beim Seitenübergang schon da ist; js/album.js lädt danach die passende Bildgröße.
+        try {
+          const cover = JSON.parse(sessionStorage.getItem('album-cover') || 'null');
+          sessionStorage.removeItem('album-cover');   // nur für diesen einen Übergang
+          if (cover && cover.id === new URLSearchParams(location.search).get('ort')) {
+            document.querySelector('[data-album-cover]').src = cover.src;
+            if (cover.title) document.querySelector('[data-album-title]').textContent = cover.title;
+          }
+        } catch { /* ohne sessionStorage einfach normal laden */ }
+      </script>
+
+      <a class="album-stage__scroll" href="#bilder" data-album-scroll>
+        <span class="label" data-album-count>Bilder</span>
+        <span class="album-stage__scroll-line" aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <!-- Inhalt: schiebt sich über die Bühne -->
+    <div class="album-body" id="bilder">
+      <div class="album-intro">
+        <p class="album-intro__text" data-album-text></p>
+        <div class="album-intro__info">
+          <dl class="album-facts" data-album-facts></dl>
+          <div class="album-intro__links">
+            <a class="line-link" data-album-map href="karte.html">Zurück zur Karte</a>
+            <a class="album-intro__secondary" href="alben.html">Alle Alben</a>
+          </div>
         </div>
       </div>
-    </header>
 
-    <!-- Galerie: Bildzeilen gleicher Höhe, Seitenverhältnisse bleiben erhalten -->
-    <div class="gallery" data-gallery role="list" aria-label="Bilder"></div>
+      <!-- Galerie: Bildzeilen gleicher Höhe, Seitenverhältnisse bleiben erhalten -->
+      <div class="gallery" data-gallery role="list" aria-label="Bilder"></div>
 
-    <!-- Weiter zum vorigen / nächsten Ort -->
-    <nav class="album-pager" data-album-pager aria-label="Weitere Orte" hidden>
-      <a class="album-pager__link album-pager__link--prev" data-pager-prev href="#">
-        <span class="label"><span aria-hidden="true">←</span> Voriger Ort <span class="label__dash">—</span> <span data-pager-prev-number></span></span>
-        <span class="album-pager__name" data-pager-prev-name></span>
-      </a>
-      <a class="album-pager__link album-pager__link--next" data-pager-next href="#">
-        <span class="label">Nächster Ort <span class="label__dash">—</span> <span data-pager-next-number></span> <span aria-hidden="true">→</span></span>
-        <span class="album-pager__name" data-pager-next-name></span>
-      </a>
-    </nav>
+      <!-- Weiter zum vorigen / nächsten Ort -->
+      <nav class="album-pager" data-album-pager aria-label="Weitere Orte" hidden>
+        <a class="album-pager__link album-pager__link--prev" data-pager-prev href="#">
+          <span class="label"><span aria-hidden="true">←</span> Voriger Ort <span class="label__dash">—</span> <span data-pager-prev-number></span></span>
+          <span class="album-pager__name" data-pager-prev-name></span>
+        </a>
+        <a class="album-pager__link album-pager__link--next" data-pager-next href="#">
+          <span class="label">Nächster Ort <span class="label__dash">—</span> <span data-pager-next-number></span> <span aria-hidden="true">→</span></span>
+          <span class="album-pager__name" data-pager-next-name></span>
+        </a>
+      </nav>
+    </div>
   </main>
 
   <!-- Großansicht (Lightbox) -->

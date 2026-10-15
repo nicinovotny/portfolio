@@ -325,6 +325,37 @@ function setMarkers(list, { phase = 'in', animate = true } = {}) {
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 
+/**
+ * Eine „Höhenlinie“: geschlossene, leicht wellige Kurve um den Nullpunkt.
+ * Gleicher Startwert (seed) → gleiche Form; so bekommt jeder Ort seine eigene, aber feste Kontur.
+ */
+function contourPath(radius, seed, wobble = 0.09) {
+  const steps = 24;
+  const pts = [];
+  for (let i = 0; i < steps; i++) {
+    const t = (i / steps) * Math.PI * 2;
+    const r = radius * (1 + wobble * (0.6 * Math.sin(2 * t + seed) + 0.4 * Math.sin(3 * t + seed * 1.7)));
+    pts.push([Math.cos(t) * r, Math.sin(t) * r]);
+  }
+  // weich verbinden (Catmull-Rom → Bézier)
+  const p = (i) => pts[(i + steps) % steps];
+  let d = `M${p(0)[0].toFixed(2)},${p(0)[1].toFixed(2)}`;
+  for (let i = 0; i < steps; i++) {
+    const [p0, p1, p2, p3] = [p(i - 1), p(i), p(i + 1), p(i + 2)];
+    const c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6];
+    const c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
+    d += `C${c1[0].toFixed(2)},${c1[1].toFixed(2)} ${c2[0].toFixed(2)},${c2[1].toFixed(2)} ${p2[0].toFixed(2)},${p2[1].toFixed(2)}`;
+  }
+  return `${d}Z`;
+}
+
+/** Fester Startwert aus einem Text (z. B. Album-ID) */
+function seedOf(text) {
+  let h = 0;
+  for (const ch of text) h = (h * 31 + ch.charCodeAt(0)) % 997;
+  return (h / 997) * Math.PI * 2;
+}
+
 function createMarker(data) {
   const el = document.createElement(data.type === 'album' ? 'a' : 'button');
   el.className = `map-marker map-marker--${data.type}`;
@@ -347,11 +378,15 @@ function createMarker(data) {
   if (data.type === 'album') {
     const { album } = data;
     el.href = `album.html?ort=${encodeURIComponent(album.id)}`;
+    el.dataset.coverFrom = '[data-map-card-img]';   // Übergang: Bild aus der Vorschau fliegt ins Album
+    el.dataset.albumName = album.name;
     el.setAttribute('aria-label', `${[album.name, album.year].filter(Boolean).join(' ')}, Album ${pad2(data.number)} – öffnen`);
+    const seed = seedOf(album.id);
     icon.innerHTML = `
-      <circle class="map-marker__halo" r="30"/>
-      <circle class="map-marker__ring" r="12"/>
-      <path class="map-marker__cross" d="M0,-26V-14M0,14V26M-26,0H-14M14,0H26"/>
+      <circle class="map-marker__ripple" r="6"/>
+      <path class="map-contour map-contour--3" d="${contourPath(17, seed + 0.6)}"/>
+      <path class="map-contour map-contour--2" d="${contourPath(12.5, seed + 0.3)}"/>
+      <path class="map-contour map-contour--1" d="${contourPath(8, seed)}"/>
       <path class="map-marker__leader" d="M30,0H54L66,-12"/>
       <circle class="map-marker__dot" r="3.5"/>`;
     name.textContent = album.shortName ?? album.name;
@@ -360,7 +395,12 @@ function createMarker(data) {
   } else {
     el.type = 'button';
     el.setAttribute('aria-label', `${data.name}: ${data.count} Alben – hineinzoomen`);
-    icon.innerHTML = `<circle class="cluster-ring" r="26"/><text class="cluster-count">${data.count}</text>`;
+    // Gipfel: äußere Fläche + innere Linien, je mehr Alben, desto mehr Linien (max. 3)
+    const seed = seedOf(data.key);
+    const inner = [20, 14, 9].slice(0, Math.min(3, data.count - 1));
+    icon.innerHTML = `<path class="map-contour map-contour--base" d="${contourPath(26, seed, 0.07)}"/>`
+      + inner.map((r, i) => `<path class="map-contour map-contour--inner" d="${contourPath(r, seed + 0.4 * (i + 1), 0.08)}"/>`).join('')
+      + `<text class="cluster-count">${data.count}</text>`;
     name.textContent = data.name;
     sub.textContent = data.subtitle;
     el.addEventListener('click', () => goTo(data.target));
@@ -401,13 +441,14 @@ function setActive(marker) {
     return;
   }
   marker.el.classList.add('is-active');
-  const { album, number } = marker.data;
+  const { album } = marker.data;
   const cover = getCover(album);
   ui.cardImg.src = imageUrl(album, cover, 600);
   ui.cardImg.alt = '';
-  ui.cardMeta.textContent = [album.year, formatCoordsShort(album.coords), `Album ${pad2(number)}`].filter(Boolean).join(' · ');
+  ui.cardMeta.textContent = [album.year, formatCoordsShort(album.coords)].filter(Boolean).join(' · ');
   ui.cardName.textContent = album.name;
   ui.cardLink.href = `album.html?ort=${encodeURIComponent(album.id)}`;
+  ui.cardLink.dataset.albumName = album.name;
   ui.card.hidden = false;
   positionCard();
 }

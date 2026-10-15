@@ -4,6 +4,7 @@
 
 import { getFeatured, getCover, imageAttrs } from './data.js';
 import { formatCoords, pad2 } from './format.js';
+import { applyScrim } from './scrim.js';
 
 const SLIDE_DURATION = 7;    // Sekunden pro Bild
 const FADE_DURATION = 1.6;   // Sekunden für die Überblendung
@@ -70,6 +71,7 @@ function buildSlides() {
     img.alt = '';                   // Beschreibung steht im Alt-Text, sobald das Bild aktiv ist
     img.decoding = 'async';
     img.sizes = '100vw';
+    img.crossOrigin = 'anonymous';   // erlaubt das Messen der Helligkeit (auch bei den Demo-Bildern von picsum)
     if (index === 0) img.fetchPriority = 'high';
     root.append(img);
     el.slides.append(root);
@@ -139,6 +141,8 @@ async function show(index, { initial = false } = {}) {
     : null;
 
   await Promise.all([ready(slide.img), captionOut]);
+  applyScrim(hero, slide.img);   // Verläufe an die Bildhelligkeit anpassen
+  slides.forEach((s, i) => s.root.toggleAttribute('data-current', i === index));   // Quelle für den Übergang ins Album
   if (id !== changeId) return;   // inzwischen wurde schon ein anderes Bild gewählt
   updateMeta(index);
 
@@ -183,6 +187,7 @@ function updateCaption(album, index, initial) {
   el.label.append(formatCoords(album.coords));
   el.title.textContent = album.name;
   el.open.href = `album.html?ort=${encodeURIComponent(album.id)}`;
+  el.open.dataset.albumName = album.name;
   el.map.href = `karte.html?ort=${encodeURIComponent(album.id)}`;
 
   if (!gsap || reducedMotion) return;

@@ -161,30 +161,63 @@
   text-transform: uppercase;
 }
 
-/* Album: Ring + Punkt, aktiv mit Fadenkreuz in Gletscherfarbe */
-.map-marker__ring { fill: none; stroke: currentColor; stroke-width: 1; opacity: 0.45; }
-.map-marker__dot { fill: currentColor; }
-.map-marker__cross,
-.map-marker__halo,
+/* Marker als Höhenlinien: leicht unregelmäßige Ringe um einen Punkt – wie ein kleiner Hügel
+   auf einer Wanderkarte. Cluster sind „Gipfel“ mit mehr Linien. Keine Fadenkreuze. */
+.map-contour {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  transform-box: view-box;
+  transform-origin: 0 0;
+  transition: transform var(--duration-medium) var(--ease-out), opacity var(--duration-medium) ease, stroke var(--duration-fast) ease;
+}
+.map-contour--1 { opacity: 0.55; }
+.map-contour--2 { opacity: 0.28; }
+.map-contour--3 { opacity: 0; }
+.map-marker__dot { fill: currentColor; transition: transform var(--duration-medium) var(--ease-out); }
 .map-marker__leader { fill: none; stroke: var(--color-accent); stroke-width: 1; opacity: 0; transition: opacity var(--duration-fast) ease; }
+.map-marker__ripple {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  transform-box: view-box;
+  transform-origin: 0 0;
+  opacity: 0;
+}
 
+/* Aktiv (Hover, Fokus, Ziel-Album): Linien weiten sich wie Wellen, Farbe Gletscher */
 .map-marker.is-active { color: var(--color-accent); z-index: 2; }
-.map-marker__ring,
-.map-marker__dot { transition: transform var(--duration-medium) var(--ease-out); }
-.map-marker.is-active .map-marker__ring { opacity: 0.5; transform: scale(1.5); }
-.map-marker.is-active .map-marker__dot { transform: scale(1.15); }
-.map-marker.is-active:not(.is-flipped) .map-marker__leader { opacity: 0.7; }
-.map-marker.is-active .map-marker__cross { opacity: 1; }
-.map-marker.is-active .map-marker__halo { opacity: 0.18; }
+.map-marker.is-active .map-contour--1 { transform: scale(1.25); opacity: 0.8; }
+.map-marker.is-active .map-contour--2 { transform: scale(1.45); opacity: 0.45; }
+.map-marker.is-active .map-contour--3 { transform: scale(1.6); opacity: 0.2; }
+.map-marker.is-active .map-marker__dot { transform: scale(1.2); }
+.map-marker.is-active:not(.is-flipped) .map-marker__leader { opacity: 0.6; }
 .map-marker.is-active .map-marker__text { opacity: 0; }
+.map-marker.is-active .map-marker__ripple { animation: map-ripple 1.6s var(--ease-out) 1; }
 
-/* Cluster: gestrichelter Ring mit Anzahl */
+@keyframes map-ripple {
+  from { transform: scale(1); opacity: 0.7; }
+  to { transform: scale(5.5); opacity: 0; }
+}
+
+/* Cluster: „Gipfel“ mit dunkler Fläche und Anzahl in der Mitte */
 .map-marker--cluster .map-marker__hit { --hit: 64px; }
 .map-marker--cluster .map-marker__text { --text-offset: 35px; }
-.cluster-ring { fill: rgba(11, 13, 14, 0.75); stroke: var(--color-accent); stroke-width: 1; stroke-dasharray: 3 3; transition: stroke-dasharray var(--duration-medium) var(--ease-out); }
+.map-marker--cluster { color: var(--color-accent); }
+.map-marker--cluster .map-contour--base { fill: rgba(11, 13, 14, 0.78); }
+.map-marker--cluster .map-contour { opacity: 0.75; }
+.map-marker--cluster .map-contour--inner { opacity: 0.35; }
 .cluster-count { fill: var(--color-text); font-family: var(--font-mono); font-size: 14px; text-anchor: middle; dominant-baseline: central; }
-.map-marker--cluster:hover .cluster-ring,
-.map-marker--cluster:focus-visible .cluster-ring { stroke-dasharray: 6 2; }
+.map-marker--cluster:hover .map-contour--inner,
+.map-marker--cluster:focus-visible .map-contour--inner { transform: scale(1.12); opacity: 0.6; }
+.map-marker--cluster:hover .map-contour--base,
+.map-marker--cluster:focus-visible .map-contour--base { transform: scale(1.06); }
+
+@media (prefers-reduced-motion: reduce) {
+  .map-marker.is-active .map-marker__ripple { animation: none; }
+}
 
 .map-marker:focus-visible { outline: none; }
 .map-marker:focus-visible .map-marker__hit { outline: 1px solid var(--color-accent); outline-offset: -6px; border-radius: 50%; }

@@ -5,7 +5,7 @@ Festlegungen hier haben Vorrang vor dem Projektbriefing.
 ## Designrichtung (14.10.2026)
 - Richtung A „Höhenlinie“: dunkel, präzise, Instrumenten-Ästhetik, Bilder bleiben der Star.
 - **Startseite** nach der verfeinerten Fassung A2 (`docs/mockups/startseite-A2.dc.html`): Titel in Geist 200 (groß, eng gesetzt), gesperrter Name in Versalien, Haarlinien (0,75 px), Link mit Haarlinie statt gerahmtem Button, große Ziffer + eine feine Fortschrittslinie, kein Kamera-Readout.
-- **Karte** nach dem ursprünglichen A (`docs/mockups/karte-A.dc.html`): Fadenkreuz-Marker, Labels in Geist Mono mit Koordinaten, Cluster als gestrichelter Ring, Gradnetz mit Gradangaben, Zoom-/Kamera-Readout oben rechts, Weltübersicht unten links, „Weltansicht“-Button oben links.
+- **Karte** nach dem ursprünglichen A (`docs/mockups/karte-A.dc.html`): ~~Fadenkreuz-Marker~~ (ersetzt am 15.10.2026 durch Höhenlinien-Marker, siehe unten), Labels in Geist Mono mit Koordinaten, Cluster als gestrichelter Ring, Gradnetz mit Gradangaben, Zoom-/Kamera-Readout oben rechts, Weltübersicht unten links, „Weltansicht“-Button oben links.
 - Farben und Schriftschnitte durchgehend aus A2, damit Startseite und Karte einheitlich wirken.
 - **Keine Glas-Navigation.** Schlichte Leiste: Name links, Karte · Alben · Über mich + Instagram/LinkedIn rechts; auf allen Seiten gleich.
 
@@ -42,6 +42,19 @@ Festlegungen hier haben Vorrang vor dem Projektbriefing.
 - Mindestausschnitt nach Tiefe 55° / 25° / 8°, Album 36°. Rauszoomen überspringt Ebenen ohne Unterschied und Kontinente (Nordeuropa → Startansicht). Längengrade am oberen Rand nur, wenn die Karte oben angeschnitten ist. Cluster-Untertitel: bis 3 Alben die Namen, sonst „N Alben · 2021–2026“.
 - Startorte 15.10.2026: 18 Reisen – 2026 Seoul, Bergen, Berner Oberland · 2025 Island (Höfn), Seoul, Zermatt, Cortina, Sächsische Schweiz, Bukarest · 2024 Lofoten, Färöer, Schottland (vorläufig Glencoe), Seiser Alm, Gran Canaria · 2023 Schwarzwald, Neuschwanstein · 2021 Island (Reykjavík) · ohne Jahr Kleinarl (Ski). Gliederung siehe „Gliederung der Karte“.
 
+## Marker, Lesbarkeit (15.10.2026)
+- **Kartenmarker als Höhenlinien** statt Fadenkreuz (Nici: „zu militärisch, zu taktisch“): Punkt mit zwei leicht unregelmäßigen Konturringen, Form je Album fest (aus der ID berechnet). Aktiv: Ringe weiten sich, dritter Ring erscheint, einmalige Welle in Gletscherfarbe. Cluster = „Gipfel“: dunkle Fläche mit bis zu drei inneren Linien und Anzahl. Passt zur Designrichtung „Höhenlinie“ und zu den Linien im Hero.
+- **Lesbarkeit über hellen Bildern:** Kopfzeile in Geist 400 mit weichem Textschatten. Hero-Verläufe oben und unten passen sich der Bildhelligkeit an: `js/home.js` misst beim Bildwechsel die Helligkeit oben/unten (kleines Canvas) und setzt `--scrim-top` / `--scrim-bottom` (0–1), die per `@property` weich überblenden. Dafür werden Hero-Bilder mit `crossorigin="anonymous"` geladen (picsum erlaubt das, eigene Bilder liegen auf derselben Domain). Zähler, Demo-Label und Pause in Sekundärtextfarbe statt leiser Labelfarbe.
+- Kartenvorschau: Meta-Zeile nur noch Jahr + Koordinaten (Album-Nummer brach die Zeile um).
+- Neue Alben: Stockholm 2021 (Nordeuropa), Algarve 2020 (neue Region Südeuropa, zusammen mit Gran Canaria). Damit 20 Reisen.
+
+## Album-Bühne und Übergang ins Album (15.10.2026)
+- **Album-Bühne:** Die Albumseite öffnet mit dem Titelbild über die ganze Fläche (sticky), unten links Label und Titel in Geist 200 wie auf der Startseite, unten Mitte „NN Bilder“ mit laufender Linie (springt zur Galerie). Beim Scrollen zoomt das Bild leicht (1 → 1,08), dunkelt ab und der Titel verschwindet (GSAP ScrollTrigger, `js/album.js`); der Inhalt (`.album-body`, eigener Hintergrund, Schatten nach oben) schiebt sich darüber. Verläufe passen sich wie im Hero der Bildhelligkeit an (`js/scrim.js`, gemeinsam mit der Startseite).
+- **Einleitung** unter der Bühne: Ortstext groß links, Steckbrief + Links rechts.
+- **Galerie deckt sich auf:** Beim Hineinscrollen wird jedes Bild von unten freigelegt (clip-path) und setzt sich von 1,12 auf 1, innerhalb einer Zeile um 0,09 s versetzt. Verdecken ohne Übergang, Sicherheitsnetz nach 3 s. Bei reduzierter Bewegung aus.
+- **Bild fliegt ins Album:** Cross-Document View Transitions. `js/transitions.js` gibt beim Klick auf einen Album-Link dem zugehörigen Bild den Namen `album-cover` (Startseite: aktuelles Hero-Bild + Titel als `album-title`; Alben-Übersicht: Kartenbild; Karte: Vorschaubild) und legt Bildadresse + Titel im sessionStorage ab. Die Albumseite setzt beides per Inline-Skript sofort, damit Bild und Titel beim Übergang schon da sind, und lädt danach die große Fassung. Altes Bild bleibt während des Flugs sichtbar, neues blendet am Ende ein (0,8 s). Album → Album (voriger/nächster Ort) überblendet Bühne zu Bühne. Firefox und Browser ohne Unterstützung wechseln normal.
+- Bilder, die als Übergangsquelle dienen (Hero, Übersicht, Kartenvorschau, Bühne), laden mit `crossorigin="anonymous"`, damit sie aus demselben Cache kommen und ihre Helligkeit messbar ist.
+
 ## Albumseite (15.10.2026)
 - Kopf zweispaltig: links Label (Album-Nr. + Koordinaten) und Titel in Geist 200, rechts Kurztext, Steckbrief in Mono (Land · Region · Bilder) und „Zurück zur Karte“ (→ `karte.html?ort=<id>`) / „Alle Alben“
 - Galerie als Bildzeilen gleicher Höhe (wie Flickr/Google Fotos): Bilder werden nie beschnitten, Hoch- und Querformate mischen sich. Zeilenumbruch rechnet `js/album.js`, die Breiten verteilt CSS (`flex-grow` = Seitenverhältnis). Unter 560 px ein Bild pro Zeile. Darunter dezent Nummer + Titel.
@@ -53,7 +66,7 @@ Festlegungen hier haben Vorrang vor dem Projektbriefing.
 - Impressum und Datenschutz auf einer Seite (`impressum.html`, Anker `#datenschutz`), Footer-Links auf allen Seiten. Texte sind nur ein Gerüst und müssen vor der Veröffentlichung geprüft werden.
 - Seitenwechsel: Überblendung per View Transitions (nur bei `prefers-reduced-motion: no-preference`), Kopfzeile bleibt stehen. Browser ohne Unterstützung wechseln ohne Übergang.
 - Reduzierte Bewegung: globale CSS-Regel kürzt alle Übergänge; GSAP-Animationen prüfen die Einstellung selbst.
-- Favicon: Fadenkreuz-Marker der Karte (`favicon.svg`)
+- Favicon: ~~Fadenkreuz-Marker~~ → seit 15.10.2026 Höhenlinien um einen Punkt (`favicon.svg`), passend zu den Kartenmarkern
 
 ## Lokaler Server am Mac (15.10.2026)
 - `npx serve` scheiterte am Mac, weil im npm-Cache (`~/.npm`) Dateien root gehörten. Am 15.10.2026 mit `sudo chown -R 501:20 ~/.npm` behoben, `npx serve .` läuft jetzt auch am Mac.

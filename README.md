@@ -27,6 +27,8 @@ js/data.js          Lädt data/albums.json, baut Bild-URLs
 js/nav.js           Navigation und Handy-Menü
 js/album.js         Albumseite: Kopf, Galerie (Bildzeilen), voriger/nächster Ort
 js/lightbox.js      Großansicht der Bilder
+js/transitions.js   Seitenübergang „Bild fliegt ins Album“
+js/scrim.js         Verläufe passend zur Bildhelligkeit (Startseite, Album-Bühne)
 js/about.js         Über mich: zählt Orte, Länder, Bilder
 favicon.svg         Seitensymbol
 data/albums.json    Alle Orte und Bilder – die einzige Datenquelle

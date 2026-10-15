@@ -12,7 +12,7 @@
     "switzerland":     { "name": "Schweiz",      "parent": "central-europe" },
     "dolomites":       { "name": "Dolomiten",    "parent": "central-europe" },
     "austria":         { "name": "Österreich",   "parent": "central-europe" },
-    "canaries":        { "name": "Kanaren",      "parent": "europe" },
+    "southern-europe": { "name": "Südeuropa",    "parent": "europe" },
     "korea":           { "name": "Südkorea",     "parent": "asia" }
   },
 
@@ -237,7 +237,7 @@
       "shortName": "Gran Canaria",
       "year": 2024,
       "country": "Spanien",
-      "region": "canaries",
+      "region": "southern-europe",
       "coords": { "lat": 27.96, "lon": -15.6 },
       "text": "Ein Kontinent im Kleinen: Dünen, Vulkanschluchten und Pinienwälder über den Wolken. [Platzhalter]",
       "cover": 0,
@@ -294,6 +294,38 @@
         { "file": "iceland-2021-01.webp", "width": 2400, "height": 1600, "title": "Wasserfall", "alt": "Wasser stürzt über dunkle, nasse Felsen", "demo": 404 },
         { "file": "iceland-2021-02.webp", "width": 2400, "height": 1600, "title": "Strand unter Klippen", "alt": "Breiter Strand vor dunklen Klippen unter bewölktem Himmel", "demo": 350 },
         { "file": "iceland-2021-03.webp", "width": 2400, "height": 1600, "title": "Brandung", "alt": "Schwarzweißaufnahme eines Strandes mit auslaufenden Wellen", "demo": 51 }
+      ]
+    },
+    {
+      "id": "stockholm-2021",
+      "name": "Stockholm",
+      "shortName": "Stockholm",
+      "year": 2021,
+      "country": "Schweden",
+      "region": "northern-europe",
+      "coords": { "lat": 59.33, "lon": 18.07 },
+      "text": "Eine Stadt auf vierzehn Inseln: Wasser an jeder Ecke, Gassen in Gamla stan und das kühle Licht des Nordens. [Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "file": "stockholm-2021-01.webp", "width": 2400, "height": 1600, "title": "Am Wasser", "alt": "Person am Ufer mit Blick über das Wasser auf eine Stadt", "demo": 349 },
+        { "file": "stockholm-2021-02.webp", "width": 2400, "height": 1600, "title": "Stille Bucht", "alt": "Spiegelglatte Wasserfläche unter einem hellen Himmel", "demo": 385 },
+        { "file": "stockholm-2021-03.webp", "width": 2400, "height": 1600, "title": "Steg", "alt": "Schwarzweißaufnahme eines langen Holzstegs, der ins Wasser führt", "demo": 47 }
+      ]
+    },
+    {
+      "id": "algarve-2020",
+      "name": "Algarve",
+      "shortName": "Algarve",
+      "year": 2020,
+      "country": "Portugal",
+      "region": "southern-europe",
+      "coords": { "lat": 37.12, "lon": -8.3 },
+      "text": "Goldene Felsküsten, Grotten und Buchten mit türkisem Wasser am südwestlichsten Zipfel Europas. [Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "file": "algarve-2020-01.webp", "width": 2400, "height": 1600, "title": "Blühende Steilküste", "alt": "Felsige Küste mit blühenden Pflanzen über dem Meer", "demo": 37 },
+        { "file": "algarve-2020-02.webp", "width": 2400, "height": 1600, "title": "Boot in der Bucht", "alt": "Kleines Boot auf türkisfarbenem, klarem Wasser", "demo": 124 },
+        { "file": "algarve-2020-03.webp", "width": 2400, "height": 1600, "title": "Abendrot", "alt": "Sonnenuntergang mit warm leuchtendem Himmel über dem Horizont", "demo": 71 }
       ]
     },
     {

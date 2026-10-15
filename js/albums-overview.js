@@ -57,11 +57,13 @@ function card(album, number, position) {
   const link = document.createElement('a');
   link.className = 'album-card';
   link.href = `album.html?ort=${encodeURIComponent(album.id)}`;
+  link.dataset.albumName = album.name;   // für den Übergang ins Album (js/transitions.js)
 
   // Bild mit festen Maßen + lazy loading → keine Layout-Sprünge
   const figure = document.createElement('div');
   figure.className = 'album-card__image';
-  const img = Object.assign(document.createElement('img'), imageAttrs(album, getCover(album)));
+  // gleiche Lademethode wie das Titelbild der Albumseite → beim Übergang kommt es direkt aus dem Cache
+  const img = Object.assign(document.createElement('img'), { crossOrigin: 'anonymous' }, imageAttrs(album, getCover(album)));
   img.sizes = '(min-width: 72rem) 33vw, (min-width: 48rem) 50vw, 100vw';
   img.loading = position < 3 ? 'eager' : 'lazy';
   img.decoding = 'async';
