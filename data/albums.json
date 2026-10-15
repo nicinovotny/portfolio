@@ -28,9 +28,11 @@
       "text": "Paläste zwischen Hochhäusern, Berge am Stadtrand und Gassen, die nachts erst richtig wach werden. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "file": "seoul-2026-01.webp", "width": 2400, "height": 1600, "title": "Hafen", "alt": "Hafenstadt am Wasser in warmem Licht", "demo": 271 },
-        { "file": "seoul-2026-02.webp", "width": 2400, "height": 1600, "title": "Täler im Nebel", "alt": "Bewaldete Berghänge, die im Nebel verschwinden", "demo": 121 },
-        { "file": "seoul-2026-03.webp", "width": 2400, "height": 1600, "title": "Abend am Meer", "alt": "Ruhiges Meer in pastellfarbener Dämmerung", "demo": 213 }
+        { "file": "seoul-2026-01.webp", "width": 2400, "height": 1600, "title": "Sonnenuntergang über Seoul", "alt": "Orange Abendsonne über der Skyline von Seoul, eingerahmt von Baumkronen und fernen Bergen" },
+        { "file": "seoul-2026-02.webp", "width": 2400, "height": 1600, "title": "Stadtmauer am Abend", "alt": "Alte Stadtmauer führt durch bewaldete Hügel auf die Skyline mit dem Namsan-Turm zu" },
+        { "file": "seoul-2026-03.webp", "width": 2400, "height": 1600, "title": "Blaue Stunde", "alt": "Seoul zur blauen Stunde mit beleuchtetem Namsan-Turm und leuchtender Stadtmauer im Vordergrund" },
+        { "file": "seoul-2026-04.webp", "width": 1600, "height": 2400, "title": "Laden unterm Namsan", "alt": "Kleiner Laden mit traditionellem Ziegeldach an einer roten Straße, dahinter der Namsan-Turm" },
+        { "file": "seoul-2026-05.webp", "width": 1600, "height": 2400, "title": "Regen und Neon", "alt": "Frau mit Regenschirm geht nachts durch eine Gasse unter roter Neonreklame" }
       ]
     },
     {
@@ -77,9 +79,11 @@
       "text": "Der Südosten rund um Höfn: Gletscherzungen, schwarze Strände und Berge, die direkt aus dem Meer steigen. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "file": "iceland-2025-01.webp", "width": 2400, "height": 1600, "title": "Dunkle Berge", "alt": "Schroffe dunkle Berge mit Schneeresten unter grauem Himmel", "demo": 377 },
-        { "file": "iceland-2025-02.webp", "width": 2400, "height": 1600, "title": "Küste von oben", "alt": "Luftaufnahme einer felsigen Küste mit klarem Wasser", "demo": 162 },
-        { "file": "iceland-2025-03.webp", "width": 2400, "height": 1600, "title": "Offenes Meer", "alt": "Bewegte blaue Wasseroberfläche bis zum Horizont", "demo": 384 }
+        { "file": "iceland-2025-01.webp", "width": 2400, "height": 1601, "title": "Polarlicht über dem Vestrahorn", "alt": "Grünes Polarlicht und Sterne über den dunklen Gipfeln des Vestrahorn und verschneiten Dünen" },
+        { "file": "iceland-2025-02.webp", "width": 2400, "height": 1601, "title": "Abendlicht am Vestrahorn", "alt": "Wanderer in roter Jacke zwischen verschneiten Dünen vor dem rötlich beleuchteten Vestrahorn" },
+        { "file": "iceland-2025-03.webp", "width": 2400, "height": 1601, "title": "Brandung bei Stokksnes", "alt": "Wellen umspülen verschneite Felsen, dahinter die spitzen Gipfel des Vestrahorn" },
+        { "file": "iceland-2025-04.webp", "width": 2400, "height": 1601, "title": "Kirkjufell im Schneesturm", "alt": "Verschneiter Wasserfall vor dem Kirkjufell, der im Schneetreiben verschwindet" },
+        { "file": "iceland-2025-05.webp", "width": 2400, "height": 1600, "title": "Morgen im Schnee", "alt": "Silhouette einer Person am verschneiten Auto vor einem orangen Sonnenaufgang" }
       ]
     },
     {
@@ -141,10 +145,11 @@
       "text": "Sandsteintürme über dem Elbtal, Schluchten und Morgennebel. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "file": "saxon-switzerland-2025-01.webp", "width": 2400, "height": 1600, "title": "Schlucht", "alt": "Grüne Schlucht mit Bach und moosbedeckten Felsen", "demo": 28 },
-        { "file": "saxon-switzerland-2025-02.webp", "width": 1600, "height": 2400, "title": "Wasserfall", "alt": "Schmaler Wasserfall über dunklem Fels", "demo": 15 },
-        { "file": "saxon-switzerland-2025-03.webp", "width": 2400, "height": 1600, "title": "Waldrand", "alt": "Schwarzweißaufnahme eines Waldrands am Hang", "demo": 67 },
-        { "file": "saxon-switzerland-2025-04.webp", "width": 2400, "height": 1600, "title": "Dämmerung", "alt": "Nadelwald als Silhouette vor dem Abendhimmel", "demo": 83 }
+        { "file": "saxon-switzerland-2025-01.webp", "width": 2400, "height": 1601, "title": "Bastei im Morgenrot", "alt": "Basteibrücke zwischen Sandsteinfelsen im Herbstwald unter rosa Morgenhimmel" },
+        { "file": "saxon-switzerland-2025-02.webp", "width": 2400, "height": 1601, "title": "Steinhaus in der Schlucht", "alt": "Altes Steinhaus mit Schieferdach versteckt zwischen herbstlichen Bäumen in einer Felsschlucht" },
+        { "file": "saxon-switzerland-2025-03.webp", "width": 2400, "height": 1601, "title": "Burg Kriebstein im Spiegel", "alt": "Burg auf einem Felsen über dem Wasser, umgeben von Herbstwald, mit Spiegelbild" },
+        { "file": "saxon-switzerland-2025-04.webp", "width": 2400, "height": 1601, "title": "Die Barbarine", "alt": "Freistehende Felsnadel Barbarine im warmen Abendlicht über weitem Waldland" },
+        { "file": "saxon-switzerland-2025-05.webp", "width": 2400, "height": 1600, "title": "Abendsonne auf dem Fels", "alt": "Abendsonne über bewaldeten Tälern, im Vordergrund Sandsteinfelsen mit Birken" }
       ]
     },
     {
@@ -174,10 +179,11 @@
       "text": "Granitgipfel, die direkt aus dem Nordmeer steigen. Im Winter blaue Stunden, die den halben Tag dauern. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "file": "lofoten-2024-01.webp", "width": 2400, "height": 1600, "title": "Stiller See", "alt": "Bergsee mit Schilf im Vordergrund und Gipfeln im Dunst", "demo": 128 },
-        { "file": "lofoten-2024-02.webp", "width": 2400, "height": 1600, "title": "Ufer bei Ebbe", "alt": "Felsiges Ufer mit Inseln am Horizont", "demo": 12 },
-        { "file": "lofoten-2024-03.webp", "width": 2400, "height": 1600, "title": "Bucht", "alt": "Ruhige Bucht mit bewaldeten Inseln unter blauem Himmel", "demo": 16 },
-        { "file": "lofoten-2024-04.webp", "width": 2400, "height": 1600, "title": "Strömung", "alt": "Wasseroberfläche mit Strömungslinien in Langzeitbelichtung", "demo": 126 }
+        { "file": "lofoten-2024-01.webp", "width": 2400, "height": 1601, "title": "Blick vom Reinebringen", "alt": "Blick von oben auf Reine, Fjorde und schroffe Gipfel unter grauem Himmel" },
+        { "file": "lofoten-2024-02.webp", "width": 2400, "height": 1601, "title": "Rote Rorbuer", "alt": "Rote Fischerhütten am Ufer eines Fjords unter wolkenverhangenen Bergen" },
+        { "file": "lofoten-2024-03.webp", "width": 2400, "height": 1601, "title": "Über der Bucht", "alt": "Wanderer mit Rucksack steht auf einem Felsen hoch über einer Bucht zwischen steilen Bergen" },
+        { "file": "lofoten-2024-04.webp", "width": 2400, "height": 1500, "title": "Brandung im Sturmlicht", "alt": "Welle bricht an dunklen Felsen, dahinter Berge unter orange leuchtenden Sturmwolken" },
+        { "file": "lofoten-2024-05.webp", "width": 2400, "height": 1600, "title": "Hamnøy zur blauen Stunde", "alt": "Rote Hütten von Hamnøy auf Felsen am Wasser vor einem mächtigen Berg in der Dämmerung" }
       ]
     },
     {
@@ -216,19 +222,20 @@
     },
     {
       "id": "seiser-alm-2024",
-      "name": "Dolomiten · Seiser Alm",
-      "shortName": "Seiser Alm",
+      "name": "Dolomiten",
+      "shortName": "Dolomiten",
       "year": 2024,
       "country": "Italien",
       "region": "dolomites",
       "coords": { "lat": 46.54, "lon": 11.62 },
-      "text": "Europas größte Hochalm unter Langkofel und Plattkofel – Kalkzinnen, die bei Sonnenaufgang rot glühen, und Almwiesen darunter. [Platzhalter]",
+      "text": "Von der Seiser Alm über das Villnößtal und den Pragser Wildsee bis zu den Drei Zinnen – Kalkzinnen, die im Abendlicht glühen, und Gewitter, die über die Grate ziehen. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "file": "seiser-alm-2024-01.webp", "width": 2400, "height": 1600, "title": "Grate im Abendlicht", "alt": "Gestaffelte Berggrate mit Schichtgestein im Abendlicht", "demo": 231 },
-        { "file": "seiser-alm-2024-02.webp", "width": 2400, "height": 1600, "title": "Passstraße", "alt": "Kurvige Passstraße zwischen steilen Hängen", "demo": 191 },
-        { "file": "seiser-alm-2024-03.webp", "width": 2400, "height": 1600, "title": "Schneefelder", "alt": "Verschneite Felswände in einem engen Tal", "demo": 29 },
-        { "file": "seiser-alm-2024-04.webp", "width": 2400, "height": 1600, "title": "Wolkenbank", "alt": "Schwarzweißaufnahme einer Wolkenbank über Hügeln", "demo": 272 }
+        { "file": "seiser-alm-2024-01.webp", "width": 2400, "height": 1600, "title": "Seiser Alm am Abend", "alt": "Grüne Almwiesen mit Holzhütten vor Langkofel und Plattkofel im warmen Abendlicht" },
+        { "file": "seiser-alm-2024-02.webp", "width": 2400, "height": 1601, "title": "St. Magdalena im Villnößtal", "alt": "Kirche von St. Magdalena zwischen Wiesen und Wäldern vor den Geislerspitzen" },
+        { "file": "seiser-alm-2024-03.webp", "width": 2400, "height": 1601, "title": "Bootshaus am Pragser Wildsee", "alt": "Hölzernes Bootshaus und Ruderboote spiegeln sich im stillen Pragser Wildsee" },
+        { "file": "seiser-alm-2024-04.webp", "width": 2400, "height": 1601, "title": "Dreizinnenhütte im Gewitterlicht", "alt": "Dreizinnenhütte unter dem Toblinger Knoten vor dunklen Gewitterwolken" },
+        { "file": "seiser-alm-2024-05.webp", "width": 2400, "height": 1600, "title": "Drei Zinnen", "alt": "Die Drei Zinnen ragen über einem Schneefeld in einen dramatischen Wolkenhimmel" }
       ]
     },
     {
