@@ -1,0 +1,134 @@
+{
+  "regions": {
+    "europe":         { "name": "Europa",         "level": "continent" },
+    "asia":           { "name": "Asien",          "level": "continent" },
+    "north-atlantic": { "name": "Nordatlantik",   "level": "region", "continent": "europe" },
+    "scandinavia":    { "name": "Skandinavien",   "level": "region", "continent": "europe" },
+    "alps":           { "name": "Alpen",          "level": "region", "continent": "europe" },
+    "germany":        { "name": "Deutschland",    "level": "region", "continent": "europe" },
+    "east-asia":      { "name": "Ostasien",       "level": "region", "continent": "asia" }
+  },
+
+  "albums": [
+    {
+      "id": "faroe",
+      "name": "Färöer-Inseln",
+      "shortName": "Färöer",
+      "country": "Färöer (Dänemark)",
+      "continent": "europe",
+      "region": "north-atlantic",
+      "coords": { "lat": 62.0, "lon": -6.9 },
+      "text": "Achtzehn Inseln zwischen Island und Norwegen. Steilklippen, Nebel, der in Minuten kommt und geht, und ein Licht, das nie ganz hell wird. [Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "file": "faroe-01.webp", "width": 2400, "height": 1600, "title": "Brandung an den Felsnadeln", "alt": "Felsnadeln in der Brandung vor einer dunklen Steilküste", "demo": 179 },
+        { "file": "faroe-02.webp", "width": 1600, "height": 2400, "title": "Klippen über dem Fjord", "alt": "Senkrechte Felsklippen über türkisfarbenem Wasser", "demo": 218 },
+        { "file": "faroe-03.webp", "width": 2400, "height": 1600, "title": "Nebel über der Weide", "alt": "Grüne Wiese mit Bachlauf, darüber dichter Nebel", "demo": 11 },
+        { "file": "faroe-04.webp", "width": 2400, "height": 1600, "title": "Kieselstrand", "alt": "Kieselstrand an einer bewaldeten Küste unter hellem Himmel", "demo": 13 },
+        { "file": "faroe-05.webp", "width": 2400, "height": 1600, "title": "Offener Atlantik", "alt": "Dunkle Wellen auf dem offenen Meer", "demo": 147 }
+      ]
+    },
+    {
+      "id": "lofoten",
+      "name": "Lofoten",
+      "shortName": "Lofoten",
+      "country": "Norwegen",
+      "continent": "europe",
+      "region": "scandinavia",
+      "coords": { "lat": 68.2, "lon": 13.9 },
+      "text": "Granitgipfel, die direkt aus dem Nordmeer steigen. Im Winter blaue Stunden, die den halben Tag dauern. [Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "file": "lofoten-01.webp", "width": 2400, "height": 1600, "title": "Stiller See", "alt": "Bergsee mit Schilf im Vordergrund und Gipfeln im Dunst", "demo": 128 },
+        { "file": "lofoten-02.webp", "width": 2400, "height": 1600, "title": "Ufer bei Ebbe", "alt": "Felsiges Ufer mit Inseln am Horizont", "demo": 12 },
+        { "file": "lofoten-03.webp", "width": 2400, "height": 1600, "title": "Bucht", "alt": "Ruhige Bucht mit bewaldeten Inseln unter blauem Himmel", "demo": 16 },
+        { "file": "lofoten-04.webp", "width": 2400, "height": 1600, "title": "Strömung", "alt": "Wasseroberfläche mit Strömungslinien in Langzeitbelichtung", "demo": 126 }
+      ]
+    },
+    {
+      "id": "dolomites",
+      "name": "Südtirol · Dolomiten",
+      "shortName": "Dolomiten",
+      "country": "Italien",
+      "continent": "europe",
+      "region": "alps",
+      "coords": { "lat": 46.6, "lon": 11.72 },
+      "text": "Kalkzinnen, die bei Sonnenaufgang rot glühen, und Almwiesen darunter. [Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "file": "dolomites-01.webp", "width": 2400, "height": 1600, "title": "Grate im Abendlicht", "alt": "Gestaffelte Berggrate mit Schichtgestein im Abendlicht", "demo": 231 },
+        { "file": "dolomites-02.webp", "width": 2400, "height": 1600, "title": "Passstraße", "alt": "Kurvige Passstraße zwischen steilen Hängen", "demo": 191 },
+        { "file": "dolomites-03.webp", "width": 2400, "height": 1600, "title": "Schneefelder", "alt": "Verschneite Felswände in einem engen Tal", "demo": 29 },
+        { "file": "dolomites-04.webp", "width": 2400, "height": 1600, "title": "Wolkenbank", "alt": "Schwarzweißaufnahme einer Wolkenbank über Hügeln", "demo": 272 }
+      ]
+    },
+    {
+      "id": "switzerland",
+      "name": "Berner Oberland",
+      "shortName": "Schweiz",
+      "country": "Schweiz",
+      "continent": "europe",
+      "region": "alps",
+      "coords": { "lat": 46.59, "lon": 7.91 },
+      "text": "Gletscher, Wasserfälle und Täler, die so steil sind, dass die Sonne im Winter nur Stunden bleibt. [Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "file": "switzerland-01.webp", "width": 2400, "height": 1600, "title": "Gipfel über dem See", "alt": "Schneebedeckter Gipfel über einem dunklen Bergsee", "demo": 235 },
+        { "file": "switzerland-02.webp", "width": 2400, "height": 1600, "title": "Bergkette", "alt": "Verschneite Bergkette unter tiefblauem Himmel", "demo": 296 },
+        { "file": "switzerland-03.webp", "width": 2400, "height": 1600, "title": "Neuschnee", "alt": "Frisch verschneite Gipfel im Morgenlicht", "demo": 256 },
+        { "file": "switzerland-04.webp", "width": 2400, "height": 1600, "title": "Almweg", "alt": "Grüner Bergrücken mit Wanderweg", "demo": 287 }
+      ]
+    },
+    {
+      "id": "south-korea",
+      "name": "Südkorea",
+      "shortName": "Südkorea",
+      "country": "Südkorea",
+      "continent": "asia",
+      "region": "east-asia",
+      "coords": { "lat": 38.12, "lon": 128.47 },
+      "text": "Granitberge im Morgennebel, Tempel in den Tälern und eine Küste, an der die Großstadt bis ans Wasser reicht. [Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "file": "south-korea-01.webp", "width": 2400, "height": 1600, "title": "Täler im Nebel", "alt": "Bewaldete Berghänge, die im Nebel verschwinden", "demo": 121 },
+        { "file": "south-korea-02.webp", "width": 2400, "height": 1600, "title": "Küste von oben", "alt": "Luftaufnahme einer felsigen Küste mit klarem Wasser", "demo": 162 },
+        { "file": "south-korea-03.webp", "width": 2400, "height": 1600, "title": "Hafen", "alt": "Hafenstadt am Wasser in warmem Licht", "demo": 271 },
+        { "file": "south-korea-04.webp", "width": 2400, "height": 1600, "title": "Abend am Meer", "alt": "Ruhiges Meer in pastellfarbener Dämmerung", "demo": 213 }
+      ]
+    },
+    {
+      "id": "saxon-switzerland",
+      "name": "Sächsische Schweiz",
+      "shortName": "Sächs. Schweiz",
+      "country": "Deutschland",
+      "continent": "europe",
+      "region": "germany",
+      "coords": { "lat": 50.92, "lon": 14.1 },
+      "text": "Sandsteintürme über dem Elbtal, Schluchten und Morgennebel. [Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "file": "saxon-switzerland-01.webp", "width": 2400, "height": 1600, "title": "Schlucht", "alt": "Grüne Schlucht mit Bach und moosbedeckten Felsen", "demo": 28 },
+        { "file": "saxon-switzerland-02.webp", "width": 1600, "height": 2400, "title": "Wasserfall", "alt": "Schmaler Wasserfall über dunklem Fels", "demo": 15 },
+        { "file": "saxon-switzerland-03.webp", "width": 2400, "height": 1600, "title": "Waldrand", "alt": "Schwarzweißaufnahme eines Waldrands am Hang", "demo": 67 },
+        { "file": "saxon-switzerland-04.webp", "width": 2400, "height": 1600, "title": "Dämmerung", "alt": "Nadelwald als Silhouette vor dem Abendhimmel", "demo": 83 }
+      ]
+    },
+    {
+      "id": "black-forest",
+      "name": "Schwarzwald",
+      "shortName": "Schwarzwald",
+      "country": "Deutschland",
+      "continent": "europe",
+      "region": "alps",
+      "coords": { "lat": 48.0, "lon": 8.2 },
+      "text": "Nebelwälder, Hochmoore und weite Blicke bis zu den Alpen. [Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "file": "black-forest-01.webp", "width": 2400, "height": 1600, "title": "Nebelwald", "alt": "Hohe Nadelbäume in dichtem Nebel", "demo": 229 },
+        { "file": "black-forest-02.webp", "width": 2400, "height": 1600, "title": "Waldweg", "alt": "Schmaler Weg zwischen Wiese und Waldrand", "demo": 17 },
+        { "file": "black-forest-03.webp", "width": 2400, "height": 1600, "title": "Hochwiese", "alt": "Hohes Gras im Gegenlicht vor einem Waldrand", "demo": 127 },
+        { "file": "black-forest-04.webp", "width": 2400, "height": 1600, "title": "Weitblick", "alt": "Blick über Hügel und Wald bis zum Horizont", "demo": 10 }
+      ]
+    }
+  ]
+}

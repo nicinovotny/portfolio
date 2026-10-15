@@ -1,0 +1,293 @@
+/* Albumseite: Kopf mit Ortsangaben, Galerie in Bildzeilen, Ortsnavigation und Lightbox */
+
+/* ---------- Kopf ---------- */
+.album-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  align-items: end;
+  gap: var(--space-l) var(--space-xl);
+  margin: var(--space-xl) 0 var(--space-xl);
+}
+
+.album-head__title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.album-head__title {
+  font-size: clamp(2.75rem, 1.4rem + 5vw, 5.5rem);
+  font-weight: 200;
+  letter-spacing: var(--tracking-display);
+  line-height: 0.95;
+  text-wrap: balance;
+}
+
+.album-head__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+  max-width: 32rem;
+}
+
+.album-head__text { color: var(--color-text-2); }
+
+/* Steckbrief des Ortes in Mono, wie die Readouts der Karte */
+.album-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s) var(--space-l);
+  margin: 0;
+  padding-top: var(--space-s);
+  border-top: var(--hairline) solid var(--color-hairline);
+}
+.album-facts div { display: flex; flex-direction: column; gap: 4px; }
+.album-facts dt { color: var(--color-text-3); }
+.album-facts dd { margin: 0; font-size: var(--text-nav); letter-spacing: var(--tracking-nav); }
+
+.album-head__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 36px;
+}
+
+.album-head__secondary {
+  color: #9AA1A5;
+  padding: 12px 0;
+  font-size: 0.875rem;
+  letter-spacing: var(--tracking-nav);
+}
+
+/* Album nicht gefunden */
+.album-missing .album-head { grid-template-columns: minmax(0, 1fr); }
+.album-missing .album-facts,
+.album-missing .album-head__links .line-link { display: none; }
+
+/* ---------- Galerie ---------- */
+/* Die Zeilen setzt js/album.js zusammen; innerhalb einer Zeile verteilt flex-grow die
+   Breite im Verhältnis der Seitenverhältnisse – dadurch sind alle Bilder einer Zeile gleich hoch. */
+.gallery {
+  --gallery-gap: clamp(0.75rem, 1.6vw, 1.5rem);
+  display: flex;
+  flex-direction: column;
+  row-gap: calc(var(--gallery-gap) * 1.5);
+  column-gap: var(--gallery-gap);   /* wirkt hier nicht, liefert dem Skript aber den Abstand in px */
+}
+
+.gallery__row {
+  display: flex;
+  gap: var(--gallery-gap);
+}
+
+.gallery__item {
+  flex: var(--ratio) 1 0;
+  min-width: 0;
+}
+
+.gallery__open {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  background: var(--color-land-2);
+  border: 0;
+  cursor: zoom-in;
+}
+
+.gallery__open img {
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transition: transform 1.2s var(--ease-out), opacity var(--duration-medium) ease;
+}
+.gallery__open img.is-loaded { opacity: 1; }
+.gallery__open:hover img { transform: scale(1.03); }
+.gallery__open:focus-visible { outline-offset: 3px; }
+
+.gallery__caption {
+  display: flex;
+  gap: 12px;
+  padding-top: 10px;
+  font-size: var(--text-nav);
+  letter-spacing: var(--tracking-nav);
+  color: var(--color-text-2);
+}
+.gallery__caption .label { padding-top: 2px; color: var(--color-text-3); }
+
+/* ---------- Voriger / nächster Ort ---------- */
+.album-pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-l);
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-l);
+  border-top: var(--hairline) solid var(--color-hairline);
+}
+.album-pager[hidden] { display: none; }
+
+.album-pager__link {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 0;
+}
+.album-pager__link--next { align-items: flex-end; text-align: right; }
+
+.album-pager__name {
+  font-size: var(--text-h2);
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.album-pager__link .label { transition: color var(--duration-fast) ease; }
+.album-pager__link:hover .label { color: var(--color-accent); }
+
+/* ---------- Lightbox ---------- */
+html.has-lightbox {
+  overflow: hidden;
+  scrollbar-gutter: stable;   /* kein Springen der Seite, wenn der Scrollbalken verschwindet */
+}
+
+.lightbox {
+  --lb-top: 104px;
+  --lb-side: 112px;
+  --lb-bottom: 112px;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  background: transparent;
+  color: var(--color-text);
+}
+.lightbox::backdrop { background: transparent; }
+
+.lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--color-bg);
+}
+
+.lightbox__stage {
+  position: absolute;
+  inset: var(--lb-top) var(--lb-side) var(--lb-bottom);
+  display: grid;
+  place-items: center;
+  touch-action: pinch-zoom;   /* Wischen übernimmt das Skript, Zoomen bleibt beim Browser */
+}
+
+.lightbox__img {
+  max-width: none;
+  transform-origin: 0 0;      /* für den Übergang aus der Galerie */
+  background: var(--color-land-2);
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Rahmen, Zähler, Knöpfe – „Instrumenten“-Rahmung wie auf der Startseite */
+.lightbox__corner {
+  --corner-inset: 28px;
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 0 solid var(--color-hairline-strong);
+  pointer-events: none;
+}
+.lightbox__corner--tl { top: var(--corner-inset); left: var(--corner-inset); border-width: var(--hairline) 0 0 var(--hairline); }
+.lightbox__corner--tr { top: var(--corner-inset); right: var(--corner-inset); border-width: var(--hairline) var(--hairline) 0 0; }
+.lightbox__corner--bl { bottom: var(--corner-inset); left: var(--corner-inset); border-width: 0 0 var(--hairline) var(--hairline); }
+.lightbox__corner--br { bottom: var(--corner-inset); right: var(--corner-inset); border-width: 0 var(--hairline) var(--hairline) 0; }
+
+.lightbox__top {
+  position: absolute;
+  top: 40px;
+  left: var(--gutter);
+  right: var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lightbox__counter { display: flex; align-items: baseline; gap: 10px; }
+.lightbox__number {
+  font-size: 1.875rem;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.lightbox__close {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: var(--touch-target);
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: color var(--duration-fast) ease;
+}
+.lightbox__close:hover { color: var(--color-accent); }
+
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin-top: -32px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--color-text-2);
+  cursor: pointer;
+  transition: color var(--duration-fast) ease;
+}
+.lightbox__nav svg { width: 28px; height: 28px; }
+.lightbox__nav:hover { color: var(--color-accent); }
+.lightbox__nav--prev { left: calc(var(--gutter) - 20px); }
+.lightbox__nav--next { right: calc(var(--gutter) - 20px); }
+
+.lightbox__caption {
+  position: absolute;
+  left: var(--lb-side);
+  right: var(--lb-side);
+  bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+.lightbox__title { font-size: 0.9375rem; letter-spacing: var(--tracking-nav); }
+
+/* ---------- Handy ---------- */
+@media (max-width: 47.99rem) {
+  .album-head { grid-template-columns: minmax(0, 1fr); margin-top: var(--space-l); }
+
+  .album-pager { grid-template-columns: minmax(0, 1fr); gap: var(--space-s); }
+  .album-pager__link--next { align-items: flex-start; text-align: left; }
+
+  /* Lightbox: Bild über die volle Breite, Bedienung unten */
+  .lightbox { --lb-top: 88px; --lb-side: 0px; --lb-bottom: 136px; }
+  .lightbox__top { top: 24px; }
+  .lightbox__number { font-size: 1.5rem; }
+  .lightbox__corner { --corner-inset: 12px; }
+  .lightbox__nav { top: auto; bottom: 20px; margin-top: 0; width: var(--touch-target); height: var(--touch-target); }
+  .lightbox__nav--prev { left: calc(var(--gutter) - 10px); }
+  .lightbox__nav--next { right: calc(var(--gutter) - 10px); }
+  .lightbox__nav svg { width: 22px; height: 22px; }
+  .lightbox__caption { left: 64px; right: 64px; bottom: 24px; min-height: var(--touch-target); justify-content: center; }
+}

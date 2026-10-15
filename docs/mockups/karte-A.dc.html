@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Höhenlinie – Karte</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#E6E4DF;text-decoration:none}a:hover{color:#9CC3C5}
+</style>
+</helmet>
+<div style="width: 1280px; height: 800px; position: relative; overflow: hidden; background: #0E1113; font-family: 'Geist', system-ui, sans-serif; color: #E6E4DF">
+
+<div style="position: absolute; left: 0; top: 0">
+<dc-import name="MapEurope" sea="#0E1113" land="#161B1F" coast="#3C474E" coastw="{{ 0.9 }}" border="#2C353B" dash="2 4" grat="#192026" hint-size="1280px,800px"></dc-import>
+</div>
+
+<svg width="1280" height="800" viewBox="0 0 1280 800" style="position: absolute; left: 0; top: 0" role="img" aria-label="Europa-Ausschnitt mit Album-Markern">
+<g font-family="Geist Mono, ui-monospace, monospace" font-size="10" letter-spacing="1" fill="#59636A">
+<text x="16" y="315">60°N</text>
+<text x="16" y="433">55°N</text>
+<text x="16" y="555">50°N</text>
+<text x="16" y="679">45°N</text>
+<text x="566" y="96">0°</text>
+<text x="724" y="96">10°O</text>
+<text x="400" y="96">10°W</text>
+</g>
+<g font-family="Geist Mono, ui-monospace, monospace" font-size="10" letter-spacing="2" fill="#4F5A61">
+<text x="208" y="214">ISLAND</text>
+<text x="684" y="300">NORWEGEN</text>
+<text x="452" y="466">SCHOTTLAND</text>
+<text x="590" y="420">NORDSEE</text>
+<text x="200" y="440">NORDATLANTIK</text>
+<text x="770" y="560">DEUTSCHLAND</text>
+</g>
+
+<!-- Färöer: aktiver Marker mit Hover-Zustand -->
+<g>
+<circle cx="438" cy="273" r="18" fill="none" stroke="{{accent}}" stroke-width="1" opacity="0.5"></circle>
+<circle cx="438" cy="273" r="30" fill="none" stroke="{{accent}}" stroke-width="1" opacity="0.18"></circle>
+<path d="M438,247 L438,259 M438,287 L438,299 M412,273 L424,273 M452,273 L464,273" stroke="{{accent}}" stroke-width="1"></path>
+<circle cx="438" cy="273" r="4" fill="{{accent}}"></circle>
+<path d="M468,273 L492,273 L504,261" fill="none" stroke="{{accent}}" stroke-width="1" opacity="0.7"></path>
+</g>
+
+<!-- Lofoten -->
+<g>
+<circle cx="794" cy="135" r="12" fill="none" stroke="#E6E4DF" stroke-width="1" opacity="0.45"></circle>
+<circle cx="794" cy="135" r="3.5" fill="#E6E4DF"></circle>
+<text x="812" y="131" font-family="Geist Mono, ui-monospace, monospace" font-size="11" letter-spacing="1.5" fill="#E6E4DF">LOFOTEN</text>
+<text x="812" y="146" font-family="Geist Mono, ui-monospace, monospace" font-size="10" fill="#7D878D">68.2°N 13.9°O</text>
+</g>
+
+<!-- Sächsische Schweiz [Platzhalter] -->
+<g>
+<circle cx="830" cy="536" r="12" fill="none" stroke="#E6E4DF" stroke-width="1" opacity="0.45"></circle>
+<circle cx="830" cy="536" r="3.5" fill="#E6E4DF"></circle>
+<text x="848" y="532" font-family="Geist Mono, ui-monospace, monospace" font-size="11" letter-spacing="1.5" fill="#E6E4DF">SÄCHS. SCHWEIZ</text>
+<text x="848" y="547" font-family="Geist Mono, ui-monospace, monospace" font-size="10" fill="#7D878D">[PLATZHALTER]</text>
+</g>
+
+<!-- Cluster Alpen -->
+<g>
+<circle cx="745" cy="630" r="26" fill="#0E1113" fill-opacity="0.75" stroke="{{accent}}" stroke-width="1" stroke-dasharray="3 3"></circle>
+<text x="745" y="635" text-anchor="middle" font-family="Geist Mono, ui-monospace, monospace" font-size="14" fill="#E6E4DF">3</text>
+<text x="780" y="626" font-family="Geist Mono, ui-monospace, monospace" font-size="11" letter-spacing="1.5" fill="#E6E4DF">ALPEN</text>
+<text x="780" y="641" font-family="Geist Mono, ui-monospace, monospace" font-size="10" fill="#7D878D">SCHWEIZ · DOLOMITEN · SCHWARZWALD</text>
+</g>
+</svg>
+
+<!-- Hover-Karte Färöer -->
+<div style="position: absolute; left: 504px; top: 150px; width: 268px; background: rgba(18,23,26,0.94); border: 1px solid #2E383E; display: flex; flex-direction: column">
+<div style="width: 268px; height: 150px; overflow: hidden">
+<dc-import name="Landscape" variant="fjord" w="{{ 268 }}" h="{{ 150 }}" uid="a2" sky="#1B2329" skylow="#46535A" far="#2E393F" mid="#1E272C" near="#111618" water="#26313A" glow="#9CC3C5" hint-size="268px,150px"></dc-import>
+</div>
+<div style="padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.12em; color: {{accent}}">62.0°N · 6.9°W · ALBUM 01</div>
+<div style="font-size: 20px; font-weight: 400; letter-spacing: -0.01em">Färöer-Inseln</div>
+<a href="#album-faroe" style="font-size: 13px; color: #B9C0C4; padding-top: 4px">Album öffnen →</a>
+</div>
+</div>
+
+<!-- Kopfzeile -->
+<div style="position: absolute; left: 40px; top: 32px; display: flex; align-items: center; gap: 20px">
+<button type="button" style="display: flex; align-items: center; gap: 10px; height: 44px; padding: 0 16px; background: rgba(14,17,19,0.8); border: 1px solid #2E383E; color: #E6E4DF; font-family: 'Geist', system-ui, sans-serif; font-size: 13px; cursor: pointer">
+<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 6l-6 6 6 6"></path></svg>
+Weltansicht
+</button>
+<div style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; color: #8E979D">WELT <span style="color: #4F5A61">/</span> <span style="color: #E6E4DF">EUROPA</span> <span style="color: #4F5A61">· 6 ALBEN</span></div>
+</div>
+
+<div style="position: absolute; right: 40px; top: 40px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.08em; color: #8E979D; text-align: right; line-height: 1.7">
+<div>KAMERA 57.2°N · 4.0°O</div>
+<div>ZOOM <span style="color: {{accent}}">4.2×</span></div>
+</div>
+
+<!-- Minikarte -->
+<div style="position: absolute; left: 40px; bottom: 40px; padding: 10px; background: rgba(14,17,19,0.85); border: 1px solid #2E383E; display: flex; flex-direction: column; gap: 8px">
+<div style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.14em; color: #7D878D">ÜBERSICHT</div>
+<dc-import name="MapWorld" sea="#12171A" land="#2A3238" accent="#9CC3C5" hint-size="280px,146px"></dc-import>
+</div>
+
+<div style="position: absolute; right: 40px; bottom: 44px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.14em; color: #6E777D">ESC · SCROLLEN ZUM RAUSZOOMEN</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#9CC3C5","options":["#9CC3C5","#C9B98F","#A9B8D6"]},"$preview":{"width":1280,"height":800}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { accent: this.props.accent ?? '#9CC3C5' };
+  }
+}
+</script>
+</body>
+</html>

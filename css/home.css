@@ -1,0 +1,272 @@
+/* Startseite: Hero-Diashow nach Mockup A2 und kurzer Einstieg darunter */
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  height: 100vh;
+  height: 100svh;          /* Handy: Höhe ohne Browserleisten */
+  min-height: 34rem;
+  overflow: hidden;
+  background: var(--color-bg);
+  touch-action: pan-y;     /* vertikal scrollen erlaubt, horizontal = wischen */
+}
+
+.hero__slides,
+.hero__slide {
+  position: absolute;
+  inset: 0;
+}
+
+/* Eigene Ebene, damit die Bilder immer unter Verlauf und Text liegen */
+.hero__slides { z-index: 0; }
+
+.hero__slide {
+  opacity: 0;
+  visibility: hidden;
+}
+.hero__slide.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hero__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+/* Verlauf unten, damit Text auf jedem Bild lesbar bleibt */
+.hero__shade {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 55%;
+  background: linear-gradient(to top, rgba(11, 13, 14, 0.92), rgba(11, 13, 14, 0));
+  pointer-events: none;
+}
+
+/* Leichter Verlauf oben, damit die Navigation auch auf hellem Himmel lesbar ist */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 3;
+  height: 9rem;
+  background: linear-gradient(to bottom, rgba(11, 13, 14, 0.55), rgba(11, 13, 14, 0));
+  pointer-events: none;
+}
+
+.hero__contours {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: var(--hairline);
+  vector-effect: non-scaling-stroke;
+  opacity: 0.09;
+  pointer-events: none;
+}
+.hero__contours path { vector-effect: non-scaling-stroke; }
+
+/* Eckmarken: 14 px lange Haarlinien, 28 px vom Rand */
+.hero__corner {
+  --corner-inset: 28px;
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 0 solid var(--color-hairline-strong);
+  pointer-events: none;
+}
+.hero__corner--tl { top: var(--corner-inset); left: var(--corner-inset); border-width: var(--hairline) 0 0 var(--hairline); }
+.hero__corner--tr { top: var(--corner-inset); right: var(--corner-inset); border-width: var(--hairline) var(--hairline) 0 0; }
+.hero__corner--bl { bottom: var(--corner-inset); left: var(--corner-inset); border-width: 0 0 var(--hairline) var(--hairline); }
+.hero__corner--br { bottom: var(--corner-inset); right: var(--corner-inset); border-width: 0 var(--hairline) var(--hairline) 0; }
+
+/* Bildunterschrift unten links */
+.hero__caption {
+  position: absolute;
+  left: var(--gutter);
+  right: calc(var(--gutter) + 13rem);
+  bottom: 76px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.hero__title {
+  margin: 0;
+  font-size: var(--text-display);
+  font-weight: 200;
+  letter-spacing: var(--tracking-display);
+  line-height: 0.9;
+  /* Maske für die Einblendung von unten; Polster, damit Unterlängen (g, p) sichtbar bleiben */
+  overflow: hidden;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+.hero__title-inner { display: inline-block; }
+
+.hero__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 36px;
+  padding-top: 6px;
+  font-weight: 300;
+}
+
+.hero__secondary {
+  color: #9AA1A5;
+  padding: 12px 0;
+  font-size: 0.875rem;
+  letter-spacing: var(--tracking-nav);
+}
+
+/* Zähler, Fortschrittslinie und Steuerung unten rechts */
+.hero__meta {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.hero__counter {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 2px;
+}
+
+.hero__number {
+  font-size: 1.875rem;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.hero__total { letter-spacing: 0.2em; }
+
+/* Eine 168 px lange Linie aus 7 Abschnitten – jeder Abschnitt ist ein Knopf */
+.hero__progress {
+  display: flex;
+  width: 168px;
+}
+
+.hero__progress li { flex: 1; }
+
+.hero__dot {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: var(--touch-target);   /* große Klickfläche, sichtbar ist nur die Linie */
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.hero__dot::before,
+.hero__dot-fill {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+}
+.hero__dot::before { background: var(--color-hairline); }
+
+.hero__dot-fill {
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.hero__dot[aria-current='true'] .hero__dot-fill { transform: scaleX(1); }
+
+.hero__dot:hover::before { background: var(--color-hairline-strong); }
+.hero__dot:focus-visible { outline-offset: -8px; }
+
+.hero__controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 9px;
+}
+.hero__controls .label { font-size: 9px; }
+
+.hero__pause {
+  min-height: var(--touch-target);
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  transition: color var(--duration-fast) ease;
+}
+.hero__pause:hover { color: var(--color-accent); }
+
+/* Senkrechte Linie unten Mitte: Hinweis zum Weiterscrollen */
+.hero__scroll-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  width: 1px;
+  height: 28px;
+  background: rgba(236, 232, 225, 0.3);
+}
+
+/* Handy: Text über volle Breite, Steuerung darunter */
+@media (max-width: 47.99rem) {
+  .hero__shade { height: 75%; }
+
+  .hero__caption {
+    right: var(--gutter);
+    bottom: 112px;
+    gap: 16px;
+  }
+  .hero__links { gap: 0 24px; }
+
+  .hero__meta {
+    left: var(--gutter);
+    right: var(--gutter);
+    bottom: 24px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .hero__counter { margin: 0; }
+  .hero__number { font-size: 1.5rem; }
+  .hero__progress { flex: 1; width: auto; max-width: 168px; }
+  .hero__controls .label[data-hero-demo] { display: none; }
+
+  .hero__corner { --corner-inset: 12px; }
+  .hero__scroll-hint { display: none; }
+}
+
+/* ---------- Einstieg unter dem Hero ---------- */
+.intro {
+  display: grid;
+  gap: var(--space-l);
+  padding: var(--space-2xl) var(--gutter);
+  max-width: 64rem;
+}
+
+.intro__statement {
+  font-size: var(--text-h1);
+  font-weight: 200;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.intro__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 36px;
+}

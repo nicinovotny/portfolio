@@ -1,0 +1,15 @@
+{
+  "name": "portfolio-map-tools",
+  "private": true,
+  "type": "module",
+  "description": "Rechnet Natural-Earth-Daten einmalig in schlanke SVG-Pfade für die Karte um. Nur nötig, wenn sich die Karte ändern soll.",
+  "scripts": {
+    "build-map": "node build-map.mjs"
+  },
+  "dependencies": {
+    "d3-geo": "^3.1.1",
+    "topojson-client": "^3.1.0",
+    "topojson-simplify": "^3.0.3",
+    "world-atlas": "^2.0.2"
+  }
+}

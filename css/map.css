@@ -1,0 +1,338 @@
+/* Karte nach Mockup A: Fadenkreuz-Marker, Mono-Labels mit Koordinaten,
+   Cluster als gestrichelter Ring, Gradnetz mit Gradangaben, Readout und Weltübersicht. */
+
+.map {
+  --map-top: 108px;        /* Oberkante der Kartensteuerung (unter der Kopfzeile) */
+  --map-edge: 40px;        /* Abstand der Kästen zum Rand */
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  min-height: 32rem;
+  overflow: hidden;
+  background: var(--color-bg);
+  touch-action: none;      /* Gesten (Pinch) übernimmt das Skript */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ---------- Kartenebenen (SVG) ---------- */
+.map__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.map__svg path { vector-effect: non-scaling-stroke; }
+
+.map__sphere {
+  fill: none;
+  stroke: var(--color-coast);
+  stroke-width: var(--hairline);
+  opacity: 0.6;
+}
+
+.map__grat {
+  fill: none;
+  stroke: var(--color-grid);
+  stroke-width: 1;
+}
+
+.map__land {
+  fill: var(--color-land);
+  stroke: var(--color-coast);
+  stroke-width: var(--hairline);
+}
+
+.map__land--detail {
+  fill: var(--color-land-2);
+  stroke: var(--color-coast-2);
+  stroke-width: 0.9;
+  opacity: 0;
+}
+
+.map__borders {
+  fill: none;
+  stroke: #2C353B;
+  stroke-width: var(--hairline);
+  stroke-dasharray: 2 4;
+  opacity: 0;
+}
+
+/* ---------- Beschriftungen ---------- */
+.map__labels,
+.map__edge,
+.map__markers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.map-label,
+.map-edge-label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-text-3);
+  will-change: transform, opacity;
+}
+
+.map-label { translate: -50% -50%; opacity: 0; }
+.map-label--sea { font-style: normal; color: #4F5A61; letter-spacing: 0.3em; }
+
+.map-edge-label { letter-spacing: 0.1em; color: #59636A; }
+
+/* ---------- Marker ---------- */
+.map-marker {
+  /* Nullpunkt = Koordinate des Ortes; Klickfläche und Text hängen daran */
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  font: inherit;
+  text-align: left;
+  pointer-events: auto;
+  color: var(--color-text);
+  cursor: pointer;
+  will-change: transform;
+}
+
+/* Klickfläche: Quadrat um den Punkt */
+.map-marker__hit {
+  --hit: var(--touch-target);
+  position: absolute;
+  left: calc(var(--hit) / -2);
+  top: calc(var(--hit) / -2);
+  width: var(--hit);
+  height: var(--hit);
+}
+
+.map-marker__hit svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 160px;
+  height: 160px;
+  max-width: none;
+  translate: -50% -50%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+/* Name + Koordinaten rechts neben dem Ring (am rechten Rand: links davon) */
+.map-marker__text {
+  --text-offset: 18px;
+  position: absolute;
+  left: var(--text-offset);
+  top: -14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: var(--font-mono);
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity var(--duration-fast) ease;
+}
+.map-marker.is-left .map-marker__text {
+  left: auto;
+  right: var(--text-offset);
+  align-items: flex-end;
+}
+
+.map-marker__name {
+  font-size: var(--text-label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.map-marker__sub {
+  font-size: var(--text-micro);
+  letter-spacing: 0.04em;
+  color: #7D878D;
+  text-transform: uppercase;
+}
+
+/* Album: Ring + Punkt, aktiv mit Fadenkreuz in Gletscherfarbe */
+.map-marker__ring { fill: none; stroke: currentColor; stroke-width: 1; opacity: 0.45; }
+.map-marker__dot { fill: currentColor; }
+.map-marker__cross,
+.map-marker__halo,
+.map-marker__leader { fill: none; stroke: var(--color-accent); stroke-width: 1; opacity: 0; transition: opacity var(--duration-fast) ease; }
+
+.map-marker.is-active { color: var(--color-accent); z-index: 2; }
+.map-marker__ring,
+.map-marker__dot { transition: transform var(--duration-medium) var(--ease-out); }
+.map-marker.is-active .map-marker__ring { opacity: 0.5; transform: scale(1.5); }
+.map-marker.is-active .map-marker__dot { transform: scale(1.15); }
+.map-marker.is-active:not(.is-flipped) .map-marker__leader { opacity: 0.7; }
+.map-marker.is-active .map-marker__cross { opacity: 1; }
+.map-marker.is-active .map-marker__halo { opacity: 0.18; }
+.map-marker.is-active .map-marker__text { opacity: 0; }
+
+/* Cluster: gestrichelter Ring mit Anzahl */
+.map-marker--cluster .map-marker__hit { --hit: 64px; }
+.map-marker--cluster .map-marker__text { --text-offset: 35px; }
+.cluster-ring { fill: rgba(11, 13, 14, 0.75); stroke: var(--color-accent); stroke-width: 1; stroke-dasharray: 3 3; transition: stroke-dasharray var(--duration-medium) var(--ease-out); }
+.cluster-count { fill: var(--color-text); font-family: var(--font-mono); font-size: 14px; text-anchor: middle; dominant-baseline: central; }
+.map-marker--cluster:hover .cluster-ring,
+.map-marker--cluster:focus-visible .cluster-ring { stroke-dasharray: 6 2; }
+
+.map-marker:focus-visible { outline: none; }
+.map-marker:focus-visible .map-marker__hit { outline: 1px solid var(--color-accent); outline-offset: -6px; border-radius: 50%; }
+
+/* ---------- Vorschau-Karte ---------- */
+.map-card {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  width: 268px;
+  background: rgba(18, 23, 26, 0.94);
+  border: 1px solid #2E383E;
+  pointer-events: auto;
+}
+.map-card[hidden] { display: none; }
+
+.map-card__image { aspect-ratio: 268 / 150; overflow: hidden; background: var(--color-land-2); }
+.map-card__image img { width: 100%; height: 100%; object-fit: cover; }
+
+.map-card__body { display: flex; flex-direction: column; gap: 6px; padding: 14px 16px 16px; }
+.map-card__meta { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.12em; color: var(--color-accent); text-transform: uppercase; }
+.map-card__name { font-size: 1.25rem; font-weight: 400; letter-spacing: -0.01em; line-height: 1.2; }
+.map-card__link { align-self: flex-start; padding: 8px 0 0; font-size: 0.8125rem; color: #B9C0C4; }
+
+/* ---------- Steuerung, Readout, Übersicht ---------- */
+.map__bar {
+  position: absolute;
+  left: var(--map-edge);
+  top: var(--map-top);
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.map__world {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: var(--touch-target);
+  padding: 0 16px;
+  background: var(--color-panel);
+  border: 1px solid #2E383E;
+  font-size: var(--text-nav);
+  cursor: pointer;
+  transition: color var(--duration-fast) ease, border-color var(--duration-fast) ease, opacity var(--duration-medium) ease;
+}
+.map__world:hover { color: var(--color-accent); border-color: var(--color-coast-2); }
+.map__world[disabled] { display: none; }
+
+.map__trail {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8E979D;
+}
+.map__trail button {
+  padding: 12px 0;
+  background: none;
+  border: 0;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+.map__trail button:hover { color: var(--color-accent); }
+.map__trail [aria-current='location'] { color: var(--color-text); cursor: default; }
+.map__trail-sep { margin: 0 0.6em; color: #4F5A61; }
+.map__trail-count { margin-left: 0.6em; color: #4F5A61; }
+
+.map__readout {
+  position: absolute;
+  right: var(--map-edge);
+  top: calc(var(--map-top) + 8px);
+  z-index: 4;
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: 0.08em;
+  line-height: 1.7;
+  text-align: right;
+  color: #8E979D;
+  font-variant-numeric: tabular-nums;
+}
+.map__zoom { color: var(--color-accent); }
+
+.map__overview {
+  position: absolute;
+  left: var(--map-edge);
+  bottom: var(--map-edge);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  background: var(--color-panel);
+  border: 1px solid #2E383E;
+}
+.map__overview svg { width: 220px; height: auto; aspect-ratio: 2000 / 1040; }
+.map__overview-land { fill: #2A3238; }
+.map__overview-frame { fill: rgba(169, 196, 196, 0.08); stroke: var(--color-accent); stroke-width: 1; vector-effect: non-scaling-stroke; }
+
+.map__hint {
+  position: absolute;
+  right: var(--map-edge);
+  bottom: calc(var(--map-edge) + 4px);
+  z-index: 4;
+  color: #6E777D;
+  letter-spacing: 0.14em;
+}
+
+/* Ansagen für Screenreader; sichtbar nur bei Fehlern */
+.map__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.map__status.is-error {
+  inset: 0;
+  width: auto;
+  height: auto;
+  display: grid;
+  place-items: center;
+  padding: var(--gutter);
+  clip-path: none;
+  color: var(--color-text-2);
+  text-align: center;
+}
+
+/* ---------- Handy ---------- */
+@media (max-width: 47.99rem) {
+  .map { --map-top: 76px; --map-edge: 16px; }
+  .map__world { padding: 0 12px; }
+  .map__trail { font-size: var(--text-micro); }
+  .map__readout { display: none; }
+  .map__overview { display: none; }
+  .map__hint { left: var(--map-edge); right: auto; }
+  /* Vorschau als flache Leiste: Bild links, Text rechts */
+  .map-card { display: flex; width: calc(100vw - 32px); }
+  .map-card__image { flex: none; width: 112px; aspect-ratio: auto; }
+  .map-card__body { padding: 12px 14px; gap: 4px; }
+  .map-card__name { font-size: 1.0625rem; }
+  .map-marker__sub { display: none; }
+}

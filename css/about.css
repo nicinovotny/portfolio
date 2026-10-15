@@ -1,0 +1,149 @@
+/* Über mich: Steckbrief mit Porträt, Ausrüstung, Werdegang */
+
+/* ---------- Einstieg ---------- */
+.about-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  align-items: end;
+  gap: var(--space-l) var(--space-xl);
+  margin: var(--space-xl) 0 var(--space-2xl);
+}
+
+.about-portrait {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+}
+
+.about-portrait img,
+.about-portrait__placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+/* Platzhalter: Fläche mit Höhenlinien und Eckmarken, bis ein echtes Porträt da ist */
+.about-portrait__placeholder {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-land-2);
+}
+.about-portrait__placeholder svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: var(--hairline);
+  opacity: 0.22;
+}
+.about-portrait__placeholder path { vector-effect: non-scaling-stroke; }
+
+.about-portrait__corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 0 solid var(--color-hairline-strong);
+}
+.about-portrait__corner--tl { top: 16px; left: 16px; border-width: var(--hairline) 0 0 var(--hairline); }
+.about-portrait__corner--br { right: 16px; bottom: 16px; border-width: 0 var(--hairline) var(--hairline) 0; }
+
+.about-intro__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+}
+
+.about-title {
+  font-size: clamp(2.75rem, 1.4rem + 5vw, 5.5rem);
+  font-weight: 200;
+  letter-spacing: var(--tracking-display);
+  line-height: 0.95;
+}
+
+.about-lead {
+  max-width: 34rem;
+  color: var(--color-text-2);
+  font-size: 1.0625rem;
+}
+
+/* Steckbrief in Mono, wie die Readouts der Karte */
+.about-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: var(--space-m) var(--space-l);
+  margin: 0;
+  padding-top: var(--space-m);
+  border-top: var(--hairline) solid var(--color-hairline);
+}
+.about-facts div { display: flex; flex-direction: column; gap: 4px; }
+.about-facts dt { color: var(--color-text-3); }
+.about-facts dd { margin: 0; font-size: var(--text-nav); letter-spacing: var(--tracking-nav); }
+.about-facts a { color: var(--color-text); }
+.about-facts a:hover { color: var(--color-accent); }
+
+/* ---------- Abschnitte ---------- */
+.about-section {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: var(--space-m) var(--space-xl);
+  padding: var(--space-l) 0 var(--space-xl);
+  border-top: var(--hairline) solid var(--color-hairline);
+}
+
+.about-section__head { display: flex; flex-direction: column; gap: var(--space-xs); }
+
+.about-section__title {
+  font-size: var(--text-h2);
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.about-section__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+  max-width: 38rem;
+  color: var(--color-text-2);
+}
+
+/* Zeilen mit Mono-Begriff links und Wert rechts, getrennt durch Haarlinien */
+.about-list { margin: 0; }
+.about-list > div,
+.about-list > li {
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr);
+  gap: var(--space-s);
+  align-items: baseline;
+  padding: 14px 0;
+  border-bottom: var(--hairline) solid var(--color-hairline);
+}
+.about-list > :first-child { padding-top: 0; }
+.about-list dt { color: var(--color-text-3); }
+.about-list dd { margin: 0; }
+.about-list--timeline p { color: var(--color-text-2); }
+
+.about-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 36px;
+  padding-top: var(--space-xs);
+}
+.about-links__secondary {
+  color: #9AA1A5;
+  padding: 12px 0;
+  font-size: 0.875rem;
+  letter-spacing: var(--tracking-nav);
+}
+
+/* ---------- Handy ---------- */
+@media (max-width: 47.99rem) {
+  .about-intro { grid-template-columns: minmax(0, 1fr); margin: var(--space-l) 0 var(--space-xl); }
+  .about-portrait { max-width: 16rem; }
+  .about-section { grid-template-columns: minmax(0, 1fr); }
+  .about-list > div,
+  .about-list > li { grid-template-columns: 7rem minmax(0, 1fr); }
+}

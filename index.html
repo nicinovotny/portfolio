@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nicolas Novotny – Landschaftsfotografie</title>
+  <meta name="description" content="Landschaftsfotografie von Nicolas Novotny: Färöer, Lofoten, Alpen, Südkorea und mehr.">
+  <meta name="theme-color" content="#0B0D0E">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="preconnect" href="https://fastly.picsum.photos">
+  <!-- GSAP für Bildwechsel und Scroll-Effekte (selbst gehostet, siehe vendor/gsap/README.md) -->
+  <script defer src="vendor/gsap/gsap.min.js"></script>
+  <script defer src="vendor/gsap/ScrollTrigger.min.js"></script>
+  <script type="module" src="js/nav.js"></script>
+  <script type="module" src="js/home.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+  <!-- Kopfzeile: auf allen Seiten identisch -->
+  <header class="site-header">
+    <a class="site-name" href="./">Nicolas Novotny</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menü</button>
+    <nav class="site-nav" id="site-nav" aria-label="Hauptnavigation">
+      <a href="karte.html">Karte</a>
+      <a href="alben.html">Alben</a>
+      <a href="ueber-mich.html">Über mich</a>
+      <span class="site-nav__divider" aria-hidden="true"></span>
+      <span class="site-nav__social">
+        <a class="site-nav__icon" href="https://www.instagram.com/nicinovotny/" aria-label="Instagram" target="_blank" rel="me noopener">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>
+        </a>
+        <!-- [Platzhalter] LinkedIn-URL eintragen und target="_blank" rel="me noopener" ergänzen -->
+        <a class="site-nav__icon" href="#" aria-label="LinkedIn">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>
+        </a>
+      </span>
+    </nav>
+  </header>
+
+  <main id="inhalt">
+    <h1 class="visually-hidden">Nicolas Novotny – Landschaftsfotografie</h1>
+
+    <!-- Hero: Titelbilder aller Alben als Diashow (Inhalt aus data/albums.json) -->
+    <section class="hero" data-hero aria-roledescription="Diashow" aria-label="Ausgewählte Orte">
+      <div class="hero__slides" data-hero-slides></div>
+      <div class="hero__shade" aria-hidden="true"></div>
+
+      <!-- Höhenlinien oben rechts und Eckmarken – die „Instrumenten“-Rahmung -->
+      <svg class="hero__contours" aria-hidden="true" viewBox="0 0 1280 800" preserveAspectRatio="xMaxYMin slice">
+        <path d="M860,0 C950,96 1100,120 1280,92"/>
+        <path d="M800,0 C920,160 1110,192 1280,170"/>
+        <path d="M740,0 C890,220 1120,262 1280,250"/>
+      </svg>
+      <span class="hero__corner hero__corner--tl" aria-hidden="true"></span>
+      <span class="hero__corner hero__corner--tr" aria-hidden="true"></span>
+      <span class="hero__corner hero__corner--bl" aria-hidden="true"></span>
+      <span class="hero__corner hero__corner--br" aria-hidden="true"></span>
+
+      <div class="hero__caption" data-hero-caption aria-live="off">
+        <p class="label hero__label" data-hero-label>&nbsp;</p>
+        <h2 class="hero__title"><span class="hero__title-inner" data-hero-title>&nbsp;</span></h2>
+        <div class="hero__links" data-hero-links>
+          <a class="line-link" data-hero-open href="alben.html">Album öffnen</a>
+          <a class="hero__secondary" data-hero-map href="karte.html">Auf der Karte zeigen</a>
+        </div>
+      </div>
+
+      <div class="hero__meta">
+        <p class="hero__counter" aria-hidden="true">
+          <span class="hero__number" data-hero-number>01</span>
+          <span class="hero__total label label--quiet" data-hero-total>/ 07</span>
+        </p>
+        <ol class="hero__progress" data-hero-progress aria-label="Ort auswählen"></ol>
+        <div class="hero__controls">
+          <span class="label label--quiet" data-hero-demo hidden>Demo-Bild</span>
+          <button class="hero__pause label label--quiet" type="button" data-hero-pause>Pause</button>
+        </div>
+      </div>
+
+      <span class="hero__scroll-hint" aria-hidden="true"></span>
+    </section>
+
+    <!-- Kurzer Einstieg unter dem Hero -->
+    <section class="intro" aria-labelledby="intro-title">
+      <p class="label" data-reveal>Landschaftsfotografie <span class="label__dash">—</span> Nicolas Novotny</p>
+      <h2 class="intro__statement" id="intro-title" data-reveal>Orte, an denen das Licht für einen Moment stillsteht. Gesammelt auf einer Karte. [Platzhalter]</h2>
+      <div class="intro__links" data-reveal>
+        <a class="line-link" href="karte.html">Zur Karte</a>
+        <a class="hero__secondary" href="alben.html">Alle Alben</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span class="label label--quiet">© 2026 Nicolas Novotny</span>
+    <span class="site-footer__links">
+      <a class="label label--quiet" href="impressum.html">Impressum</a>
+      <a class="label label--quiet" href="impressum.html#datenschutz">Datenschutz</a>
+    </span>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Album – Nicolas Novotny</title>
+  <meta name="description" content="Fotoalbum von Nicolas Novotny.">
+  <meta name="theme-color" content="#0B0D0E">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/album.css">
+  <link rel="preconnect" href="https://fastly.picsum.photos">
+  <script defer src="vendor/gsap/gsap.min.js"></script>
+  <script type="module" src="js/nav.js"></script>
+  <script type="module" src="js/album.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+  <!-- Kopfzeile: auf allen Seiten identisch -->
+  <header class="site-header">
+    <a class="site-name" href="./">Nicolas Novotny</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menü</button>
+    <nav class="site-nav" id="site-nav" aria-label="Hauptnavigation">
+      <a href="karte.html">Karte</a>
+      <a href="alben.html">Alben</a>
+      <a href="ueber-mich.html">Über mich</a>
+      <span class="site-nav__divider" aria-hidden="true"></span>
+      <span class="site-nav__social">
+        <a class="site-nav__icon" href="https://www.instagram.com/nicinovotny/" aria-label="Instagram" target="_blank" rel="me noopener">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>
+        </a>
+        <!-- [Platzhalter] LinkedIn-URL eintragen und target="_blank" rel="me noopener" ergänzen -->
+        <a class="site-nav__icon" href="#" aria-label="LinkedIn">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>
+        </a>
+      </span>
+    </nav>
+  </header>
+
+  <!-- Inhalt wird aus data/albums.json befüllt (?ort=<id>) -->
+  <main id="inhalt" class="page album" data-album>
+    <header class="album-head">
+      <div class="album-head__title-block">
+        <p class="label" data-album-label>&nbsp;</p>
+        <h1 class="album-head__title" data-album-title>&nbsp;</h1>
+      </div>
+      <div class="album-head__info">
+        <p class="album-head__text" data-album-text></p>
+        <dl class="album-facts" data-album-facts></dl>
+        <div class="album-head__links">
+          <a class="line-link" data-album-map href="karte.html">Zurück zur Karte</a>
+          <a class="album-head__secondary" href="alben.html">Alle Alben</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Galerie: Bildzeilen gleicher Höhe, Seitenverhältnisse bleiben erhalten -->
+    <div class="gallery" data-gallery role="list" aria-label="Bilder"></div>
+
+    <!-- Weiter zum vorigen / nächsten Ort -->
+    <nav class="album-pager" data-album-pager aria-label="Weitere Orte" hidden>
+      <a class="album-pager__link album-pager__link--prev" data-pager-prev href="#">
+        <span class="label"><span aria-hidden="true">←</span> Voriger Ort <span class="label__dash">—</span> <span data-pager-prev-number></span></span>
+        <span class="album-pager__name" data-pager-prev-name></span>
+      </a>
+      <a class="album-pager__link album-pager__link--next" data-pager-next href="#">
+        <span class="label">Nächster Ort <span class="label__dash">—</span> <span data-pager-next-number></span> <span aria-hidden="true">→</span></span>
+        <span class="album-pager__name" data-pager-next-name></span>
+      </a>
+    </nav>
+  </main>
+
+  <!-- Großansicht (Lightbox) -->
+  <dialog class="lightbox" data-lightbox aria-label="Großansicht">
+    <div class="lightbox__backdrop" data-lightbox-backdrop></div>
+    <div class="lightbox__stage" data-lightbox-stage>
+      <img class="lightbox__img" data-lightbox-img alt="">
+    </div>
+
+    <div class="lightbox__chrome" data-lightbox-chrome>
+      <span class="lightbox__corner lightbox__corner--tl" aria-hidden="true"></span>
+      <span class="lightbox__corner lightbox__corner--tr" aria-hidden="true"></span>
+      <span class="lightbox__corner lightbox__corner--bl" aria-hidden="true"></span>
+      <span class="lightbox__corner lightbox__corner--br" aria-hidden="true"></span>
+
+      <div class="lightbox__top">
+        <p class="lightbox__counter" aria-hidden="true">
+          <span class="lightbox__number" data-lightbox-number>01</span>
+          <span class="label label--quiet" data-lightbox-total>/ 01</span>
+        </p>
+        <button class="lightbox__close label" type="button" data-lightbox-close>
+          Schließen
+          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><path d="M5 5l14 14M19 5L5 19"/></svg>
+        </button>
+      </div>
+
+      <button class="lightbox__nav lightbox__nav--prev" type="button" data-lightbox-prev aria-label="Vorheriges Bild">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M15 4l-8 8 8 8"/></svg>
+      </button>
+      <button class="lightbox__nav lightbox__nav--next" type="button" data-lightbox-next aria-label="Nächstes Bild">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M9 4l8 8-8 8"/></svg>
+      </button>
+
+      <div class="lightbox__caption">
+        <p class="lightbox__title" data-lightbox-title></p>
+        <p class="label label--quiet" data-lightbox-meta></p>
+      </div>
+    </div>
+
+    <p class="visually-hidden" data-lightbox-status aria-live="polite"></p>
+  </dialog>
+
+  <footer class="site-footer">
+    <span class="label label--quiet">© 2026 Nicolas Novotny</span>
+    <span class="site-footer__links">
+      <a class="label label--quiet" href="impressum.html">Impressum</a>
+      <a class="label label--quiet" href="impressum.html#datenschutz">Datenschutz</a>
+    </span>
+  </footer>
+</body>
+</html>

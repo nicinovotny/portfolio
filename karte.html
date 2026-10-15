@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Karte – Nicolas Novotny</title>
+  <meta name="description" content="Weltkarte mit allen Fotoalben von Nicolas Novotny.">
+  <meta name="theme-color" content="#0B0D0E">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/map.css">
+  <link rel="preload" href="data/map/world.json" as="fetch" crossorigin>
+  <script defer src="vendor/gsap/gsap.min.js"></script>
+  <script type="module" src="js/nav.js"></script>
+  <script type="module" src="js/map.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+  <!-- Kopfzeile: auf allen Seiten identisch -->
+  <header class="site-header">
+    <a class="site-name" href="./">Nicolas Novotny</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menü</button>
+    <nav class="site-nav" id="site-nav" aria-label="Hauptnavigation">
+      <a href="karte.html">Karte</a>
+      <a href="alben.html">Alben</a>
+      <a href="ueber-mich.html">Über mich</a>
+      <span class="site-nav__divider" aria-hidden="true"></span>
+      <span class="site-nav__social">
+        <a class="site-nav__icon" href="https://www.instagram.com/nicinovotny/" aria-label="Instagram" target="_blank" rel="me noopener">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>
+        </a>
+        <!-- [Platzhalter] LinkedIn-URL eintragen und target="_blank" rel="me noopener" ergänzen -->
+        <a class="site-nav__icon" href="#" aria-label="LinkedIn">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>
+        </a>
+      </span>
+    </nav>
+  </header>
+
+  <main id="inhalt">
+    <h1 class="visually-hidden">Karte aller Fotoalben</h1>
+
+    <!-- Karte: wird aus data/map/*.json und data/albums.json aufgebaut -->
+    <section class="map" data-map aria-label="Weltkarte mit Album-Markern">
+      <svg class="map__svg" data-map-svg aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+        <path class="map__sphere" data-layer="sphere"/>
+        <path class="map__grat" data-layer="grat-coarse"/>
+        <path class="map__grat" data-layer="grat-fine"/>
+        <path class="map__land" data-layer="land-world"/>
+        <path class="map__land map__land--detail" data-layer="land-detail"/>
+        <path class="map__borders" data-layer="borders"/>
+      </svg>
+
+      <div class="map__labels" data-map-labels aria-hidden="true"></div>
+      <div class="map__edge" data-map-edge aria-hidden="true"></div>
+      <div class="map__markers" data-map-markers></div>
+
+      <!-- Vorschau beim Überfahren eines Album-Markers -->
+      <div class="map-card" data-map-card aria-hidden="true" hidden>
+        <div class="map-card__image"><img data-map-card-img alt="" width="268" height="150"></div>
+        <div class="map-card__body">
+          <p class="map-card__meta" data-map-card-meta></p>
+          <p class="map-card__name" data-map-card-name></p>
+          <a class="map-card__link" data-map-card-link href="#" tabindex="-1">Album öffnen →</a>
+        </div>
+      </div>
+
+      <!-- Steuerung oben links -->
+      <div class="map__bar">
+        <button class="map__world" type="button" data-map-world>
+          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 6l-6 6 6 6"/></svg>
+          Weltansicht
+        </button>
+        <nav class="map__trail" data-map-trail aria-label="Kartenebenen"></nav>
+      </div>
+
+      <!-- Kamera-Readout oben rechts -->
+      <div class="map__readout" aria-hidden="true">
+        <div>KAMERA <span data-map-camera>0.0°N · 0.0°O</span></div>
+        <div>ZOOM <span class="map__zoom" data-map-zoom>1.0×</span></div>
+      </div>
+
+      <!-- Weltübersicht unten links -->
+      <div class="map__overview" aria-hidden="true">
+        <div class="label label--quiet">Übersicht</div>
+        <svg data-map-overview preserveAspectRatio="xMidYMid meet">
+          <path class="map__overview-land" data-overview-land/>
+          <rect class="map__overview-frame" data-overview-frame/>
+        </svg>
+      </div>
+
+      <p class="map__hint label label--quiet" data-map-hint aria-live="polite"></p>
+      <p class="map__status" data-map-status role="status"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span class="label label--quiet">© 2026 Nicolas Novotny</span>
+    <span class="site-footer__links">
+      <a class="label label--quiet" href="impressum.html">Impressum</a>
+      <a class="label label--quiet" href="impressum.html#datenschutz">Datenschutz</a>
+    </span>
+  </footer>
+</body>
+</html>

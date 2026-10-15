@@ -1,0 +1,88 @@
+/* Design-Tokens „Höhenlinie“ – einzige Quelle für Farben, Schriften, Abstände.
+   Werte siehe docs/Entscheidungen.md */
+
+/* Schriften: selbst gehostet, je eine Variable-Font-Datei für alle Schnitte */
+@font-face {
+  font-family: 'Geist';
+  src: url('../fonts/Geist-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('../fonts/GeistMono-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Farben */
+  --color-bg: #0B0D0E;           /* Grund */
+  --color-land: #14181B;         /* Land (dunkel) */
+  --color-land-2: #161B1F;       /* Land (hell) / Flächen */
+  --color-coast: #353E44;        /* Küstenlinie, Rahmen */
+  --color-coast-2: #3C474E;
+  --color-text: #ECE8E1;         /* Text */
+  --color-text-2: #8C9397;       /* Sekundärtext */
+  --color-text-3: #5E666B;       /* leise Labels */
+  --color-accent: #A9C4C4;       /* Gletscher – nur aktive Zustände und Markierungen */
+  --color-grid: #192026;         /* Gradnetz der Karte */
+  --color-panel: rgba(11, 13, 14, 0.85);   /* Kästen über der Karte */
+  --color-hairline: rgba(236, 232, 225, 0.16);
+  --color-hairline-strong: rgba(236, 232, 225, 0.35);
+
+  /* Schriften */
+  --font-sans: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+
+  /* Schriftgrößen (fließend zwischen Handy und Desktop) */
+  --text-display: clamp(3.25rem, 1.5rem + 7vw, 6.5rem);   /* 104 px auf Desktop */
+  --text-h1: clamp(2.25rem, 1.5rem + 3vw, 3.5rem);
+  --text-h2: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  --text-body: 1rem;
+  --text-nav: 0.8125rem;    /* 13 px */
+  --text-label: 0.6875rem;  /* 11 px */
+  --text-micro: 0.625rem;   /* 10 px */
+
+  /* Laufweiten */
+  --tracking-display: -0.04em;
+  --tracking-name: 0.34em;
+  --tracking-label: 0.24em;
+  --tracking-nav: 0.04em;
+
+  /* Linien */
+  --hairline: 0.75px;
+
+  /* Abstände */
+  --gutter: clamp(1rem, 5vw, 4rem);   /* Seitenrand: 16 px mobil, 64 px Desktop */
+  --space-xs: 0.5rem;
+  --space-s: 1rem;
+  --space-m: 1.5rem;
+  --space-l: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 7rem;
+
+  --header-height: 7.75rem;   /* Platz für die Kopfzeile (top 40 px + 44 px Höhe + Luft) */
+  --touch-target: 44px;
+
+  /* Bewegung */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 200ms;
+  --duration-medium: 450ms;
+}
+
+@media (max-width: 47.99rem) {
+  :root {
+    --header-height: 5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-medium: 0ms;
+  }
+}
