@@ -63,7 +63,8 @@ Festlegungen hier haben Vorrang vor dem Projektbriefing.
 - Vorher (14.10.2026): kein Git, weil ein `.git`-Ordner in Drive Sync-Konflikte verursacht hätte. Die alte Sicherung `C:\Users\Nici\portfolio-git-backup\` auf dem PC wird nicht mehr gebraucht.
 
 ## Veröffentlichung (15.10.2026)
-- GitHub Pages aus dem Branch `main`, Ordner `/` (root), zunächst unter `https://nicinovotny.github.io/portfolio/`. Eigene Domain `nicolasnovotny.de` später (Schritte in `docs/Anleitung.md`).
+- GitHub Pages aus dem Branch `main`, Ordner `/` (root).
+- Eigene Domain `nicolasnovotny.de` seit 15.10.2026: registriert bei INWX, DNS dort (4 A-Einträge auf GitHub, `www` als CNAME auf `nicinovotny.github.io`, TXT `_github-pages-challenge-nicinovotny` zur Domain-Bestätigung). Datei `CNAME` im Repo nicht löschen, sonst fällt die Domain weg. HTTPS erzwungen.
 - `.nojekyll` im Repo: GitHub liefert die Dateien unverändert aus, ohne Jekyll-Verarbeitung.
 
 ## Bilder einpflegen (15.10.2026)

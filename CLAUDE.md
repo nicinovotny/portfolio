@@ -23,9 +23,9 @@ Lies Briefing und Entscheidungen, bevor du Code schreibst oder Designentscheidun
 - ✅ Schritt 5 erledigt (15.10.2026, am Mac): `ueber-mich.html` + `css/about.css` + `js/about.js` (Steckbrief, Ausrüstung, Werdegang, „Diese Seite“; Zahlen aus `albums.json`), `impressum.html` mit Impressum und Datenschutz-Gerüst (alles mit [Platzhalter], vor Veröffentlichung rechtlich prüfen), Footer „Impressum · Datenschutz“ und `favicon.svg` auf allen Seiten. Feinschliff in `css/base.css`: sanfte Seitenübergänge (View Transitions, Kopfzeile bleibt stehen), globale Regel für reduzierte Bewegung; `js/nav.js` sperrt bei offenem Handy-Menü den Rest der Seite (`inert`).
 - Offene Platzhalter für Nici: LinkedIn-URL (alle Seiten), Porträt, Texte „Über mich“, Ausrüstung, Werdegang, Impressum-Anschrift und E-Mail, Datenschutz-Details, Texte in `albums.json`, Einstiegstext auf der Startseite.
 - Phase 3 (15.10.2026): Anleitung `docs/Anleitung.md` (Arbeitsablauf, eigene Bilder, neue Orte, GitHub Pages, eigene Domain, Checkliste). Projekt aus Google Drive ins Git-Repo umgezogen (siehe Arbeitsweise), `.nojekyll` für GitHub Pages.
-- ✅ Live seit 15.10.2026: <https://nicinovotny.github.io/portfolio/> (GitHub Pages, main, root). Alle Seiten geprüft, keine fehlenden Dateien, keine Konsolenfehler.
+- ✅ Live seit 15.10.2026 unter <https://nicolasnovotny.de> (GitHub Pages, main, root; Domain bei INWX, `CNAME`-Datei im Repo). `nicinovotny.github.io/portfolio/` und `www.` leiten dorthin um.
 - ✅ Skill „bilder-einpflegen“ (15.10.2026): `.claude/skills/bilder-einpflegen/SKILL.md` + `tools/images.mjs` (inspect / convert / check), Eingangsordner `images/_eingang/`. An Testbildern durchgespielt (EXIF-Drehung, GPS-Zuordnung, HEIC, Demo ersetzen, neuer Ort).
-- **Als Nächstes:** eigene Bilder (per Skill) und Texte einpflegen (Checkliste in `docs/Anleitung.md`, Abschnitt 5). Später ggf. eigene Domain `nicolasnovotny.de`.
+- **Als Nächstes:** eigene Bilder (per Skill) und Texte einpflegen (Checkliste in `docs/Anleitung.md`, Abschnitt 5).
 
 ## Rahmen (gilt immer)
 - Vanilla HTML/CSS/JS + GSAP (inkl. ScrollTrigger) selbst gehostet in `vendor/gsap/`, kein Framework, kein Build-Schritt für die Seite, Hosting auf GitHub Pages, alle Pfade relativ.

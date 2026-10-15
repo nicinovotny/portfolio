@@ -46,4 +46,4 @@ Neue Orte und Bilder werden nur in `data/albums.json` und im passenden Bilderord
 
 **Anleitung** für eigene Bilder, neue Orte und die Veröffentlichung: [`docs/Anleitung.md`](docs/Anleitung.md)
 
-Live (GitHub Pages): <https://nicinovotny.github.io/portfolio/>
+Live: <https://nicolasnovotny.de> (GitHub Pages, Domain bei INWX)
