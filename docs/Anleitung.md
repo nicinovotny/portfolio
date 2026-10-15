@@ -118,15 +118,28 @@ Das Repository ist öffentlich – alle Dateien (auch `docs/`) sind dort für je
 
 Jeder Push auf `main` aktualisiert die Seite automatisch.
 
-### Später: eigene Domain (nicolasnovotny.de)
+### Eigene Domain (nicolasnovotny.de)
 
-1. GitHub → Settings → Pages → *Custom domain*: `nicolasnovotny.de` eintragen → *Save* (legt eine Datei `CNAME` im Repo an – danach in GitHub Desktop *Pull*).
-2. Beim Domain-Anbieter DNS setzen:
-   - vier **A-Einträge** für `nicolasnovotny.de`: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - **CNAME** für `www` → `nicinovotny.github.io`
-3. Wenn GitHub die Domain bestätigt hat: **Enforce HTTPS** anhaken.
+GitHub Pages kostet auch mit eigener Domain nichts – zahlen musst du nur die Domain selbst beim Anbieter (für .de grob 5–16 € pro Jahr, auf den Verlängerungspreis achten). Ein reiner Domain-Vertrag reicht, kein Webhosting-Paket.
 
-Weil alle Pfade relativ sind, muss an der Seite selbst nichts geändert werden.
+1. **Domain registrieren** beim Anbieter deiner Wahl.
+2. **Domain bei GitHub bestätigen** (schützt davor, dass jemand anderes sie für eine eigene Pages-Seite nutzt): github.com → Profilbild → *Settings* → *Pages* → *Add a domain* → `nicolasnovotny.de`. GitHub zeigt einen **TXT-Eintrag** (Name `_github-pages-challenge-nicinovotny`, Wert = Code) – diesen beim Anbieter anlegen, dann bei GitHub *Verify*.
+3. **DNS beim Anbieter setzen** – vorher vom Anbieter angelegte Standard-Einträge für `@` und `www` (Parkseite) löschen:
+
+   | Typ | Name | Wert |
+   |---|---|---|
+   | A | `@` | `185.199.108.153` |
+   | A | `@` | `185.199.109.153` |
+   | A | `@` | `185.199.110.153` |
+   | A | `@` | `185.199.111.153` |
+   | AAAA (optional) | `@` | `2606:50c0:8000::153`, `…8001::153`, `…8002::153`, `…8003::153` |
+   | CNAME | `www` | `nicinovotny.github.io` |
+
+   Keine Platzhalter-Einträge (`*`) anlegen.
+4. **Im Repo eintragen:** `nicinovotny/portfolio` → *Settings → Pages → Custom domain*: `nicolasnovotny.de` → *Save*. Das legt eine Datei `CNAME` im Repo an – danach in GitHub Desktop *Fetch* + *Pull*.
+5. Warten, bis der *DNS check* grün ist (Minuten bis ca. 24 Stunden), dann **Enforce HTTPS** anhaken.
+
+Die alte Adresse `nicinovotny.github.io/portfolio/` leitet danach automatisch auf die Domain um. Weil alle Pfade relativ sind, muss an der Seite selbst nichts geändert werden.
 
 ---
 
