@@ -150,4 +150,4 @@ Die alte Adresse `nicinovotny.github.io/portfolio/` leitet danach automatisch au
 - [ ] Ortstexte in `albums.json` und Einstiegstext auf der Startseite (`index.html`)
 - [ ] LinkedIn-Link in allen HTML-Dateien (Suchen nach `[Platzhalter] LinkedIn`)
 - [ ] Porträt und Texte in `ueber-mich.html`
-- [ ] Impressum und Datenschutz ausfüllen und prüfen lassen
+- [x] Impressum und Datenschutz ausgefüllt (15.10.2026) – bei Änderungen anpassen (z. B. Verkauf von Fotos → ggf. Steuerangaben ins Impressum, neue externe Dienste → Datenschutz)
