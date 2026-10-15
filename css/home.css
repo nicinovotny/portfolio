@@ -37,8 +37,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  will-change: transform;
 }
+/* Eigene Grafikebene nur für sichtbare Bilder – fünf große Bilder gleichzeitig kosten viel Speicher */
+.hero__slide.is-active img { will-change: transform; }
 
 /* Verlauf unten, damit Text auf jedem Bild lesbar bleibt */
 .hero__shade {
@@ -166,8 +167,8 @@
 
 /* Texte unten: heller als sonst und mit weichem Schatten, weil das Bild darunter wechselt */
 .hero__caption,
-.hero__meta { text-shadow: 0 1px 2px rgba(11, 13, 14, 0.5), 0 0 16px rgba(11, 13, 14, 0.4); }
-.hero__caption .label { color: #A9B0B4; }
+.hero__meta { text-shadow: 0 0 2px rgba(11, 13, 14, 0.7), 0 1px 14px rgba(11, 13, 14, 0.55); }
+.hero__caption .label { color: #C3C9CC; font-weight: 500; }
 
 /* Eine 168 px lange Linie aus 7 Abschnitten – jeder Abschnitt ist ein Knopf */
 .hero__progress {

@@ -29,6 +29,7 @@ Lies Briefing und Entscheidungen, bevor du Code schreibst oder Designentscheidun
 - ✅ Karte neu gegliedert (15.10.2026): Nordeuropa / Mitteleuropa / Länder, Startansicht = Reisegebiete statt ganze Welt, Cluster teilen sich automatisch auf, wenn nichts überlappt (Details in `docs/Entscheidungen.md`, „Gliederung der Karte“). Logik für 1440, 1280 und 390 px Breite getestet; Kamerafahrten nicht im sichtbaren Browser angesehen.
 - ✅ Feinschliff 15.10.2026: Höhenlinien-Marker statt Fadenkreuz, neues Favicon, bildabhängige Verläufe im Hero, kräftigere Kopfzeile; neue Alben Stockholm 2021 und Algarve 2020 (Region Südeuropa), 20 Reisen. Koordinaten aller Alben geprüft (passen).
 - ✅ Album-Bühne + „Bild fliegt ins Album“ (15.10.2026): `album.html`/`css/album.css`/`js/album.js` umgebaut, neu `js/transitions.js` und `js/scrim.js` (Details in `docs/Entscheidungen.md`). Logik getestet; Übergang und Scroll-Effekte nicht im sichtbaren Browser angesehen.
+- ✅ Qualitätsrunde 15.10.2026: Aufklapp-Animation der Galerie entfernt, Voriger/Nächster Ort direkt auf der Bühne, Album-Wechsel ohne harten Schnitt, schnellere Seitenwechsel (Vorab-Laden, schlankere Übergänge), bessere Lesbarkeit der Labels. Im sichtbaren Browser getestet (Desktop + Handy). Details in `docs/Entscheidungen.md`, „Qualitätsrunde“.
 - Offen: Jahr für Kleinarl (`"year": null`), genauer Ort in Schottland (vorläufig Glencoe).
 - **Als Nächstes:** eigene Bilder (per Skill) und Texte einpflegen (Checkliste in `docs/Anleitung.md`, Abschnitt 5).
 

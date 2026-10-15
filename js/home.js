@@ -154,9 +154,10 @@ async function show(index, { initial = false } = {}) {
   if (gsap && !reducedMotion) {
     gsap.killTweensOf([slide.root, slide.img]);
     slide.root.classList.add('is-active');
-    gsap.fromTo(slide.root, { autoAlpha: initial ? 1 : 0 }, {
+    // Erstes Bild weich einblenden statt plötzlich erscheinen, sobald es geladen ist
+    gsap.fromTo(slide.root, { autoAlpha: 0 }, {
       autoAlpha: 1,
-      duration: initial ? 0 : FADE_DURATION,
+      duration: initial ? 0.8 : FADE_DURATION,
       ease: 'power2.inOut',
       onComplete: () => hideOthers(index),
     });

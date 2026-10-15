@@ -8,6 +8,10 @@
   <meta name="theme-color" content="#0B0D0E">
   <link rel="icon" href="favicon.svg?v=2" type="image/svg+xml">
   <link rel="preload" href="fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Seiten beim Überfahren eines Links vorab aufbauen (Chrome/Edge), damit der Wechsel sofort da ist -->
+  <script type="speculationrules">
+    { "prerender": [{ "where": { "href_matches": "/*" }, "eagerness": "moderate" }] }
+  </script>
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/album.css">
@@ -15,6 +19,7 @@
   <script defer src="vendor/gsap/gsap.min.js"></script>
   <script defer src="vendor/gsap/ScrollTrigger.min.js"></script>
   <script type="module" src="js/nav.js"></script>
+  <script type="module" src="js/transitions.js"></script>
   <script type="module" src="js/album.js"></script>
 </head>
 <body>
@@ -56,17 +61,47 @@
         <h1 class="album-stage__title" id="album-title"><span class="album-stage__title-inner" data-album-title>&nbsp;</span></h1>
       </div>
       <script>
-        // Kommt man per Klick auf ein Album (js/transitions.js), stehen Bild und Titel im sessionStorage.
-        // Sofort setzen, damit beides beim Seitenübergang schon da ist; js/album.js lädt danach die passende Bildgröße.
-        try {
-          const cover = JSON.parse(sessionStorage.getItem('album-cover') || 'null');
-          sessionStorage.removeItem('album-cover');   // nur für diesen einen Übergang
-          if (cover && cover.id === new URLSearchParams(location.search).get('ort')) {
-            document.querySelector('[data-album-cover]').src = cover.src;
-            if (cover.title) document.querySelector('[data-album-title]').textContent = cover.title;
-          }
-        } catch { /* ohne sessionStorage einfach normal laden */ }
+        // Kommt man per Klick auf ein Album (js/transitions.js), stehen Bildadresse und Titel im sessionStorage.
+        // Gelesen wird im Moment der Anzeige („pagereveal“) – das klappt auch, wenn der Browser die Seite schon
+        // beim Überfahren des Links vorbereitet hat. js/album.js lädt danach die passende Bildgröße.
+        (() => {
+          const cover = document.querySelector('[data-album-cover]');
+          const title = document.querySelector('[data-album-title]');
+          const read = () => {
+            try {
+              const data = JSON.parse(sessionStorage.getItem('album-cover') || 'null');
+              sessionStorage.removeItem('album-cover');   // nur für diesen einen Übergang
+              return data && data.id === new URLSearchParams(location.search).get('ort') ? data : null;
+            } catch { return null; }   // ohne sessionStorage einfach normal laden
+          };
+          let data = read();
+          const apply = () => {
+            if (data && !cover.getAttribute('src')) cover.src = data.src;
+            if (data && data.title && !title.textContent.trim()) title.textContent = data.title;
+            // Titel gleitet nur von der Startseite herein (gleiche Größe), sonst blendet er mit der Bühne über
+            title.style.viewTransitionName = data && data.morphTitle ? 'album-title' : 'none';
+          };
+          apply();
+          addEventListener('pagereveal', (event) => {
+            data = read() || data;
+            apply();
+            // Album → Album: schnellere Überblendung (Typ für css/base.css)
+            if (event.viewTransition && data && data.swap) event.viewTransition.types?.add('album-swap');
+          });
+        })();
       </script>
+
+      <!-- Voriger / nächster Ort direkt auf der Bühne (gleiche Ziele wie unten nach der Galerie) -->
+      <nav class="album-stage__nav" data-stage-nav aria-label="Voriger und nächster Ort" hidden>
+        <a class="album-stage__nav-link" data-pager-prev href="#">
+          <span class="album-stage__nav-name" data-pager-prev-name></span>
+          <span class="label"><span aria-hidden="true">←</span> <span data-pager-prev-number></span></span>
+        </a>
+        <a class="album-stage__nav-link album-stage__nav-link--next" data-pager-next href="#">
+          <span class="album-stage__nav-name" data-pager-next-name></span>
+          <span class="label"><span data-pager-next-number></span> <span aria-hidden="true">→</span></span>
+        </a>
+      </nav>
 
       <a class="album-stage__scroll" href="#bilder" data-album-scroll>
         <span class="label" data-album-count>Bilder</span>

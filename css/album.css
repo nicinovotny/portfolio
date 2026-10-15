@@ -4,6 +4,9 @@
 /* Titelbild über die ganze Fläche. Die Bühne „klebt“ oben (sticky), der Inhalt darunter hat eigenen
    Hintergrund und schiebt sich beim Scrollen darüber. Zoom und Abdunkeln steuert js/album.js. */
 .album-stage {
+  /* Ziel des Seitenübergangs: Das angeklickte Bild wächst hierher. Die ganze Bühne (Bild, Verläufe,
+     Beschriftung) nimmt teil, damit beim Überblenden nichts kurz ungeschützt hell aufblitzt. */
+  view-transition-name: album-cover;
   position: sticky;
   top: 0;
   height: 100vh;
@@ -22,8 +25,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Ziel des Seitenübergangs: Das angeklickte Bild wächst hierher */
-  view-transition-name: album-cover;
 }
 
 /* dunkle Verläufe unten (Titel) und oben (Navigation), stärker bei hellen Bildern */
@@ -75,15 +76,15 @@
 .album-stage__caption {
   position: absolute;
   left: var(--gutter);
-  right: var(--gutter);
+  right: calc(var(--gutter) + 18rem);   /* Platz für die Nachbar-Links rechts */
   bottom: 104px;
   z-index: 1;
   display: flex;
   flex-direction: column;
   gap: 22px;
-  text-shadow: 0 1px 2px rgba(11, 13, 14, 0.5), 0 0 16px rgba(11, 13, 14, 0.4);
+  text-shadow: 0 0 2px rgba(11, 13, 14, 0.7), 0 1px 14px rgba(11, 13, 14, 0.55);
 }
-.album-stage__caption .label { color: #A9B0B4; }
+.album-stage__caption .label { color: #C3C9CC; font-weight: 500; }
 
 .album-stage__title {
   font-size: var(--text-display);
@@ -98,7 +99,52 @@
 }
 .album-stage__title-inner {
   display: inline-block;
-  view-transition-name: album-title;   /* Startseite: großer Titel gleitet an seinen Platz */
+  /* Übergangsname „album-title“ setzt das Skript in album.html nur bei Ankunft von der Startseite */
+}
+
+/* Ist die Bühne vom Inhalt verdeckt (nach unten gescrollt), nimmt sie nicht am Seitenübergang teil –
+   sonst tauchte das verdeckte Titelbild beim Wechsel kurz über der Galerie auf */
+.album-stage.is-covered,
+.album-stage.is-covered .album-stage__title-inner { view-transition-name: none; }
+
+/* Voriger / nächster Ort unten rechts, wie Zähler und Steuerung auf der Startseite */
+.album-stage__nav {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 96px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  width: 16rem;
+  text-shadow: 0 1px 2px rgba(11, 13, 14, 0.5), 0 0 16px rgba(11, 13, 14, 0.4);
+}
+.album-stage__nav[hidden] { display: none; }
+
+/* je Zeile: Nummer + Name, rechtsbündig; ganze Zeile ist Klickfläche */
+.album-stage__nav-link {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 12px;
+  max-width: 100%;
+  min-height: var(--touch-target);
+  align-content: center;
+  flex-wrap: nowrap;
+  padding: 12px 0;
+}
+.album-stage__nav-link .label { flex: none; }
+.album-stage__nav-link .label { color: var(--color-text-2); transition: color var(--duration-fast) ease; }
+.album-stage__nav-link:hover .label { color: var(--color-accent); }
+
+.album-stage__nav-name {
+  overflow: hidden;
+  font-size: var(--text-nav);
+  font-weight: 400;
+  letter-spacing: var(--tracking-nav);
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 /* Hinweis unten Mitte: Anzahl Bilder + Linie, springt zur Galerie */
@@ -195,9 +241,24 @@
 .album-missing .album-facts,
 .album-missing .album-intro__links .line-link { display: none; }
 
+/* Handy: Nachbar-Links als schmale Leiste ganz unten, Titel darüber über die volle Breite */
 @media (max-width: 47.99rem) {
   .album-intro { grid-template-columns: minmax(0, 1fr); }
-  .album-stage__caption { bottom: 96px; gap: 16px; }
+  .album-stage__caption { right: var(--gutter); bottom: 104px; gap: 16px; }
+  .album-stage__shade { height: calc(68% + 20% * var(--scrim-bottom)); }   /* Titel bricht hier oft um */
+  .album-stage__nav {
+    left: var(--gutter);
+    bottom: 16px;
+    width: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: var(--space-s);
+  }
+  .album-stage__nav-link { max-width: 48%; justify-content: flex-start; }
+  .album-stage__nav-link--next { justify-content: flex-end; }
+  .album-stage__nav-link:not(.album-stage__nav-link--next) .label { order: -1; }   /* „← 15 Name“ links */
+  .album-stage__scroll { display: none; }
+  .album-stage__corner { display: none; }
 }
 
 /* ---------- Galerie ---------- */
@@ -239,20 +300,7 @@
   transition: transform 1.2s var(--ease-out), opacity var(--duration-medium) ease;
 }
 
-/* Aufdecken beim Hineinscrollen: Bild wird von unten freigelegt und setzt sich leicht (js/album.js
-   setzt .is-revealed und die Verzögerung --reveal-delay je Platz in der Zeile) */
-/* Verdecken passiert sofort (kein Übergang), nur das Aufdecken ist animiert */
-.gallery.has-reveal .gallery__open { clip-path: inset(100% 0 0 0); }
-.gallery.has-reveal .gallery__open img { transform: scale(1.12); transition: opacity var(--duration-medium) ease; }
-.gallery.has-reveal .gallery__open.is-revealed {
-  clip-path: inset(0 0 0 0);
-  transition: clip-path 1.1s var(--ease-out) var(--reveal-delay, 0s);
-}
-.gallery.has-reveal .gallery__open.is-revealed img {
-  transform: scale(1);
-  transition: transform 1.6s var(--ease-out) var(--reveal-delay, 0s), opacity var(--duration-medium) ease;
-}
-.gallery.has-reveal .gallery__open.is-revealed:hover img { transform: scale(1.03); transition-delay: 0s; }
+
 .gallery__open img.is-loaded { opacity: 1; }
 .gallery__open:hover img { transform: scale(1.03); }
 .gallery__open:focus-visible { outline-offset: 3px; }

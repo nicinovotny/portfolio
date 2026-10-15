@@ -322,9 +322,24 @@ main { flex: 1; }
 ::view-transition-old(album-cover) { animation: none; }
 ::view-transition-new(album-cover) { animation: vt-fade-in 0.4s ease 0.4s both; }
 
+/* Nur eine Seite hat ein Titelbild (z. B. Album → Startseite): einfach weich aus- bzw. einblenden,
+   sonst bliebe das alte Bild bis zum Ende stehen und verschwände schlagartig */
+::view-transition-old(album-cover):only-child,
+::view-transition-old(album-title):only-child { animation: vt-fade-out 0.3s ease both; }
+::view-transition-new(album-cover):only-child,
+::view-transition-new(album-title):only-child { animation: vt-fade-in 0.35s ease both; }
+
+/* Album → Album (voriger/nächster Ort): Bühne zu Bühne zügig überblenden – das Bild ist vorgeladen */
+html:active-view-transition-type(album-swap)::view-transition-old(album-cover) { animation: vt-fade-out 0.5s ease both; }
+html:active-view-transition-type(album-swap)::view-transition-new(album-cover) { animation: vt-fade-in 0.5s ease both; }
+
 @keyframes vt-fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+@keyframes vt-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
 
 /* ---------- Reduzierte Bewegung ---------- */

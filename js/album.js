@@ -2,7 +2,7 @@
 // (Einleitung, Galerie in Bildzeilen, Navigation zum vorigen/nächsten Ort).
 // Die Großansicht steckt in js/lightbox.js.
 
-import { getAlbums, getRegions, getCover, imageAttrs, regionPath } from './data.js';
+import { getAlbums, getRegions, getCover, imageAttrs, imageUrl, regionPath } from './data.js';
 import { formatCoords, pad2 } from './format.js';
 import { createLightbox } from './lightbox.js';
 import { applyScrim } from './scrim.js';
@@ -24,10 +24,10 @@ const el = {
   map: root.querySelector('[data-album-map]'),
   gallery: root.querySelector('[data-gallery]'),
   pager: root.querySelector('[data-album-pager]'),
+  stageNav: root.querySelector('[data-stage-nav]'),
 };
 
 let items = [];       // { figure, button, img, ratio }
-let arrivedWithTitle = false;
 let lastWidth = 0;
 
 init();
@@ -51,11 +51,11 @@ async function init() {
   }
 
   const album = albums[index];
-  arrivedWithTitle = el.title.textContent.trim() === album.name;   // vom Übergang vorab gesetzt?
   renderHead(album, index, regions);
   renderStage(album);
   renderGallery(album);
   renderPager(albums, index);
+  watchStageCover();
   setupStageScroll();
 
   const lightbox = createLightbox({
@@ -111,10 +111,21 @@ function renderStage(album) {
   if (img.complete && img.naturalWidth) whenReady();
   img.addEventListener('load', whenReady);
 
-  if (!animated) return;
-  // Titel wächst aus der Maske, Label folgt – außer er kam schon mit dem Seitenübergang (sessionStorage)
-  if (!arrivedWithTitle) gsap.fromTo(el.title, { yPercent: 105 }, { yPercent: 0, duration: 1.2, ease: 'expo.out', delay: 0.35 });
-  gsap.fromTo([el.label, el.count], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.8, ease: 'power2.out', stagger: 0.1, delay: 0.55 });
+  // Kein eigenes Einblenden des Titels: Den Auftritt übernimmt der Seitenübergang (Bild + Titel gleiten an
+  // ihren Platz). Eine zusätzliche Animation würde sich mit ihm überschneiden.
+}
+
+/** Bühne verdeckt? Dann nimmt sie nicht am Seitenübergang teil (siehe css/album.css, .is-covered) */
+function watchStageCover() {
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    el.stage.classList.toggle('is-covered', scrollY > el.stage.offsetHeight * 0.4);
+  };
+  addEventListener('scroll', () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  update();
 }
 
 /** Beim Scrollen: Bild zoomt leicht und dunkelt ab, Titel verschwindet, der Inhalt schiebt sich darüber */
@@ -125,7 +136,7 @@ function setupStageScroll() {
   const scroll = { trigger: el.stage, start: 'top top', end: () => `+=${el.stage.offsetHeight}`, scrub: true };
   gsap.to(el.cover, { scale: 1.08, ease: 'none', scrollTrigger: scroll });
   gsap.to(el.stage, { '--stage-fade': 0.65, ease: 'none', scrollTrigger: scroll });
-  gsap.to([el.caption, el.count.parentElement], {
+  gsap.to([el.caption, el.count.parentElement, el.stageNav], {
     autoAlpha: 0,
     y: -48,
     ease: 'none',
@@ -143,11 +154,7 @@ function showMissing(title, text) {
 
 // ---------- Galerie ----------
 
-const canReveal = !reducedMotion && 'IntersectionObserver' in window;
-
 function renderGallery(album) {
-  // vor dem Einfügen setzen, damit die Bilder gar nicht erst sichtbar sind und dann verschwinden
-  if (canReveal) el.gallery.classList.add('has-reveal');
   items = album.images.map((image, index) => {
     const figure = document.createElement('figure');
     figure.className = 'gallery__item';
@@ -182,28 +189,6 @@ function renderGallery(album) {
   layout();
   items.forEach(load);
   new ResizeObserver(() => layout()).observe(el.gallery);
-  setupReveal();
-}
-
-/** Bilder decken sich beim Hineinscrollen von unten auf (nur mit Bewegung) */
-function setupReveal() {
-  if (!canReveal) return;
-  let answered = false;
-  const observer = new IntersectionObserver((entries) => {
-    answered = true;
-    for (const entry of entries) {
-      if (!entry.isIntersecting) continue;
-      entry.target.classList.add('is-revealed');
-      observer.unobserve(entry.target);
-    }
-  }, { rootMargin: '0px 0px -8% 0px' });
-  items.forEach(({ button }) => observer.observe(button));
-  // Sicherheitsnetz: meldet sich der Beobachter nicht (sehr alte Browser, Sonderfälle), alles zeigen
-  setTimeout(() => {
-    if (answered) return;
-    observer.disconnect();
-    items.forEach(({ button }) => button.classList.add('is-revealed'));
-  }, 3000);
 }
 
 function load({ img, attrs }) {
@@ -275,10 +260,8 @@ function layout() {
     rowEl.className = 'gallery__row';
     rowEl.setAttribute('role', 'none');
     if (!row.full) rowEl.style.maxWidth = `${row.maxWidth}px`;
-    row.items.forEach((index, position) => {
+    row.items.forEach((index) => {
       const item = items[index];
-      // innerhalb einer Zeile nacheinander aufdecken
-      item.button.style.setProperty('--reveal-delay', `${position * 0.09}s`);
       // Anzeigebreite → der Browser wählt die passende Größe aus dem srcset
       item.img.sizes = `${Math.ceil(row.height * item.ratio)}px`;
       rowEl.append(item.figure);
@@ -291,16 +274,45 @@ function layout() {
 
 // ---------- Voriger / nächster Ort ----------
 
+/**
+ * Voriger/nächster Ort – unten nach der Galerie und direkt auf der Bühne.
+ * Die Titelbilder der Nachbarn werden leise vorgeladen und beim Klick an die nächste Seite übergeben
+ * (js/transitions.js), damit der Wechsel ohne harten Schnitt gelingt.
+ */
 function renderPager(albums, index) {
   if (albums.length < 2) return;
-  const fill = (key, offset) => {
-    const target = (index + offset + albums.length) % albums.length;
-    const album = albums[target];
-    el.pager.querySelector(`[data-pager-${key}]`).href = `album.html?ort=${encodeURIComponent(album.id)}`;
-    el.pager.querySelector(`[data-pager-${key}-number]`).textContent = pad2(target + 1);
-    el.pager.querySelector(`[data-pager-${key}-name]`).textContent = [album.name, album.year].filter(Boolean).join(' ');
-  };
-  fill('prev', -1);
-  fill('next', 1);
+  const neighbours = [-1, 1].map((offset) => {
+    const number = (index + offset + albums.length) % albums.length;
+    const album = albums[number];
+    return {
+      key: offset < 0 ? 'prev' : 'next',
+      href: `album.html?ort=${encodeURIComponent(album.id)}`,
+      number: pad2(number + 1),
+      name: [album.name, album.year].filter(Boolean).join(' '),
+      albumName: album.name,
+      cover: imageUrl(album, getCover(album), 1200),
+    };
+  });
+
+  for (const { key, href, number, name, albumName, cover } of neighbours) {
+    for (const scope of [el.pager, el.stageNav]) {
+      const link = scope.querySelector(`[data-pager-${key}]`);
+      link.href = href;
+      link.dataset.coverSrc = cover;
+      link.dataset.albumName = albumName;
+      scope.querySelector(`[data-pager-${key}-number]`).textContent = number;
+      scope.querySelector(`[data-pager-${key}-name]`).textContent = name;
+    }
+  }
   el.pager.hidden = false;
+  el.stageNav.hidden = false;
+
+  // Nachbar-Titelbilder vorladen, sobald die Seite zur Ruhe gekommen ist
+  const preload = () => neighbours.forEach(({ cover }) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.src = cover;
+  });
+  if ('requestIdleCallback' in window) requestIdleCallback(preload, { timeout: 3000 });
+  else setTimeout(preload, 1500);
 }

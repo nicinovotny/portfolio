@@ -6,6 +6,8 @@
 // Welches Bild gehört zum Link?
 //   - ein <img> im Link selbst (Alben-Übersicht), oder
 //   - data-cover-from="<CSS-Selektor>" am Link (Startseite, Karte)
+//   - data-cover-src="<Bildadresse>" (Voriger/Nächster Ort): kein eigenes Bild auf der Seite, die Bühne
+//     des aktuellen Albums überblendet in die Bühne des nächsten; die Adresse wird nur übergeben
 //   - optional data-title-from="<CSS-Selektor>" für den Titel (Startseite: großer Titel → großer Titel)
 
 const COVER = 'album-cover';
@@ -38,18 +40,30 @@ document.addEventListener('click', (event) => {
 
   clearNames();
   const img = link.dataset.coverFrom ? document.querySelector(link.dataset.coverFrom) : link.querySelector('img');
+
+  // Album → Album: Bildadresse übergeben (Bild ist vorgeladen), Bühne zu Bühne überblendet der Browser
+  if (!img && link.dataset.coverSrc) {
+    // anderer Titel: nicht von Name zu Name gleiten (überlagert sich), sondern mit der Bühne überblenden
+    const currentTitle = document.querySelector('[data-album-title]');
+    if (currentTitle) setName(currentTitle, 'none');
+    store(id, link.dataset.coverSrc, link.dataset.albumName, false, true);
+    return;
+  }
   if (!img || !img.complete || !img.naturalWidth || !isVisible(img)) return;
 
   setName(img, COVER);
   const title = link.dataset.titleFrom && document.querySelector(link.dataset.titleFrom);
   if (title && isVisible(title)) setName(title, TITLE);
 
-  // Die Albumseite zeigt diese (schon geladene) Fassung und den Titel sofort, damit der Übergang nicht ins Leere läuft
-  try {
-    const name = link.dataset.albumName ?? title?.textContent ?? null;
-    sessionStorage.setItem('album-cover', JSON.stringify({ id, src: img.currentSrc || img.src, title: name }));
-  } catch { /* ohne sessionStorage lädt die Albumseite einfach normal */ }
+  store(id, img.currentSrc || img.src, link.dataset.albumName ?? title?.textContent ?? null, named.includes(title));
 });
+
+/** Die Albumseite zeigt diese (schon geladene) Fassung und den Titel sofort, damit der Übergang nicht ins Leere läuft */
+function store(id, src, title, morphTitle = false, swap = false) {
+  try {
+    sessionStorage.setItem('album-cover', JSON.stringify({ id, src, title, morphTitle, swap }));
+  } catch { /* ohne sessionStorage lädt die Albumseite einfach normal */ }
+}
 
 // Zurück per Browser-Taste: Namen zurücksetzen, sonst trägt ein altes Bild noch den Übergangsnamen
 addEventListener('pageshow', clearNames);

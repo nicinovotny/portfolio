@@ -51,9 +51,19 @@ Festlegungen hier haben Vorrang vor dem Projektbriefing.
 ## Album-Bühne und Übergang ins Album (15.10.2026)
 - **Album-Bühne:** Die Albumseite öffnet mit dem Titelbild über die ganze Fläche (sticky), unten links Label und Titel in Geist 200 wie auf der Startseite, unten Mitte „NN Bilder“ mit laufender Linie (springt zur Galerie). Beim Scrollen zoomt das Bild leicht (1 → 1,08), dunkelt ab und der Titel verschwindet (GSAP ScrollTrigger, `js/album.js`); der Inhalt (`.album-body`, eigener Hintergrund, Schatten nach oben) schiebt sich darüber. Verläufe passen sich wie im Hero der Bildhelligkeit an (`js/scrim.js`, gemeinsam mit der Startseite).
 - **Einleitung** unter der Bühne: Ortstext groß links, Steckbrief + Links rechts.
-- **Galerie deckt sich auf:** Beim Hineinscrollen wird jedes Bild von unten freigelegt (clip-path) und setzt sich von 1,12 auf 1, innerhalb einer Zeile um 0,09 s versetzt. Verdecken ohne Übergang, Sicherheitsnetz nach 3 s. Bei reduzierter Bewegung aus.
+- ~~Galerie deckt sich auf~~ – am 15.10.2026 wieder entfernt (Nici: gefällt nicht, unnötige Last). Galeriebilder blenden nur beim Laden weich ein.
 - **Bild fliegt ins Album:** Cross-Document View Transitions. `js/transitions.js` gibt beim Klick auf einen Album-Link dem zugehörigen Bild den Namen `album-cover` (Startseite: aktuelles Hero-Bild + Titel als `album-title`; Alben-Übersicht: Kartenbild; Karte: Vorschaubild) und legt Bildadresse + Titel im sessionStorage ab. Die Albumseite setzt beides per Inline-Skript sofort, damit Bild und Titel beim Übergang schon da sind, und lädt danach die große Fassung. Altes Bild bleibt während des Flugs sichtbar, neues blendet am Ende ein (0,8 s). Album → Album (voriger/nächster Ort) überblendet Bühne zu Bühne. Firefox und Browser ohne Unterstützung wechseln normal.
 - Bilder, die als Übergangsquelle dienen (Hero, Übersicht, Kartenvorschau, Bühne), laden mit `crossorigin="anonymous"`, damit sie aus demselben Cache kommen und ihre Helligkeit messbar ist.
+
+## Qualitätsrunde (15.10.2026)
+- **Voriger/Nächster Ort auf der Bühne** (unten rechts, untereinander, je „Name ← 15“ / „Name 17 →“; Handy: Leiste ganz unten). Der Titel lässt rechts 18rem frei. Die Navigation am Seitenende bleibt.
+- **Album → Album** überblendet die ganze Bühne (Bild, Verläufe, Beschriftung) in 0,5 s (`album-swap`-Übergangstyp, gesetzt im `pagereveal` der Albumseite). Die Titelbilder der Nachbarn werden im Leerlauf vorgeladen (1200er-Fassung) und per sessionStorage übergeben → kein harter Schnitt.
+- **Übergangsname liegt auf der ganzen Bühne** (`.album-stage`), nicht nur auf dem Bild – sonst blitzt das Bild beim Überblenden ohne Verläufe hell auf. Der Titel gleitet nur bei Ankunft von der Startseite (`morphTitle`), sonst blendet er mit der Bühne.
+- **Seite ohne Gegenstück** (z. B. Album → Startseite): altes Titelbild blendet in 0,3 s aus statt 0,8 s stehen zu bleiben (`:only-child`-Regeln in `css/base.css`). Ist die Bühne weggescrollt (`.is-covered`), nimmt sie gar nicht am Übergang teil.
+- `js/transitions.js` ist jetzt auch auf der Albumseite eingebunden (fehlte, deshalb kam beim Album-Wechsel nichts an).
+- **Vorab-Laden beim Überfahren** (Speculation Rules, `eagerness: moderate`) auf allen Seiten: Chrome/Edge bauen die Zielseite schon beim Überfahren eines Links auf. Andere Browser ignorieren es.
+- **Leistung:** Nur das sichtbare Hero-Bild bekommt eine eigene Grafikebene (`will-change`), vorher alle fünf in voller Größe. Erstes Hero-Bild blendet weich ein statt aufzupoppen. Albumtitel ohne eigene Einblend-Animation (überschnitt sich mit dem Seitenübergang). Label über Bildern in Geist Mono 500, heller, stärkerer Schatten.
+- Gemessen (Chrome, 1440 × 900): Startseite, Albumseite beim Scrollen und alle Kamerafahrten der Karte durchgehend ohne Ruckler (kein Bild über 20 ms).
 
 ## Albumseite (15.10.2026)
 - Kopf zweispaltig: links Label (Album-Nr. + Koordinaten) und Titel in Geist 200, rechts Kurztext, Steckbrief in Mono (Land · Region · Bilder) und „Zurück zur Karte“ (→ `karte.html?ort=<id>`) / „Alle Alben“
