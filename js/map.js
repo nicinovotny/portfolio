@@ -84,7 +84,7 @@ async function init() {
   // Kommt man mit ?ort=… oder ?gebiet=…, startet die Kamera in der Weltansicht und fliegt hin
   const target = views.fromUrl(location.search);
   camera = cameraFor({ level: 'world' });
-  setMarkers(views.markersFor(view), { animate: false });
+  setMarkers(views.markersFor(view, screenFor(camera)), { animate: false });
   updateChrome();
   render();
 
@@ -152,9 +152,15 @@ function fitAspect(cx, cy, width, height) {
   return { x: cx - w / 2, y: cy - h / 2, w, h };
 }
 
-/** Vergrößerung im Verhältnis zur Weltansicht */
+/** Vergrößerung im Verhältnis zur ganzen Welt */
 function zoomFactor() {
-  return cameraFor({ level: 'world' }).w / camera.w;
+  return cameraFor({ level: 'globe' }).w / camera.w;
+}
+
+/** Bildschirm-Umrechnung für einen Ausschnitt – damit prüft die Kartenlogik, ob Marker sich überdecken */
+function screenFor(cam) {
+  const s = size.width / cam.w;
+  return { project: ([mx, my]) => [(mx - cam.x) * s, (my - cam.y) * s] };
 }
 
 /** Bildschirmposition eines Markers (inkl. Auffächerung bei Alben an gleicher Stelle) */
@@ -243,10 +249,10 @@ async function goTo(target) {
   setActive(null);
   updateChrome();
 
-  const nextMarkers = views.markersFor(view);
+  const to = cameraFor(view);
+  const nextMarkers = views.markersFor(view, screenFor(to));
   setMarkers(nextMarkers, { phase: 'out' });
 
-  const to = cameraFor(view);
   if (gsap && !reducedMotion) await flyTo(to); else await crossfadeTo(to);
 
   setMarkers(nextMarkers, { phase: 'in' });
@@ -262,7 +268,7 @@ async function goTo(target) {
 }
 
 function zoomOut() {
-  if (view.level === 'world') return;
+  if (view.level === 'globe') return;
   goTo(views.parentOf(view));
 }
 
@@ -495,8 +501,10 @@ function renderEdgeLabels(step) {
     if (y > topY + 24 && y < bottomLimit && Math.abs(y - lastY) > 22) lastY = y, items.push({ text: `${Math.abs(lat)}°${lat > 0 ? 'N' : lat < 0 ? 'S' : ''}`, x: 16, y });
   }
 
+  // Längengrade nur, wenn die Karte oben angeschnitten ist – sonst ragen sie in die Weltkarte hinein
+  const sphereTop = (projection.project(0, 90)[1] - camera.y) * s;
   const [, latTop] = projection.invert(camera.x + camera.w / 2, camera.y + topY / s);
-  if (Number.isFinite(latTop) && Math.abs(latTop) < 85) {
+  if (sphereTop < topY - 40 && Number.isFinite(latTop) && Math.abs(latTop) < 85) {
     for (let lon = -180; lon <= 180; lon += step) {
       const x = (projection.project(lon, latTop)[0] - camera.x) * s;
       if (x > 64 && x < size.width - 40 && x - lastX > 52) lastX = x, items.push({ text: `${Math.abs(lon)}°${lon > 0 ? 'O' : lon < 0 ? 'W' : ''}`, x, y: topY, center: true });
@@ -539,7 +547,9 @@ function renderReadout(k) {
 // ---------- Steuerung oben links, Hinweise ----------
 
 function updateChrome() {
+  // Knopf führt zurück zur Startansicht (Reisegebiete); dort selbst ausgeblendet
   ui.worldButton.disabled = view.level === 'world';
+  ui.worldButton.lastChild.textContent = view.level === 'globe' ? ' Reisegebiete' : ' Weltansicht';
 
   ui.trail.replaceChildren();
   const trail = views.trailOf(view);
@@ -563,7 +573,7 @@ function updateChrome() {
     }));
   }
 
-  ui.hint.textContent = view.level === 'world'
+  ui.hint.textContent = view.level === 'world' || view.level === 'globe'
     ? (isTouch ? 'Tippen zum Hineinzoomen' : 'Ort wählen zum Hineinzoomen')
     : (isTouch ? 'Zwei Finger zusammen zum Rauszoomen' : 'Esc · Scrollen zum Rauszoomen');
 }
@@ -610,7 +620,7 @@ function bindEvents() {
   root.addEventListener('wheel', (event) => {
     if (root.getBoundingClientRect().top < -2) return;   // Seite ist gescrollt → normal weiterscrollen
     const zoomingOut = event.deltaY > 0;
-    if (zoomingOut && view.level === 'world') return;     // ganz draußen: Seite darf scrollen
+    if (zoomingOut && view.level === 'globe') return;     // ganz draußen: Seite darf scrollen
     event.preventDefault();
     const now = performance.now();
     if (flying || now - lastWheel < 700 || Math.abs(event.deltaY) < 4) return;
@@ -657,7 +667,13 @@ function bindEvents() {
   // Größenänderung: Ausschnitt neu einpassen
   new ResizeObserver(() => {
     measure();
-    if (!flying) camera = cameraFor(view);
+    if (!flying) {
+      camera = cameraFor(view);
+      // bei anderer Größe passt evtl. mehr oder weniger nebeneinander
+      const list = views.markersFor(view, screenFor(camera));
+      setMarkers(list, { phase: 'out', animate: false });
+      setMarkers(list, { animate: false });
+    }
     render();
   }).observe(root);
 }

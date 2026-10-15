@@ -93,9 +93,9 @@ Jede Reise ist ein eigenes Album – auch wenn du zweimal am selben Ort warst (z
    ```json
    "north-america": { "name": "Nordamerika" },
    "rockies":       { "name": "Rocky Mountains", "parent": "north-america" },
-   "dolomites":     { "name": "Dolomiten",       "parent": "alps" }
+   "france":        { "name": "Frankreich",      "parent": "central-europe" }
    ```
-   Mehrere Alben in derselben Region werden auf der Karte automatisch zum Cluster (Klick zoomt hinein), ein einzelnes Album bekommt einen eigenen Marker. Zoom-Ausschnitte rechnet die Karte selbst aus.
+   Bisherige Gliederung: Europa → Nordeuropa / Mitteleuropa → Länder (z. B. `germany`, `switzerland`, `dolomites`). Mehrere Alben in derselben Region werden auf der Karte zum Cluster (Klick zoomt hinein), ein einzelnes Album bekommt einen eigenen Marker. Ist genug Platz, teilt sich ein Cluster von selbst auf. Zoom-Ausschnitte rechnet die Karte selbst aus.
 4. Ordner `images/<id>/` anlegen und Bilder wie oben einfügen.
 5. **Reihenfolge** der Alben in `albums.json` = Album-Nummern und „Voriger/Nächster Ort“. Festgelegt: neueste Reise zuerst, also neue Alben passend zum Jahr einsortieren. Die Seite „Alben“ gruppiert automatisch nach Jahr.
 6. **Startseite:** Die Diashow zeigt nur die Alben aus `"featured"` ganz oben in `albums.json`, in dieser Reihenfolge (z. B. `["seoul-2026", "iceland-2025", …]`). Zum Austauschen einfach eine `id` ersetzen.

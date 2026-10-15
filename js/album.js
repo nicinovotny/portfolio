@@ -1,7 +1,7 @@
 // Albumseite (album.html?ort=<id>): Kopf mit Ortsangaben, Galerie in Bildzeilen,
 // Navigation zum vorigen/nächsten Ort. Die Großansicht steckt in js/lightbox.js.
 
-import { getAlbums, getRegions, imageAttrs } from './data.js';
+import { getAlbums, getRegions, imageAttrs, regionPath } from './data.js';
 import { formatCoords, pad2 } from './format.js';
 import { createLightbox } from './lightbox.js';
 
@@ -68,7 +68,8 @@ function renderHead(album, index, regions) {
   const facts = [
     ['Jahr', album.year],
     ['Land', album.country],
-    ['Region', regions[album.region]?.name],
+    // Großregion (z. B. Nordeuropa, Mitteleuropa) – das Land steht schon in der Zeile darüber
+    ['Region', regions[regionPath(regions, album.region)[1] ?? album.region]?.name],
     ['Bilder', pad2(album.images.length)],
   ];
   el.facts.replaceChildren(...facts.filter(([, value]) => value).map(([term, value]) => {
