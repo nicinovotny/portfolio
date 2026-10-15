@@ -117,3 +117,8 @@ Festlegungen hier haben Vorrang vor dem Projektbriefing.
 - Instagram: `@nici.novotny` (https://www.instagram.com/nici.novotny/), nicht `@nicinovotny`.
 - LinkedIn: https://www.linkedin.com/in/nicolas-novotny/ (Kopfzeile aller Seiten + Steckbrief „Über mich“).
 - GitHub Pages erlaubt Browsern, Dateien 10 Minuten zwischenzuspeichern. Direkt nach einem Push kann ein Browser deshalb neues HTML mit altem CSS/JS mischen (z. B. Albumtitel klebt oben links). Zum Prüfen: `Strg + Shift + R` bzw. in den Chrome-Entwicklertools „Disable cache“. Favicon-Link trägt eine Versionsnummer (`favicon.svg?v=2`), weil Browser Favicons besonders lange halten – bei einem neuen Favicon hochzählen.
+
+## Karte im Hochformat (15.10.2026)
+- Handy hochkant: Welt, Startansicht und Regionen füllen die Höhe statt als schmaler Streifen mit 20–30 % Leerraum oben und unten zu erscheinen. Sichtbar bleibt mindestens 35 % (Welt, Startansicht) bzw. 80 % (Regionen) der Ausschnittbreite; Welt und Startansicht richten sich auf den Schwerpunkt der Alben aus (Europa). Album-Ansichten unverändert.
+- Karte lässt sich mit einem Finger (bzw. der Maus) verschieben; danach löst das Loslassen keinen Marker-Klick aus. Hinweis auf dem Handy: „Ziehen zum Verschieben · Tippen zum Zoomen“.
+- Behoben: Tippen auf freie Fläche zoomte auf Touch-Geräten nicht heraus.

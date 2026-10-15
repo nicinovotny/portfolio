@@ -141,7 +141,32 @@ function measure() {
 /** viewBox für einen Ansichtszustand, passend zum Seitenverhältnis der Karte */
 function cameraFor(target) {
   const frame = views.frameFor(target);
+  const aspect = size.width / size.height;
+
+  // Hochformat (Handy): Breite Ausschnitte würden nur als schmaler Streifen mit viel Leerraum oben und
+  // unten erscheinen. Stattdessen füllt die Karte die Höhe und ist seitlich angeschnitten – verschieben
+  // lässt sie sich mit einem Finger. Mindestens dieser Anteil der Ausschnittbreite bleibt sichtbar:
+  if (aspect < 0.8 && target.level !== 'album' && frame.width / frame.height > aspect * 1.4) {
+    const minShare = target.level === 'area' ? 0.8 : 0.35;
+    const w = Math.max(frame.height * aspect, frame.width * minShare);
+    const h = w / aspect;
+    // Welt und Startansicht: dort ausrichten, wo die meisten Alben liegen (Europa)
+    let cx = frame.cx;
+    if (target.level !== 'area') {
+      const xs = [...views.points.values()].map(([x]) => x);
+      const mean = xs.reduce((sum, x) => sum + x, 0) / xs.length;
+      cx = Math.min(frame.cx + frame.width / 2 - w / 2, Math.max(frame.cx - frame.width / 2 + w / 2, mean));
+    }
+    return clampCamera({ x: cx - w / 2, y: frame.cy - h / 2, w, h });
+  }
   return fitAspect(frame.cx, frame.cy, frame.width, frame.height);
+}
+
+/** Mitte des Ausschnitts bleibt auf der Weltkarte (beim Verschieben) */
+function clampCamera(cam) {
+  const cx = Math.min(world.width, Math.max(0, cam.x + cam.w / 2));
+  const cy = Math.min(world.height, Math.max(0, cam.y + cam.h / 2));
+  return { ...cam, x: cx - cam.w / 2, y: cy - cam.h / 2 };
 }
 
 function fitAspect(cx, cy, width, height) {
@@ -615,7 +640,7 @@ function updateChrome() {
   }
 
   ui.hint.textContent = view.level === 'world' || view.level === 'globe'
-    ? (isTouch ? 'Tippen zum Hineinzoomen' : 'Ort wählen zum Hineinzoomen')
+    ? (isTouch ? 'Ziehen zum Verschieben · Tippen zum Zoomen' : 'Ort wählen zum Hineinzoomen')
     : (isTouch ? 'Zwei Finger zusammen zum Rauszoomen' : 'Esc · Scrollen zum Rauszoomen');
 }
 
@@ -648,7 +673,7 @@ function bindEvents() {
     down = { x: event.clientX, y: event.clientY };
   });
   root.addEventListener('pointerup', (event) => {
-    if (!down || pointers.size > 0) { down = null; return; }
+    if (!down || pointers.size > 1) { down = null; return; }
     const moved = Math.hypot(event.clientX - down.x, event.clientY - down.y);
     down = null;
     if (moved > 8 || pinched) return;
@@ -704,6 +729,35 @@ function bindEvents() {
   };
   root.addEventListener('pointerup', release);
   root.addEventListener('pointercancel', release);
+
+  // Verschieben mit einem Finger (oder der Maus) – vor allem fürs Handy im Hochformat
+  let pan = null;
+  let panned = false;
+  root.addEventListener('pointerdown', (event) => {
+    panned = false;
+    if (flying || event.target.closest('.map-card, .map__bar')) return;
+    pan = { x: event.clientX, y: event.clientY, cam: { ...camera }, id: event.pointerId };
+  });
+  root.addEventListener('pointermove', (event) => {
+    if (!pan || event.pointerId !== pan.id || pointers.size > 1 || flying) return;
+    const dx = event.clientX - pan.x;
+    const dy = event.clientY - pan.y;
+    if (!panned && Math.hypot(dx, dy) < 8) return;
+    panned = true;
+    const s = camera.w / size.width;
+    camera = clampCamera({ ...pan.cam, x: pan.cam.x - dx * s, y: pan.cam.y - dy * s });
+    render();
+  });
+  const endPan = () => { pan = null; };
+  root.addEventListener('pointerup', endPan);
+  root.addEventListener('pointercancel', endPan);
+  // Nach dem Verschieben keinen Marker „anklicken“
+  root.addEventListener('click', (event) => {
+    if (!panned) return;
+    panned = false;
+    event.preventDefault();
+    event.stopPropagation();
+  }, true);
 
   // Größenänderung: Ausschnitt neu einpassen
   new ResizeObserver(() => {
