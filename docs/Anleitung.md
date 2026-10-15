@@ -22,7 +22,7 @@ Nach dem Push ist die Seite nach etwa einer Minute online aktualisiert.
 
 ### Am einfachsten: mit Claude
 
-1. Exporte in voller Auflösung (JPEG, TIFF, PNG, HEIC oder WebP) nach **`images/_eingang/`** legen.
+1. Exporte in voller Auflösung (JPEG, TIFF, PNG, HEIC oder WebP) nach **`images/_eingang/`** legen. Am einfachsten so benennen: **`<album-id>_<nummer>`**, z. B. `faroe-2024_1.jpg`, `faroe-2024_2.jpg` … – dann weiß Claude ohne Rückfrage, welches Album und welche Reihenfolge. **Nummer 1 ist immer das Titelbild** (Bühne der Albumseite, Übersicht, Karte und ggf. Startseite). Die Album-IDs stehen in `data/albums.json` (z. B. `seoul-2026`, `seiser-alm-2024`, `kleinarl`).
 2. Claude Code im Projektordner öffnen und sagen: **„Bilder einpflegen“**.
 3. Claude sieht sich die Bilder an und schlägt pro Bild Album (per GPS aus den Bilddaten), Titel und Alt-Text vor, fragt nach Demo-Bildern und Titelbild – du bestätigst oder änderst.
 4. Claude wandelt um (`images/<album>/<album>-NN.webp` + `-1200.webp`), trägt alles in `albums.json` ein und prüft das Ergebnis. Originale landen in `images/_eingang/erledigt/` (wird nicht hochgeladen, kann geleert werden).
@@ -153,6 +153,6 @@ Die alte Adresse `nicinovotny.github.io/portfolio/` leitet danach automatisch au
 - [ ] Eigene Bilder überall eingefügt (kein `"demo"` mehr in `albums.json`)
 - [ ] Dann: `<link rel="preconnect" href="https://fastly.picsum.photos">` aus `index.html` und `album.html` löschen und im Datenschutz den Abschnitt „Demo-Bilder“ entfernen
 - [ ] Ortstexte in `albums.json` und Einstiegstext auf der Startseite (`index.html`)
-- [ ] LinkedIn-Link in allen HTML-Dateien (Suchen nach `[Platzhalter] LinkedIn`)
+- [x] LinkedIn-Link in allen HTML-Dateien (15.10.2026: linkedin.com/in/nicolas-novotny)
 - [ ] Porträt und Texte in `ueber-mich.html`
 - [x] Impressum und Datenschutz ausgefüllt (15.10.2026) – bei Änderungen anpassen (z. B. Verkauf von Fotos → ggf. Steuerangaben ins Impressum, neue externe Dienste → Datenschutz)

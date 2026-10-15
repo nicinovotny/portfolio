@@ -33,6 +33,13 @@ Fehlt `tools/node_modules`, einmal `cd tools && npm install` ausführen.
 
 ### 2. Vorschläge machen
 
+**Dateinamen-Regel (von Nici festgelegt):** Heißen die Exporte `<album-id>_<nummer>.<endung>` (z. B. `faroe-2024_1.jpg`, `faroe-2024_2.jpg`), dann gilt ohne Rückfrage:
+- **Album** = der Teil vor dem Unterstrich (muss eine bestehende Album-ID sein, sonst nachfragen),
+- **Reihenfolge** = die Nummer,
+- **Nummer 1 = Titelbild** (`"cover": 0`, erscheint als Bühne der Albumseite, in Übersicht, Kartenvorschau und – bei Favoriten – auf der Startseite).
+
+Nur Titel und Alt-Text werden dann vorgeschlagen. Ist das Titelbild ein Hochformat, darauf hinweisen (die Bühne ist quer, es wird stark beschnitten). Dateien ohne dieses Schema wie unten beschrieben behandeln.
+
 Pro Bild:
 
 - **Album:** Liegt ein Album laut `nearestAlbums` näher als etwa 150 km, ist es der Vorschlag. Ohne GPS nach Bildinhalt und Dateinamen schätzen und das kenntlich machen („geschätzt“). Passt kein Album: neuen Ort vorschlagen (Schritt 4).

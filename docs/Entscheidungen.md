@@ -102,3 +102,8 @@ Festlegungen hier haben Vorrang vor dem Projektbriefing.
 ## Bibliotheken (14.10.2026)
 - GSAP 3.12.5 inkl. ScrollTrigger wird **selbst gehostet** (`vendor/gsap/`) statt per CDN – wie die Schriften, damit beim Seitenaufruf keine IP-Adressen an fremde Server gehen. Gilt auch für alle künftigen Bibliotheken.
 - Einzige externe Quelle bleibt picsum.photos für die Demo-Bilder; entfällt, sobald alle eigenen Bilder eingefügt sind.
+
+## Links und Zwischenspeicher (15.10.2026)
+- Instagram: `@nici.novotny` (https://www.instagram.com/nici.novotny/), nicht `@nicinovotny`.
+- LinkedIn: https://www.linkedin.com/in/nicolas-novotny/ (Kopfzeile aller Seiten + Steckbrief „Über mich“).
+- GitHub Pages erlaubt Browsern, Dateien 10 Minuten zwischenzuspeichern. Direkt nach einem Push kann ein Browser deshalb neues HTML mit altem CSS/JS mischen (z. B. Albumtitel klebt oben links). Zum Prüfen: `Strg + Shift + R` bzw. in den Chrome-Entwicklertools „Disable cache“. Favicon-Link trägt eine Versionsnummer (`favicon.svg?v=2`), weil Browser Favicons besonders lange halten – bei einem neuen Favicon hochzählen.
