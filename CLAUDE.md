@@ -23,7 +23,8 @@ Lies Briefing und Entscheidungen, bevor du Code schreibst oder Designentscheidun
 - ✅ Schritt 5 erledigt (15.10.2026, am Mac): `ueber-mich.html` + `css/about.css` + `js/about.js` (Steckbrief, Ausrüstung, Werdegang, „Diese Seite“; Zahlen aus `albums.json`), `impressum.html` mit Impressum und Datenschutz-Gerüst (alles mit [Platzhalter], vor Veröffentlichung rechtlich prüfen), Footer „Impressum · Datenschutz“ und `favicon.svg` auf allen Seiten. Feinschliff in `css/base.css`: sanfte Seitenübergänge (View Transitions, Kopfzeile bleibt stehen), globale Regel für reduzierte Bewegung; `js/nav.js` sperrt bei offenem Handy-Menü den Rest der Seite (`inert`).
 - Offene Platzhalter für Nici: LinkedIn-URL (alle Seiten), Porträt, Texte „Über mich“, Ausrüstung, Werdegang, Impressum-Anschrift und E-Mail, Datenschutz-Details, Texte in `albums.json`, Einstiegstext auf der Startseite.
 - Phase 3 (15.10.2026): Anleitung `docs/Anleitung.md` (Arbeitsablauf, eigene Bilder, neue Orte, GitHub Pages, eigene Domain, Checkliste). Projekt aus Google Drive ins Git-Repo umgezogen (siehe Arbeitsweise), `.nojekyll` für GitHub Pages.
-- **Als Nächstes:** Nici pusht über GitHub Desktop und schaltet GitHub Pages ein (Anleitung Abschnitt 4), dann Live-Seite prüfen. Danach: eigene Bilder und Texte einpflegen.
+- ✅ Live seit 15.10.2026: <https://nicinovotny.github.io/portfolio/> (GitHub Pages, main, root). Alle Seiten geprüft, keine fehlenden Dateien, keine Konsolenfehler.
+- **Als Nächstes:** eigene Bilder und Texte einpflegen (Checkliste in `docs/Anleitung.md`, Abschnitt 5). Später ggf. eigene Domain `nicolasnovotny.de`.
 
 ## Rahmen (gilt immer)
 - Vanilla HTML/CSS/JS + GSAP (inkl. ScrollTrigger) selbst gehostet in `vendor/gsap/`, kein Framework, kein Build-Schritt für die Seite, Hosting auf GitHub Pages, alle Pfade relativ.
