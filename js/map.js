@@ -157,6 +157,13 @@ function zoomFactor() {
   return cameraFor({ level: 'world' }).w / camera.w;
 }
 
+/** Bildschirmposition eines Markers (inkl. Auffächerung bei Alben an gleicher Stelle) */
+function markerScreen(marker) {
+  const [x, y] = toScreen(marker.data.point);
+  const [dx, dy] = marker.data.offset ?? [0, 0];
+  return [x + dx, y + dy];
+}
+
 function toScreen([mx, my]) {
   const s = size.width / camera.w;
   return [(mx - camera.x) * s, (my - camera.y) * s];
@@ -265,7 +272,7 @@ function clusterNear(x, y, maxDistance = 160) {
   let bestDistance = maxDistance;
   for (const marker of markers) {
     if (marker.data.type !== 'cluster') continue;
-    const [mx, my] = toScreen(marker.data.point);
+    const [mx, my] = markerScreen(marker);
     const distance = Math.hypot(mx - x, my - y);
     if (distance < bestDistance) { best = marker; bestDistance = distance; }
   }
@@ -295,6 +302,9 @@ function setMarkers(list, { phase = 'in', animate = true } = {}) {
   }
 
   markers = markers.filter((m) => !m.removing);
+  // bleibende Marker übernehmen die neuen Daten (z. B. Auffächerung)
+  const byKey = new Map(list.map((data) => [data.key, data]));
+  markers.forEach((m) => { m.data = byKey.get(m.data.key) ?? m.data; });
   const existing = new Set(markers.map((m) => m.data.key));
   const added = list.filter((data) => !existing.has(data.key)).map((data) => ({ data, el: createMarker(data) }));
   // Reihenfolge im DOM = Tab-Reihenfolge: von West nach Ost
@@ -331,7 +341,7 @@ function createMarker(data) {
   if (data.type === 'album') {
     const { album } = data;
     el.href = `album.html?ort=${encodeURIComponent(album.id)}`;
-    el.setAttribute('aria-label', `${album.name}, Album ${pad2(data.number)} – öffnen`);
+    el.setAttribute('aria-label', `${[album.name, album.year].filter(Boolean).join(' ')}, Album ${pad2(data.number)} – öffnen`);
     icon.innerHTML = `
       <circle class="map-marker__halo" r="30"/>
       <circle class="map-marker__ring" r="12"/>
@@ -339,7 +349,7 @@ function createMarker(data) {
       <path class="map-marker__leader" d="M30,0H54L66,-12"/>
       <circle class="map-marker__dot" r="3.5"/>`;
     name.textContent = album.shortName ?? album.name;
-    sub.textContent = formatCoordsShort(album.coords).replace(' · ', ' ');
+    sub.textContent = [album.year, formatCoordsShort(album.coords).replace(' · ', ' ')].filter(Boolean).join(' · ');
     bindAlbumMarker(el, data);
   } else {
     el.type = 'button';
@@ -389,7 +399,7 @@ function setActive(marker) {
   const cover = getCover(album);
   ui.cardImg.src = imageUrl(album, cover, 600);
   ui.cardImg.alt = '';
-  ui.cardMeta.textContent = `${formatCoordsShort(album.coords)} · Album ${pad2(number)}`;
+  ui.cardMeta.textContent = [album.year, formatCoordsShort(album.coords), `Album ${pad2(number)}`].filter(Boolean).join(' · ');
   ui.cardName.textContent = album.name;
   ui.cardLink.href = `album.html?ort=${encodeURIComponent(album.id)}`;
   ui.card.hidden = false;
@@ -407,7 +417,7 @@ function scheduleHide() {
 
 function positionCard() {
   if (!activeMarker || ui.card.hidden) return;
-  const [x, y] = toScreen(activeMarker.data.point);
+  const [x, y] = markerScreen(activeMarker);
   const cardWidth = ui.card.offsetWidth;
   const cardHeight = ui.card.offsetHeight;
 
@@ -449,7 +459,7 @@ function render() {
   layer('grat-coarse').style.opacity = 1 - fine;
 
   for (const marker of markers) {
-    const [x, y] = toScreen(marker.data.point);
+    const [x, y] = markerScreen(marker);
     marker.el.style.transform = `translate(${x}px, ${y}px)`;
     // Text links vom Ring, wenn er rechts aus dem Bild laufen würde
     marker.textWidth ??= marker.el.querySelector('.map-marker__text').offsetWidth;

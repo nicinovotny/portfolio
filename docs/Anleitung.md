@@ -70,30 +70,35 @@ Pro Bild **zwei Dateien** mit demselben Namen, die kleine mit dem Zusatz `-1200`
 
 ---
 
-## 3. Neuen Ort anlegen
+## 3. Neue Reise anlegen
 
-1. In `data/albums.json` einen bestehenden Ort-Block kopieren und anpassen:
+Jede Reise ist ein eigenes Album – auch wenn du zweimal am selben Ort warst (z. B. `iceland-2021` und `iceland-2025`). So mischen sich die Bilder verschiedener Jahre nicht.
+
+1. In `data/albums.json` einen bestehenden Album-Block kopieren und anpassen:
 
 | Feld | Bedeutung |
 |---|---|
-| `id` | kurz, Kleinbuchstaben, Bindestriche – zugleich Ordnername in `images/` und Adresse `album.html?ort=<id>` |
-| `name` | voller Name, z. B. „Südtirol · Dolomiten“ |
+| `id` | Ort + Jahr, Kleinbuchstaben, Bindestriche, keine Umlaute, z. B. `bergen-2026` – zugleich Ordnername in `images/` und Adresse `album.html?ort=<id>` |
+| `name` | voller Name, z. B. „Dolomiten · Seiser Alm“ (ohne Jahr, das wird automatisch dazugeschrieben) |
 | `shortName` | kurze Form für Karte und Navigation |
+| `year` | Jahr der Reise, z. B. `2026` (ohne Anführungszeichen); unbekannt: `null` |
 | `country` | Land (wird im Steckbrief gezählt) |
-| `continent`, `region` | Schlüssel aus `"regions"` oben in der Datei – steuern Cluster und Zoomstufen der Karte |
-| `coords` | `lat` (Breite, Nord positiv) und `lon` (Länge, Ost positiv, West negativ) |
+| `region` | innerste passende Region aus `"regions"` oben in der Datei, z. B. `dolomites` – steuert Cluster und Zoomstufen der Karte |
+| `coords` | `lat` (Breite, Nord positiv) und `lon` (Länge, Ost positiv, West negativ). Mehrere Reisen in dieselbe Gegend gern an verschiedene Punkte legen (z. B. Reykjavík und Höfn); liegen zwei Alben genau aufeinander, fächert die Karte sie automatisch auf. |
 | `text` | kurzer Text zum Ort |
 | `cover`, `images` | siehe oben |
 
 2. **Koordinaten finden:** Google Maps → Rechtsklick auf den Ort → die erste Zahl ist `lat`, die zweite `lon`.
-3. **Neue Region oder neuer Kontinent:** oben unter `"regions"` ergänzen, z. B.
+3. **Neue Region:** oben unter `"regions"` ergänzen. `"parent"` ist die übergeordnete Region; ein Kontinent hat kein `parent`. Regionen lassen sich beliebig verschachteln, z. B.
    ```json
-   "iceland": { "name": "Island", "level": "region", "continent": "europe" },
-   "north-america": { "name": "Nordamerika", "level": "continent" }
+   "north-america": { "name": "Nordamerika" },
+   "rockies":       { "name": "Rocky Mountains", "parent": "north-america" },
+   "dolomites":     { "name": "Dolomiten",       "parent": "alps" }
    ```
-   Mehrere Orte in derselben Region werden auf der Karte automatisch zum Cluster, ein einzelner Ort bekommt einen eigenen Marker. Zoom-Ausschnitte rechnet die Karte selbst aus.
+   Mehrere Alben in derselben Region werden auf der Karte automatisch zum Cluster (Klick zoomt hinein), ein einzelnes Album bekommt einen eigenen Marker. Zoom-Ausschnitte rechnet die Karte selbst aus.
 4. Ordner `images/<id>/` anlegen und Bilder wie oben einfügen.
-5. **Reihenfolge** der Orte in `albums.json` = Album-Nummern, Reihenfolge der Startseiten-Diashow und „Voriger/Nächster Ort“.
+5. **Reihenfolge** der Alben in `albums.json` = Album-Nummern und „Voriger/Nächster Ort“. Festgelegt: neueste Reise zuerst, also neue Alben passend zum Jahr einsortieren. Die Seite „Alben“ gruppiert automatisch nach Jahr.
+6. **Startseite:** Die Diashow zeigt nur die Alben aus `"featured"` ganz oben in `albums.json`, in dieser Reihenfolge (z. B. `["seoul-2026", "iceland-2025", …]`). Zum Austauschen einfach eine `id` ersetzen.
 
 Optional: zusätzliche Kartenbeschriftungen (Länder, Meere) stehen in `tools/build-map.mjs` unter `LABELS`. Danach einmal `cd tools && npm install && npm run build-map`.
 

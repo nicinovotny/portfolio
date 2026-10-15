@@ -25,6 +25,8 @@ Lies Briefing und Entscheidungen, bevor du Code schreibst oder Designentscheidun
 - Phase 3 (15.10.2026): Anleitung `docs/Anleitung.md` (Arbeitsablauf, eigene Bilder, neue Orte, GitHub Pages, eigene Domain, Checkliste). Projekt aus Google Drive ins Git-Repo umgezogen (siehe Arbeitsweise), `.nojekyll` für GitHub Pages.
 - ✅ Live seit 15.10.2026 unter <https://nicolasnovotny.de> (GitHub Pages, main, root; Domain bei INWX, `CNAME`-Datei im Repo). `nicinovotny.github.io/portfolio/` und `www.` leiten dorthin um.
 - ✅ Skill „bilder-einpflegen“ (15.10.2026): `.claude/skills/bilder-einpflegen/SKILL.md` + `tools/images.mjs` (inspect / convert / check), Eingangsordner `images/_eingang/`. An Testbildern durchgespielt (EXIF-Drehung, GPS-Zuordnung, HEIC, Demo ersetzen, neuer Ort).
+- ✅ Ein Album pro Reise (15.10.2026, am PC): 18 Reisen 2021–2026 in `albums.json` (IDs `<ort>-<jahr>`, Feld `year`, neueste zuerst), Regionen verschachtelt über `parent` (z. B. Europa → Alpen → Dolomiten), Startseite zeigt nur die 5 Favoriten aus `"featured"`, Alben-Übersicht nach Jahren gruppiert, Jahr in allen Labels. Karte: beliebig tiefe Zoomstufen, Alben an gleicher Stelle werden aufgefächert (Seoul 2025/2026). Neue Alben haben je 3 Demo-Bilder. Logik getestet; Kamerafahrten nach dem Umbau noch nicht im sichtbaren Browser angesehen.
+- Offen: Jahr für Kleinarl (`"year": null`), genauer Ort in Schottland (vorläufig Glencoe).
 - **Als Nächstes:** eigene Bilder (per Skill) und Texte einpflegen (Checkliste in `docs/Anleitung.md`, Abschnitt 5).
 
 ## Rahmen (gilt immer)

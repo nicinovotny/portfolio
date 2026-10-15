@@ -33,6 +33,28 @@ export async function getRegions() {
   return (await loadData()).regions;
 }
 
+/**
+ * Favoriten für die Startseite (Liste "featured" in albums.json), in dieser Reihenfolge.
+ * Jedes Ergebnis kennt seine Album-Nummer aus der Gesamtliste.
+ */
+export async function getFeatured() {
+  const { albums, featured } = await loadData();
+  const withNumber = albums.map((album, index) => ({ album, number: index + 1 }));
+  const picked = (featured ?? [])
+    .map((id) => withNumber.find(({ album }) => album.id === id))
+    .filter(Boolean);
+  return picked.length ? picked : withNumber.slice(0, 5);   // ohne Liste: die ersten fünf
+}
+
+/** Kette der Regionen von außen nach innen, z. B. ["europe", "alps", "dolomites"] */
+export function regionPath(regions, id) {
+  const path = [];
+  for (let current = id; current && regions[current] && !path.includes(current); current = regions[current].parent) {
+    path.unshift(current);
+  }
+  return path;
+}
+
 /** Titelbild eines Albums (Index aus "cover", Standard: erstes Bild). */
 export function getCover(album) {
   return album.images[album.cover ?? 0] ?? album.images[0];

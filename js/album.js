@@ -55,16 +55,18 @@ async function init() {
 // ---------- Kopf ----------
 
 function renderHead(album, index, regions) {
-  document.title = `${album.name} – Nicolas Novotny`;
+  document.title = `${[album.name, album.year].filter(Boolean).join(' ')} – Nicolas Novotny`;
   document.querySelector('meta[name="description"]')?.setAttribute('content', album.text);
 
   el.label.innerHTML = `Album ${pad2(index + 1)} <span class="label__dash">—</span> `;
+  if (album.year) el.label.append(`${album.year} `, Object.assign(document.createElement('span'), { className: 'label__dash', textContent: '—' }), ' ');
   el.label.append(formatCoords(album.coords));
   el.title.textContent = album.name;
   el.text.textContent = album.text;
   el.map.href = `karte.html?ort=${encodeURIComponent(album.id)}`;
 
   const facts = [
+    ['Jahr', album.year],
     ['Land', album.country],
     ['Region', regions[album.region]?.name],
     ['Bilder', pad2(album.images.length)],
@@ -215,7 +217,7 @@ function renderPager(albums, index) {
     const album = albums[target];
     el.pager.querySelector(`[data-pager-${key}]`).href = `album.html?ort=${encodeURIComponent(album.id)}`;
     el.pager.querySelector(`[data-pager-${key}-number]`).textContent = pad2(target + 1);
-    el.pager.querySelector(`[data-pager-${key}-name]`).textContent = album.name;
+    el.pager.querySelector(`[data-pager-${key}-name]`).textContent = [album.name, album.year].filter(Boolean).join(' ');
   };
   fill('prev', -1);
   fill('next', 1);

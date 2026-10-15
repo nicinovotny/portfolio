@@ -265,9 +265,9 @@ async function check() {
     const where = `Album „${album.id}“`;
     if (ids.has(album.id)) errors.push(`${where}: ID doppelt vergeben.`);
     ids.add(album.id);
-    for (const key of ['continent', 'region']) {
-      if (!data.regions?.[album[key]]) errors.push(`${where}: ${key} „${album[key]}“ fehlt unter "regions".`);
-    }
+    if (!data.regions?.[album.region]) errors.push(`${where}: region „${album.region}“ fehlt unter "regions".`);
+    if (album.year != null && !Number.isInteger(album.year)) errors.push(`${where}: year muss eine Jahreszahl sein (z. B. 2024) oder null.`);
+    if (album.year == null) warnings.push(`${where}: kein Jahr eingetragen.`);
     if (typeof album.coords?.lat !== 'number' || typeof album.coords?.lon !== 'number') errors.push(`${where}: coords.lat/lon fehlen oder sind keine Zahlen.`);
     if (!album.images?.length) { errors.push(`${where}: keine Bilder.`); continue; }
     if (album.cover != null && !album.images[album.cover]) errors.push(`${where}: cover ${album.cover} zeigt auf kein Bild (Zählung ab 0).`);
@@ -298,6 +298,22 @@ async function check() {
     const demos = album.images.filter((image) => image.demo != null).length;
     if (demos && demos < album.images.length) warnings.push(`${where}: noch ${demos} Demo-Bild(er) neben eigenen Bildern.`);
   }
+
+  // Regionen: jede "parent"-Angabe muss existieren, ohne Kreis
+  for (const [id, region] of Object.entries(data.regions ?? {})) {
+    const seen = new Set([id]);
+    for (let parent = region.parent; parent; parent = data.regions[parent]?.parent) {
+      if (!data.regions[parent]) { errors.push(`Region „${id}“: parent „${parent}“ fehlt unter "regions".`); break; }
+      if (seen.has(parent)) { errors.push(`Region „${id}“: Kreis in den parent-Angaben.`); break; }
+      seen.add(parent);
+    }
+  }
+
+  // Favoriten für die Startseite
+  for (const id of data.featured ?? []) {
+    if (!ids.has(id)) errors.push(`featured: Album „${id}“ gibt es nicht.`);
+  }
+  if (!data.featured?.length) warnings.push('featured: keine Favoriten eingetragen – die Startseite zeigt die ersten fünf Alben.');
 
   const totals = {
     albums: data.albums.length,

@@ -29,6 +29,15 @@ Festlegungen hier haben Vorrang vor dem Projektbriefing.
 - Handy: Album-Vorschau als flache Leiste am unteren Rand; erster Tipp auf einen Marker zeigt die Vorschau, zweiter öffnet das Album.
 - Kartendaten werden einmalig vorab per Node-Skript (`tools/`) zu schlanken SVG-Pfaden/JSON umgerechnet und im Repo abgelegt; die Seite selbst braucht keinen Build-Schritt (bestätigt 14.10.2026, Vorlage: `docs/mockups/kartendaten-generator.mjs`)
 
+## Alben = Reisen (15.10.2026)
+- **Ein Album pro Reise**, auch bei mehreren Reisen an denselben Ort (Nici will Bilder verschiedener Jahre nicht mischen). ID-Schema `<ort>-<jahr>` (z. B. `iceland-2021`), Feld `"year"` (Zahl oder `null`). Mehrere Reisen in dieselbe Gegend an verschiedene Punkte legen (Island 2021 Reykjavík, Island 2025 Höfn); liegen Alben genau aufeinander (Seoul 2025/2026), fächert die Karte sie auf.
+- **Reihenfolge** in `albums.json`: neueste Reise zuerst. Bestimmt Album-Nummern und „Voriger/Nächster Ort“.
+- **Startseite** zeigt nur die Favoriten aus `"featured"` (derzeit 5: Seoul 2026, Island 2025, Dolomiten · Seiser Alm 2024, Lofoten 2024, Sächsische Schweiz 2025), in dieser Reihenfolge; die Album-Nummer im Label bleibt die aus der Gesamtliste.
+- **Jahr** steht in allen Mono-Labels (`ALBUM 01 — 2026 — 37°34′N …`), im Seitentitel, im Steckbrief der Albumseite, in Kartenmarker und Kartenvorschau.
+- **Alben-Übersicht** (`alben.html`, „Alle Reisen“) gruppiert nach Jahr, großes Jahr in Geist 200 über einer Haarlinie; Alben ohne Jahr am Ende.
+- **Regionen** verschachtelt über `"parent"` (ohne `parent` = Kontinent); Alben nennen nur ihre innerste Region (`"region"`), `"continent"` und `"level"` entfallen. Karte: beliebig viele Zoomstufen, Mindestausschnitt nach Tiefe 55° / 15° / 6°. Ebenen ohne Unterschied werden übersprungen (Asien → direkt Südkorea).
+- Startorte 15.10.2026: 18 Reisen – 2026 Seoul, Bergen, Berner Oberland · 2025 Island (Höfn), Seoul, Zermatt, Cortina, Sächsische Schweiz, Bukarest · 2024 Lofoten, Färöer, Schottland (vorläufig Glencoe), Seiser Alm, Gran Canaria · 2023 Schwarzwald, Neuschwanstein · 2021 Island (Reykjavík) · ohne Jahr Kleinarl (Ski). Schwarzwald, Neuschwanstein und Kleinarl liegen in der Region Alpen.
+
 ## Albumseite (15.10.2026)
 - Kopf zweispaltig: links Label (Album-Nr. + Koordinaten) und Titel in Geist 200, rechts Kurztext, Steckbrief in Mono (Land · Region · Bilder) und „Zurück zur Karte“ (→ `karte.html?ort=<id>`) / „Alle Alben“
 - Galerie als Bildzeilen gleicher Höhe (wie Flickr/Google Fotos): Bilder werden nie beschnitten, Hoch- und Querformate mischen sich. Zeilenumbruch rechnet `js/album.js`, die Breiten verteilt CSS (`flex-grow` = Seitenverhältnis). Unter 560 px ein Bild pro Zeile. Darunter dezent Nummer + Titel.
@@ -49,9 +58,8 @@ Festlegungen hier haben Vorrang vor dem Projektbriefing.
 ## Schriften – Quelle (14.10.2026)
 - WOFF2-Dateien aus dem offiziellen Repo `vercel/geist-font` (SIL Open Font License), abgelegt in `fonts/`
 
-## Startorte (14.10.2026)
-- Platzhalter Deutschland: Sächsische Schweiz (einzeln) und Schwarzwald (im Alpen-Cluster)
-- Damit 7 Orte: Färöer, Südkorea, Lofoten, Dolomiten, Schweiz, Sächsische Schweiz, Schwarzwald
+## Startorte (14.10.2026, ersetzt am 15.10.2026 – siehe „Alben = Reisen“)
+- Ursprünglich 7 Orte mit Demo-Bildern: Färöer, Südkorea, Lofoten, Dolomiten, Schweiz, Sächsische Schweiz, Schwarzwald
 
 ## Farben – Abgleich
 - Die abweichenden Werte im Karten-Mockup (`#0E1113`, `#E6E4DF`, `#9CC3C5`) gelten nicht; überall gilt die Palette oben (aus A2)

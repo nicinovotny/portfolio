@@ -44,7 +44,8 @@ Zeig alles in **einer** Tabelle (Nr., Datei, Hoch/Quer, Album, Titel, Alt-Text) 
 
 - Passen die Vorschläge? (Optionen: „Alles passt“ / „Ich ändere etwas“ – Änderungen kommen dann als Freitext)
 - Für jedes betroffene Album, das noch Demo-Bilder hat: **Demo-Bilder ersetzen oder vorerst behalten?** Nici hat festgelegt, dass das jedes Mal gefragt wird.
-- **Titelbild** (`cover`), wenn sich etwas ändert: Das Titelbild erscheint auf der Startseite, in der Albenübersicht und in der Kartenvorschau. Werden Demo-Bilder ersetzt, muss ein neues Titelbild gewählt werden – schlag das stärkste Querformat vor.
+- **Jahr:** Passt das Aufnahmedatum nicht zum `year` des vorgeschlagenen Albums, darauf hinweisen – vermutlich gehört das Bild zu einer anderen Reise (eigenes Album). Hat ein Album `"year": null`, das Jahr aus den Aufnahmedaten vorschlagen.
+- **Titelbild** (`cover`), wenn sich etwas ändert: Das Titelbild erscheint in der Albenübersicht, in der Kartenvorschau und – falls das Album in `"featured"` steht – auf der Startseite. Werden Demo-Bilder ersetzt, muss ein neues Titelbild gewählt werden – schlag das stärkste Querformat vor.
 
 Erst weitermachen, wenn Nici bestätigt hat.
 
@@ -65,19 +66,20 @@ Für jedes Album nacheinander:
 
 Bearbeite `albums.json` mit gezielten Änderungen, nicht durch Neuschreiben der ganzen Datei – die übersichtliche Formatierung (ein Bild pro Zeile, ausgerichtete Regionen) soll erhalten bleiben.
 
-### 4. Neuer Ort
+### 4. Neue Reise (neues Album)
 
-Wenn Bilder zu keinem Album passen, mit Nici diese Felder klären (Vorschläge machen, wo möglich):
+Jede Reise ist ein eigenes Album, auch bei wiederholten Reisen an denselben Ort (Nici will Jahre nicht mischen). Wenn Bilder zu keinem Album passen – oder zu einem Ort, aber aus einem anderen Jahr – mit Nici diese Felder klären (Vorschläge machen, wo möglich):
 
 | Feld | Vorschlag |
 |---|---|
-| `id` | aus dem Namen: Kleinbuchstaben, Bindestriche, keine Umlaute (`isle-of-skye`) |
+| `id` | Ort + Jahr: Kleinbuchstaben, Bindestriche, keine Umlaute (`isle-of-skye-2026`) |
+| `year` | Jahr der Reise aus dem Aufnahmedatum (`inspect` → `date`); unbekannt: `null` |
 | `name`, `shortName` | voller und kurzer Name (Karte, Navigation) |
 | `country` | Land |
-| `continent`, `region` | bestehende Schlüssel aus `"regions"`; sonst neue Region anlegen (`"level": "region", "continent": …`) bzw. neuen Kontinent (`"level": "continent"`). Mehrere Orte einer Region werden auf der Karte zum Cluster. |
-| `coords` | Mittelwert der GPS-Daten der Bilder, auf 2 Nachkommastellen; ohne GPS nachfragen |
+| `region` | innerste passende Region aus `"regions"`; sonst neue Region anlegen (`{ "name": …, "parent": <übergeordnete Region> }`, ein Kontinent hat kein `parent`). Mehrere Alben einer Region werden auf der Karte zum Cluster. |
+| `coords` | Mittelwert der GPS-Daten der Bilder, auf 2 Nachkommastellen; ohne GPS nachfragen. Gibt es schon ein Album derselben Gegend aus einem anderen Jahr, die Punkte möglichst an die tatsächlichen, unterschiedlichen Orte legen. |
 | `text` | 1–2 kurze Sätze im Stil der anderen Ortstexte – Entwurf anbieten, Nici formuliert ggf. selbst |
-| Position | wo in der Liste? Die Reihenfolge bestimmt Album-Nummer, Startseiten-Diashow und „Nächster Ort“. Standard: ans Ende. |
+| Position | nach Jahr einsortieren (neueste zuerst) – die Reihenfolge bestimmt Album-Nummer und „Nächster Ort“. Die Startseite zeigt nur die Alben in `"featured"`; fragen, ob das neue Album dazukommen soll. |
 
 Den neuen Block im Stil der bestehenden einfügen und die Bilder dann wie in Schritt 3 umwandeln und eintragen.
 

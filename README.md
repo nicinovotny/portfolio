@@ -17,7 +17,7 @@ Dann <http://localhost:3000> öffnen.
 ```
 index.html          Startseite
 karte.html          Weltkarte
-alben.html          Übersicht aller Orte
+alben.html          Übersicht aller Reisen, nach Jahren
 album.html          Album-Template (album.html?ort=<id>)
 ueber-mich.html     Über mich
 impressum.html      Impressum

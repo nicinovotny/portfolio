@@ -315,6 +315,27 @@ main { flex: 1; }
   gap: var(--space-xl) var(--space-l);
 }
 
+/* Ein Abschnitt pro Jahr: großes Jahr in Geist 200, darunter die Karten */
+.album-years { display: flex; flex-direction: column; gap: var(--space-2xl); }
+
+.album-year__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-s);
+  padding-top: var(--space-m);
+  margin-bottom: var(--space-l);
+  border-top: var(--hairline) solid var(--color-hairline);
+}
+
+.album-year__title {
+  font-size: var(--text-h1);
+  font-weight: 200;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
 .album-card { display: flex; flex-direction: column; gap: var(--space-s); }
 
 .album-card__image {

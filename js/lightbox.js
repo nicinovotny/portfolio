@@ -98,7 +98,7 @@ export function createLightbox({ dialog, album, thumbs }) {
     setSource(index, fit(index));
     ui.number.textContent = pad2(index + 1);
     ui.title.textContent = image.title;
-    ui.meta.textContent = [album.shortName ?? album.name, image.demo != null ? 'Demo-Bild' : null].filter(Boolean).join(' · ');
+    ui.meta.textContent = [album.shortName ?? album.name, album.year, image.demo != null ? 'Demo-Bild' : null].filter(Boolean).join(' · ');
     ui.status.textContent = `Bild ${index + 1} von ${images.length}: ${image.title}`;
     if (images.length > 1) preloadAround(index);
   }

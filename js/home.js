@@ -1,8 +1,8 @@
-// Startseite: Hero-Diashow mit den Titelbildern aller Alben (Mockup A2).
+// Startseite: Hero-Diashow mit den Titelbildern der Favoriten ("featured" in albums.json, Mockup A2).
 // Bildwechsel: langsame Überblendung + leichte „Kamerafahrt“ (Zoom 1.08 → 1).
 // Die Fortschrittslinie ist zugleich der Taktgeber: ist sie voll, kommt das nächste Bild.
 
-import { getAlbums, getCover, imageAttrs } from './data.js';
+import { getFeatured, getCover, imageAttrs } from './data.js';
 import { formatCoords, pad2 } from './format.js';
 
 const SLIDE_DURATION = 7;    // Sekunden pro Bild
@@ -27,7 +27,8 @@ const el = {
   pause: hero.querySelector('[data-hero-pause]'),
 };
 
-let albums = [];
+let albums = [];          // Favoriten in Diashow-Reihenfolge
+let numbers = [];         // ihre Album-Nummern in der Gesamtliste
 let slides = [];          // { root, img, attrs, loaded }
 let dots = [];
 let current = -1;
@@ -40,7 +41,9 @@ init();
 
 async function init() {
   try {
-    albums = await getAlbums();
+    const featured = await getFeatured();
+    albums = featured.map(({ album }) => album);
+    numbers = featured.map(({ number }) => number);
   } catch (error) {
     console.error(error);
     el.title.textContent = 'Bilder konnten nicht geladen werden';
@@ -80,7 +83,7 @@ function buildDots() {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'hero__dot';
-    button.setAttribute('aria-label', `${pad2(index + 1)}: ${album.name}`);
+    button.setAttribute('aria-label', `${pad2(index + 1)}: ${[album.name, album.year].filter(Boolean).join(' ')}`);
     const fill = document.createElement('span');
     fill.className = 'hero__dot-fill';
     button.append(fill);
@@ -174,7 +177,9 @@ function hideOthers(index) {
 }
 
 function updateCaption(album, index, initial) {
-  el.label.innerHTML = `Album ${pad2(index + 1)} <span class="label__dash">—</span> `;
+  // „Album 03 — 2024 — 62°00′N 006°54′W“: Nummer aus der Gesamtliste, Jahr der Reise
+  el.label.innerHTML = `Album ${pad2(numbers[index])} <span class="label__dash">—</span> `;
+  if (album.year) el.label.append(`${album.year} `, Object.assign(document.createElement('span'), { className: 'label__dash', textContent: '—' }), ' ');
   el.label.append(formatCoords(album.coords));
   el.title.textContent = album.name;
   el.open.href = `album.html?ort=${encodeURIComponent(album.id)}`;
