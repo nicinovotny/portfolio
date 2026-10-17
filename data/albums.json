@@ -23,7 +23,11 @@
       "published": true,
       "text": "[Platzhalter: 1–2 Sätze Haltung]",
       "cover": null,
-      "heroFavorites": []
+      "heroFavorites": [
+        { "image": "tuono-660-2022/01", "focus": [50, 50] },
+        { "image": "s1000rr-porsche-2025/01", "focus": [50, 50] },
+        { "image": "rs660-2026/01", "focus": [50, 50] }
+      ]
     },
     {
       "id": "wildlife",
@@ -32,7 +36,10 @@
       "published": true,
       "text": "[Platzhalter: 1–2 Sätze Haltung]",
       "cover": null,
-      "heroFavorites": []
+      "heroFavorites": [
+        { "image": "black-forest-summer-2023/03", "focus": [50, 50] },
+        { "image": "black-forest-autumn-2023/03", "focus": [50, 50] }
+      ]
     },
     {
       "id": "portrait",
@@ -41,7 +48,10 @@
       "published": true,
       "text": "[Platzhalter: 1–2 Sätze Haltung]",
       "cover": null,
-      "heroFavorites": []
+      "heroFavorites": [
+        { "image": "wedding-1-2026/01", "focus": [50, 50] },
+        { "image": "wedding-2-2026/03", "focus": [50, 50] }
+      ]
     },
     {
       "id": "creative",
@@ -50,7 +60,10 @@
       "published": true,
       "text": "[Platzhalter: 1–2 Sätze Haltung]",
       "cover": null,
-      "heroFavorites": []
+      "heroFavorites": [
+        { "image": "halloween-2023/02", "focus": [50, 50] },
+        { "image": "halloween-2023/01", "focus": [50, 50] }
+      ]
     }
   ],
 
@@ -91,6 +104,57 @@
       ]
     },
     {
+      "id": "bernese-oberland-2026",
+      "kind": "trip",
+      "name": "Berner Oberland",
+      "shortName": "Interlaken",
+      "collection": "landscape",
+      "year": 2026,
+      "country": "Schweiz",
+      "region": "switzerland",
+      "coords": { "lat": 46.69, "lon": 7.86 },
+      "text": "Rund um Interlaken: Gletscher, Wasserfälle und Täler, die so steil sind, dass die Sonne im Winter nur Stunden bleibt. [Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "id": "01", "file": "bernese-oberland-2026-01.webp", "width": 2400, "height": 1600, "title": "Gipfel über dem See", "alt": "Schneebedeckter Gipfel über einem dunklen Bergsee", "demo": 235 },
+        { "id": "02", "file": "bernese-oberland-2026-02.webp", "width": 2400, "height": 1600, "title": "Bergkette", "alt": "Verschneite Bergkette unter tiefblauem Himmel", "demo": 296 },
+        { "id": "03", "file": "bernese-oberland-2026-03.webp", "width": 2400, "height": 1600, "title": "Neuschnee", "alt": "Frisch verschneite Gipfel im Morgenlicht", "demo": 256 },
+        { "id": "04", "file": "bernese-oberland-2026-04.webp", "width": 2400, "height": 1600, "title": "Almweg", "alt": "Grüner Bergrücken mit Wanderweg", "demo": 287 }
+      ]
+    },
+    {
+      "id": "wedding-2-2026",
+      "kind": "shoot",
+      "name": "Hochzeit",
+      "collection": "portrait",
+      "year": 2026,
+      "coords": null,
+      "text": "[Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "id": "01", "file": "wedding-2-2026-01.webp", "width": 1600, "height": 2400, "title": "[Platzhalter]", "alt": "Porträt einer Frau mit lockigem Haar", "demo": 1027 },
+        { "id": "02", "file": "wedding-2-2026-02.webp", "width": 1600, "height": 2400, "title": "[Platzhalter]", "alt": "Frau im Profil vor hellem Hintergrund", "demo": 996 },
+        { "id": "03", "file": "wedding-2-2026-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Frau sitzt im warmen Sonnenlicht", "demo": 777 },
+        { "id": "04", "file": "wedding-2-2026-04.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Frau mit Sonnenbrille auf einem Feld", "demo": 64 }
+      ]
+    },
+    {
+      "id": "wedding-1-2026",
+      "kind": "shoot",
+      "name": "Hochzeit",
+      "collection": "portrait",
+      "year": 2026,
+      "coords": null,
+      "text": "[Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "id": "01", "file": "wedding-1-2026-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Paar sitzt auf einer Bank am Strand", "demo": 129 },
+        { "id": "02", "file": "wedding-1-2026-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Hände formen ein Herz vor der Sonne", "demo": 815 },
+        { "id": "03", "file": "wedding-1-2026-03.webp", "width": 1600, "height": 2400, "title": "[Platzhalter]", "alt": "Paar spaziert am Strand", "demo": 1001 },
+        { "id": "04", "file": "wedding-1-2026-04.webp", "width": 1600, "height": 2400, "title": "[Platzhalter]", "alt": "Frau im Gegenlicht auf einer Wiese", "demo": 65 }
+      ]
+    },
+    {
       "id": "bergen-2026",
       "kind": "trip",
       "name": "Bergen & Hardangerfjord",
@@ -109,22 +173,33 @@
       ]
     },
     {
-      "id": "bernese-oberland-2026",
-      "kind": "trip",
-      "name": "Berner Oberland",
-      "shortName": "Interlaken",
-      "collection": "landscape",
+      "id": "motorcycles-friends-2026",
+      "kind": "shoot",
+      "name": "Motorräder · Freunde",
+      "collection": "automotive",
       "year": 2026,
-      "country": "Schweiz",
-      "region": "switzerland",
-      "coords": { "lat": 46.69, "lon": 7.86 },
-      "text": "Rund um Interlaken: Gletscher, Wasserfälle und Täler, die so steil sind, dass die Sonne im Winter nur Stunden bleibt. [Platzhalter]",
+      "coords": null,
+      "text": "[Platzhalter]",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "bernese-oberland-2026-01.webp", "width": 2400, "height": 1600, "title": "Gipfel über dem See", "alt": "Schneebedeckter Gipfel über einem dunklen Bergsee", "demo": 235 },
-        { "id": "02", "file": "bernese-oberland-2026-02.webp", "width": 2400, "height": 1600, "title": "Bergkette", "alt": "Verschneite Bergkette unter tiefblauem Himmel", "demo": 296 },
-        { "id": "03", "file": "bernese-oberland-2026-03.webp", "width": 2400, "height": 1600, "title": "Neuschnee", "alt": "Frisch verschneite Gipfel im Morgenlicht", "demo": 256 },
-        { "id": "04", "file": "bernese-oberland-2026-04.webp", "width": 2400, "height": 1600, "title": "Almweg", "alt": "Grüner Bergrücken mit Wanderweg", "demo": 287 }
+        { "id": "01", "file": "motorcycles-friends-2026-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Frau auf einem Fahrrad auf einer Landstraße", "demo": 839 },
+        { "id": "02", "file": "motorcycles-friends-2026-02.webp", "width": 1600, "height": 2400, "title": "[Platzhalter]", "alt": "Person schaut aus dem Fenster eines Busses", "demo": 1013 },
+        { "id": "03", "file": "motorcycles-friends-2026-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Altes Autowrack im hohen Gras", "demo": 555 }
+      ]
+    },
+    {
+      "id": "rs660-2026",
+      "kind": "shoot",
+      "name": "Aprilia RS 660",
+      "collection": "automotive",
+      "year": 2026,
+      "coords": null,
+      "text": "[Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "id": "01", "file": "rs660-2026-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Straße führt auf Berge zu", "demo": 563 },
+        { "id": "02", "file": "rs660-2026-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Autobahnkreuz von oben", "demo": 576 },
+        { "id": "03", "file": "rs660-2026-03.webp", "width": 1600, "height": 2400, "title": "[Platzhalter]", "alt": "Bergstraße in Serpentinen", "demo": 191 }
       ]
     },
     {
@@ -258,6 +333,36 @@
       ]
     },
     {
+      "id": "s1000rr-porsche-2025",
+      "kind": "shoot",
+      "name": "BMW S 1000 RR & Porsche",
+      "collection": "automotive",
+      "year": 2025,
+      "coords": null,
+      "text": "[Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "id": "01", "file": "s1000rr-porsche-2025-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Auto wirbelt Staub auf einer Wüstenpiste auf", "demo": 551 },
+        { "id": "02", "file": "s1000rr-porsche-2025-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Geländewagen vor einer Häuserzeile", "demo": 514 },
+        { "id": "03", "file": "s1000rr-porsche-2025-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Dunkle Motorhaube im Streiflicht", "demo": 892 }
+      ]
+    },
+    {
+      "id": "s1000rr-2025",
+      "kind": "shoot",
+      "name": "BMW S 1000 RR",
+      "collection": "automotive",
+      "year": 2025,
+      "coords": null,
+      "text": "[Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "id": "01", "file": "s1000rr-2025-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Radfahrer in Bewegungsunschärfe", "demo": 1077 },
+        { "id": "02", "file": "s1000rr-2025-02.webp", "width": 1600, "height": 2400, "title": "[Platzhalter]", "alt": "Lichtspuren auf einer nächtlichen Straße", "demo": 352 },
+        { "id": "03", "file": "s1000rr-2025-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Verkehr in einer Stadt bei Nacht", "demo": 579 }
+      ]
+    },
+    {
       "id": "lofoten-2024",
       "kind": "trip",
       "name": "Lofoten",
@@ -336,6 +441,21 @@
       ]
     },
     {
+      "id": "tuono-660-2024",
+      "kind": "shoot",
+      "name": "Aprilia Tuono 660",
+      "collection": "automotive",
+      "year": 2024,
+      "coords": null,
+      "text": "[Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "id": "01", "file": "tuono-660-2024-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Blauer Bus vor Abendhimmel", "demo": 655 },
+        { "id": "02", "file": "tuono-660-2024-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Bus im Straßenverkehr", "demo": 183 },
+        { "id": "03", "file": "tuono-660-2024-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Blick aus dem Auto auf eine Landstraße", "demo": 757 }
+      ]
+    },
+    {
       "id": "gran-canaria-2024",
       "kind": "trip",
       "name": "Gran Canaria",
@@ -354,37 +474,37 @@
       ]
     },
     {
-      "id": "black-forest-autumn-2023",
+      "id": "eibsee-winter-2023",
       "kind": "trip",
-      "name": "Schwarzwald · Herbst",
-      "shortName": "Bühlertal",
+      "name": "Eibsee im Winter",
+      "shortName": "Eibsee",
       "collection": "landscape",
       "year": 2023,
       "country": "Deutschland",
       "region": "germany",
-      "coords": { "lat": 48.69, "lon": 8.19 },
+      "coords": { "lat": 47.46, "lon": 10.97 },
       "text": "[Platzhalter]",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "black-forest-autumn-2023-01.webp", "width": 2400, "height": 1600, "title": "Nebelwald", "alt": "Hohe Nadelbäume in dichtem Nebel", "demo": 229 },
-        { "id": "02", "file": "black-forest-autumn-2023-02.webp", "width": 2400, "height": 1600, "title": "Waldweg", "alt": "Schmaler Weg zwischen Wiese und Waldrand", "demo": 17 }
+        { "id": "01", "file": "eibsee-winter-2023-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Schneebedeckte Gipfel über einem See", "demo": 905 },
+        { "id": "02", "file": "eibsee-winter-2023-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Verschneiter Berg mit Vögeln am Himmel", "demo": 565 },
+        { "id": "03", "file": "eibsee-winter-2023-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Schneebedeckte Bergkette unter blauem Himmel", "demo": 908 }
       ]
     },
     {
-      "id": "black-forest-summer-2023",
-      "kind": "trip",
-      "name": "Schwarzwald · Sommer",
-      "shortName": "Triberg",
-      "collection": "landscape",
+      "id": "halloween-2023",
+      "kind": "shoot",
+      "name": "Halloween",
+      "collection": "creative",
       "year": 2023,
-      "country": "Deutschland",
-      "region": "germany",
-      "coords": { "lat": 48.13, "lon": 8.23 },
-      "text": "Nebelwälder, Hochmoore und weite Blicke bis zu den Alpen. [Platzhalter]",
+      "coords": null,
+      "text": "[Platzhalter]",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "black-forest-summer-2023-01.webp", "width": 2400, "height": 1600, "title": "Hochwiese", "alt": "Hohes Gras im Gegenlicht vor einem Waldrand", "demo": 127 },
-        { "id": "02", "file": "black-forest-summer-2023-02.webp", "width": 2400, "height": 1600, "title": "Weitblick", "alt": "Blick über Hügel und Wald bis zum Horizont", "demo": 10 }
+        { "id": "01", "file": "halloween-2023-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Zwei Silhouetten am Ende eines dunklen Tunnels", "demo": 209 },
+        { "id": "02", "file": "halloween-2023-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Leuchtender Lichtkreis in einem dunklen Raum", "demo": 1079 },
+        { "id": "03", "file": "halloween-2023-03.webp", "width": 1600, "height": 2400, "title": "[Platzhalter]", "alt": "Geweih mit rotem Stoff vor schwarzem Grund", "demo": 891 },
+        { "id": "04", "file": "halloween-2023-04.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Wunderkerze in einer Hand", "demo": 407 }
       ]
     },
     {
@@ -403,6 +523,91 @@
         { "id": "01", "file": "neuschwanstein-2023-01.webp", "width": 2400, "height": 1600, "title": "Felder im Abendlicht", "alt": "Goldene Felder unter einem hellen Abendhimmel", "demo": 337 },
         { "id": "02", "file": "neuschwanstein-2023-02.webp", "width": 2400, "height": 1600, "title": "Sonnenuntergang", "alt": "Weite Wiese mit einzelnen Bäumen im Licht der untergehenden Sonne", "demo": 110 },
         { "id": "03", "file": "neuschwanstein-2023-03.webp", "width": 2400, "height": 1600, "title": "Wiese", "alt": "Hohes grünes Gras vor einem Waldrand", "demo": 18 }
+      ]
+    },
+    {
+      "id": "hohenzollern-2023",
+      "kind": "trip",
+      "name": "Burg Hohenzollern",
+      "shortName": "Hohenzollern",
+      "collection": "landscape",
+      "year": 2023,
+      "country": "Deutschland",
+      "region": "germany",
+      "coords": { "lat": 48.32, "lon": 8.97 },
+      "text": "[Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "id": "01", "file": "hohenzollern-2023-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Weg führt auf ein Schloss mit Türmen zu", "demo": 142 },
+        { "id": "02", "file": "hohenzollern-2023-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Herbstwald im Nebel", "demo": 923 },
+        { "id": "03", "file": "hohenzollern-2023-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Historisches Gebäude hinter einer Rasenfläche", "demo": 193 }
+      ]
+    },
+    {
+      "id": "black-forest-autumn-2023",
+      "kind": "trip",
+      "name": "Schwarzwald · Herbst",
+      "shortName": "Bühlertal",
+      "collection": "landscape",
+      "year": 2023,
+      "country": "Deutschland",
+      "region": "germany",
+      "coords": { "lat": 48.69, "lon": 8.19 },
+      "text": "[Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "id": "01", "file": "black-forest-autumn-2023-01.webp", "width": 2400, "height": 1600, "title": "Nebelwald", "alt": "Hohe Nadelbäume in dichtem Nebel", "demo": 229 },
+        { "id": "02", "file": "black-forest-autumn-2023-02.webp", "width": 2400, "height": 1600, "title": "Waldweg", "alt": "Schmaler Weg zwischen Wiese und Waldrand", "demo": 17 },
+        { "id": "03", "file": "black-forest-autumn-2023-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter] Wolf- und Bärenpark", "alt": "Braunbär blickt in die Kamera", "tags": ["wildlife"], "demo": 433 }
+      ]
+    },
+    {
+      "id": "black-forest-summer-2023",
+      "kind": "trip",
+      "name": "Schwarzwald · Sommer",
+      "shortName": "Triberg",
+      "collection": "landscape",
+      "year": 2023,
+      "country": "Deutschland",
+      "region": "germany",
+      "coords": { "lat": 48.13, "lon": 8.23 },
+      "text": "Nebelwälder, Hochmoore und weite Blicke bis zu den Alpen. [Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "id": "01", "file": "black-forest-summer-2023-01.webp", "width": 2400, "height": 1600, "title": "Hochwiese", "alt": "Hohes Gras im Gegenlicht vor einem Waldrand", "demo": 127 },
+        { "id": "02", "file": "black-forest-summer-2023-02.webp", "width": 2400, "height": 1600, "title": "Weitblick", "alt": "Blick über Hügel und Wald bis zum Horizont", "demo": 10 },
+        { "id": "03", "file": "black-forest-summer-2023-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter] Wolf- und Bärenpark", "alt": "Wolf steht auf einem Waldboden", "tags": ["wildlife"], "demo": 718 }
+      ]
+    },
+    {
+      "id": "tuono-660-2023",
+      "kind": "shoot",
+      "name": "Aprilia Tuono 660",
+      "collection": "automotive",
+      "year": 2023,
+      "date": "2023-03",
+      "coords": null,
+      "text": "[Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "id": "01", "file": "tuono-660-2023-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Zwei klassische Autos vor gelben Toren", "demo": 133 },
+        { "id": "02", "file": "tuono-660-2023-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Alter Pick-up auf einer Wiese", "demo": 1072 },
+        { "id": "03", "file": "tuono-660-2023-03.webp", "width": 1600, "height": 2400, "title": "[Platzhalter]", "alt": "Lenkrad und Armaturen eines alten Autos", "demo": 605 }
+      ]
+    },
+    {
+      "id": "tuono-660-2022",
+      "kind": "shoot",
+      "name": "Aprilia Tuono 660",
+      "collection": "automotive",
+      "year": 2022,
+      "coords": null,
+      "text": "[Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "id": "01", "file": "tuono-660-2022-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Front eines klassischen Autos", "demo": 1071 },
+        { "id": "02", "file": "tuono-660-2022-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Altes Auto vor einer Hauswand", "demo": 111 },
+        { "id": "03", "file": "tuono-660-2022-03.webp", "width": 1600, "height": 2400, "title": "[Platzhalter]", "alt": "Blick durch die Windschutzscheibe auf Bäume", "demo": 1070 }
       ]
     },
     {
@@ -442,6 +647,24 @@
       ]
     },
     {
+      "id": "allgaeu-winter-2021",
+      "kind": "trip",
+      "name": "Allgäu im Winter",
+      "shortName": "Bad Hindelang",
+      "collection": "landscape",
+      "year": 2021,
+      "country": "Deutschland",
+      "region": "germany",
+      "coords": { "lat": 47.5, "lon": 10.37 },
+      "text": "[Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "id": "01", "file": "allgaeu-winter-2021-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Verschneiter Waldweg zwischen kahlen Bäumen", "demo": 559 },
+        { "id": "02", "file": "allgaeu-winter-2021-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Mit Raureif überzogener Wald", "demo": 730 },
+        { "id": "03", "file": "allgaeu-winter-2021-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Straße durch eine verschneite Ebene", "demo": 964 }
+      ]
+    },
+    {
       "id": "algarve-2020",
       "kind": "trip",
       "name": "Algarve",
@@ -457,6 +680,96 @@
         { "id": "01", "file": "algarve-2020-01.webp", "width": 2400, "height": 1600, "title": "Blühende Steilküste", "alt": "Felsige Küste mit blühenden Pflanzen über dem Meer", "demo": 37 },
         { "id": "02", "file": "algarve-2020-02.webp", "width": 2400, "height": 1600, "title": "Boot in der Bucht", "alt": "Kleines Boot auf türkisfarbenem, klarem Wasser", "demo": 124 },
         { "id": "03", "file": "algarve-2020-03.webp", "width": 2400, "height": 1600, "title": "Abendrot", "alt": "Sonnenuntergang mit warm leuchtendem Himmel über dem Horizont", "demo": 71 }
+      ]
+    },
+    {
+      "id": "dolomites-2020",
+      "kind": "trip",
+      "name": "Dolomiten",
+      "shortName": "Grödnertal",
+      "collection": "landscape",
+      "year": 2020,
+      "country": "Italien",
+      "region": "dolomites",
+      "coords": { "lat": 46.58, "lon": 11.68 },
+      "text": "[Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "id": "01", "file": "dolomites-2020-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Bergsee spiegelt Gipfel und Wolken", "demo": 980 },
+        { "id": "02", "file": "dolomites-2020-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Rötliche Felsen im Abendlicht", "demo": 1016 },
+        { "id": "03", "file": "dolomites-2020-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Verschneite Berge mit Zelten im Vordergrund", "demo": 1036 }
+      ]
+    },
+    {
+      "id": "allgaeu-zugspitze-2020",
+      "kind": "trip",
+      "name": "Allgäu & Zugspitze",
+      "shortName": "Allgäu",
+      "collection": "landscape",
+      "year": 2020,
+      "country": "Deutschland",
+      "region": "germany",
+      "coords": { "lat": 47.57, "lon": 10.7 },
+      "text": "[Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "id": "01", "file": "allgaeu-zugspitze-2020-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Märchenschloss auf einem bewaldeten Felsen", "demo": 1040 },
+        { "id": "02", "file": "allgaeu-zugspitze-2020-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Herbstliche Bäume vor einer Bergkette", "demo": 678 },
+        { "id": "03", "file": "allgaeu-zugspitze-2020-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Bergwiese im Abendlicht", "demo": 547 }
+      ]
+    },
+    {
+      "id": "saxony-harz-2020",
+      "kind": "trip",
+      "name": "Sächsische Schweiz & Harz",
+      "shortName": "Bastei",
+      "collection": "landscape",
+      "year": 2020,
+      "country": "Deutschland",
+      "region": "germany",
+      "coords": { "lat": 50.96, "lon": 14.07 },
+      "text": "[Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "id": "01", "file": "saxony-harz-2020-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Steile Felswände über einem bewaldeten Tal", "demo": 1043 },
+        { "id": "02", "file": "saxony-harz-2020-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Bizarre Felsformationen zwischen Bäumen", "demo": 136 },
+        { "id": "03", "file": "saxony-harz-2020-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Lichtstrahlen in einem hohen Wald", "demo": 543 }
+      ]
+    },
+    {
+      "id": "salzkammergut-2020",
+      "kind": "trip",
+      "name": "Salzkammergut",
+      "shortName": "Hallstatt",
+      "collection": "landscape",
+      "year": 2020,
+      "country": "Österreich",
+      "region": "austria",
+      "coords": { "lat": 47.56, "lon": 13.65 },
+      "text": "[Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "id": "01", "file": "salzkammergut-2020-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Holzsteg an einem Bergsee zwischen Wäldern", "demo": 434 },
+        { "id": "02", "file": "salzkammergut-2020-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Wasserfall in sattgrüner Schlucht", "demo": 1039 },
+        { "id": "03", "file": "salzkammergut-2020-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "See vor Bergen im Abendlicht", "demo": 128 }
+      ]
+    },
+    {
+      "id": "scotland-2019",
+      "kind": "trip",
+      "name": "Schottland",
+      "shortName": "Edinburgh",
+      "collection": "landscape",
+      "year": 2019,
+      "country": "Schottland (Vereinigtes Königreich)",
+      "region": "northern-europe",
+      "coords": { "lat": 55.95, "lon": -3.19 },
+      "text": "[Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "id": "01", "file": "scotland-2019-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Grüne Hügel fallen steil zum Meer ab", "demo": 1018 },
+        { "id": "02", "file": "scotland-2019-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Hügelige Küstenlandschaft unter Wolken", "demo": 482 },
+        { "id": "03", "file": "scotland-2019-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Felsige Küste mit Brandung", "demo": 483 }
       ]
     }
   ]

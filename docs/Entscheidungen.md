@@ -245,3 +245,19 @@ Nici: kurzes Einfrieren und schwarze Bühne beim Öffnen eines Eintrags. Gefunde
 - **Kein Überblenden der ganzen Seite mehr:** Das 350-ms-Überblenden (`::view-transition-old/new(root)`, seit 15.10.2026) fühlte sich auf jeder Seite wie eine gleich lange Ladepause an – die alte Seite blieb stehen bzw. die neue war noch leer, bis ihr Inhalt per Skript kam (nur „Über mich“ ohne Skript-Inhalt fiel nicht auf). Jetzt wechselt die Seite sofort; erhalten bleiben die stehende Kopfzeile und der Bildflug ins Titelbild (`entry-cover`). Ersetzt die Festlegung „Seitenwechsel: Überblendung“ unter „Über mich, Rechtliches, Feinschliff“.
 - **Galerie:** alle Bilder `loading="lazy"`, kein `fetchpriority="high"` mehr am ersten Galeriebild – es konkurrierte mit dem Titelbild der Bühne.
 - Nicht gemessen werden konnte die Bildrate im sichtbaren Browser (Testfenster verdeckt); bitte im eigenen Browser gegenprüfen, am besten auf der Live-Seite nach dem Push.
+
+### Schritt 8 – neue Einträge aus der Bestandsliste (17.10.2026)
+- **39 Einträge** (vorher 21): 29 Trips in Landscape, 7 Automotive-Shoots, 2 Hochzeiten (Portrait), Halloween (Creative). Die Tabelle der Bestandsliste ergibt 29/7 – die Zusammenfassung dort (30/8) war ungenau.
+- **8 neue Trips** mit Kartenpunkt am Hauptort (siehe „Vorbereitung Schritt 8“): Schottland 2019 (Edinburgh), Salzkammergut 2020 (Hallstatt), Sächsische Schweiz & Harz 2020 (Bastei), Allgäu & Zugspitze 2020 (Neuschwanstein/Füssen), Dolomiten 2020 (Grödnertal), Allgäu im Winter 2021 (Bad Hindelang), Burg Hohenzollern 2023, Eibsee im Winter 2023. Regionen: bestehende (`northern-europe`, `austria`, `germany`, `dolomites`).
+- **10 Shoots** ohne Karte (`coords: null`, ohne `region`/`country`); Tuono 660 2023 mit `date: "2023-03"`, sonst nur Jahr.
+- **Demo-Bilder:** je 3 (Trips) bzw. 3–4 (Shoots), picsum-IDs von Hand passend ausgesucht (Oldtimer/Straßen für Automotive, Paare/Porträts für die Hochzeiten, Nachtmotive für Halloween); einige Shoot-Bilder hochkant, damit die Bildstrecke Paare zeigt. Titel `[Platzhalter]`, Alt-Texte beschreiben das Demo-Motiv.
+- **Wildlife:** zwei Platzhalter-Bilder „[Platzhalter] Wolf- und Bärenpark“ (Wolf, Bär) im Schwarzwald Sommer bzw. Herbst, Tag `wildlife` – stehen für die Wildpark-Bilder, die beim Import per Aufnahmedatum zugeordnet werden.
+- **Hero-Favoriten** für Automotive (3), Wildlife (2), Portrait (2), Creative (2) – Demo-Bilder, Fokus 50/50. Der Hero der Startseite zeigt jetzt alle fünf Collections.
+- **Reihenfolge** neueste zuerst nach der Bestandsliste (dort innerhalb eines Kamera-Abschnitts chronologisch): u. a. 2026 jetzt Seoul, Berner Oberland, Hochzeit 2, Hochzeit 1, Bergen, Motorräder · Freunde, RS 660 (Bergen und Berner Oberland getauscht).
+- Offen für Nici: Die beiden Hochzeiten heißen gleich („Hochzeit · 2026“) – in Navigation und Kacheln nicht unterscheidbar; besser z. B. mit den Vornamen des Paares benennen.
+
+### Startseite: Collections als Index mit Bildfenster (17.10.2026)
+- Ersetzt die Liste mit dem Vorschaubild am Mauszeiger (gefiel Nici nicht). Vorbild: Abschnitt „Anlässe“ der Huppermans-Seite (`dany-website/src/components/home/AnlaesseIndex.astro`, <https://huppermans.netlify.app/>).
+- Links die Liste: Nummer · Name (Geist 200, bis 4rem, inaktiv gedämpft in `--color-text-3`) · Pfeil im Kreis. Aktive Zeile (Überfahren oder Tastaturfokus; Standard: 01): Name hell, Zeile rückt leicht ein, Zähler (`29 Trips`) und Text klappen darunter auf, Pfeil-Kreis gefüllt in Gletscherfarbe und um −45° gedreht.
+- Rechts ein festes Bildfenster (sticky, **3:2 quer** statt 4:5 hochkant wie bei Dany): Titelbild der aktiven Collection blendet mit leichtem Zoom über (0,7 s / 1,4 s), unten `01 / 05` und Name. Bilder werden vorgeladen, sobald die Liste in die Nähe kommt.
+- Unter 64rem: kein Bildfenster, jede Zeile mit eigenem Bild (16:10) darunter, Angaben immer sichtbar.
