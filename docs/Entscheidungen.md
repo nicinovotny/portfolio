@@ -216,3 +216,9 @@ Spezifikation: `docs/Umbau-Spezifikation.md` (Collections, Eintragsarten, Tags, 
 - **Shoots ohne Karte** (`"coords": null`, ohne `region`), wie in der Spezifikation.
 - **Kleinarl 2025** behält seine Demo-Bilder.
 - **Dolomiten:** Nici war 2020, 2024 und 2025 jeweils an ähnlichen Orten (Grödnertal/St. Ulrich, Seiser Alm, Pragser Wildsee, Drei Zinnen). Die drei Einträge werden auf der Karte verteilt: 2020 → St. Ulrich im Grödnertal (46.58, 11.68), 2024 → Seiser Alm (bleibt), 2025 → Cortina (bleibt).
+
+### Feinschliff A – Collections-Übersicht kompakt (17.10.2026)
+- `collections.html` nach Nicis Adobe-Portfolio: eine Zeile pro Collection im Zickzack (Bild links/rechts im Wechsel, Landscape beginnt links). Bild 3:2 auf ca. 58 % der Breite, höchstens 48 % der Fensterhöhe (bei 1440×900 gut zwei Collections sichtbar); daneben eine dunkle Fläche (`--color-land-2`) mit Ziffer, Name (Geist 200, 2–3.5rem), Zähler und Text (max. 2 Zeilen). 1rem Abstand zwischen den Zeilen.
+- Ganze Zeile ist der Link; Überfahren/Fokus: Bild zoomt leicht, Name in Gletscherfarbe. **Keine gepunktete Führungslinie, kein „Collection öffnen“.**
+- Handy: Bild oben, darunter schmale Leiste (Ziffer + Name links, Zähler rechts), Text ausgeblendet.
+- Startseite: gepunktete Führungslinie in der Collections-Liste ebenfalls entfernt (Leerraum zwischen Name und Zähler); die feine graue Linie unter jeder Zeile bleibt vorerst.

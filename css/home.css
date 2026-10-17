@@ -355,7 +355,7 @@
   list-style: none;
 }
 
-/* „01  Landscape ……………… 21 Trips“ */
+/* „01  Landscape          21 Trips“ */
 .home-collection {
   display: grid;
   grid-template-columns: 3.5rem auto minmax(var(--space-l), 1fr) auto;
@@ -376,10 +376,8 @@
   transition: color var(--duration-fast) ease, translate var(--duration-medium) var(--ease-out);
 }
 
-.home-collection__leader {
-  border-bottom: var(--hairline) dotted var(--color-hairline-strong);
-  translate: 0 -0.4em;
-}
+/* Leerraum zwischen Name und Zähler (bewusst ohne gepunktete Linie – Nici, 17.10.2026) */
+.home-collection__leader { min-width: var(--space-l); }
 
 .home-collection .label { transition: color var(--duration-fast) ease; }
 .home-collection:hover .home-collection__name { translate: 0.15em 0; }

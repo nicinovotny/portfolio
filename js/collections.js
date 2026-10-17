@@ -1,5 +1,5 @@
 // Collections-Übersicht (collections.html): alle veröffentlichten Collections in fester Reihenfolge,
-// je eine große Zeile mit Ziffer, Zähler, Titelbild, Name und kurzem Text. Ganze Zeile ist der Link.
+// je eine kompakte Zeile im Zickzack: Titelbild, daneben Ziffer, Name, Zähler und kurzer Text. Ganze Zeile ist der Link.
 
 import {
   collectionUrl, getCollectionCover, getCollectionEntries, getCollectionFrames, getCollections, imageAttrs,
@@ -26,24 +26,16 @@ try {
   list.outerHTML = '<p class="status-error">Die Collections konnten nicht geladen werden. Läuft die Seite über einen lokalen Server (z. B. <code>npx serve</code>)?</p>';
 }
 
-/** Zeile: „01 ·········· 21 Trips“, darunter Titelbild + Name, Text, „Collection öffnen“ */
+/**
+ * Zeile im Zickzack: Titelbild auf gut der halben Breite, daneben eine ruhige Fläche mit Ziffer, Name,
+ * Zähler und kurzem Text. Jede zweite Zeile ist gespiegelt (css/collections.css). Ganze Zeile = Link.
+ */
 function row(collection, index, counts, cover) {
   const item = document.createElement('li');
-  item.className = 'collection-row';
 
   const link = document.createElement('a');
-  link.className = 'collection-row__link';
+  link.className = 'collection-row';
   link.href = collectionUrl(collection.id);
-
-  // Kopfzeile wie ein Instrument: Ziffer, gepunktete Führungslinie, Zähler
-  const top = document.createElement('div');
-  top.className = 'collection-row__top';
-  top.append(
-    Object.assign(document.createElement('span'), { className: 'label', textContent: pad2(index + 1) }),
-    Object.assign(document.createElement('span'), { className: 'collection-row__leader' }),
-    Object.assign(document.createElement('span'), { className: 'label', textContent: counts.join(' · ') || 'Noch leer' }),
-  );
-  top.children[1].setAttribute('aria-hidden', 'true');
 
   const figure = document.createElement('div');
   figure.className = 'collection-row__image';
@@ -58,17 +50,16 @@ function row(collection, index, counts, cover) {
     figure.classList.add('is-empty');
   }
 
-  const info = document.createElement('div');
-  info.className = 'collection-row__info';
-  info.append(Object.assign(document.createElement('h2'), { className: 'collection-row__name', textContent: collection.name }));
-  if (collection.text) info.append(Object.assign(document.createElement('p'), { className: 'collection-row__text', textContent: collection.text }));
-  info.append(Object.assign(document.createElement('span'), { className: 'line-link', textContent: 'Collection öffnen' }));
+  const panel = document.createElement('div');
+  panel.className = 'collection-row__panel';
+  panel.append(
+    Object.assign(document.createElement('span'), { className: 'collection-row__number label label--quiet', textContent: pad2(index + 1) }),
+    Object.assign(document.createElement('h2'), { className: 'collection-row__name', textContent: collection.name }),
+    Object.assign(document.createElement('span'), { className: 'collection-row__count label', textContent: counts.join(' · ') || 'Noch leer' }),
+  );
+  if (collection.text) panel.append(Object.assign(document.createElement('p'), { className: 'collection-row__text', textContent: collection.text }));
 
-  const body = document.createElement('div');
-  body.className = 'collection-row__body';
-  body.append(figure, info);
-
-  link.append(top, body);
+  link.append(figure, panel);
   item.append(link);
   return item;
 }
