@@ -188,10 +188,15 @@ export function imageUrl(entry, image, width = image.width) {
   return new URL(`${entry.id}/${file}`, IMAGE_BASE).href;
 }
 
-/** src, srcset und Maße für ein <img>, damit keine Layout-Sprünge entstehen. */
+/**
+ * src, srcset und Maße für ein <img>, damit keine Layout-Sprünge entstehen.
+ * crossOrigin steht vorn (wird vor src gesetzt): Alle Bilder laden im selben Modus wie Bühne und Hero
+ * (die ihre Helligkeit messen) – sonst lädt der Browser dieselbe Datei ein zweites Mal.
+ */
 export function imageAttrs(entry, image) {
   const small = Math.min(SMALL_WIDTH, image.width);
   return {
+    crossOrigin: 'anonymous',
     src: imageUrl(entry, image, small),
     srcset: `${imageUrl(entry, image, small)} ${small}w, ${imageUrl(entry, image)} ${image.width}w`,
     width: image.width,

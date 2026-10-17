@@ -12,6 +12,7 @@ import { contourPath, seedOf } from './contours.js';
 const gsap = window.gsap;
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isTouch = matchMedia('(hover: none)').matches;
+const compactQuery = matchMedia('(max-width: 47.99rem)');   // wie css/map.css
 const MAP_DATA = new URL('../data/map/', import.meta.url);
 
 // Ab welcher Detailstufe Ebenen eingeblendet werden (von → bis voll sichtbar).
@@ -183,10 +184,11 @@ function zoomFactor() {
   return cameraFor({ level: 'globe' }).w / camera.w;
 }
 
-/** Bildschirm-Umrechnung für einen Ausschnitt – damit prüft die Kartenlogik, ob Marker sich überdecken */
+/** Bildschirm-Umrechnung für einen Ausschnitt – damit prüft die Kartenlogik, ob Marker sich überdecken.
+    compact: Handy-Layout, Marker ohne Koordinaten-Zeile (css/map.css) */
 function screenFor(cam) {
   const s = size.width / cam.w;
-  return { project: ([mx, my]) => [(mx - cam.x) * s, (my - cam.y) * s] };
+  return { project: ([mx, my]) => [(mx - cam.x) * s, (my - cam.y) * s], compact: compactQuery.matches };
 }
 
 /** Bildschirmposition eines Markers (inkl. Auffächerung bei Alben an gleicher Stelle) */
@@ -506,6 +508,7 @@ function render() {
     // Text links vom Ring, wenn er rechts aus dem Bild laufen würde
     marker.textWidth ??= marker.el.querySelector('.map-marker__text').offsetWidth;
     marker.el.classList.toggle('is-left', x + marker.textWidth + 48 > size.width);
+    marker.el.classList.toggle('is-quiet', Boolean(marker.data.quiet));   // Beschriftung überdeckt (js/map-views.js)
   }
 
   for (const label of labels) {

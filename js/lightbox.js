@@ -19,7 +19,7 @@ const wideQuery = matchMedia('(min-width: 64rem)');   // muss zu css/lightbox.cs
 const MARKUP = `
   <div class="lightbox__backdrop" data-lightbox-backdrop></div>
   <div class="lightbox__stage" data-lightbox-stage>
-    <img class="lightbox__img" data-lightbox-img alt="">
+    <img class="lightbox__img" data-lightbox-img alt="" crossorigin="anonymous">
   </div>
 
   <div class="lightbox__chrome" data-lightbox-chrome>
@@ -154,6 +154,7 @@ export function createLightbox({ images, thumbs, collections = [], currentEntryI
     ui.img.src = thumb.complete && thumb.naturalWidth ? thumb.currentSrc : attrs.src;
 
     const full = new Image();
+    full.crossOrigin = attrs.crossOrigin;   // gleicher Modus wie die Galerie → aus dem Cache
     full.sizes = `${Math.ceil(displayWidth)}px`;
     full.srcset = attrs.srcset;
     full.src = attrs.src;
@@ -169,6 +170,7 @@ export function createLightbox({ images, thumbs, collections = [], currentEntryI
       const { entry, image } = images[target];
       const attrs = imageAttrs(entry, image);
       const pre = new Image();
+      pre.crossOrigin = attrs.crossOrigin;
       pre.sizes = `${Math.ceil(measure(target).w)}px`;
       pre.srcset = attrs.srcset;
       pre.src = attrs.src;

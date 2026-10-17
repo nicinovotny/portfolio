@@ -197,9 +197,9 @@ async function show(index, { initial = false } = {}) {
     : null;
 
   await Promise.all([ready(slide.img), captionOut]);
+  if (id !== changeId) return;   // inzwischen wurde schon ein anderes Bild gewählt
   applyScrim(hero, slide.img);   // Verläufe an die Bildhelligkeit anpassen
   slides.forEach((s, i) => s.root.toggleAttribute('data-current', i === index));   // Quelle für den Übergang
-  if (id !== changeId) return;   // inzwischen wurde schon ein anderes Bild gewählt
   updateMeta(index);
 
   // Neues Bild über das alte legen
@@ -505,7 +505,8 @@ function setupIndex(list, data) {
     img.alt = '';
     img.className = 'home-index__img';
     img.sizes = '(min-width: 64rem) 40vw, 1px';
-    img.loading = index === 0 ? 'eager' : 'lazy';   // die übrigen lädt der Browser erst, wenn sie gebraucht werden
+    // die übrigen lädt der Browser erst, wenn sie gebraucht werden; unter 64rem ist das Fenster ausgeblendet
+    img.loading = index === 0 && indexQuery.matches ? 'eager' : 'lazy';
     img.decoding = 'async';
     if (index === 0) img.classList.add('is-on');
     preview.prepend(img);
@@ -516,7 +517,7 @@ function setupIndex(list, data) {
   const activate = (index) => {
     rows.forEach((row, i) => row.classList.toggle('is-active', i === index));
     images.forEach((img, i) => img?.classList.toggle('is-on', i === index));
-    if (images[index]) images[index].loading = 'eager';
+    if (images[index] && indexQuery.matches) images[index].loading = 'eager';
     number.textContent = pad2(index + 1);
     name.textContent = data[index].collection.name;
   };

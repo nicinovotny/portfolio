@@ -42,7 +42,7 @@ function row(collection, index, counts, cover) {
   if (cover) {
     const img = Object.assign(document.createElement('img'), imageAttrs(cover.entry, cover.image));
     img.alt = '';   // dekorativ: der Name daneben beschreibt den Link
-    img.sizes = '(min-width: 48rem) 58vw, 100vw';
+    img.sizes = '(min-width: 80rem) 36rem, (min-width: 48rem) 50vw, 100vw';   // Liste höchstens 72rem breit, Bild = Hälfte
     img.loading = index < 2 ? 'eager' : 'lazy';
     img.decoding = 'async';
     figure.append(img);
