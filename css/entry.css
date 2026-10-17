@@ -2,17 +2,19 @@
    Navigation innerhalb der Collection. Die Großansicht steht in css/lightbox.css. */
 
 /* ---------- Bühne ---------- */
-/* Titelbild über die ganze Fläche. Die Bühne „klebt“ oben (sticky), der Inhalt darunter hat eigenen
-   Hintergrund und schiebt sich beim Scrollen darüber. Zoom und Abdunkeln steuert js/entry.js. */
+/* Großes Titelbild, aber bewusst niedriger als der Hero der Startseite (72 % der Fensterhöhe): Darunter ist der
+   Inhalt schon angeschnitten, oben stehen Brotkrumen – so ist sofort klar, dass man in einem Eintrag ist
+   (docs/Konzept-Feinschliff.md, Teil B). Die Bühne „klebt“ oben (sticky), der Inhalt schiebt sich beim Scrollen
+   darüber. Zoom und Abdunkeln steuert js/entry.js. */
 .entry-stage {
   /* Ziel des Seitenübergangs: Das angeklickte Bild wächst hierher. Die ganze Bühne (Bild, Verläufe,
      Beschriftung) nimmt teil, damit beim Überblenden nichts kurz ungeschützt hell aufblitzt. */
   view-transition-name: entry-cover;
   position: sticky;
   top: 0;
-  height: 100vh;
-  height: 100svh;
-  min-height: 32rem;
+  height: 72vh;
+  height: 72svh;
+  min-height: 26rem;
   overflow: hidden;
   background: var(--color-bg);
   --scrim-top: 0.3;
@@ -45,10 +47,10 @@
   position: absolute;
   inset: 0 0 auto 0;
   z-index: 1;
-  height: calc(10rem + 4rem * var(--scrim-top));
+  height: calc(12rem + 5rem * var(--scrim-top));   /* reicht bis unter die Brotkrumen */
   background: linear-gradient(to bottom,
     rgb(11 13 14 / calc(0.62 + 0.25 * var(--scrim-top))),
-    rgb(11 13 14 / calc(0.28 + 0.3 * var(--scrim-top))) 50%,
+    rgb(11 13 14 / calc(0.4 + 0.35 * var(--scrim-top))) 60%,
     rgb(11 13 14 / 0));
   pointer-events: none;
 }
@@ -63,35 +65,55 @@
   pointer-events: none;
 }
 
-.entry-stage__corner {
+/* Brotkrumen unter der Kopfzeile: „Collections / Landscape / Trip 03 von 21“ */
+.entry-crumbs {
   position: absolute;
-  bottom: 28px;
-  width: 14px;
-  height: 14px;
-  border: 0 solid var(--color-hairline-strong);
-  pointer-events: none;
+  top: 104px;
+  left: var(--gutter);
+  right: var(--gutter);
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  /* lesbar auch auf hellem Himmel: kräftiger, weicher Schatten wie bei den Labels im Hero */
+  text-shadow: 0 0 2px rgba(11, 13, 14, 0.85), 0 1px 3px rgba(11, 13, 14, 0.7), 0 0 18px rgba(11, 13, 14, 0.6);
 }
-.entry-stage__corner--bl { left: 28px; border-width: 0 0 var(--hairline) var(--hairline); }
-.entry-stage__corner--br { right: 28px; border-width: 0 var(--hairline) var(--hairline) 0; }
+.entry-crumbs[hidden] { display: none; }
+.entry-crumbs ol { display: flex; flex-wrap: wrap; align-items: baseline; margin: 0; padding: 0; list-style: none; }
+.entry-crumbs li + li::before { content: '/'; margin: 0 0.9em; color: var(--color-text-3); }
+.entry-crumbs a {
+  display: inline-block;
+  padding: 10px 0;   /* größere Klickfläche */
+  color: var(--color-text);
+  transition: color var(--duration-fast) ease;
+}
+.entry-crumbs a:hover { color: var(--color-accent); }
+.entry-crumbs [aria-current] { color: #C3C9CC; }
+.entry-crumbs li + li::before { color: #9AA1A5; }
+.entry-crumbs__back,
+.entry-crumbs__short { display: none; }
 
 .entry-stage__caption {
   position: absolute;
   left: var(--gutter);
   right: calc(var(--gutter) + 18rem);   /* Platz für die Nachbar-Links rechts */
-  bottom: 104px;
+  bottom: 48px;
   z-index: 1;
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 14px;
   text-shadow: 0 0 2px rgba(11, 13, 14, 0.7), 0 1px 14px rgba(11, 13, 14, 0.55);
 }
 .entry-stage__caption .label { color: #C3C9CC; font-weight: 500; }
 
+/* kleiner als der Collection-Name im Hero der Startseite – keine Verwechslung */
 .entry-stage__title {
-  font-size: var(--text-display);
+  font-size: clamp(2.25rem, 1.5rem + 3vw, 4rem);
   font-weight: 200;
-  letter-spacing: var(--tracking-display);
-  line-height: 0.9;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
   text-wrap: balance;
   /* Maske für die Einblendung von unten; Polster für Unterlängen */
   overflow: hidden;
@@ -112,7 +134,7 @@
 .entry-stage__nav {
   position: absolute;
   right: var(--gutter);
-  bottom: 96px;
+  bottom: 40px;
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -146,35 +168,6 @@
   letter-spacing: var(--tracking-nav);
   white-space: nowrap;
   text-overflow: ellipsis;
-}
-
-/* Hinweis unten Mitte: Anzahl Bilder + Linie, springt zur Galerie */
-.entry-stage__scroll {
-  position: absolute;
-  left: 50%;
-  bottom: 20px;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 12px;
-  translate: -50% 0;
-}
-.entry-stage__scroll .label { color: var(--color-text-2); text-shadow: 0 1px 2px rgba(11, 13, 14, 0.5); }
-.entry-stage__scroll-line {
-  width: 1px;
-  height: 28px;
-  background: rgba(236, 232, 225, 0.35);
-  transform-origin: top;
-  animation: stage-scroll-line 2.4s var(--ease-out) infinite;
-}
-.entry-stage__scroll:hover .label { color: var(--color-accent); }
-
-@keyframes stage-scroll-line {
-  0% { transform: scaleY(0); opacity: 1; }
-  60% { transform: scaleY(1); opacity: 1; }
-  100% { transform: scaleY(1); opacity: 0; }
 }
 
 /* ---------- Inhalt über der Bühne ---------- */
@@ -242,14 +235,22 @@
 
 /* Eintrag nicht gefunden: kleine Bühne ohne Bild */
 .entry-missing .entry-stage { height: 60svh; position: relative; }
-.entry-missing .entry-stage__scroll,
+.entry-missing .entry-crumbs,
 .entry-missing .entry-facts,
 .entry-missing .entry-intro__links .line-link { display: none; }
 
 /* Handy: Nachbar-Links als schmale Leiste ganz unten, Titel darüber über die volle Breite */
 @media (max-width: 47.99rem) {
   .entry-intro { grid-template-columns: minmax(0, 1fr); }
-  .entry-stage__caption { right: var(--gutter); bottom: 104px; gap: 16px; }
+  .entry-stage__caption { right: var(--gutter); bottom: 76px; gap: 10px; }
+  /* Brotkrumen kurz: „← Landscape · 03/21“ */
+  .entry-crumbs { top: 64px; }
+  .entry-crumbs__home,
+  .entry-crumbs__long { display: none; }
+  .entry-crumbs__back,
+  .entry-crumbs__short { display: inline; }
+  .entry-crumbs li:nth-child(2)::before { content: none; }
+  .entry-crumbs li + li:last-child::before { content: '·'; }
   .entry-stage__shade { height: calc(68% + 20% * var(--scrim-bottom)); }   /* Titel bricht hier oft um */
   .entry-stage__nav {
     left: var(--gutter);
@@ -262,8 +263,6 @@
   .entry-stage__nav-link { max-width: 48%; justify-content: flex-start; }
   .entry-stage__nav-link--next { justify-content: flex-end; }
   .entry-stage__nav-link:not(.entry-stage__nav-link--next) .label { order: -1; }   /* „← 15 Name“ links */
-  .entry-stage__scroll { display: none; }
-  .entry-stage__corner { display: none; }
 }
 
 /* ---------- Shoot: Bildstrecke ---------- */

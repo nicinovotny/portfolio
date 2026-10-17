@@ -49,14 +49,22 @@
 
   <!-- Inhalt wird aus data/albums.json befüllt (?id=<id>); Trip und Shoot teilen sich diese Vorlage -->
   <main id="inhalt" class="entry" data-entry>
-    <!-- Bühne: Titelbild über die ganze Fläche. Beim Scrollen bleibt sie stehen, der Inhalt schiebt sich darüber. -->
+    <!-- Bühne: großes Titelbild (bewusst niedriger als der Hero der Startseite, der Inhalt ist darunter schon
+         angeschnitten). Beim Scrollen bleibt sie stehen, der Inhalt schiebt sich darüber. -->
     <section class="entry-stage" data-entry-stage aria-labelledby="entry-title">
       <div class="entry-stage__media">
         <img class="entry-stage__img" data-entry-cover alt="" crossorigin="anonymous" fetchpriority="high" decoding="async">
       </div>
       <div class="entry-stage__shade" aria-hidden="true"></div>
-      <span class="entry-stage__corner entry-stage__corner--bl" aria-hidden="true"></span>
-      <span class="entry-stage__corner entry-stage__corner--br" aria-hidden="true"></span>
+
+      <!-- Brotkrumen: wo bin ich? „Collections / Landscape / Trip 03 von 21“ (befüllt js/entry.js) -->
+      <nav class="entry-crumbs" data-entry-crumbs aria-label="Brotkrumen" hidden>
+        <ol>
+          <li class="entry-crumbs__home"><a href="collections.html">Collections</a></li>
+          <li><a data-entry-crumbs-collection href="collections.html"><span class="entry-crumbs__back" aria-hidden="true">← </span><span data-entry-crumbs-name></span></a></li>
+          <li aria-current="page"><span data-entry-crumbs-position></span></li>
+        </ol>
+      </nav>
 
       <div class="entry-stage__caption" data-entry-caption>
         <p class="label" data-entry-label>&nbsp;</p>
@@ -105,10 +113,6 @@
         </a>
       </nav>
 
-      <a class="entry-stage__scroll" href="#bilder" data-entry-scroll>
-        <span class="label" data-entry-count>Bilder</span>
-        <span class="entry-stage__scroll-line" aria-hidden="true"></span>
-      </a>
     </section>
 
     <!-- Inhalt: schiebt sich über die Bühne -->

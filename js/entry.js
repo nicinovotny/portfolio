@@ -23,7 +23,7 @@ const el = {
   stage: root.querySelector('[data-entry-stage]'),
   cover: root.querySelector('[data-entry-cover]'),
   caption: root.querySelector('[data-entry-caption]'),
-  count: root.querySelector('[data-entry-count]'),
+  crumbs: root.querySelector('[data-entry-crumbs]'),
   label: root.querySelector('[data-entry-label]'),
   title: root.querySelector('[data-entry-title]'),
   text: root.querySelector('[data-entry-text]'),
@@ -81,6 +81,7 @@ async function init() {
 
   root.dataset.kind = entry.kind;
   renderHead(entry, collection, regions);
+  renderCrumbs(entry, collection, siblings);
   renderStage(entry);
   if (entry.kind === 'shoot') renderStrip(entry);
   else renderGallery(entry);
@@ -115,7 +116,6 @@ function renderHead(entry, collection, regions) {
 
   setLabel(el.label, [KIND_LABELS[entry.kind], when, entry.coords && formatCoords(entry.coords)]);
   el.title.textContent = entry.name;
-  el.count.textContent = `${pad2(entry.images.length)} Bilder`;
   el.text.textContent = entry.text ?? '';
 
   // „Auf der Karte zeigen“ nur bei Einträgen mit Ort
@@ -143,6 +143,28 @@ function renderHead(entry, collection, regions) {
     wrap.append(dt, dd);
     return wrap;
   }));
+}
+
+/**
+ * Brotkrumen oben auf der Bühne: „Collections / Landscape / Trip 03 von 21“ – macht sofort klar, dass man
+ * in einem Eintrag ist (und nicht mehr auf der Startseite). Handy: „← Landscape · 03/21“ (css/entry.css).
+ */
+function renderCrumbs(entry, collection, siblings) {
+  if (!collection) return;
+  const position = siblings.findIndex((e) => e.id === entry.id);
+  const link = el.crumbs.querySelector('[data-entry-crumbs-collection]');
+  link.href = collectionUrl(collection.id);
+  el.crumbs.querySelector('[data-entry-crumbs-name]').textContent = collection.name;
+  const current = el.crumbs.querySelector('[data-entry-crumbs-position]');
+  if (position === -1) {
+    current.textContent = KIND_LABELS[entry.kind];
+  } else {
+    current.replaceChildren(
+      Object.assign(document.createElement('span'), { className: 'entry-crumbs__long', textContent: `${KIND_LABELS[entry.kind]} ${pad2(position + 1)} von ${pad2(siblings.length)}` }),
+      Object.assign(document.createElement('span'), { className: 'entry-crumbs__short', textContent: `${pad2(position + 1)}/${pad2(siblings.length)}` }),
+    );
+  }
+  el.crumbs.hidden = false;
 }
 
 // ---------- Bühne ----------
@@ -185,7 +207,7 @@ function setupStageScroll() {
   const scroll = { trigger: el.stage, start: 'top top', end: () => `+=${el.stage.offsetHeight}`, scrub: true };
   gsap.to(el.cover, { scale: 1.08, ease: 'none', scrollTrigger: scroll });
   gsap.to(el.stage, { '--stage-fade': 0.65, ease: 'none', scrollTrigger: scroll });
-  gsap.to([el.caption, el.count.parentElement, el.stageNav], {
+  gsap.to([el.caption, el.crumbs, el.stageNav], {
     autoAlpha: 0,
     y: -48,
     ease: 'none',
