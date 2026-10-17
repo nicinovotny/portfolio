@@ -222,3 +222,9 @@ Spezifikation: `docs/Umbau-Spezifikation.md` (Collections, Eintragsarten, Tags, 
 - Ganze Zeile ist der Link; Überfahren/Fokus: Bild zoomt leicht, Name in Gletscherfarbe. **Keine gepunktete Führungslinie, kein „Collection öffnen“.**
 - Handy: Bild oben, darunter schmale Leiste (Ziffer + Name links, Zähler rechts), Text ausgeblendet.
 - Startseite: gepunktete Führungslinie in der Collections-Liste ebenfalls entfernt (Leerraum zwischen Name und Zähler); die feine graue Linie unter jeder Zeile bleibt vorerst.
+
+### Feinschliff A2 – Jahre in Landscape (17.10.2026)
+- Bewusste Abweichung von der Spezifikation („keine Jahresüberschriften“): Nici möchte die Trips wieder nach Jahren gegliedert, vorerst **nur in Landscape**.
+- Neues Feld an der Collection: `"groupByYear": true` (in `albums.json` nur bei `landscape`). Für andere Collections später einfach dort setzen.
+- Unter „Trips“ je Jahr ein Unterabschnitt (h3): Jahr in Geist 200 links, Anzahl rechts (`03 Trips`), feine graue Haarlinie darüber (beim ersten Jahr direkt unter „Trips“ keine). Neueste zuerst, „Ohne Jahr“ am Ende. Shoots/Frames bleiben ungegliedert.
+- Kachel-Label zeigt bei Gliederung statt des Jahres das Land (`Trip — Südkorea`); mit genauem Datum bleibt die Zeitangabe (`Trip — Sep 2026 · 5 Tage`).

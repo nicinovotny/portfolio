@@ -115,3 +115,27 @@
   .collection-pager { flex-direction: column-reverse; align-items: stretch; }
   .collection-pager__next { align-items: flex-start; text-align: left; }
 }
+
+/* ---------- Jahre (Collections mit "groupByYear", z. B. Landscape) ---------- */
+/* wie früher auf der Seite „Alle Reisen“: großes Jahr links, Anzahl rechts, feine graue Haarlinie darüber */
+.collection-year + .collection-year { margin-top: var(--space-xl); }
+
+.collection-year__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-s);
+  padding-top: var(--space-s);
+  margin-bottom: var(--space-m);
+  border-top: var(--hairline) solid var(--color-hairline);
+}
+
+.collection-year__title {
+  font-size: var(--text-h2);
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+/* erstes Jahr direkt unter „Trips“: keine zweite Linie */
+.collection-section__head + .collection-year .collection-year__head { border-top: 0; padding-top: 0; }

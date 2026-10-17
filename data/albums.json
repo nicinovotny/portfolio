@@ -5,6 +5,7 @@
       "name": "Landscape",
       "order": 1,
       "published": true,
+      "groupByYear": true,
       "text": "[Platzhalter: 1–2 Sätze Haltung]",
       "cover": "seoul-2026/01",
       "heroFavorites": [

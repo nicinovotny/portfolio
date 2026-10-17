@@ -5,7 +5,10 @@ import { entryUrl, getCover, imageAttrs } from './data.js';
 import { KIND_LABELS, formatWhen } from './format.js';
 
 /** Kachel: Titelbild (3:2), Label „Trip — Aug 2024“, Name. Das Bild fliegt beim Klick in die Eintragsseite. */
-export function createTile(entry, position) {
+/**
+ * @param options.yearShown  Jahr steht schon als Überschrift darüber → im Label statt des Jahres das Land
+ */
+export function createTile(entry, position, { yearShown = false } = {}) {
   const item = document.createElement('li');
   const link = document.createElement('a');
   link.className = 'tile';
@@ -24,7 +27,8 @@ export function createTile(entry, position) {
   const label = document.createElement('p');
   label.className = 'label';
   label.append(KIND_LABELS[entry.kind]);
-  const when = formatWhen(entry);
+  let when = formatWhen(entry);
+  if (yearShown && when === String(entry.year)) when = entry.country ?? '';
   if (when) label.append(' ', Object.assign(document.createElement('span'), { className: 'label__dash', textContent: '—' }), ` ${when}`);
 
   const name = Object.assign(document.createElement('h3'), { className: 'tile__name', textContent: entry.name });

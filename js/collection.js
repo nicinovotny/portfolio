@@ -53,7 +53,7 @@ async function init() {
   const [entries, frames] = await Promise.all([getCollectionEntries(collection.id), getCollectionFrames(collection.id)]);
 
   renderHead(collection, index, published.length, entries, frames);
-  renderEntries(entries);
+  renderEntries(entries, Boolean(collection.groupByYear));
   const frameItems = renderFrames(frames);
   if (!entries.length && !frames.length) renderEmpty();
   renderPager(published, index);
@@ -118,17 +118,43 @@ function section(title, count, labelId) {
 
 // ---------- Einträge als Kacheln ----------
 
-function renderEntries(entries) {
+function renderEntries(entries, groupByYear = false) {
   let position = 0;
+  const grid = (list, options) => {
+    const ul = document.createElement('ul');
+    ul.className = 'tile-grid';
+    ul.append(...list.map((entry) => createTile(entry, position++, options)));
+    return ul;
+  };
   for (const kind of KIND_ORDER) {
     const list = entries.filter((entry) => entry.kind === kind);
     if (!list.length) continue;
     const wrap = section(PLURAL[kind], list.length, `abschnitt-${kind}`);
-    const grid = document.createElement('ul');
-    grid.className = 'tile-grid';
-    grid.append(...list.map((entry) => createTile(entry, position++)));
-    wrap.append(grid);
+    // "groupByYear" an der Collection (albums.json): Trips nach Jahren gegliedert, neueste zuerst
+    if (groupByYear && kind === 'trip') wrap.append(...yearGroups(list, grid));
+    else wrap.append(grid(list));
   }
+}
+
+/** Ein Unterabschnitt pro Jahr (Reihenfolge innerhalb des Jahres wie in albums.json), ohne Jahr am Ende */
+function yearGroups(list, grid) {
+  const years = [...new Set(list.map((entry) => entry.year ?? null))]
+    .sort((a, b) => (a == null) - (b == null) || b - a);
+  return years.map((year) => {
+    const inYear = list.filter((entry) => (entry.year ?? null) === year);
+    const group = document.createElement('section');
+    group.className = 'collection-year';
+    const id = `jahr-${year ?? 'ohne'}`;
+    group.setAttribute('aria-labelledby', id);
+    const head = document.createElement('div');
+    head.className = 'collection-year__head';
+    head.append(
+      Object.assign(document.createElement('h3'), { className: 'collection-year__title', id, textContent: year ?? 'Ohne Jahr' }),
+      Object.assign(document.createElement('span'), { className: 'label label--quiet', textContent: `${pad2(inYear.length)} ${inYear.length === 1 ? 'Trip' : 'Trips'}` }),
+    );
+    group.append(head, grid(inYear, { yearShown: true }));
+    return group;
+  });
 }
 
 // ---------- Frames ----------
