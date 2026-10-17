@@ -1,34 +1,43 @@
-/* Collections-Übersicht (collections.html): eine kompakte Zeile pro Collection im Zickzack –
-   Titelbild auf gut der halben Breite, daneben eine ruhige Fläche mit Ziffer, Name und Zähler.
+/* Collections-Übersicht (collections.html): eine Zeile pro Collection im Zickzack –
+   Bild und ruhige Fläche je zur Hälfte, direkt aneinander, Seiten im Wechsel.
    Vorbild: Nicis bisherige Portfolio-Seite (docs/Konzept-Feinschliff.md, Teil A). */
 
-.page-head:has(+ .collection-list) { margin-bottom: var(--space-l); }
+/* Kopf und Liste mittig, mit begrenzter Breite */
+.page-head:has(+ .collection-list) {
+  align-items: center;
+  max-width: none;
+  margin-bottom: var(--space-xl);
+  text-align: center;
+}
 
 .collection-list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-s);
-  margin: 0;
+  gap: var(--space-xl);
+  max-width: 72rem;
+  margin: 0 auto;
   padding: 0;
   list-style: none;
 }
 
+/* Feste Zeilenhöhe: Bild und Fläche sind immer gleich hoch und stoßen ohne Lücke aneinander */
 .collection-row {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  grid-template-columns: 1fr 1fr;
   grid-template-areas: 'image panel';
+  height: clamp(17rem, 30vw, 26rem);
 }
 /* jede zweite Zeile gespiegelt: Bild rechts */
-.collection-list li:nth-child(even) .collection-row { grid-template-areas: 'panel image'; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); }
+.collection-list li:nth-child(even) .collection-row { grid-template-areas: 'panel image'; }
 
 .collection-row__image {
   grid-area: image;
-  aspect-ratio: 3 / 2;
-  max-height: 48svh;   /* gut zwei Collections pro Bildschirm */
+  min-width: 0;
   overflow: hidden;
   background: var(--color-land-2);
 }
 .collection-row__image img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -44,13 +53,14 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-s);
+  min-width: 0;
   padding: var(--space-l);
   background: var(--color-land-2);
   text-align: center;
 }
 
 .collection-row__name {
-  font-size: clamp(2rem, 1.4rem + 2vw, 3.5rem);
+  font-size: clamp(2rem, 1.4rem + 2vw, 3.25rem);
   font-weight: 200;
   letter-spacing: -0.03em;
   line-height: 1;
@@ -58,7 +68,7 @@
 }
 
 .collection-row__text {
-  max-width: 24rem;
+  max-width: 22rem;
   font-size: 0.9375rem;
   font-weight: 300;
   line-height: 1.5;
@@ -75,15 +85,16 @@
 .collection-row:focus-visible .collection-row__name { color: var(--color-accent); }
 .collection-row:focus-visible { outline-offset: 4px; }
 
-/* Handy: Bild oben, darunter eine schmale Leiste (Ziffer + Name links, Zähler rechts) */
+/* Handy: Bild oben (3:2), darunter eine schmale Leiste (Ziffer + Name links, Zähler rechts) */
 @media (max-width: 47.99rem) {
-  .collection-list { gap: var(--space-m); }
+  .collection-list { gap: var(--space-l); }
   .collection-row,
   .collection-list li:nth-child(even) .collection-row {
+    height: auto;
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas: 'image' 'panel';
   }
-  .collection-row__image { max-height: none; }
+  .collection-row__image { aspect-ratio: 3 / 2; }
   .collection-row__panel {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr) auto;
