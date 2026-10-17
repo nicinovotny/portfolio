@@ -1,0 +1,58 @@
+/* Galerie in Bildzeilen gleicher Höhe – Eintragsseite (Trips, auch Bildstrecke der Shoots nutzt
+   .gallery__item/.gallery__open) und Collection-Seite (Frames). Zeilenumbruch: js/gallery.js */
+
+/* Die Zeilen setzt js/gallery.js zusammen; innerhalb einer Zeile verteilt flex-grow die
+   Breite im Verhältnis der Seitenverhältnisse – dadurch sind alle Bilder einer Zeile gleich hoch. */
+.gallery {
+  --gallery-gap: clamp(0.75rem, 1.6vw, 1.5rem);
+  display: flex;
+  flex-direction: column;
+  row-gap: calc(var(--gallery-gap) * 1.5);
+  column-gap: var(--gallery-gap);   /* wirkt hier nicht, liefert dem Skript aber den Abstand in px */
+}
+
+.gallery__row {
+  display: flex;
+  gap: var(--gallery-gap);
+}
+
+.gallery__item {
+  flex: var(--ratio) 1 0;
+  min-width: 0;
+}
+/* Allein in der Zeile (Handy, Bildstrecke): ganze Breite. Ein flex-grow unter 1 (Hochformat)
+   würde sonst nur einen Teil des freien Platzes verteilen. */
+.gallery__item:only-child { flex-grow: 1; }
+
+.gallery__open {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  background: var(--color-land-2);
+  border: 0;
+  cursor: zoom-in;
+}
+
+.gallery__open img {
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transition: transform 1.2s var(--ease-out), opacity var(--duration-medium) ease;
+}
+
+
+.gallery__open img.is-loaded { opacity: 1; }
+.gallery__open:hover img { transform: scale(1.03); }
+.gallery__open:focus-visible { outline-offset: 3px; }
+
+.gallery__caption {
+  display: flex;
+  gap: 12px;
+  padding-top: 10px;
+  font-size: var(--text-nav);
+  letter-spacing: var(--tracking-nav);
+  color: var(--color-text-2);
+}
+.gallery__caption .label { padding-top: 2px; color: var(--color-text-3); }

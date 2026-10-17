@@ -74,6 +74,28 @@ export async function getCollectionEntries(collectionId) {
   return (await getEntries()).filter((entry) => entry.kind !== 'frame' && belongsTo(entry, collectionId));
 }
 
+/**
+ * Einzelbilder einer Collection, neueste zuerst (Reihenfolge der Einträge in albums.json):
+ *   - alle Bilder ihrer eigenen Frames
+ *   - Bilder aus anderen Einträgen, die per "tags" dazugehören (z. B. der Papageientaucher aus Island
+ *     in Wildlife). Gehört der ganze Eintrag schon als Kachel zur Collection, erscheinen sie nicht doppelt.
+ * Ergebnis: [{ entry, image, tagged }] – tagged = stammt aus einem anderen Eintrag (Herkunftszeile).
+ */
+export async function getCollectionFrames(collectionId) {
+  const frames = [];
+  for (const entry of await getEntries()) {
+    const own = belongsTo(entry, collectionId);
+    if (entry.kind === 'frame' && own) {
+      entry.images.forEach((image) => frames.push({ entry, image, tagged: false }));
+    } else if (!own) {
+      entry.images
+        .filter((image) => (image.tags ?? []).includes(collectionId))
+        .forEach((image) => frames.push({ entry, image, tagged: true }));
+    }
+  }
+  return frames;
+}
+
 /** Einträge, die auf der Karte erscheinen: alle mit Koordinaten (in der Regel Trips). */
 export async function getMapEntries() {
   return (await getEntries()).filter((entry) => entry.coords);
@@ -136,14 +158,13 @@ export function entryUrl(entry) {
   return `entry.html?id=${encodeURIComponent(entry.id)}`;
 }
 
-/**
- * Seite einer Collection. Bis Schritt 4 des Umbaus (collection.html?id=…) zeigt sie auf die
- * bisherige Übersicht; dann nur diese Zeile ändern.
- */
-// eslint-disable-next-line no-unused-vars
+/** Seite einer Collection */
 export function collectionUrl(collectionId) {
-  return 'alben.html';
+  return `collection.html?id=${encodeURIComponent(collectionId)}`;
 }
+
+/** Übersicht aller Collections – bis Schritt 5 des Umbaus (collections.html) die bisherige Seite */
+export const OVERVIEW_URL = 'alben.html';
 
 // ---------- Regionen ----------
 

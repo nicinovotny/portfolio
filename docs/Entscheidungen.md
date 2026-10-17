@@ -164,3 +164,13 @@ Spezifikation: `docs/Umbau-Spezifikation.md` (Collections, Eintragsarten, Tags, 
 - **Schmaler:** Titel unten mittig, Aufnahmedaten per **i-Knopf** (oben neben „Schließen“, Taste „i“) zwischen Bild und Bedienung; das Bild rückt dafür nach oben (`--info-h`). Standard: ausgeblendet; die Wahl bleibt beim Blättern erhalten.
 - `aria-modal`, Fokus auf „Schließen“, Rückgabe auf das zuletzt gezeigte Bild, Pfeiltasten, Wischen, Esc wie bisher.
 - Getestet mit vorübergehenden Testdaten (Sony mit allen Werten + Tags Wildlife/Analog, Canon AE-1 mit Film, nur ISO, gar nichts) bei 1440 px und 375 px; Testdaten wieder entfernt. Echte Aufnahmedaten kommen mit Schritt 7 (Import).
+
+### Schritt 4 – Collection-Seite (17.10.2026)
+- **`collection.html?id=<collection>`** (`js/collection.js`, `css/collection.css`). Unveröffentlichte (`"published": false`) oder unbekannte Collections zeigen „Nicht gefunden“.
+- **Kopf:** `01 / 05 — Collection`, Name in Display-Größe (Geist 200), darunter über einer Haarlinie Text links und Readout rechts, z. B. `Landscape · 21 Trips`, `Automotive · 8 Shoots`. Besteht eine Collection nur aus Einzelbildern: `Wildlife · 23 Bilder · aus 6 Einträgen`; mit Einträgen und Frames zusätzlich `· 4 Frames`.
+- **Abschnitte** Trips → Shoots (→ Series) → Frames, je mit Haarlinie, Überschrift (Geist 200) und Anzahl; keine Jahresüberschriften. Leere Abschnitte entfallen; ganz leere Collection: „Noch keine Bilder in dieser Collection.“
+- **Kacheln** wie bisher in der Alben-Übersicht (Titelbild 3:2, Label `Trip — 2025` bzw. `Shoot — Mai 2026`, Name). Das Bild fliegt beim Klick in die Eintragsseite.
+- **Frames** = eigene Frames + Bilder anderer Einträge mit passendem Tag (`getCollectionFrames` in `js/data.js`; gehört der ganze Eintrag schon per `collection`/`alsoIn` dazu, nicht doppelt). Galerie in Bildzeilen ohne Beschnitt; Unterschrift: Titel + `Aus: Island · 2025 →` (Link zum Eintrag) bzw. bei eigenen Frames das Jahr. Klick öffnet die Großansicht über alle Frames; `&bild=<entryId>/<imageId>` öffnet sie beim Laden (Ziel von `entry.html?id=<frame>`).
+- **Ende:** `← Alle Collections` (bis Schritt 5 `alben.html`, Konstante `OVERVIEW_URL` in `js/data.js`) und `Nächste Collection — 02 →` mit Name (zyklisch über die veröffentlichten).
+- Galerie-Code für Trips und Frames gemeinsam in **`js/gallery.js`** (`createGalleryItem`, `justifyGallery`, `loadGalleryImage`) und **`css/gallery.css`**. „Zurück zu <Collection>“ auf der Eintragsseite führt jetzt auf die Collection-Seite.
+- Getestet mit vorübergehenden Testdaten (Wildlife-Tags an Island/Lofoten, Test-Frame in Creative, Test-Shoot in Automotive) bei 1440 und 375 px; Testdaten wieder entfernt.
