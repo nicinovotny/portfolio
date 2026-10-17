@@ -112,6 +112,39 @@ export async function getCollectionCover(collection) {
   return frame ? { entry: frame.entry, image: frame.image } : null;
 }
 
+/** Sortierschlüssel „JJJJ-MM-TT“ aus dem spätesten bekannten Datum (dateEnd, dateStart, date, year) */
+function dateKey(entry) {
+  const value = entry.dateEnd ?? entry.dateStart ?? entry.date ?? (entry.year ? String(entry.year) : '');
+  return String(value).padEnd(10, '-');   // "2023" → "2023------": steht vor allen Daten aus 2023
+}
+
+/** Die neuesten Trips und Shoots (ohne Frames), neueste zuerst; gleiche Daten in der Reihenfolge der Datei */
+export async function getNewestEntries(count = 3) {
+  return (await getEntries())
+    .filter((entry) => entry.kind !== 'frame')
+    .map((entry, index) => ({ entry, index, key: dateKey(entry) }))
+    .sort((a, b) => b.key.localeCompare(a.key) || a.index - b.index)
+    .slice(0, count)
+    .map(({ entry }) => entry);
+}
+
+/**
+ * Hero-Favoriten der veröffentlichten Collections, in deren Reihenfolge – nur Collections mit Favoriten.
+ * Ergebnis: [{ collection, favorites: [{ entry, image, focus, focusMobile }] }]
+ */
+export async function getHeroCollections() {
+  const result = [];
+  for (const collection of await getCollections()) {
+    const favorites = [];
+    for (const favorite of collection.heroFavorites ?? []) {
+      const found = await resolveImage(favorite.image);
+      if (found) favorites.push({ ...found, focus: favorite.focus, focusMobile: favorite.focusMobile });
+    }
+    if (favorites.length) result.push({ collection, favorites });
+  }
+  return result;
+}
+
 /** Einträge, die auf der Karte erscheinen: alle mit Koordinaten (in der Regel Trips). */
 export async function getMapEntries() {
   return (await getEntries()).filter((entry) => entry.coords);
@@ -191,26 +224,4 @@ export function regionPath(regions, id) {
     path.unshift(current);
   }
   return path;
-}
-
-// ---------- Übergang (bis die Seiten in den nächsten Schritten umgebaut sind) ----------
-
-/** Alle Trips – die bisherigen „Alben“ (Albumseite, Übersicht, Über mich). */
-export async function getAlbums() {
-  return (await getEntries()).filter((entry) => entry.kind === 'trip');
-}
-
-/**
- * Bisherige Startseiten-Diashow: Einträge hinter den Hero-Favoriten von Landscape, in dieser Reihenfolge.
- * Jedes Ergebnis kennt seine Nummer aus der Trip-Liste. Ersetzt in Schritt 6 durch Slides pro Collection.
- */
-export async function getFeatured() {
-  const albums = await getAlbums();
-  const landscape = await getCollection('landscape');
-  const ids = (landscape?.heroFavorites ?? []).map((favorite) => canonicalId(favorite.image.split('/')[0]));
-  const picked = [...new Set(ids)]
-    .map((id) => albums.findIndex((album) => album.id === id))
-    .filter((index) => index !== -1)
-    .map((index) => ({ album: albums[index], number: index + 1 }));
-  return picked.length ? picked : albums.slice(0, 5).map((album, index) => ({ album, number: index + 1 }));
 }

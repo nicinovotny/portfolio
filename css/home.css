@@ -1,4 +1,5 @@
-/* Startseite: Hero-Diashow nach Mockup A2 und kurzer Einstieg darunter */
+/* Startseite (Mockup A2): Hero mit einem Bild pro Collection, persönliches Intro,
+   Collections als typografische Liste, Zuletzt + Kartenstreifen */
 
 /* ---------- Hero ---------- */
 
@@ -130,12 +131,13 @@
   font-weight: 300;
 }
 
-.hero__secondary {
-  color: #9AA1A5;
+/* Herkunft des Bildes in Mono: „AUS: TRIP · SEOUL · 2026 →“ */
+.hero__origin {
   padding: 12px 0;
-  font-size: 0.875rem;
-  letter-spacing: var(--tracking-nav);
+  color: #C3C9CC;
+  transition: color var(--duration-fast) ease;
 }
+.hero__origin:hover { color: var(--color-accent); }
 
 /* Zähler, Fortschrittslinie und Steuerung unten rechts */
 .hero__meta {
@@ -176,6 +178,7 @@
   width: 168px;
 }
 
+.hero__progress[hidden] { display: none; }   /* nur eine Collection mit Favoriten */
 .hero__progress li { flex: 1; }
 
 .hero__dot {
@@ -267,13 +270,67 @@
   .hero__scroll-hint { display: none; }
 }
 
-/* ---------- Einstieg unter dem Hero ---------- */
+/* ---------- Abschnitte unter dem Hero ---------- */
+.intro,
+.home-section {
+  padding: var(--space-2xl) var(--gutter) 0;
+}
+.home-section:last-child { padding-bottom: var(--space-2xl); }
+
+/* Überschrift mit Haarlinie: Titel links, Link rechts */
+.home-section__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-s);
+  padding-top: var(--space-m);
+  margin-bottom: var(--space-l);
+  border-top: var(--hairline) solid var(--color-hairline);
+}
+.home-section__title {
+  font-size: var(--text-h1);
+  font-weight: 200;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.home-section__more { padding: 12px 0; transition: color var(--duration-fast) ease; }
+.home-section__more:hover { color: var(--color-accent); }
+
+/* ---------- Persönliches Intro ---------- */
 .intro {
   display: grid;
-  gap: var(--space-l);
-  padding: var(--space-2xl) var(--gutter);
-  max-width: 64rem;
+  grid-template-columns: minmax(7rem, 11rem) minmax(0, 52rem);
+  align-items: end;
+  gap: var(--space-l) var(--space-xl);
 }
+
+.intro__portrait { margin: 0; }
+.intro__portrait img,
+.intro__portrait-placeholder {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+/* Platzhalter wie auf „Über mich“: Fläche mit Höhenlinien */
+.intro__portrait-placeholder {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-land-2);
+}
+.intro__portrait-placeholder svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: var(--hairline);
+  opacity: 0.22;
+}
+.intro__portrait-placeholder path { vector-effect: non-scaling-stroke; }
+
+.intro__text { display: flex; flex-direction: column; gap: var(--space-m); }
 
 .intro__statement {
   font-size: var(--text-h1);
@@ -282,9 +339,128 @@
   line-height: 1.1;
 }
 
+.intro__readout { color: var(--color-text-2); }
+
 .intro__links {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0 36px;
+}
+
+/* ---------- Collections als typografische Liste ---------- */
+.home-collections {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* „01  Landscape ……………… 21 Trips“ */
+.home-collection {
+  display: grid;
+  grid-template-columns: 3.5rem auto minmax(var(--space-l), 1fr) auto;
+  align-items: baseline;
+  gap: var(--space-s);
+  padding: var(--space-s) 0;
+  border-bottom: var(--hairline) solid var(--color-hairline);
+}
+.home-collections li:first-child .home-collection { padding-top: 0; }
+
+.home-collection__media { display: none; }   /* nur auf dem Handy (siehe unten) */
+
+.home-collection__name {
+  font-size: clamp(2.25rem, 1.2rem + 4.5vw, 5rem);
+  font-weight: 200;
+  letter-spacing: var(--tracking-display);
+  line-height: 1.05;
+  transition: color var(--duration-fast) ease, translate var(--duration-medium) var(--ease-out);
+}
+
+.home-collection__leader {
+  border-bottom: var(--hairline) dotted var(--color-hairline-strong);
+  translate: 0 -0.4em;
+}
+
+.home-collection .label { transition: color var(--duration-fast) ease; }
+.home-collection:hover .home-collection__name { translate: 0.15em 0; }
+.home-collection:hover .label,
+.home-collection:focus-visible .label { color: var(--color-accent); }
+.home-collection:focus-visible { outline-offset: 6px; }
+.home-collection:focus-visible .home-collection__name { color: var(--color-accent); }
+
+/* Vorschaubild neben dem Mauszeiger (js/home.js), nur mit Maus auf breiten Bildschirmen */
+.home-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: clamp(16rem, 24vw, 24rem);
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: var(--color-land-2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-medium) ease;
+}
+.home-preview.is-visible { opacity: 1; }
+.home-preview img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Touch und schmale Bildschirme: große Bildzeilen mit Titelbild, ohne Überfahren */
+@media (hover: none), (pointer: coarse), (max-width: 47.99rem) {
+  .home-preview { display: none; }
+  .home-collections { display: flex; flex-direction: column; gap: var(--space-xl); }
+  .home-collection {
+    grid-template-columns: auto minmax(var(--space-m), 1fr) auto;
+    row-gap: var(--space-s);
+    padding: 0;
+    border: 0;
+  }
+  .home-collection__media {
+    display: block;
+    grid-column: 1 / -1;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background: var(--color-land-2);
+  }
+  .home-collection__media img { width: 100%; height: 100%; object-fit: cover; }
+  .home-collection__number { display: none; }
+  .home-collection__name { font-size: var(--text-h1); }
+}
+
+/* ---------- Zuletzt + Kartenstreifen ---------- */
+.home-recent { margin-bottom: var(--space-xl); }
+
+/* Schmaler Kartenstreifen: Ausschnitt mit allen Orten, ganzer Streifen führt zur Karte */
+.map-strip {
+  position: relative;
+  display: block;
+  height: clamp(11rem, 18vw, 16rem);
+  overflow: hidden;
+  background: var(--color-bg);
+  border-top: var(--hairline) solid var(--color-hairline);
+  border-bottom: var(--hairline) solid var(--color-hairline);
+}
+.map-strip__svg { display: block; width: 100%; height: 100%; }
+.map-strip__land { fill: var(--color-land); stroke: var(--color-coast); stroke-width: var(--hairline); vector-effect: non-scaling-stroke; }
+.map-strip__grid { fill: none; stroke: var(--color-grid); stroke-width: var(--hairline); vector-effect: non-scaling-stroke; }
+.map-strip__contour { fill: none; stroke: var(--color-accent); stroke-width: var(--hairline); vector-effect: non-scaling-stroke; opacity: 0.55; }
+.map-strip__dot { fill: var(--color-text); }
+
+.map-strip__readout {
+  position: absolute;
+  top: var(--space-s);
+  left: var(--space-s);
+}
+.map-strip__link {
+  position: absolute;
+  left: var(--space-s);
+  bottom: var(--space-xs);
+}
+.map-strip:hover .map-strip__link::before { width: 56px; }
+.map-strip:hover .map-strip__readout { color: var(--color-accent); }
+
+/* ---------- Handy ---------- */
+@media (max-width: 47.99rem) {
+  .intro { grid-template-columns: minmax(0, 1fr); }
+  .intro__portrait { max-width: 9rem; }
 }

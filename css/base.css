@@ -354,6 +354,40 @@ html:active-view-transition-type(entry-swap)::view-transition-new(entry-cover) {
   }
 }
 
+/* ---------- Kacheln für Einträge (Collection-Seite, Startseite „Zuletzt“; js/tiles.js) ---------- */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+  gap: var(--space-xl) var(--space-l);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tile { display: flex; flex-direction: column; gap: var(--space-s); }
+
+.tile__image {
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: var(--color-land-2);
+}
+.tile__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease-out);
+}
+.tile:hover .tile__image img { transform: scale(1.03); }
+.tile:hover .label { color: var(--color-accent); }
+.tile .label { transition: color var(--duration-fast) ease; }
+
+.tile__name {
+  font-size: var(--text-h2);
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
 /* Platzhalter für Seiten, die in späteren Schritten gebaut werden */
 .placeholder-note {
   color: var(--color-text-3);

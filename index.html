@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nicolas Novotny – Landschaftsfotografie</title>
-  <meta name="description" content="Landschaftsfotografie von Nicolas Novotny: Färöer, Lofoten, Alpen, Südkorea und mehr.">
+  <title>Nicolas Novotny – Fotografie</title>
+  <meta name="description" content="Fotografie von Nicolas Novotny: Landscape, Automotive, Wildlife, Portrait und Creative.">
   <meta name="theme-color" content="#0B0D0E">
   <link rel="icon" href="favicon.svg?v=2" type="image/svg+xml">
   <link rel="preload" href="fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
@@ -47,10 +47,10 @@
   </header>
 
   <main id="inhalt">
-    <h1 class="visually-hidden">Nicolas Novotny – Landschaftsfotografie</h1>
+    <h1 class="visually-hidden">Nicolas Novotny – Fotografie</h1>
 
-    <!-- Hero: Titelbilder aller Alben als Diashow (Inhalt aus data/albums.json) -->
-    <section class="hero" data-hero aria-roledescription="Diashow" aria-label="Ausgewählte Orte">
+    <!-- Hero: ein Bild pro Collection aus ihren Hero-Favoriten, wechselt stündlich (js/home.js) -->
+    <section class="hero" data-hero aria-roledescription="Diashow" aria-label="Ausgewählte Collections">
       <div class="hero__slides" data-hero-slides></div>
       <div class="hero__shade" aria-hidden="true"></div>
 
@@ -69,8 +69,9 @@
         <p class="label hero__label" data-hero-label>&nbsp;</p>
         <h2 class="hero__title"><span class="hero__title-inner" data-hero-title>&nbsp;</span></h2>
         <div class="hero__links" data-hero-links>
-          <a class="line-link" data-hero-open href="collections.html" data-cover-from=".hero__slide[data-current] img" data-title-from="[data-hero-title]">Album öffnen</a>
-          <a class="hero__secondary" data-hero-map href="karte.html">Auf der Karte zeigen</a>
+          <a class="line-link" data-hero-open href="collections.html">Collection öffnen</a>
+          <!-- Herkunft des Bildes: „Aus: Trip · Seoul · 2026 →“ -->
+          <a class="hero__origin label" data-hero-origin href="collections.html">&nbsp;</a>
         </div>
       </div>
 
@@ -79,9 +80,11 @@
           <span class="hero__number" data-hero-number>01</span>
           <span class="hero__total label label--quiet" data-hero-total>/ 05</span>
         </p>
-        <ol class="hero__progress" data-hero-progress aria-label="Ort auswählen"></ol>
+        <ol class="hero__progress" data-hero-progress aria-label="Collection auswählen"></ol>
         <div class="hero__controls">
           <span class="label label--quiet" data-hero-demo hidden>Demo-Bild</span>
+          <!-- Die Auswahl wechselt jede Stunde (gleich für alle Besucher, nichts wird gespeichert) -->
+          <span class="label label--quiet" data-hero-selection></span>
           <button class="hero__pause label label--quiet" type="button" data-hero-pause>Pause</button>
         </div>
       </div>
@@ -89,14 +92,54 @@
       <span class="hero__scroll-hint" aria-hidden="true"></span>
     </section>
 
-    <!-- Kurzer Einstieg unter dem Hero -->
+    <!-- Persönliches Intro -->
     <section class="intro" aria-labelledby="intro-title">
-      <p class="label" data-reveal>Landschaftsfotografie <span class="label__dash">—</span> Nicolas Novotny</p>
-      <h2 class="intro__statement" id="intro-title" data-reveal>Orte, an denen das Licht für einen Moment stillsteht. Gesammelt auf einer Karte. [Platzhalter]</h2>
-      <div class="intro__links" data-reveal>
-        <a class="line-link" href="karte.html">Zur Karte</a>
-        <a class="hero__secondary" href="collections.html">Alle Collections</a>
+      <figure class="intro__portrait" data-reveal>
+        <!-- Eigenes Porträt: Platzhalter-Block ersetzen durch
+             <img src="images/about/portrait.webp" width="1600" height="2000" alt="Nicolas Novotny …"> -->
+        <div class="intro__portrait-placeholder" aria-hidden="true">
+          <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+            <path d="M-20,140 C80,90 160,170 260,120 S380,60 420,90"/>
+            <path d="M-20,200 C90,150 170,230 270,180 S390,120 420,150"/>
+            <path d="M-20,260 C100,215 180,290 280,245 S395,185 420,215"/>
+            <path d="M-20,320 C110,280 190,350 290,310 S400,250 420,280"/>
+            <path d="M-20,380 C120,345 200,410 300,375 S405,315 420,345"/>
+          </svg>
+        </div>
+        <figcaption class="visually-hidden">Porträt [Platzhalter]</figcaption>
+      </figure>
+      <div class="intro__text">
+        <p class="label" data-reveal>Nicolas Novotny <span class="label__dash">—</span> Fotografie</p>
+        <h2 class="intro__statement" id="intro-title" data-reveal>[Platzhalter: Hey, ich bin Nici … zwei bis drei Sätze in persönlichem Ton.]</h2>
+        <!-- Readout: Ort von Hand, der Rest wird aus data/albums.json gezählt -->
+        <p class="intro__readout label" data-reveal><span>[Platzhalter: Ort]</span><span data-intro-stats></span></p>
+        <div class="intro__links" data-reveal>
+          <a class="line-link" href="ueber-mich.html">Mehr über mich</a>
+        </div>
       </div>
+    </section>
+
+    <!-- Collections als typografische Liste; Vorschaubild beim Überfahren (Desktop) bzw. Bildzeilen (Handy) -->
+    <section class="home-section" aria-labelledby="collections-title">
+      <div class="home-section__head" data-reveal>
+        <h2 class="home-section__title" id="collections-title">Collections</h2>
+        <a class="home-section__more label" href="collections.html">Alle Collections <span aria-hidden="true">→</span></a>
+      </div>
+      <ol class="home-collections" data-home-collections></ol>
+      <div class="home-preview" data-home-preview aria-hidden="true"><img alt="" decoding="async"></div>
+    </section>
+
+    <!-- Die drei neuesten Einträge und der einzige Karten-Einstieg der Startseite -->
+    <section class="home-section" aria-labelledby="recent-title">
+      <div class="home-section__head" data-reveal>
+        <h2 class="home-section__title" id="recent-title">Zuletzt</h2>
+      </div>
+      <ul class="tile-grid home-recent" data-home-recent></ul>
+      <a class="map-strip" href="karte.html" data-map-strip>
+        <svg class="map-strip__svg" data-map-strip-svg aria-hidden="true" preserveAspectRatio="xMidYMid meet"></svg>
+        <span class="map-strip__readout label" data-map-strip-readout>Karte</span>
+        <span class="map-strip__link line-link">Karte öffnen</span>
+      </a>
     </section>
   </main>
 

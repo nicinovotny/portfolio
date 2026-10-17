@@ -60,40 +60,6 @@
 
 .collection-empty { padding: var(--space-xl) 0; }
 
-/* ---------- Kacheln (Trips, Shoots) ---------- */
-.tile-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
-  gap: var(--space-xl) var(--space-l);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.tile { display: flex; flex-direction: column; gap: var(--space-s); }
-
-.tile__image {
-  aspect-ratio: 3 / 2;
-  overflow: hidden;
-  background: var(--color-land-2);
-}
-.tile__image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 1.2s var(--ease-out);
-}
-.tile:hover .tile__image img { transform: scale(1.03); }
-.tile:hover .label { color: var(--color-accent); }
-.tile .label { transition: color var(--duration-fast) ease; }
-
-.tile__name {
-  font-size: var(--text-h2);
-  font-weight: 200;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
-
 /* ---------- Frames ---------- */
 .frame-caption { display: flex; flex-direction: column; gap: 6px; }
 .frame-caption .label { padding-top: 0; }
