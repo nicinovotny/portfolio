@@ -348,81 +348,150 @@
   gap: 0 36px;
 }
 
-/* ---------- Collections als typografische Liste ---------- */
+/* ---------- Collections als Index mit Bildfenster ---------- */
+/* Vorbild: „Anlässe“ auf huppermans.netlify.app – links die Liste, rechts ein festes Bildfenster (quer) */
+.home-index {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  align-items: start;
+  gap: var(--space-xl);
+}
+
 .home-collections {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* „01  Landscape          21 Trips“ */
+/* Zeile: Nummer · Name (+ aufklappende Angaben) · Pfeil-Kreis */
 .home-collection {
   display: grid;
-  grid-template-columns: 3.5rem auto minmax(var(--space-l), 1fr) auto;
-  align-items: baseline;
-  gap: var(--space-s);
-  padding: var(--space-s) 0;
+  grid-template-columns: 3.5rem minmax(0, 1fr) var(--touch-target);
+  align-items: center;
+  gap: var(--space-m);
+  padding: 1.75rem 0;
   border-bottom: var(--hairline) solid var(--color-hairline);
+  transition: padding var(--duration-medium) var(--ease-out);
 }
-.home-collections li:first-child .home-collection { padding-top: 0; }
+.home-collections li:first-child .home-collection { border-top: var(--hairline) solid var(--color-hairline); }
 
-.home-collection__media { display: none; }   /* nur auf dem Handy (siehe unten) */
+.home-collection__number { transition: color var(--duration-fast) ease; }
 
 .home-collection__name {
-  font-size: clamp(2.25rem, 1.2rem + 4.5vw, 5rem);
+  display: block;
+  font-size: clamp(2rem, 1.2rem + 3vw, 4rem);
   font-weight: 200;
   letter-spacing: var(--tracking-display);
-  line-height: 1.05;
-  transition: color var(--duration-fast) ease, translate var(--duration-medium) var(--ease-out);
+  line-height: 1;
+  color: var(--color-text-3);   /* inaktiv gedämpft, aktiv hell */
+  transition: color 0.4s ease;
 }
 
-/* Leerraum zwischen Name und Zähler (bewusst ohne gepunktete Linie – Nici, 17.10.2026) */
-.home-collection__leader { min-width: var(--space-l); }
+/* Zähler + Text klappen bei der aktiven Zeile auf */
+.home-collection__detail {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 0;
+  margin-top: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height var(--duration-medium) var(--ease-out), opacity 0.4s ease, margin-top var(--duration-medium) var(--ease-out);
+}
+.home-collection__text {
+  max-width: 32rem;
+  font-size: 0.9375rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--color-text-2);
+}
 
-.home-collection .label { transition: color var(--duration-fast) ease; }
-.home-collection:hover .home-collection__name { translate: 0.15em 0; }
-.home-collection:hover .label,
-.home-collection:focus-visible .label { color: var(--color-accent); }
-.home-collection:focus-visible { outline-offset: 6px; }
-.home-collection:focus-visible .home-collection__name { color: var(--color-accent); }
+/* Pfeil im Kreis: aktiv gefüllt in Gletscherfarbe und schräg nach oben gedreht */
+.home-collection__arrow {
+  display: grid;
+  place-items: center;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  border: var(--hairline) solid var(--color-hairline-strong);
+  border-radius: 50%;
+  color: var(--color-text-2);
+  transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease, transform var(--duration-medium) var(--ease-out);
+}
+.home-collection__arrow svg { width: 18px; height: 18px; }
 
-/* Vorschaubild neben dem Mauszeiger (js/home.js), nur mit Maus auf breiten Bildschirmen */
-.home-preview {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 5;
-  width: clamp(16rem, 24vw, 24rem);
+.home-collection.is-active { padding-left: 1.125rem; }
+.home-collection.is-active .home-collection__name { color: var(--color-text); }
+.home-collection.is-active .home-collection__number { color: var(--color-accent); }
+.home-collection.is-active .home-collection__detail { max-height: 6em; margin-top: 12px; opacity: 1; }
+.home-collection.is-active .home-collection__arrow {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-bg);
+  transform: rotate(-45deg);
+}
+.home-collection:focus-visible { outline-offset: 4px; }
+
+.home-collection__media { display: none; }   /* eigenes Bild je Zeile nur unter 64rem */
+
+/* Bildfenster: bleibt beim Scrollen stehen, Bilder liegen übereinander und blenden mit leichtem Zoom über */
+.home-index__preview {
+  position: sticky;
+  top: 7rem;
   aspect-ratio: 3 / 2;
   overflow: hidden;
   background: var(--color-land-2);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--duration-medium) ease;
 }
-.home-preview.is-visible { opacity: 1; }
-.home-preview img { width: 100%; height: 100%; object-fit: cover; }
+.home-index__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 0.7s ease, transform 1.4s var(--ease-out);
+}
+.home-index__img.is-on { opacity: 1; transform: scale(1); }
 
-/* Touch und schmale Bildschirme: große Bildzeilen mit Titelbild, ohne Überfahren */
-@media (hover: none), (pointer: coarse), (max-width: 47.99rem) {
-  .home-preview { display: none; }
-  .home-collections { display: flex; flex-direction: column; gap: var(--space-xl); }
-  .home-collection {
-    grid-template-columns: auto minmax(var(--space-m), 1fr) auto;
+.home-index__caption {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-s);
+  padding: var(--space-s) var(--space-s) 0.875rem;
+  background: linear-gradient(to bottom, rgb(11 13 14 / 0), rgb(11 13 14 / 0.75));
+}
+.home-index__caption .label { color: var(--color-text); text-shadow: 0 1px 6px rgba(11, 13, 14, 0.6); }
+
+/* Tablet und Handy: kein Bildfenster, jede Zeile mit eigenem Bild, Angaben immer sichtbar */
+@media (max-width: 63.99rem) {
+  .home-index { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .home-index__preview { display: none; }
+  .home-collection,
+  .home-collection.is-active {
+    grid-template-columns: 2.5rem minmax(0, 1fr) var(--touch-target);
     row-gap: var(--space-s);
-    padding: 0;
-    border: 0;
+    padding: 1.5rem 0;
+  }
+  .home-collection .home-collection__name { color: var(--color-text); }
+  .home-collection .home-collection__detail { max-height: none; margin-top: 10px; opacity: 1; }
+  .home-collection.is-active .home-collection__number { color: var(--color-text-2); }
+  .home-collection.is-active .home-collection__arrow {
+    background: transparent;
+    border-color: var(--color-hairline-strong);
+    color: var(--color-text-2);
+    transform: none;
   }
   .home-collection__media {
     display: block;
     grid-column: 1 / -1;
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 16 / 10;
     overflow: hidden;
     background: var(--color-land-2);
   }
   .home-collection__media img { width: 100%; height: 100%; object-fit: cover; }
-  .home-collection__number { display: none; }
-  .home-collection__name { font-size: var(--text-h1); }
 }
 
 /* ---------- Zuletzt + Kartenstreifen ---------- */

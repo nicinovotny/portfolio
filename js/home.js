@@ -4,12 +4,12 @@
 //      Bildwechsel: langsame Überblendung + leichte „Kamerafahrt“ (Zoom 1.08 → 1); die Fortschrittslinie
 //      ist zugleich der Taktgeber: ist sie voll, kommt die nächste Collection.
 //   2. Persönliches Intro mit Zahlen aus albums.json
-//   3. Collections als typografische Liste (Vorschaubild beim Überfahren, auf dem Handy Bildzeilen)
+//   3. Collections als Index: Liste links, Bildfenster rechts (Handy: Bild je Zeile)
 //   4. Die drei neuesten Einträge + Kartenstreifen
 
 import {
   collectionUrl, entryUrl, getCollectionCover, getCollectionEntries, getCollectionFrames, getCollections, getCover,
-  getEntries, getHeroCollections, getMapEntries, getNewestEntries, imageAttrs, imageUrl,
+  getEntries, getHeroCollections, getMapEntries, getNewestEntries, imageAttrs,
 } from './data.js';
 import { KIND_LABELS, formatCollectionCounts, nameWithYear, pad2 } from './format.js';
 import { contourPath, seedOf } from './contours.js';
@@ -416,113 +416,121 @@ async function initIntro() {
 }
 
 // =====================================================================
-// 3. Collections als typografische Liste
+// 3. Collections als Index mit Bildfenster
 // =====================================================================
 
-// Vorschau neben dem Mauszeiger nur mit echter Maus auf breiten Bildschirmen; sonst Bildzeilen (css/home.css)
-const previewQuery = matchMedia('(hover: hover) and (pointer: fine) and (min-width: 48rem)');
+// Bildfenster rechts nur auf breiten Bildschirmen – darunter hat jede Zeile ihr eigenes Bild (css/home.css)
+const indexQuery = matchMedia('(min-width: 64rem)');
+
+const ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 
 async function initCollections() {
   const list = document.querySelector('[data-home-collections]');
   try {
     const collections = await getCollections();
-    const rows = await Promise.all(collections.map(async (collection, index) => {
+    const data = await Promise.all(collections.map(async (collection) => {
       const [entries, frames, cover] = await Promise.all([
         getCollectionEntries(collection.id),
         getCollectionFrames(collection.id),
         getCollectionCover(collection),
       ]);
-      return collectionRow(collection, index, formatCollectionCounts(entries, frames), cover);
+      return { collection, counts: formatCollectionCounts(entries, frames), cover };
     }));
-    list.replaceChildren(...rows);
-    setupPreview(list);
+    list.replaceChildren(...data.map((item, index) => collectionRow(item, index)));
+    setupIndex(list, data);
   } catch (error) {
     console.error(error);
   }
 }
 
-/** Zeile: „01  Landscape ……………… 21 Trips“ – auf dem Handy mit Titelbild darüber */
-function collectionRow(collection, index, counts, cover) {
+/** Zeile: Nummer · Name (darunter Zähler und Text, klappen bei aktiver Zeile auf) · Pfeil; Handy: Bild darunter */
+function collectionRow({ collection, counts, cover }, index) {
   const item = document.createElement('li');
   const link = document.createElement('a');
   link.className = 'home-collection';
   link.href = collectionUrl(collection.id);
-  if (cover) link.dataset.preview = imageUrl(cover.entry, cover.image, 1200);
+  link.dataset.index = index;
+  if (index === 0) link.classList.add('is-active');
 
+  const main = document.createElement('span');
+  main.className = 'home-collection__main';
+  main.append(Object.assign(document.createElement('span'), { className: 'home-collection__name', textContent: collection.name }));
+  const detail = document.createElement('span');
+  detail.className = 'home-collection__detail';
+  detail.append(Object.assign(document.createElement('span'), { className: 'label', textContent: counts.join(' · ') || 'Noch leer' }));
+  if (collection.text) detail.append(Object.assign(document.createElement('span'), { className: 'home-collection__text', textContent: collection.text }));
+  main.append(detail);
+
+  const arrow = document.createElement('span');
+  arrow.className = 'home-collection__arrow';
+  arrow.setAttribute('aria-hidden', 'true');
+  arrow.innerHTML = ARROW;
+
+  // eigenes Bild je Zeile – nur unter 64rem sichtbar
   const media = document.createElement('span');
   media.className = 'home-collection__media';
+  media.setAttribute('aria-hidden', 'true');
   if (cover) {
     const img = Object.assign(document.createElement('img'), imageAttrs(cover.entry, cover.image));
-    img.alt = '';   // dekorativ: der Name beschreibt den Link
-    img.sizes = '100vw';
+    img.alt = '';
+    img.sizes = '(min-width: 64rem) 1px, 100vw';
     img.loading = 'lazy';
     img.decoding = 'async';
     media.append(img);
   }
 
   link.append(
-    media,
     Object.assign(document.createElement('span'), { className: 'home-collection__number label', textContent: pad2(index + 1) }),
-    Object.assign(document.createElement('span'), { className: 'home-collection__name', textContent: collection.name }),
-    Object.assign(document.createElement('span'), { className: 'home-collection__leader' }),
-    Object.assign(document.createElement('span'), { className: 'home-collection__count label', textContent: counts.join(' · ') || 'Noch leer' }),
+    main,
+    arrow,
+    media,
   );
-  link.querySelector('.home-collection__leader').setAttribute('aria-hidden', 'true');
   item.append(link);
   return item;
 }
 
 /**
- * Vorschaubild: folgt beim Überfahren dem Mauszeiger (weich nachgezogen), bei Tastaturfokus steht es
- * rechts neben der Zeile. Nur ein Bild-Element für alle Zeilen; Bilder werden erst beim ersten Zeigen geladen.
+ * Bildfenster: ein Bild pro Collection übereinander, das der aktiven Zeile blendet mit leichtem Zoom ein.
+ * Aktiv wird eine Zeile beim Überfahren oder per Tastatur (Fokus); ohne JavaScript bleibt Zeile 01 aktiv.
  */
-function setupPreview(list) {
+function setupIndex(list, data) {
   const preview = document.querySelector('[data-home-preview]');
-  const img = preview.querySelector('img');
-  const follow = gsap && !reducedMotion
-    ? { x: gsap.quickTo(preview, 'x', { duration: 0.5, ease: 'power3' }), y: gsap.quickTo(preview, 'y', { duration: 0.5, ease: 'power3' }) }
-    : null;
+  const number = preview.querySelector('[data-home-preview-number]');
+  const name = preview.querySelector('[data-home-preview-name]');
+  preview.querySelector('[data-home-preview-total]').textContent = pad2(data.length);
 
-  const place = (x, y, instant) => {
-    // Bild rechts vom Zeiger, mindestens rechts der Mitte (die Namen links bleiben frei), im Fenster halten
-    const width = preview.offsetWidth;
-    const height = preview.offsetHeight;
-    const left = Math.min(Math.max(x + 32, innerWidth * 0.5), innerWidth - width - 16);
-    const top = Math.min(Math.max(y - height / 2, 16), innerHeight - height - 16);
-    if (follow && !instant) { follow.x(left); follow.y(top); }
-    else if (gsap) gsap.set(preview, { x: left, y: top });
-    else preview.style.transform = `translate(${left}px, ${top}px)`;
+  const images = data.map(({ cover }, index) => {
+    if (!cover) return null;
+    const img = Object.assign(document.createElement('img'), imageAttrs(cover.entry, cover.image));
+    img.alt = '';
+    img.className = 'home-index__img';
+    img.sizes = '(min-width: 64rem) 40vw, 1px';
+    img.loading = index === 0 ? 'eager' : 'lazy';   // die übrigen lädt der Browser erst, wenn sie gebraucht werden
+    img.decoding = 'async';
+    if (index === 0) img.classList.add('is-on');
+    preview.prepend(img);
+    return img;
+  });
+
+  const rows = [...list.querySelectorAll('.home-collection')];
+  const activate = (index) => {
+    rows.forEach((row, i) => row.classList.toggle('is-active', i === index));
+    images.forEach((img, i) => img?.classList.toggle('is-on', i === index));
+    if (images[index]) images[index].loading = 'eager';
+    number.textContent = pad2(index + 1);
+    name.textContent = data[index].collection.name;
   };
-
-  const showFor = (link) => {
-    if (!previewQuery.matches || !link.dataset.preview) return hide();
-    if (img.getAttribute('src') !== link.dataset.preview) img.src = link.dataset.preview;
-    preview.classList.add('is-visible');
-  };
-  const hide = () => preview.classList.remove('is-visible');
-
-  list.addEventListener('pointerover', (event) => {
-    const link = event.target.closest('.home-collection');
-    if (!link) return;
-    const entering = !preview.classList.contains('is-visible');
-    place(event.clientX, event.clientY, entering);
-    showFor(link);
+  activate(0);
+  rows.forEach((row, index) => {
+    row.addEventListener('mouseenter', () => { if (indexQuery.matches) activate(index); });
+    row.addEventListener('focus', () => activate(index));
   });
-  list.addEventListener('pointermove', (event) => {
-    if (preview.classList.contains('is-visible')) place(event.clientX, event.clientY);
-  });
-  list.addEventListener('pointerleave', hide);
-
-  // Tastatur: Vorschau rechts neben der fokussierten Zeile
-  list.addEventListener('focusin', (event) => {
-    const link = event.target.closest('.home-collection');
-    if (!link || !link.matches(':focus-visible')) return;
-    const rect = link.getBoundingClientRect();
-    place(rect.right - preview.offsetWidth - 48, rect.top + rect.height / 2, true);
-    showFor(link);
-  });
-  list.addEventListener('focusout', hide);
-  addEventListener('scroll', hide, { passive: true });
+  // Alle Bilder des Fensters vorladen, sobald die Liste in die Nähe kommt – dann wechselt es ohne Wartezeit
+  new IntersectionObserver(([entry], observer) => {
+    if (!entry.isIntersecting || !indexQuery.matches) return;
+    observer.disconnect();
+    images.forEach((img) => { if (img) img.loading = 'eager'; });
+  }, { rootMargin: '300px' }).observe(list);
 }
 
 // =====================================================================

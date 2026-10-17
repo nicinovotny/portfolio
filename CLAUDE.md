@@ -42,6 +42,7 @@ Lies Briefing und Entscheidungen, bevor du Code schreibst oder Designentscheidun
   8. ✅ Neue Einträge (17.10.2026): 39 Einträge (29 Trips, 7 Automotive-Shoots, 2 Hochzeiten, Halloween) mit Demo-Bildern, Wildpark-Platzhalter mit Tag `wildlife`, Hero-Favoriten für alle Collections. Im Browser geprüft (Übersicht, Collections, Bildstrecke, Karte, Startseite).
 - Offen: Zeiträume (`dateStart`/`dateEnd`) der 5 Einträge mit eigenen Bildern – Vorschläge aus den Aufnahmedaten in `docs/Entscheidungen.md` (Schritt 7), Nici entscheidet.
 - **Als Nächstes (vor Schritt 8):** Feinschliff nach `docs/Konzept-Feinschliff.md` – ✅ A (17.10.2026, von Nici abgenommen): Collections-Übersicht kompakter (Zickzack wie Nicis Adobe-Portfolio, ohne die gepunktete Führungslinie – auch nicht auf der Startseite), ✅ A2 (17.10.2026): Trips in Landscape wieder nach Jahren gegliedert (`groupByYear`), ✅ B (17.10.2026): Eintragsseite klar von der Startseite unterschieden (Bühne 72svh, Brotkrumen, kleinerer Titel).
+- ✅ Startseite (17.10.2026): Collections als Index mit Bildfenster (wie „Anlässe“ auf huppermans.netlify.app), Details in `docs/Entscheidungen.md`.
 - **Umbau abgeschlossen.** Jetzt pushen (GitHub Desktop) – erst dann ist alles live. Danach: eigene Bilder und Texte einpflegen (Skill `bilder-einpflegen`, Checkliste `docs/Anleitung.md` Abschnitt 5), die beiden Hochzeiten unterscheidbar benennen, pro Collection `published` und Hero-Favoriten festlegen.
 
 ## Rahmen (gilt immer)

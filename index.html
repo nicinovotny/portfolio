@@ -127,14 +127,22 @@
       </div>
     </section>
 
-    <!-- Collections als typografische Liste; Vorschaubild beim Überfahren (Desktop) bzw. Bildzeilen (Handy) -->
+    <!-- Collections als Index: links die Liste, rechts ein festes Bildfenster, das beim Überfahren wechselt
+         (Vorbild: „Anlässe“ auf huppermans.netlify.app). Unter 64rem: jede Zeile mit eigenem Bild. -->
     <section class="home-section" aria-labelledby="collections-title">
       <div class="home-section__head" data-reveal>
         <h2 class="home-section__title" id="collections-title">Collections</h2>
         <a class="home-section__more label" href="collections.html">Alle Collections <span aria-hidden="true">→</span></a>
       </div>
-      <ol class="home-collections" data-home-collections></ol>
-      <div class="home-preview" data-home-preview aria-hidden="true"><img alt="" decoding="async"></div>
+      <div class="home-index" data-home-index>
+        <ol class="home-collections" data-home-collections></ol>
+        <div class="home-index__preview" data-home-preview aria-hidden="true">
+          <div class="home-index__caption">
+            <span class="label"><span data-home-preview-number>01</span> / <span data-home-preview-total>05</span></span>
+            <span class="label" data-home-preview-name></span>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Die drei neuesten Einträge und der einzige Karten-Einstieg der Startseite -->
