@@ -215,4 +215,4 @@ Spezifikation: `docs/Umbau-Spezifikation.md` (Collections, Eintragsarten, Tags, 
 - **Schottland 2019 → Edinburgh.**
 - **Shoots ohne Karte** (`"coords": null`, ohne `region`), wie in der Spezifikation.
 - **Kleinarl 2025** behält seine Demo-Bilder.
-- Noch offen, beim Anlegen kurz nachfragen: Ort für Dolomiten 2020 (Vorschlag: Hauptort der Reise erfragen).
+- **Dolomiten:** Nici war 2020, 2024 und 2025 jeweils an ähnlichen Orten (Grödnertal/St. Ulrich, Seiser Alm, Pragser Wildsee, Drei Zinnen). Die drei Einträge werden auf der Karte verteilt: 2020 → St. Ulrich im Grödnertal (46.58, 11.68), 2024 → Seiser Alm (bleibt), 2025 → Cortina (bleibt).
