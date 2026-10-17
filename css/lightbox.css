@@ -1,0 +1,282 @@
+/* Großansicht (Lightbox) – gemeinsam für Eintrags- und Collection-Seite, Markup erzeugt js/lightbox.js.
+   Breite Bildschirme (ab 64rem): Aufnahmedaten rechts neben dem Bild, immer sichtbar.
+   Schmalere: Titel unten, Aufnahmedaten per i-Knopf zwischen Bild und Bedienung einblenden. */
+
+html.has-lightbox {
+  overflow: hidden;
+  scrollbar-gutter: stable;   /* kein Springen der Seite, wenn der Scrollbalken verschwindet */
+}
+
+.lightbox {
+  --lb-top: 104px;
+  --lb-side: 112px;            /* links: Platz für den Pfeil */
+  --lb-right: var(--lb-side);  /* rechts: Pfeil (breit: zusätzlich der Infobereich) */
+  --lb-bottom: 112px;
+  --info-h: 0px;               /* Höhe der eingeblendeten Aufnahmedaten (schmal), setzt js/lightbox.js */
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  background: transparent;
+  color: var(--color-text);
+}
+.lightbox::backdrop { background: transparent; }
+
+.lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--color-bg);
+}
+
+.lightbox__stage {
+  position: absolute;
+  inset: var(--lb-top) var(--lb-right) calc(var(--lb-bottom) + var(--info-h)) var(--lb-side);
+  display: grid;
+  place-items: center;
+  touch-action: pinch-zoom;   /* Wischen übernimmt das Skript, Zoomen bleibt beim Browser */
+}
+
+.lightbox__img {
+  max-width: none;
+  transform-origin: 0 0;      /* für den Übergang aus der Galerie */
+  background: var(--color-land-2);
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Rahmen, Zähler, Knöpfe – „Instrumenten“-Rahmung wie auf der Startseite */
+.lightbox__corner {
+  --corner-inset: 28px;
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 0 solid var(--color-hairline-strong);
+  pointer-events: none;
+}
+.lightbox__corner--tl { top: var(--corner-inset); left: var(--corner-inset); border-width: var(--hairline) 0 0 var(--hairline); }
+.lightbox__corner--tr { top: var(--corner-inset); right: var(--corner-inset); border-width: var(--hairline) var(--hairline) 0 0; }
+.lightbox__corner--bl { bottom: var(--corner-inset); left: var(--corner-inset); border-width: 0 0 var(--hairline) var(--hairline); }
+.lightbox__corner--br { bottom: var(--corner-inset); right: var(--corner-inset); border-width: 0 var(--hairline) var(--hairline) 0; }
+
+.lightbox__top {
+  position: absolute;
+  top: 40px;
+  left: var(--gutter);
+  right: var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lightbox__counter { display: flex; align-items: baseline; gap: 10px; }
+.lightbox__number {
+  font-size: 1.875rem;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.lightbox__actions { display: flex; align-items: center; gap: var(--space-m); }
+
+.lightbox__close {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: var(--touch-target);
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: color var(--duration-fast) ease;
+}
+.lightbox__close:hover { color: var(--color-accent); }
+
+/* i-Knopf: Aufnahmedaten ein/aus (nur schmale Bildschirme) */
+.lightbox__info-toggle {
+  display: grid;
+  place-items: center;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--color-text-2);
+  cursor: pointer;
+}
+.lightbox__info-toggle span {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: var(--hairline) solid currentColor;
+  border-radius: 50%;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1;
+  transition: color var(--duration-fast) ease, background-color var(--duration-fast) ease;
+}
+.lightbox__info-toggle:hover,
+.lightbox__info-toggle[aria-expanded="true"] { color: var(--color-accent); }
+
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin-top: -32px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--color-text-2);
+  cursor: pointer;
+  transition: color var(--duration-fast) ease;
+}
+.lightbox__nav svg { width: 28px; height: 28px; }
+.lightbox__nav:hover { color: var(--color-accent); }
+.lightbox__nav--prev { left: calc(var(--gutter) - 20px); }
+.lightbox__nav--next { right: calc(var(--gutter) - 20px); }
+
+/* Titel unten mittig (schmale Bildschirme; breit steht er im Infobereich) */
+.lightbox__caption {
+  position: absolute;
+  left: var(--lb-side);
+  right: var(--lb-right);
+  bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch-target);
+  text-align: center;
+}
+.lightbox__title { font-size: 0.9375rem; letter-spacing: var(--tracking-nav); }
+
+/* ---------- Infobereich: Titel, Herkunft, Aufnahmedaten, Tags ---------- */
+.lightbox__info {
+  display: none;    /* schmal: erst per i-Knopf */
+  flex-direction: column;
+  gap: 12px;
+}
+.lightbox.is-info-open .lightbox__info { display: flex; }
+
+.lightbox__info-title {
+  font-size: 1.125rem;
+  font-weight: 300;
+  line-height: 1.35;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+/* Herkunft: „TRIP · SEOUL · 2026 →“ – Link zum Eintrag (auf der Eintragsseite selbst nur Text) */
+.lightbox__origin {
+  align-self: flex-start;
+  color: var(--color-text-2);
+  letter-spacing: var(--tracking-label);
+}
+a.lightbox__origin { padding: 6px 0; margin: -6px 0; transition: color var(--duration-fast) ease; }
+a.lightbox__origin:hover { color: var(--color-accent); }
+
+/* Aufnahmedaten in Mono, leise: Kamera · Objektiv (· Film), darunter Brennweite, Blende, Zeit, ISO.
+   Großbuchstaben setzt das Skript (α und ƒ bleiben klein), deshalb hier kein text-transform. */
+.lightbox__exif {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding-top: 12px;
+  border-top: var(--hairline) solid var(--color-hairline);
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: 0.12em;
+  color: var(--color-text-3);
+}
+.lightbox__exif[hidden] { display: none; }
+.lightbox__settings { display: flex; flex-wrap: wrap; gap: 4px 18px; }
+
+/* Tag-Chips: verlinken zur Collection; Technik-Tags (z. B. Analog) sind nur Text */
+.lightbox__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 2px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.lightbox__tags[hidden] { display: none; }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border: var(--hairline) solid var(--color-hairline-strong);
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-2);
+}
+a.chip { transition: color var(--duration-fast) ease, border-color var(--duration-fast) ease; }
+a.chip:hover { color: var(--color-accent); border-color: var(--color-accent); }
+
+.lightbox__demo[hidden] { display: none; }
+
+/* ---------- Breite Bildschirme: Infobereich rechts daneben ---------- */
+@media (min-width: 64rem) {
+  .lightbox {
+    --lb-info: 17rem;
+    --lb-right: calc(var(--gutter) + var(--lb-info) + 96px);
+  }
+  .lightbox__info {
+    display: flex;
+    position: absolute;
+    right: var(--gutter);
+    bottom: var(--lb-bottom);
+    width: var(--lb-info);
+    max-height: calc(100% - var(--lb-top) - var(--lb-bottom));
+    overflow-y: auto;
+  }
+  .lightbox__nav--next { right: calc(var(--gutter) + var(--lb-info) + 16px); }
+  .lightbox__info-toggle,
+  .lightbox__caption { display: none; }
+}
+
+/* ---------- Schmaler: Infobereich zwischen Bild und Bedienung ---------- */
+@media (max-width: 63.99rem) {
+  .lightbox__info {
+    position: absolute;
+    left: var(--gutter);
+    right: var(--gutter);
+    bottom: var(--lb-bottom);
+    max-width: 36rem;
+    margin-inline: auto;
+    padding-top: var(--space-s);
+  }
+  .lightbox__info-title { display: none; }   /* steht schon unten in der Bildunterschrift */
+}
+
+/* ---------- Handy ---------- */
+@media (max-width: 47.99rem) {
+  /* Bild über die volle Breite, Bedienung unten */
+  .lightbox { --lb-top: 88px; --lb-side: 0px; --lb-bottom: 96px; }
+  .lightbox__top { top: 24px; }
+  .lightbox__number { font-size: 1.5rem; }
+  .lightbox__corner { --corner-inset: 12px; }
+  .lightbox__actions { gap: var(--space-xs); }
+  .lightbox__nav { top: auto; bottom: 20px; margin-top: 0; width: var(--touch-target); height: var(--touch-target); }
+  .lightbox__nav--prev { left: calc(var(--gutter) - 10px); }
+  .lightbox__nav--next { right: calc(var(--gutter) - 10px); }
+  .lightbox__nav svg { width: 22px; height: 22px; }
+  .lightbox__caption { left: 64px; right: 64px; bottom: 20px; }
+}

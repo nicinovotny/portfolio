@@ -69,3 +69,36 @@ export function formatWhen(entry) {
 export function nameWithYear(entry, name = entry.name) {
   return [name, entry.year].filter(Boolean).join(' · ');
 }
+
+// ---------- Aufnahmedaten (Lightbox) ----------
+
+/** Technik-Tags erzeugen keine Collection, nur einen Chip in der Lightbox */
+export const TECH_TAGS = { analog: 'Analog' };
+
+/** Versalien für Mono-Labels – α (Sony α7) und ƒ (Blende) bleiben klein, wie auf Kameras gedruckt */
+export function monoUpper(text) {
+  return String(text).replace(/[^αƒµ]+/g, (part) => part.toLocaleUpperCase('de-DE'));
+}
+
+/** 5.6 → "5.6", 8 → "8", 35.0 → "35" */
+function trimNumber(value) {
+  return String(Number(value));
+}
+
+/**
+ * Aufnahmedaten eines Bildes ("exif" in albums.json) für die Anzeige – nur vorhandene Werte:
+ *   gear:     ["Sony α7 V", "FE 24–70 mm"] bzw. analog ["Canon AE-1", "50 mm", "Kodak Portra 400"]
+ *   settings: ["35 mm", "ƒ/8", "1/250 s", "ISO 100"]
+ */
+export function formatExif(exif) {
+  if (!exif) return { gear: [], settings: [] };
+  const filled = (value) => value != null && value !== '';
+  const gear = [exif.camera, exif.lens, exif.film].filter(filled);
+  const settings = [
+    filled(exif.focal) && `${trimNumber(exif.focal)} mm`,
+    filled(exif.aperture) && `ƒ/${trimNumber(exif.aperture)}`,
+    filled(exif.shutter) && `${exif.shutter} s`,
+    filled(exif.iso) && `ISO ${exif.iso}`,
+  ].filter(Boolean);
+  return { gear, settings };
+}

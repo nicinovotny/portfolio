@@ -155,3 +155,12 @@ Spezifikation: `docs/Umbau-Spezifikation.md` (Collections, Eintragsarten, Tags, 
 - **Alte Adressen:** `album.html` ist jetzt eine kleine Weiterleitung (`?ort=<id>` → `entry.html?id=<id>`, ohne JavaScript zur Übersicht). Alte ids ersetzt `entry.html` in der Adresszeile durch die neuen (`history.replaceState`). In Schritt 5 das Ziel ohne id von `alben.html` auf `collections.html` umstellen.
 - Karte: Texte „Album/Alben“ → „Trip/Trips“, Vorschau-Link „Ansehen →“; Links auf `entry.html` (`entryUrl()`).
 - Behoben: Ein einzelnes Hochformat in einer Zeile (Handy-Galerie, Bildstrecke) war nur zwei Drittel so breit wie die Zeile (`flex-grow` unter 1 verteilt nur einen Teil des Platzes) → `.gallery__item:only-child { flex-grow: 1 }`.
+
+### Schritt 3 – Lightbox mit Aufnahmedaten (17.10.2026)
+- `js/lightbox.js` erzeugt sein `<dialog>` selbst (kein Markup mehr in den Seiten), Styles in eigener Datei `css/lightbox.css`. Jede Seite mit Großansicht bindet `css/lightbox.css` ein und ruft `createLightbox({ images: [{ entry, image }], thumbs, collections, currentEntryId })` auf. Bilder dürfen aus verschiedenen Einträgen stammen (für die Collection-Seite).
+- **Infobereich:** Titel (Geist) · Herkunft `TRIP · SEOUL · 2026 →` (Link zum Eintrag; auf dessen eigener Seite und bei Frames nur Text) · Haarlinie · Aufnahmedaten in Geist Mono, leise Labelfarbe: erste Zeile Kamera · Objektiv (· Film), zweite Zeile Brennweite, Blende, Zeit, ISO · Tag-Chips (Collections verlinkt, Technik-Tags wie „Analog“ nur Text) · „Demo-Bild“ bei Demo-Bildern.
+- Nur vorhandene Werte (`formatExif` in `js/format.js`); ohne Daten entfällt der ganze Block. Versalien setzt `monoUpper()`, damit α (Sony α7) und ƒ (Blende) klein bleiben.
+- **Ab 64rem Breite:** Infobereich rechts neben dem Bild (17rem), unten bündig, immer sichtbar; rechter Pfeil sitzt zwischen Bild und Infobereich.
+- **Schmaler:** Titel unten mittig, Aufnahmedaten per **i-Knopf** (oben neben „Schließen“, Taste „i“) zwischen Bild und Bedienung; das Bild rückt dafür nach oben (`--info-h`). Standard: ausgeblendet; die Wahl bleibt beim Blättern erhalten.
+- `aria-modal`, Fokus auf „Schließen“, Rückgabe auf das zuletzt gezeigte Bild, Pfeiltasten, Wischen, Esc wie bisher.
+- Getestet mit vorübergehenden Testdaten (Sony mit allen Werten + Tags Wildlife/Analog, Canon AE-1 mit Film, nur ISO, gar nichts) bei 1440 px und 375 px; Testdaten wieder entfernt. Echte Aufnahmedaten kommen mit Schritt 7 (Import).

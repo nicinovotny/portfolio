@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/entry.css">
+  <link rel="stylesheet" href="css/lightbox.css">
   <link rel="preconnect" href="https://fastly.picsum.photos">
   <script defer src="vendor/gsap/gsap.min.js"></script>
   <script defer src="vendor/gsap/ScrollTrigger.min.js"></script>
@@ -142,45 +143,7 @@
     </div>
   </main>
 
-  <!-- Großansicht (Lightbox) -->
-  <dialog class="lightbox" data-lightbox aria-label="Großansicht">
-    <div class="lightbox__backdrop" data-lightbox-backdrop></div>
-    <div class="lightbox__stage" data-lightbox-stage>
-      <img class="lightbox__img" data-lightbox-img alt="">
-    </div>
-
-    <div class="lightbox__chrome" data-lightbox-chrome>
-      <span class="lightbox__corner lightbox__corner--tl" aria-hidden="true"></span>
-      <span class="lightbox__corner lightbox__corner--tr" aria-hidden="true"></span>
-      <span class="lightbox__corner lightbox__corner--bl" aria-hidden="true"></span>
-      <span class="lightbox__corner lightbox__corner--br" aria-hidden="true"></span>
-
-      <div class="lightbox__top">
-        <p class="lightbox__counter" aria-hidden="true">
-          <span class="lightbox__number" data-lightbox-number>01</span>
-          <span class="label label--quiet" data-lightbox-total>/ 01</span>
-        </p>
-        <button class="lightbox__close label" type="button" data-lightbox-close>
-          Schließen
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><path d="M5 5l14 14M19 5L5 19"/></svg>
-        </button>
-      </div>
-
-      <button class="lightbox__nav lightbox__nav--prev" type="button" data-lightbox-prev aria-label="Vorheriges Bild">
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M15 4l-8 8 8 8"/></svg>
-      </button>
-      <button class="lightbox__nav lightbox__nav--next" type="button" data-lightbox-next aria-label="Nächstes Bild">
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M9 4l8 8-8 8"/></svg>
-      </button>
-
-      <div class="lightbox__caption">
-        <p class="lightbox__title" data-lightbox-title></p>
-        <p class="label label--quiet" data-lightbox-meta></p>
-      </div>
-    </div>
-
-    <p class="visually-hidden" data-lightbox-status aria-live="polite"></p>
-  </dialog>
+  <!-- Großansicht (Lightbox): Markup erzeugt js/lightbox.js -->
 
   <footer class="site-footer">
     <span class="label label--quiet">© 2026 Nicolas Novotny</span>

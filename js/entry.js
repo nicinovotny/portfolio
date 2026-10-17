@@ -6,7 +6,7 @@
 // Voriger/nächster Eintrag bleibt innerhalb der Collection. Die Großansicht steckt in js/lightbox.js.
 
 import {
-  canonicalId, collectionUrl, entryUrl, getCollection, getCollectionEntries, getCover, getEntry, getRegions,
+  canonicalId, collectionUrl, entryUrl, getCollection, getCollectionEntries, getCollections, getCover, getEntry, getRegions,
   imageAttrs, imageRef, imageUrl, regionPath,
 } from './data.js';
 import { KIND_LABELS, formatCoords, formatWhen, nameWithYear, pad2 } from './format.js';
@@ -73,9 +73,10 @@ async function init() {
     history.replaceState(history.state, '', `?${params}`);
   }
 
-  const [collection, siblings] = await Promise.all([
+  const [collection, siblings, collections] = await Promise.all([
     getCollection(entry.collection),
     getCollectionEntries(entry.collection),
+    getCollections({ all: true }),
   ]);
 
   root.dataset.kind = entry.kind;
@@ -88,9 +89,10 @@ async function init() {
   setupStageScroll();
 
   const lightbox = createLightbox({
-    dialog: document.querySelector('[data-lightbox]'),
-    album: entry,
+    images: entry.images.map((image) => ({ entry, image })),
     thumbs: (i) => items[i],
+    collections,
+    currentEntryId: entry.id,
   });
   items.forEach(({ button }, i) => button.addEventListener('click', () => lightbox.open(i)));
 }
