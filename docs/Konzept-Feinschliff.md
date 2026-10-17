@@ -1,6 +1,6 @@
 # Konzept: Feinschliff vor Schritt 8 (17.10.2026)
 
-Zwei Änderungen, mit Nici besprochen am 17.10.2026. Sie werden **vor** Umbau-Schritt 8 (neue Einträge) umgesetzt, damit die neuen Inhalte gleich in der endgültigen Form erscheinen. Reihenfolge: erst A (klein), dann B (mittel). Nach jedem Teil anhalten, Nici testet, dann Commit.
+Zwei Änderungen, mit Nici besprochen am 17.10.2026. Sie werden **vor** Umbau-Schritt 8 (neue Einträge) umgesetzt, damit die neuen Inhalte gleich in der endgültigen Form erscheinen. Reihenfolge: erst A (Übersicht, klein), dann A2 (Jahre in Landscape, klein), dann B (Eintragsseite, mittel). Nach jedem Teil anhalten, Nici testet, dann Commit.
 
 ---
 
@@ -8,7 +8,7 @@ Zwei Änderungen, mit Nici besprochen am 17.10.2026. Sie werden **vor** Umbau-Sc
 
 ### Problem
 - Jede Collection füllt fast den ganzen Bildschirm: Bild 16:10 auf ca. 58 % Breite, Name in Display-Größe, 7 rem Abstand zwischen den Zeilen. Auf dem Desktop sieht man immer nur eine Collection und muss für jede weitere scrollen.
-- Die grünen Linien (Haarlinie vor „Collection öffnen“ in Gletscherfarbe) und die gepunktete Führungslinie gefallen Nici nicht.
+- Die **gepunktete Führungslinie** zwischen Ziffer und Zähler (`01 ……… 21 Trips`, `.collection-row__leader`) gefällt Nici nicht – sie wirkt grünlich. Das ist mit „grüne Trennlinie“ gemeint (klargestellt 17.10.2026), nicht die Linie vor „Collection öffnen“.
 
 ### Vorbild
 Nicis bisherige Adobe-Portfolio-Seite: <https://nicolasnovotny208ce6.myportfolio.com/work>
@@ -41,8 +41,8 @@ Nicis bisherige Adobe-Portfolio-Seite: <https://nicolasnovotny208ce6.myportfolio
 - Seitenkopf („Portfolio — 05 Collections“ / „Collections“) bleibt, darf aber etwas weniger Abstand nach unten haben, damit die erste Zeile früher beginnt.
 
 **Entfällt:**
-- „Collection öffnen“ (`.line-link` mit grüner Linie)
-- gepunktete Führungslinie (`.collection-row__leader`) und die Kopfzeile `01 ……… 21 Trips`
+- **gepunktete Führungslinie** (`.collection-row__leader`) und die Kopfzeile `01 ……… 21 Trips` – das ist der eigentliche Störfaktor
+- „Collection öffnen“ (`.line-link`) – im Zickzack-Layout überflüssig, weil die ganze Zeile der Link ist
 
 **Zustände (Barrierefreiheit):**
 - Ganze Zeile ist ein `<a>`; sichtbarer Fokus (`:focus-visible`, Outline mit Abstand).
@@ -56,9 +56,29 @@ Nicis bisherige Adobe-Portfolio-Seite: <https://nicolasnovotny208ce6.myportfolio
 
 **Dateien:** `js/collections.js` (Markup der Zeile neu: `<a class="collection-row">` mit `.collection-row__image` und `.collection-row__panel`), `css/collections.css` (neu schreiben). Sonst nichts – Datenfunktionen (`getCollectionCover`, `formatCollectionCounts`) bleiben.
 
-**Offene Frage an Nici beim Umsetzen:** Soll die Collections-Liste auf der **Startseite** (große Textzeilen `01 Landscape …… 21 Trips` mit Vorschaubild beim Überfahren) so bleiben? Sie hat ebenfalls eine gepunktete Führungslinie und große Zeilen. Vorschlag: so lassen (sie ist bewusst typografisch und auf der Startseite kompakter), nur die Führungslinie ggf. entfernen – Nici entscheidet.
+**Startseite:** Die Collections-Liste dort (`01 Landscape …… 21 Trips`) hat dieselbe gepunktete Führungslinie (`.home-collection__leader` in `css/home.css`). Da Nici genau diese Linie nicht mag, dort ebenfalls entfernen (Zähler rechtsbündig, dazwischen Leerraum; Trennung der Zeilen nur über die bestehende feine Haarlinie unten – beim Umsetzen kurz zeigen und fragen, ob die bleiben darf). Rest der Startseiten-Liste bleibt.
 
 **Testen:** 1440×900 (zwei Collections sichtbar?), 1024×768, 375×812; Tastatur (Tab durch alle Zeilen, Fokus sichtbar); keine horizontale Scrollleiste.
+
+---
+
+## A2. Landscape: Trips nach Jahren gegliedert (`collection.html?id=landscape`)
+
+### Wunsch
+Auf der bisherigen Live-Seite („Alle Reisen“, `alben.html`) waren die Reisen nach Jahren gegliedert: großes Jahr in Geist 200 über einer Haarlinie, darunter die Kacheln des Jahres. Das möchte Nici für die Trips wieder haben – **vorerst nur in der Collection Landscape**, die anderen Collections werden später angepasst.
+
+Das weicht bewusst von der Spezifikation ab (Abschnitt 6: „Keine Jahresüberschriften, damit Lücken nicht auffallen“) – für Landscape gibt es genug Trips in fast jedem Jahr. Nach dem Umsetzen in `docs/Entscheidungen.md` festhalten.
+
+### Umsetzung
+- Neues optionales Feld an der Collection in `albums.json`: `"groupByYear": true` – zunächst nur bei `landscape`. So lässt es sich später für andere Collections einfach einschalten, ohne Code zu ändern.
+- `js/collection.js`, Abschnitt Trips (`renderEntries`): ist `groupByYear` gesetzt, die Trips nach `year` gruppieren (neueste zuerst, Reihenfolge innerhalb des Jahres wie in `albums.json`), Einträge ohne Jahr am Ende unter „Ohne Jahr“.
+- Pro Jahr: Kopf wie früher auf der Live-Seite – Jahr groß in Geist 200 (`var(--text-h1)`, `font-variant-numeric: tabular-nums`) links, Anzahl rechts als Mono-Label (`03 Trips`), darüber eine feine **graue** Haarlinie (`var(--color-hairline)`, keine Akzentfarbe, nicht gestrichelt). Darunter das bisherige Kachel-Raster (`.tile-grid`, `js/tiles.js`).
+- Der Abschnittskopf „Trips 21“ bleibt darüber als Klammer; die Jahre sind Unterabschnitte (`<h3>`), damit die Überschriften-Hierarchie stimmt (h1 Collection → h2 Trips → h3 Jahr).
+- Kachel-Label: Bei Gruppierung nach Jahr kann das Jahr im Label entfallen (`Trip — Sep` bzw. nur `Trip`), sonst steht es doppelt – beim Umsetzen beide Varianten zeigen.
+- Shoots und Frames in Landscape (falls es welche gibt) bleiben ungegliedert.
+- Stilvorlage: frühere Klassen `.album-year`, `.album-year__head`, `.album-year__title` (am 17.10.2026 aus `css/base.css` entfernt, im Git-Verlauf vor Commit `eb6fd9f` zu finden) – als `.collection-year…` in `css/collection.css` neu anlegen.
+
+**Testen:** `collection.html?id=landscape` bei 1440 und 375 px; Tastatur; Kachel → Eintrag (Übergang); andere Collections unverändert.
 
 ---
 
