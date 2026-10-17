@@ -104,7 +104,7 @@ Festlegungen hier haben Vorrang vor dem Projektbriefing.
 
 ## Bilder einpflegen (15.10.2026)
 - Projekt-Skill `.claude/skills/bilder-einpflegen/` + Werkzeug `tools/images.mjs` (Node, `sharp` + `exif-reader`, nur lokal – die Seite selbst bleibt ohne Build-Schritt).
-- Eingangsordner `images/_eingang/` (Inhalt per `.gitignore` ausgeschlossen); verarbeitete Originale nach `_eingang/erledigt/`.
+- Eingangsordner `images/_eingang/` (Inhalt per `.gitignore` ausgeschlossen); verarbeitete Originale nach `_eingang/erledigt/` (seit 17.10.2026 mit Präfix `<eintrag>__`; aufheben, sie sind die Quelle für `backfill`).
 - Ausgabe: `<album>-NN.webp` (lange Kante 2400, Qualität 82) und `<album>-NN-1200.webp` (1200 breit, Qualität 75), nach EXIF gedreht, sRGB, ohne Metadaten (auch kein GPS). Nicht hochgerechnet.
 - Claude schlägt Album (GPS, unter ca. 150 km), Titel und Alt-Text vor, Nici bestätigt. Demo-Bilder eines Albums: jedes Mal nachfragen, ob ersetzen oder behalten.
 - HEIC nur am Mac (über `sips`), am PC als JPEG exportieren.
@@ -192,3 +192,20 @@ Spezifikation: `docs/Umbau-Spezifikation.md` (Collections, Eintragsarten, Tags, 
 - **Kartenstreifen:** einziger Karten-Einstieg der Startseite. Ausschnitt aller Einträge mit Ort (Projektion, Landflächen und Gradnetz 10° wie auf der Karte), Höhenlinien-Marker (zwei Ringe + Punkt), Readout „Karte — 21 Trips“, „Karte öffnen“. Lädt die Kartendaten erst, wenn der Streifen in die Nähe kommt.
 - Neu ausgelagert: `js/contours.js` (Marker-Form, von Karte und Startseite genutzt), `js/tiles.js` + Kachel-Styles in `css/base.css` (Collection-Seite und „Zuletzt“). Übergangsfunktionen `getAlbums`/`getFeatured` aus `js/data.js` entfernt; `about.js` zählt jetzt über `getEntries`.
 - Getestet bei 1440 und 375 px, Diashow mit vorübergehenden Favoriten in Automotive und Wildlife (wieder entfernt); Rotation rechnerisch geprüft.
+
+### Schritt 7 – Import mit Aufnahmedaten (17.10.2026)
+- Kein neues `tools/import.mjs`: `tools/images.mjs` erweitert, aufgeteilt in `tools/lib/exif.mjs` (Aufnahmedaten lesen und aufbereiten) und `tools/lib/albums-file.mjs` (albums.json lesen/schreiben im kompakten Stil; Einlesen + Schreiben ergibt die Datei Zeichen für Zeichen unverändert).
+- **Aufnahmedaten** kommen nur aus den Originalen (nie aus den WebP). Am Bild als `"exif": { camera, lens, focal, aperture, shutter, iso, film, source }`, fehlende Werte `null`. `source`: `"file"`, `"manual"` (von Nici) oder `"mixed"`.
+  - Kamera-Modellcodes werden über `CAMERA_NAMES` in Namen übersetzt (`ILCE-7RM3` → „Sony α7R III“, `ILCE-7M5` → „Sony α7 V“, `X100VI` → „Fujifilm X100VI“, Nikon D750/D3300). Unbekannte Codes: Hersteller + Modell.
+  - Belichtungszeit als Bruch (`"1/160"`, `"5"`).
+  - Objektivnamen ohne „|“ (`24-70mm F2.8 DG DN Art 019`).
+- **Nie schätzen:** Fehlende Werte fragt der Import bzw. Claude nach. Ohne Antwort bleiben sie `null` und werden nicht angezeigt. Bei Bildern ohne Aufnahmedaten wird gefragt, ob sie analog sind; dann Kamera, Objektiv, Film.
+- **Metadaten:** Veröffentlichte WebP enthalten keine (sharp schreibt keine EXIF/XMP/IPTC, auch kein GPS). `check` meldet einen Fehler, falls doch.
+- **Befehle:**
+  - `import`: interaktiv im Terminal für Nici. Eintrag-Vorschlag aus GPS (< 150 km) und Aufnahmedatum (Zeitraum > Datum > Jahr), fehlende Daten, Titel, Alt-Text, Tags, Demo-Bilder ersetzen, Zeitraum übernehmen. Speichert nach jedem Bild. Neue Einträge legt `import` nicht an.
+  - `inspect`: liefert `exif`, `cameraRaw` und `suggestions`.
+  - `convert --entry`: gibt das fertige Bild-Objekt inkl. `exif` aus.
+  - `backfill`: ordnet Originale aus `_eingang/erledigt/` per Bildvergleich (16×16-Graustufen) den vorhandenen WebP zu und trägt die Aufnahmedaten nach. `--dates` übernimmt den Zeitraum.
+  - `check`: prüft zusätzlich Datumsformate, fehlende Aufnahmedaten und Metadaten in den Dateien.
+- **Nachgetragen (17.10.2026):** Aufnahmedaten aller 25 eigenen Bilder (Seoul 2026, Island 2025, Sächsische Schweiz 2025, Lofoten 2024, Seiser Alm 2024), alle Zuordnungen eindeutig (Abweichung 1,4–3,4 bei Schwelle 12). Zeiträume **nicht** eingetragen – Vorschläge aus den Aufnahmedaten: Island 26.02.–02.03.2025, Lofoten 10.–15.09.2024, Sächsische Schweiz 19.–21.10.2025, Seiser Alm 20.–24.06.2024, Seoul 21.–25.09.2026.
+- Skill `bilder-einpflegen` und `docs/Anleitung.md` aufs neue Datenformat umgeschrieben (Einträge, Collections, Tags, Hero-Favoriten, Aufnahmedaten).

@@ -38,8 +38,10 @@ Lies Briefing und Entscheidungen, bevor du Code schreibst oder Designentscheidun
   4. ✅ Collection-Seite (17.10.2026): `collection.html` + `js/collection.js` + `css/collection.css`, Kacheln nach Art, Frames inkl. getaggter Bilder mit Herkunft, `&bild=` öffnet die Lightbox, nächste Collection. Galerie-Code in `js/gallery.js` / `css/gallery.css` ausgelagert. Mit Testdaten geprüft (1440 und 375 px), Testdaten entfernt.
   5. ✅ Collections-Übersicht + Navigation (17.10.2026): `collections.html` + `js/collections.js` + `css/collections.css` (aus alben.* umgezogen), Navigation „Collections · Karte · Über mich“ auf allen Seiten, `alben.html` leitet weiter. Im Browser geprüft (1440 und 375 px, alle Seiten).
   6. ✅ Startseite (17.10.2026): Hero mit einem Bild pro Collection (stündliche Rotation, Fokuspunkt), Intro mit Zahlen, Collections-Liste mit Vorschau, Zuletzt + Kartenstreifen. Neu `js/contours.js`, `js/tiles.js`. Im Browser geprüft (1440 und 375 px).
-  7. Import mit EXIF · 8. neue Einträge aus der Bestandsliste
-- **Als Nächstes:** Umbau Schritt 7 (`tools/images.mjs` + Skill: Aufnahmedaten aus den Originalen, Nachfragen bei fehlenden Werten, Zuordnung per Datum; Aufnahmedaten der 25 vorhandenen Bilder aus `images/_eingang/erledigt/` nachtragen; `docs/Anleitung.md` aufs neue Datenformat umschreiben). Danach eigene Bilder und Texte (Checkliste in `docs/Anleitung.md`, Abschnitt 5 – Anleitung wird in Schritt 7 aufs neue Datenformat umgeschrieben).
+  7. ✅ Import mit Aufnahmedaten (17.10.2026): `tools/images.mjs` mit `import` (interaktiv), `backfill`, erweitertem `inspect`/`convert`/`check`; `tools/lib/exif.mjs`, `tools/lib/albums-file.mjs`. Aufnahmedaten der 25 eigenen Bilder nachgetragen. Skill und `docs/Anleitung.md` umgeschrieben. Import mit Testbildern (digital + analog) durchgespielt, Testdaten entfernt.
+  8. neue Einträge aus der Bestandsliste
+- Offen: Zeiträume (`dateStart`/`dateEnd`) der 5 Einträge mit eigenen Bildern – Vorschläge aus den Aufnahmedaten in `docs/Entscheidungen.md` (Schritt 7), Nici entscheidet.
+- **Als Nächstes:** Umbau Schritt 8 (neue Einträge aus der Bestandsliste mit Demo-Bildern; Koordinaten der neuen Trips mit Nici abstimmen). Danach eigene Bilder und Texte (Checkliste in `docs/Anleitung.md`, Abschnitt 5 – Anleitung wird in Schritt 7 aufs neue Datenformat umgeschrieben).
 
 ## Rahmen (gilt immer)
 - Vanilla HTML/CSS/JS + GSAP (inkl. ScrollTrigger) selbst gehostet in `vendor/gsap/`, kein Framework, kein Build-Schritt für die Seite, Hosting auf GitHub Pages, alle Pfade relativ.

@@ -82,11 +82,11 @@
       "text": "Paläste zwischen Hochhäusern, Berge am Stadtrand und Gassen, die nachts erst richtig wach werden. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "seoul-2026-01.webp", "width": 2400, "height": 1600, "title": "Sonnenuntergang über Seoul", "alt": "Orange Abendsonne über der Skyline von Seoul, eingerahmt von Baumkronen und fernen Bergen" },
-        { "id": "02", "file": "seoul-2026-02.webp", "width": 2400, "height": 1600, "title": "Stadtmauer am Abend", "alt": "Alte Stadtmauer führt durch bewaldete Hügel auf die Skyline mit dem Namsan-Turm zu" },
-        { "id": "03", "file": "seoul-2026-03.webp", "width": 2400, "height": 1600, "title": "Blaue Stunde", "alt": "Seoul zur blauen Stunde mit beleuchtetem Namsan-Turm und leuchtender Stadtmauer im Vordergrund" },
-        { "id": "04", "file": "seoul-2026-04.webp", "width": 1600, "height": 2400, "title": "Laden unterm Namsan", "alt": "Kleiner Laden mit traditionellem Ziegeldach an einer roten Straße, dahinter der Namsan-Turm" },
-        { "id": "05", "file": "seoul-2026-05.webp", "width": 1600, "height": 2400, "title": "Regen und Neon", "alt": "Frau mit Regenschirm geht nachts durch eine Gasse unter roter Neonreklame" }
+        { "id": "01", "file": "seoul-2026-01.webp", "width": 2400, "height": 1600, "title": "Sonnenuntergang über Seoul", "alt": "Orange Abendsonne über der Skyline von Seoul, eingerahmt von Baumkronen und fernen Bergen", "exif": { "camera": "Sony α7 V", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 70, "aperture": 8, "shutter": "1/800", "iso": 1250, "film": null, "source": "file" } },
+        { "id": "02", "file": "seoul-2026-02.webp", "width": 2400, "height": 1600, "title": "Stadtmauer am Abend", "alt": "Alte Stadtmauer führt durch bewaldete Hügel auf die Skyline mit dem Namsan-Turm zu", "exif": { "camera": "Sony α7 V", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 24, "aperture": 8, "shutter": "1/200", "iso": 200, "film": null, "source": "file" } },
+        { "id": "03", "file": "seoul-2026-03.webp", "width": 2400, "height": 1600, "title": "Blaue Stunde", "alt": "Seoul zur blauen Stunde mit beleuchtetem Namsan-Turm und leuchtender Stadtmauer im Vordergrund", "exif": { "camera": "Sony α7 V", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 39.4, "aperture": 2.8, "shutter": "1/200", "iso": 6400, "film": null, "source": "file" } },
+        { "id": "04", "file": "seoul-2026-04.webp", "width": 1600, "height": 2400, "title": "Laden unterm Namsan", "alt": "Kleiner Laden mit traditionellem Ziegeldach an einer roten Straße, dahinter der Namsan-Turm", "exif": { "camera": "Sony α7 V", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 54.3, "aperture": 8, "shutter": "1/200", "iso": 250, "film": null, "source": "file" } },
+        { "id": "05", "file": "seoul-2026-05.webp", "width": 1600, "height": 2400, "title": "Regen und Neon", "alt": "Frau mit Regenschirm geht nachts durch eine Gasse unter roter Neonreklame", "exif": { "camera": "Sony α7 V", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 48.7, "aperture": 2.8, "shutter": "1/100", "iso": 800, "film": null, "source": "file" } }
       ]
     },
     {
@@ -139,11 +139,11 @@
       "text": "Der Südosten rund um Höfn: Gletscherzungen, schwarze Strände und Berge, die direkt aus dem Meer steigen. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "iceland-2025-01.webp", "width": 2400, "height": 1601, "title": "Polarlicht über dem Vestrahorn", "alt": "Grünes Polarlicht und Sterne über den dunklen Gipfeln des Vestrahorn und verschneiten Dünen" },
-        { "id": "02", "file": "iceland-2025-02.webp", "width": 2400, "height": 1601, "title": "Abendlicht am Vestrahorn", "alt": "Wanderer in roter Jacke zwischen verschneiten Dünen vor dem rötlich beleuchteten Vestrahorn" },
-        { "id": "03", "file": "iceland-2025-03.webp", "width": 2400, "height": 1601, "title": "Brandung bei Stokksnes", "alt": "Wellen umspülen verschneite Felsen, dahinter die spitzen Gipfel des Vestrahorn" },
-        { "id": "04", "file": "iceland-2025-04.webp", "width": 2400, "height": 1601, "title": "Kirkjufell im Schneesturm", "alt": "Verschneiter Wasserfall vor dem Kirkjufell, der im Schneetreiben verschwindet" },
-        { "id": "05", "file": "iceland-2025-05.webp", "width": 2400, "height": 1600, "title": "Morgen im Schnee", "alt": "Silhouette einer Person am verschneiten Auto vor einem orangen Sonnenaufgang" }
+        { "id": "01", "file": "iceland-2025-01.webp", "width": 2400, "height": 1601, "title": "Polarlicht über dem Vestrahorn", "alt": "Grünes Polarlicht und Sterne über den dunklen Gipfeln des Vestrahorn und verschneiten Dünen", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 14, "aperture": 2.8, "shutter": "5", "iso": 5000, "film": null, "source": "file" } },
+        { "id": "02", "file": "iceland-2025-02.webp", "width": 2400, "height": 1601, "title": "Abendlicht am Vestrahorn", "alt": "Wanderer in roter Jacke zwischen verschneiten Dünen vor dem rötlich beleuchteten Vestrahorn", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 14.6, "aperture": 18, "shutter": "1/160", "iso": 800, "film": null, "source": "file" } },
+        { "id": "03", "file": "iceland-2025-03.webp", "width": 2400, "height": 1601, "title": "Brandung bei Stokksnes", "alt": "Wellen umspülen verschneite Felsen, dahinter die spitzen Gipfel des Vestrahorn", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 14, "aperture": 22, "shutter": "1/3", "iso": 50, "film": null, "source": "file" } },
+        { "id": "04", "file": "iceland-2025-04.webp", "width": 2400, "height": 1601, "title": "Kirkjufell im Schneesturm", "alt": "Verschneiter Wasserfall vor dem Kirkjufell, der im Schneetreiben verschwindet", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 15.5, "aperture": 22, "shutter": "1/5", "iso": 50, "film": null, "source": "file" } },
+        { "id": "05", "file": "iceland-2025-05.webp", "width": 2400, "height": 1600, "title": "Morgen im Schnee", "alt": "Silhouette einer Person am verschneiten Auto vor einem orangen Sonnenaufgang", "exif": { "camera": "Fujifilm X100VI", "lens": null, "focal": 23, "aperture": 4, "shutter": "1/3000", "iso": 500, "film": null, "source": "file" } }
       ]
     },
     {
@@ -213,11 +213,11 @@
       "text": "Sandsteintürme über dem Elbtal, Schluchten und Morgennebel. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "saxon-switzerland-2025-01.webp", "width": 2400, "height": 1601, "title": "Bastei im Morgenrot", "alt": "Basteibrücke zwischen Sandsteinfelsen im Herbstwald unter rosa Morgenhimmel" },
-        { "id": "02", "file": "saxon-switzerland-2025-02.webp", "width": 2400, "height": 1601, "title": "Steinhaus in der Schlucht", "alt": "Altes Steinhaus mit Schieferdach versteckt zwischen herbstlichen Bäumen in einer Felsschlucht" },
-        { "id": "03", "file": "saxon-switzerland-2025-03.webp", "width": 2400, "height": 1601, "title": "Burg Kriebstein im Spiegel", "alt": "Burg auf einem Felsen über dem Wasser, umgeben von Herbstwald, mit Spiegelbild" },
-        { "id": "04", "file": "saxon-switzerland-2025-04.webp", "width": 2400, "height": 1601, "title": "Die Barbarine", "alt": "Freistehende Felsnadel Barbarine im warmen Abendlicht über weitem Waldland" },
-        { "id": "05", "file": "saxon-switzerland-2025-05.webp", "width": 2400, "height": 1600, "title": "Abendsonne auf dem Fels", "alt": "Abendsonne über bewaldeten Tälern, im Vordergrund Sandsteinfelsen mit Birken" }
+        { "id": "01", "file": "saxon-switzerland-2025-01.webp", "width": 2400, "height": 1601, "title": "Bastei im Morgenrot", "alt": "Basteibrücke zwischen Sandsteinfelsen im Herbstwald unter rosa Morgenhimmel", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 14.6, "aperture": 2.8, "shutter": "1/200", "iso": 320, "film": null, "source": "file" } },
+        { "id": "02", "file": "saxon-switzerland-2025-02.webp", "width": 2400, "height": 1601, "title": "Steinhaus in der Schlucht", "alt": "Altes Steinhaus mit Schieferdach versteckt zwischen herbstlichen Bäumen in einer Felsschlucht", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 14, "aperture": 3.5, "shutter": "1/100", "iso": 400, "film": null, "source": "file" } },
+        { "id": "03", "file": "saxon-switzerland-2025-03.webp", "width": 2400, "height": 1601, "title": "Burg Kriebstein im Spiegel", "alt": "Burg auf einem Felsen über dem Wasser, umgeben von Herbstwald, mit Spiegelbild", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 18.6, "aperture": 8, "shutter": "1/100", "iso": 400, "film": null, "source": "file" } },
+        { "id": "04", "file": "saxon-switzerland-2025-04.webp", "width": 2400, "height": 1601, "title": "Die Barbarine", "alt": "Freistehende Felsnadel Barbarine im warmen Abendlicht über weitem Waldland", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 14.6, "aperture": 8, "shutter": "1/250", "iso": 500, "film": null, "source": "file" } },
+        { "id": "05", "file": "saxon-switzerland-2025-05.webp", "width": 2400, "height": 1600, "title": "Abendsonne auf dem Fels", "alt": "Abendsonne über bewaldeten Tälern, im Vordergrund Sandsteinfelsen mit Birken", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 14, "aperture": 8, "shutter": "1/320", "iso": 500, "film": null, "source": "file" } }
       ]
     },
     {
@@ -269,11 +269,11 @@
       "text": "Granitgipfel, die direkt aus dem Nordmeer steigen. Im Winter blaue Stunden, die den halben Tag dauern. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "lofoten-2024-01.webp", "width": 2400, "height": 1601, "title": "Blick vom Reinebringen", "alt": "Blick von oben auf Reine, Fjorde und schroffe Gipfel unter grauem Himmel" },
-        { "id": "02", "file": "lofoten-2024-02.webp", "width": 2400, "height": 1601, "title": "Rote Rorbuer", "alt": "Rote Fischerhütten am Ufer eines Fjords unter wolkenverhangenen Bergen" },
-        { "id": "03", "file": "lofoten-2024-03.webp", "width": 2400, "height": 1601, "title": "Über der Bucht", "alt": "Wanderer mit Rucksack steht auf einem Felsen hoch über einer Bucht zwischen steilen Bergen" },
-        { "id": "04", "file": "lofoten-2024-04.webp", "width": 2400, "height": 1500, "title": "Brandung im Sturmlicht", "alt": "Welle bricht an dunklen Felsen, dahinter Berge unter orange leuchtenden Sturmwolken" },
-        { "id": "05", "file": "lofoten-2024-05.webp", "width": 2400, "height": 1600, "title": "Hamnøy zur blauen Stunde", "alt": "Rote Hütten von Hamnøy auf Felsen am Wasser vor einem mächtigen Berg in der Dämmerung" }
+        { "id": "01", "file": "lofoten-2024-01.webp", "width": 2400, "height": 1601, "title": "Blick vom Reinebringen", "alt": "Blick von oben auf Reine, Fjorde und schroffe Gipfel unter grauem Himmel", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 14, "aperture": 6.3, "shutter": "1/100", "iso": 200, "film": null, "source": "file" } },
+        { "id": "02", "file": "lofoten-2024-02.webp", "width": 2400, "height": 1601, "title": "Rote Rorbuer", "alt": "Rote Fischerhütten am Ufer eines Fjords unter wolkenverhangenen Bergen", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 24, "aperture": 8, "shutter": "1/100", "iso": 320, "film": null, "source": "file" } },
+        { "id": "03", "file": "lofoten-2024-03.webp", "width": 2400, "height": 1601, "title": "Über der Bucht", "alt": "Wanderer mit Rucksack steht auf einem Felsen hoch über einer Bucht zwischen steilen Bergen", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 32.5, "aperture": 3.5, "shutter": "1/640", "iso": 100, "film": null, "source": "file" } },
+        { "id": "04", "file": "lofoten-2024-04.webp", "width": 2400, "height": 1500, "title": "Brandung im Sturmlicht", "alt": "Welle bricht an dunklen Felsen, dahinter Berge unter orange leuchtenden Sturmwolken", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 24, "aperture": 2.8, "shutter": "1/320", "iso": 640, "film": null, "source": "file" } },
+        { "id": "05", "file": "lofoten-2024-05.webp", "width": 2400, "height": 1600, "title": "Hamnøy zur blauen Stunde", "alt": "Rote Hütten von Hamnøy auf Felsen am Wasser vor einem mächtigen Berg in der Dämmerung", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 14.6, "aperture": 18, "shutter": "20", "iso": 100, "film": null, "source": "file" } }
       ]
     },
     {
@@ -327,11 +327,11 @@
       "text": "Von der Seiser Alm über das Villnößtal und den Pragser Wildsee bis zu den Drei Zinnen – Kalkzinnen, die im Abendlicht glühen, und Gewitter, die über die Grate ziehen. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "seiser-alm-2024-01.webp", "width": 2400, "height": 1600, "title": "Seiser Alm am Abend", "alt": "Grüne Almwiesen mit Holzhütten vor Langkofel und Plattkofel im warmen Abendlicht" },
-        { "id": "02", "file": "seiser-alm-2024-02.webp", "width": 2400, "height": 1601, "title": "St. Magdalena im Villnößtal", "alt": "Kirche von St. Magdalena zwischen Wiesen und Wäldern vor den Geislerspitzen" },
-        { "id": "03", "file": "seiser-alm-2024-03.webp", "width": 2400, "height": 1601, "title": "Bootshaus am Pragser Wildsee", "alt": "Hölzernes Bootshaus und Ruderboote spiegeln sich im stillen Pragser Wildsee" },
-        { "id": "04", "file": "seiser-alm-2024-04.webp", "width": 2400, "height": 1601, "title": "Dreizinnenhütte im Gewitterlicht", "alt": "Dreizinnenhütte unter dem Toblinger Knoten vor dunklen Gewitterwolken" },
-        { "id": "05", "file": "seiser-alm-2024-05.webp", "width": 2400, "height": 1600, "title": "Drei Zinnen", "alt": "Die Drei Zinnen ragen über einem Schneefeld in einen dramatischen Wolkenhimmel" }
+        { "id": "01", "file": "seiser-alm-2024-01.webp", "width": 2400, "height": 1600, "title": "Seiser Alm am Abend", "alt": "Grüne Almwiesen mit Holzhütten vor Langkofel und Plattkofel im warmen Abendlicht", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 31.3, "aperture": 8, "shutter": "1/640", "iso": 800, "film": null, "source": "file" } },
+        { "id": "02", "file": "seiser-alm-2024-02.webp", "width": 2400, "height": 1601, "title": "St. Magdalena im Villnößtal", "alt": "Kirche von St. Magdalena zwischen Wiesen und Wäldern vor den Geislerspitzen", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 41.4, "aperture": 8, "shutter": "1/200", "iso": 250, "film": null, "source": "file" } },
+        { "id": "03", "file": "seiser-alm-2024-03.webp", "width": 2400, "height": 1601, "title": "Bootshaus am Pragser Wildsee", "alt": "Hölzernes Bootshaus und Ruderboote spiegeln sich im stillen Pragser Wildsee", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 15.8, "aperture": 2.8, "shutter": "1/200", "iso": 400, "film": null, "source": "file" } },
+        { "id": "04", "file": "seiser-alm-2024-04.webp", "width": 2400, "height": 1601, "title": "Dreizinnenhütte im Gewitterlicht", "alt": "Dreizinnenhütte unter dem Toblinger Knoten vor dunklen Gewitterwolken", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 51.9, "aperture": 8, "shutter": "1/200", "iso": 100, "film": null, "source": "file" } },
+        { "id": "05", "file": "seiser-alm-2024-05.webp", "width": 2400, "height": 1600, "title": "Drei Zinnen", "alt": "Die Drei Zinnen ragen über einem Schneefeld in einen dramatischen Wolkenhimmel", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 14, "aperture": 2.8, "shutter": "1/250", "iso": 125, "film": null, "source": "file" } }
       ]
     },
     {
