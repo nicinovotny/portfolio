@@ -209,3 +209,10 @@ Spezifikation: `docs/Umbau-Spezifikation.md` (Collections, Eintragsarten, Tags, 
   - `check`: prüft zusätzlich Datumsformate, fehlende Aufnahmedaten und Metadaten in den Dateien.
 - **Nachgetragen (17.10.2026):** Aufnahmedaten aller 25 eigenen Bilder (Seoul 2026, Island 2025, Sächsische Schweiz 2025, Lofoten 2024, Seiser Alm 2024), alle Zuordnungen eindeutig (Abweichung 1,4–3,4 bei Schwelle 12). Zeiträume **nicht** eingetragen – Vorschläge aus den Aufnahmedaten: Island 26.02.–02.03.2025, Lofoten 10.–15.09.2024, Sächsische Schweiz 19.–21.10.2025, Seiser Alm 20.–24.06.2024, Seoul 21.–25.09.2026.
 - Skill `bilder-einpflegen` und `docs/Anleitung.md` aufs neue Datenformat umgeschrieben (Einträge, Collections, Tags, Hero-Favoriten, Aufnahmedaten).
+
+### Vorbereitung Schritt 8 – neue Einträge (17.10.2026, mit Nici geklärt)
+- **Kartenpunkt bei Trips mit mehreren Orten: Hauptort.** Sächsische Schweiz & Harz 2020 → Bastei; Allgäu & Zugspitze 2020 → Neuschwanstein/Füssen; Salzkammergut 2020 → Hallstatt. Weitere: Allgäu im Winter 2021 → Bad Hindelang; Eibsee im Winter 2023 → Eibsee; Burg Hohenzollern 2023 → Burg Hohenzollern.
+- **Schottland 2019 → Edinburgh.**
+- **Shoots ohne Karte** (`"coords": null`, ohne `region`), wie in der Spezifikation.
+- **Kleinarl 2025** behält seine Demo-Bilder.
+- Noch offen, beim Anlegen kurz nachfragen: Ort für Dolomiten 2020 (Vorschlag: Hauptort der Reise erfragen).

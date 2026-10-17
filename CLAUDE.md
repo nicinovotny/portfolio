@@ -41,7 +41,7 @@ Lies Briefing und Entscheidungen, bevor du Code schreibst oder Designentscheidun
   7. ✅ Import mit Aufnahmedaten (17.10.2026): `tools/images.mjs` mit `import` (interaktiv), `backfill`, erweitertem `inspect`/`convert`/`check`; `tools/lib/exif.mjs`, `tools/lib/albums-file.mjs`. Aufnahmedaten der 25 eigenen Bilder nachgetragen. Skill und `docs/Anleitung.md` umgeschrieben. Import mit Testbildern (digital + analog) durchgespielt, Testdaten entfernt.
   8. neue Einträge aus der Bestandsliste
 - Offen: Zeiträume (`dateStart`/`dateEnd`) der 5 Einträge mit eigenen Bildern – Vorschläge aus den Aufnahmedaten in `docs/Entscheidungen.md` (Schritt 7), Nici entscheidet.
-- **Als Nächstes:** Umbau Schritt 8 (neue Einträge aus der Bestandsliste mit Demo-Bildern; Koordinaten der neuen Trips mit Nici abstimmen). Danach eigene Bilder und Texte (Checkliste in `docs/Anleitung.md`, Abschnitt 5 – Anleitung wird in Schritt 7 aufs neue Datenformat umgeschrieben).
+- **Als Nächstes:** Umbau Schritt 8 (neue Einträge aus der Bestandsliste mit Demo-Bildern, Hero-Favoriten für die übrigen Collections). Koordinaten-Entscheidungen stehen in `docs/Entscheidungen.md`, „Vorbereitung Schritt 8“; nur Dolomiten 2020 noch erfragen. Die Umbau-Commits sind noch nicht gepusht – erst nach Schritt 8 pushen (sonst leere Collections live). Danach eigene Bilder und Texte (Checkliste in `docs/Anleitung.md`, Abschnitt 5 – Anleitung wird in Schritt 7 aufs neue Datenformat umgeschrieben).
 
 ## Rahmen (gilt immer)
 - Vanilla HTML/CSS/JS + GSAP (inkl. ScrollTrigger) selbst gehostet in `vendor/gsap/`, kein Framework, kein Build-Schritt für die Seite, Hosting auf GitHub Pages, alle Pfade relativ.
