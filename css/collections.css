@@ -1,0 +1,79 @@
+/* Collections-Übersicht (collections.html): eine große Zeile pro Collection –
+   oben Ziffer · gepunktete Führungslinie · Zähler (wie die Liste der Startseite), darunter Titelbild und Text */
+
+.collection-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.collection-row__link { display: flex; flex-direction: column; gap: var(--space-l); }
+
+.collection-row__top {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-s);
+}
+.collection-row__top .label { flex: none; transition: color var(--duration-fast) ease; }
+
+/* „……………“ zwischen Ziffer und Zähler */
+.collection-row__leader {
+  flex: 1;
+  min-width: var(--space-l);
+  border-bottom: var(--hairline) dotted var(--color-hairline-strong);
+  translate: 0 -3px;
+}
+
+.collection-row__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  align-items: end;
+  gap: var(--space-l) var(--space-xl);
+}
+
+.collection-row__image {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--color-land-2);
+}
+.collection-row__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease-out);
+}
+.collection-row__image.is-empty { background: var(--color-land); }
+
+.collection-row__info { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-m); }
+
+.collection-row__name {
+  font-size: var(--text-display);
+  font-weight: 200;
+  letter-spacing: var(--tracking-display);
+  line-height: 0.9;
+  transition: color var(--duration-fast) ease;
+}
+
+.collection-row__text {
+  max-width: 30rem;
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--color-text-2);
+}
+
+/* Überfahren / Tastaturfokus: Bild zoomt leicht, Ziffer und Zähler in Gletscherfarbe */
+.collection-row__link:hover .collection-row__image img { transform: scale(1.03); }
+.collection-row__link:hover .collection-row__top .label,
+.collection-row__link:focus-visible .collection-row__top .label { color: var(--color-accent); }
+.collection-row__link:hover .line-link::before { width: 56px; }
+.collection-row__link:focus-visible { outline-offset: 8px; }
+
+@media (max-width: 47.99rem) {
+  .collection-list { gap: var(--space-xl); }
+  .collection-row__body { grid-template-columns: minmax(0, 1fr); }
+  .collection-row__name { font-size: var(--text-h1); }
+}

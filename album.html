@@ -11,15 +11,15 @@
     (() => {
       const params = new URLSearchParams(location.search);
       const id = params.get('ort');
-      location.replace(id ? `entry.html?id=${encodeURIComponent(id)}${location.hash}` : 'alben.html');
+      location.replace(id ? `entry.html?id=${encodeURIComponent(id)}${location.hash}` : 'collections.html');
     })();
   </script>
   <!-- Ohne JavaScript: zur Übersicht (die Eintragsseite braucht ohnehin JavaScript) -->
-  <noscript><meta http-equiv="refresh" content="0; url=alben.html"></noscript>
+  <noscript><meta http-equiv="refresh" content="0; url=collections.html"></noscript>
   <link rel="icon" href="favicon.svg?v=2" type="image/svg+xml">
   <style>body { background: #0B0D0E; color: #ECE8E1; font-family: system-ui, sans-serif; padding: 2rem; }</style>
 </head>
 <body>
-  <p>Diese Seite ist umgezogen. <a href="alben.html" style="color: #A9C4C4">Weiter zur Übersicht</a></p>
+  <p>Diese Seite ist umgezogen. <a href="collections.html" style="color: #A9C4C4">Weiter zur Übersicht</a></p>
 </body>
 </html>

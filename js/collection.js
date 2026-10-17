@@ -8,7 +8,7 @@ import {
   OVERVIEW_URL, collectionUrl, entryUrl, getCollectionEntries, getCollectionFrames, getCollections, getCover,
   imageAttrs, imageRef,
 } from './data.js';
-import { KIND_LABELS, formatWhen, nameWithYear, pad2 } from './format.js';
+import { KIND_LABELS, KIND_ORDER, KIND_PLURALS as PLURAL, formatCollectionCounts, formatWhen, nameWithYear, pad2 } from './format.js';
 import { createGalleryItem, justifyGallery } from './gallery.js';
 import { createLightbox } from './lightbox.js';
 
@@ -25,10 +25,6 @@ const el = {
   nextNumber: root.querySelector('[data-collection-next-number]'),
   nextName: root.querySelector('[data-collection-next-name]'),
 };
-
-// Reihenfolge der Abschnitte und ihre Überschriften (Mehrzahl)
-const KIND_ORDER = ['trip', 'shoot', 'series'];
-const PLURAL = { trip: 'Trips', shoot: 'Shoots', series: 'Series', frame: 'Frames' };
 
 init();
 
@@ -75,26 +71,6 @@ async function init() {
 
 // ---------- Kopf ----------
 
-/** Zähler im Readout, z. B. „Landscape · 21 Trips“ oder „Wildlife · 23 Bilder · aus 6 Einträgen“ */
-function readoutParts(collection, entries, frames) {
-  const parts = [collection.name];
-  for (const kind of KIND_ORDER) {
-    const count = entries.filter((entry) => entry.kind === kind).length;
-    if (count) parts.push(`${count} ${count === 1 ? KIND_LABELS[kind] : PLURAL[kind]}`);
-  }
-  if (frames.length) {
-    if (entries.length) {
-      parts.push(`${frames.length} ${frames.length === 1 ? 'Frame' : 'Frames'}`);
-    } else {
-      // nur Einzelbilder (z. B. Wildlife): Bilder zählen und woher sie stammen
-      const sources = new Set(frames.map(({ entry }) => entry.id)).size;
-      parts.push(`${frames.length} ${frames.length === 1 ? 'Bild' : 'Bilder'}`);
-      if (sources > 1) parts.push(`aus ${sources} Einträgen`);
-    }
-  }
-  return parts;
-}
-
 function renderHead(collection, index, total, entries, frames) {
   document.title = `${collection.name} – Nicolas Novotny`;
   if (collection.text) document.querySelector('meta[name="description"]')?.setAttribute('content', collection.text);
@@ -106,7 +82,8 @@ function renderHead(collection, index, total, entries, frames) {
   );
   el.name.textContent = collection.name;
   el.text.textContent = collection.text ?? '';
-  el.readout.textContent = readoutParts(collection, entries, frames).join(' · ');
+  // z. B. „Landscape · 21 Trips“ oder „Wildlife · 23 Bilder · aus 6 Einträgen“
+  el.readout.textContent = [collection.name, ...formatCollectionCounts(entries, frames)].join(' · ');
 }
 
 function showMissing(title, text) {

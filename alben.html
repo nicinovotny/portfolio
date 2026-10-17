@@ -3,59 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Alben – Nicolas Novotny</title>
-  <meta name="description" content="Alle Fotoalben von Nicolas Novotny im Überblick.">
-  <meta name="theme-color" content="#0B0D0E">
+  <title>Weiterleitung – Nicolas Novotny</title>
+  <meta name="robots" content="noindex">
+  <!-- Alte Adresse alben.html (Übersicht aller Alben, vor dem Umbau im Oktober 2026) → collections.html -->
+  <script>location.replace(`collections.html${location.hash}`);</script>
+  <meta http-equiv="refresh" content="0; url=collections.html">
   <link rel="icon" href="favicon.svg?v=2" type="image/svg+xml">
-  <link rel="preload" href="fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
-  <!-- Seiten beim Überfahren eines Links vorab aufbauen (Chrome/Edge), damit der Wechsel sofort da ist -->
-  <script type="speculationrules">
-    { "prerender": [{ "where": { "href_matches": "/*" }, "eagerness": "moderate" }] }
-  </script>
-  <link rel="stylesheet" href="css/tokens.css">
-  <link rel="stylesheet" href="css/base.css">
-  <script type="module" src="js/nav.js"></script>
-  <script type="module" src="js/transitions.js"></script>
-  <script type="module" src="js/albums-overview.js"></script>
+  <style>body { background: #0B0D0E; color: #ECE8E1; font-family: system-ui, sans-serif; padding: 2rem; }</style>
 </head>
 <body>
-  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
-
-  <!-- Kopfzeile: auf allen Seiten identisch -->
-  <header class="site-header">
-    <a class="site-name" href="./">Nicolas Novotny</a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menü</button>
-    <nav class="site-nav" id="site-nav" aria-label="Hauptnavigation">
-      <a href="karte.html">Karte</a>
-      <a href="alben.html">Alben</a>
-      <a href="ueber-mich.html">Über mich</a>
-      <span class="site-nav__divider" aria-hidden="true"></span>
-      <span class="site-nav__social">
-        <a class="site-nav__icon" href="https://www.instagram.com/nici.novotny/" aria-label="Instagram" target="_blank" rel="me noopener">
-          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>
-        </a>
-        <a class="site-nav__icon" href="https://www.linkedin.com/in/nicolas-novotny/" aria-label="LinkedIn" target="_blank" rel="me noopener">
-          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>
-        </a>
-      </span>
-    </nav>
-  </header>
-
-  <main id="inhalt" class="page">
-    <div class="page-head">
-      <p class="label">Alben <span class="label__dash">—</span> <span data-album-count></span></p>
-      <h1 class="page-title">Alle Reisen</h1>
-    </div>
-    <!-- Wird aus data/albums.json befüllt: ein Abschnitt pro Jahr -->
-    <div class="album-years" data-album-years></div>
-  </main>
-
-  <footer class="site-footer">
-    <span class="label label--quiet">© 2026 Nicolas Novotny</span>
-    <span class="site-footer__links">
-      <a class="label label--quiet" href="impressum.html">Impressum</a>
-      <a class="label label--quiet" href="impressum.html#datenschutz">Datenschutz</a>
-    </span>
-  </footer>
+  <p>Diese Seite ist umgezogen. <a href="collections.html" style="color: #A9C4C4">Weiter zu den Collections</a></p>
 </body>
 </html>

@@ -96,6 +96,22 @@ export async function getCollectionFrames(collectionId) {
   return frames;
 }
 
+/**
+ * Titelbild einer Collection als { entry, image } oder null:
+ * "cover" aus albums.json, sonst der erste Hero-Favorit, sonst das Titelbild des neuesten Eintrags,
+ * sonst das erste Einzelbild.
+ */
+export async function getCollectionCover(collection) {
+  for (const ref of [collection.cover, collection.heroFavorites?.[0]?.image]) {
+    const found = ref && await resolveImage(ref);
+    if (found) return found;
+  }
+  const [first] = await getCollectionEntries(collection.id);
+  if (first) return { entry: first, image: getCover(first) };
+  const [frame] = await getCollectionFrames(collection.id);
+  return frame ? { entry: frame.entry, image: frame.image } : null;
+}
+
 /** Einträge, die auf der Karte erscheinen: alle mit Koordinaten (in der Regel Trips). */
 export async function getMapEntries() {
   return (await getEntries()).filter((entry) => entry.coords);
@@ -163,8 +179,8 @@ export function collectionUrl(collectionId) {
   return `collection.html?id=${encodeURIComponent(collectionId)}`;
 }
 
-/** Übersicht aller Collections – bis Schritt 5 des Umbaus (collections.html) die bisherige Seite */
-export const OVERVIEW_URL = 'alben.html';
+/** Übersicht aller Collections */
+export const OVERVIEW_URL = 'collections.html';
 
 // ---------- Regionen ----------
 

@@ -102,3 +102,36 @@ export function formatExif(exif) {
   ].filter(Boolean);
   return { gear, settings };
 }
+
+// ---------- Collections ----------
+
+/** Mehrzahl der Eintragsarten (Abschnittsüberschriften, Zähler) */
+export const KIND_PLURALS = { trip: 'Trips', shoot: 'Shoots', frame: 'Frames', series: 'Series' };
+
+/** Reihenfolge der Eintragsarten auf Collection-Seiten und in Zählern */
+export const KIND_ORDER = ['trip', 'shoot', 'series'];
+
+const countOf = (count, kind) => `${count} ${count === 1 ? KIND_LABELS[kind] : KIND_PLURALS[kind]}`;
+
+/**
+ * Zähler einer Collection, z. B. ["21 Trips"], ["8 Shoots"], ["21 Trips", "4 Frames"]
+ * oder – nur Einzelbilder – ["23 Bilder", "aus 6 Einträgen"].
+ * @param entries  Trips/Shoots der Collection (getCollectionEntries)
+ * @param frames   Einzelbilder der Collection (getCollectionFrames)
+ */
+export function formatCollectionCounts(entries, frames) {
+  const parts = KIND_ORDER
+    .map((kind) => [kind, entries.filter((entry) => entry.kind === kind).length])
+    .filter(([, count]) => count)
+    .map(([kind, count]) => countOf(count, kind));
+  if (frames.length) {
+    if (entries.length) {
+      parts.push(countOf(frames.length, 'frame'));
+    } else {
+      const sources = new Set(frames.map(({ entry }) => entry.id)).size;
+      parts.push(`${frames.length} ${frames.length === 1 ? 'Bild' : 'Bilder'}`);
+      if (sources > 1) parts.push(`aus ${sources} Einträgen`);
+    }
+  }
+  return parts;
+}

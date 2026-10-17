@@ -4,7 +4,7 @@
 // dann von seiner alten Position in die Bühne wachsen. Browser ohne Unterstützung wechseln normal.
 //
 // Welches Bild gehört zum Link?
-//   - ein <img> im Link selbst (Alben-Übersicht), oder
+//   - ein <img> im Link selbst (Kacheln der Collection-Seite), oder
 //   - data-cover-from="<CSS-Selektor>" am Link (Startseite, Karte)
 //   - data-cover-src="<Bildadresse>" (Voriger/Nächster Eintrag): kein eigenes Bild auf der Seite, die Bühne
 //     des aktuellen Eintrags überblendet in die Bühne des nächsten; die Adresse wird nur übergeben

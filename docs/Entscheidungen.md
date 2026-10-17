@@ -7,7 +7,7 @@ Festlegungen hier haben Vorrang vor dem Projektbriefing.
 - **Startseite** nach der verfeinerten Fassung A2 (`docs/mockups/startseite-A2.dc.html`): Titel in Geist 200 (groß, eng gesetzt), gesperrter Name in Versalien, Haarlinien (0,75 px), Link mit Haarlinie statt gerahmtem Button, große Ziffer + eine feine Fortschrittslinie, kein Kamera-Readout.
 - **Karte** nach dem ursprünglichen A (`docs/mockups/karte-A.dc.html`): ~~Fadenkreuz-Marker~~ (ersetzt am 15.10.2026 durch Höhenlinien-Marker, siehe unten), Labels in Geist Mono mit Koordinaten, Cluster als gestrichelter Ring, Gradnetz mit Gradangaben, Zoom-/Kamera-Readout oben rechts, Weltübersicht unten links, „Weltansicht“-Button oben links.
 - Farben und Schriftschnitte durchgehend aus A2, damit Startseite und Karte einheitlich wirken.
-- **Keine Glas-Navigation.** Schlichte Leiste: Name links, Karte · Alben · Über mich + Instagram/LinkedIn rechts; auf allen Seiten gleich.
+- **Keine Glas-Navigation.** Schlichte Leiste: Name links, ~~Karte · Alben · Über mich~~ **Collections · Karte · Über mich** (seit 17.10.2026) + Instagram/LinkedIn rechts; auf allen Seiten gleich.
 
 ## Farben
 - Grund `#0B0D0E`, Land `#14181B`–`#161B1F`, Küstenlinie `#353E44`–`#3C474E`
@@ -174,3 +174,10 @@ Spezifikation: `docs/Umbau-Spezifikation.md` (Collections, Eintragsarten, Tags, 
 - **Ende:** `← Alle Collections` (bis Schritt 5 `alben.html`, Konstante `OVERVIEW_URL` in `js/data.js`) und `Nächste Collection — 02 →` mit Name (zyklisch über die veröffentlichten).
 - Galerie-Code für Trips und Frames gemeinsam in **`js/gallery.js`** (`createGalleryItem`, `justifyGallery`, `loadGalleryImage`) und **`css/gallery.css`**. „Zurück zu <Collection>“ auf der Eintragsseite führt jetzt auf die Collection-Seite.
 - Getestet mit vorübergehenden Testdaten (Wildlife-Tags an Island/Lofoten, Test-Frame in Creative, Test-Shoot in Automotive) bei 1440 und 375 px; Testdaten wieder entfernt.
+
+### Schritt 5 – Collections-Übersicht und Navigation (17.10.2026)
+- **`collections.html`** (`js/collections.js`, `css/collections.css`; aus `alben.html` bzw. `js/albums-overview.js` per `git mv`): Kopf „Portfolio — 05 Collections“ / „Collections“, darunter je veröffentlichter Collection eine große Zeile: oben Ziffer · gepunktete Führungslinie · Zähler (`21 Trips`, „Noch leer“), darunter Titelbild (16:10) links und rechts Name in Display-Größe, Text, „Collection öffnen“. Die ganze Zeile ist ein Link; Überfahren/Fokus: Bild zoomt leicht, Ziffer und Zähler in Gletscherfarbe. Handy: Bild über dem Text.
+- **Titelbild einer Collection** (`getCollectionCover` in `js/data.js`): `cover` → erster Hero-Favorit → Titelbild des neuesten Eintrags → erstes Einzelbild; ohne Bilder eine leere Fläche.
+- Zähler gemeinsam in `formatCollectionCounts` (`js/format.js`), genutzt von Übersicht und Collection-Seite (und später der Startseite).
+- **Navigation** auf allen Seiten: Collections · Karte · Über mich. Eintrags- und Collection-Seiten markieren „Collections“ als aktuellen Bereich (`js/nav.js`, `aria-current`).
+- **`alben.html`** ist jetzt eine Weiterleitung auf `collections.html`; `album.html` ohne id ebenfalls. Alte Styles der Alben-Übersicht aus `css/base.css` entfernt. „Alle Alben“ heißt überall „Alle Collections“.

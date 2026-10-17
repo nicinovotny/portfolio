@@ -6,9 +6,14 @@ const toggle = document.querySelector('.menu-toggle');
 // Aktuellen Menüpunkt markieren (Dateiname der Seite = href des Links).
 // ".html" wird ignoriert, weil manche Server saubere URLs ohne Endung liefern.
 const pageName = (path) => path.split('/').pop().replace(/\.html$/, '') || 'index';
+// Unterseiten gehören zu einem Menüpunkt: Collection und Eintrag → „Collections“
+const SECTIONS = { collection: 'collections', entry: 'collections' };
 const currentPage = pageName(location.pathname);
+const currentSection = SECTIONS[currentPage];
 nav?.querySelectorAll('a[href]').forEach((link) => {
-  if (pageName(link.getAttribute('href')) === currentPage) link.setAttribute('aria-current', 'page');
+  const target = pageName(link.getAttribute('href'));
+  if (target === currentPage) link.setAttribute('aria-current', 'page');
+  else if (target === currentSection) link.setAttribute('aria-current', 'true');
 });
 
 // Alles außerhalb der Kopfzeile – wird bei offenem Handy-Menü für Tastatur und Screenreader gesperrt
