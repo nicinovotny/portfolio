@@ -1,6 +1,6 @@
 // Album-Übersicht (alben.html): alle Reisen aus data/albums.json, gruppiert nach Jahr (neueste zuerst).
 
-import { getAlbums, getCover, imageAttrs } from './data.js';
+import { entryUrl, getAlbums, getCover, imageAttrs } from './data.js';
 import { formatCoords, pad2 } from './format.js';
 
 const container = document.querySelector('[data-album-years]');
@@ -56,8 +56,8 @@ function card(album, number, position) {
   const item = document.createElement('li');
   const link = document.createElement('a');
   link.className = 'album-card';
-  link.href = `album.html?ort=${encodeURIComponent(album.id)}`;
-  link.dataset.albumName = album.name;   // für den Übergang ins Album (js/transitions.js)
+  link.href = entryUrl(album);
+  link.dataset.entryName = album.name;   // für den Übergang ins Album (js/transitions.js)
 
   // Bild mit festen Maßen + lazy loading → keine Layout-Sprünge
   const figure = document.createElement('div');

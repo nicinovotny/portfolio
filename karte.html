@@ -48,7 +48,7 @@
     <h1 class="visually-hidden">Karte aller Fotoalben</h1>
 
     <!-- Karte: wird aus data/map/*.json und data/albums.json aufgebaut -->
-    <section class="map" data-map aria-label="Weltkarte mit Album-Markern">
+    <section class="map" data-map aria-label="Weltkarte mit allen Trips">
       <svg class="map__svg" data-map-svg aria-hidden="true" preserveAspectRatio="xMidYMid meet">
         <path class="map__sphere" data-layer="sphere"/>
         <path class="map__grat" data-layer="grat-coarse"/>
@@ -62,13 +62,13 @@
       <div class="map__edge" data-map-edge aria-hidden="true"></div>
       <div class="map__markers" data-map-markers></div>
 
-      <!-- Vorschau beim Überfahren eines Album-Markers -->
+      <!-- Vorschau beim Überfahren eines Markers -->
       <div class="map-card" data-map-card aria-hidden="true" hidden>
         <div class="map-card__image"><img data-map-card-img alt="" width="268" height="150" crossorigin="anonymous"></div>
         <div class="map-card__body">
           <p class="map-card__meta" data-map-card-meta></p>
           <p class="map-card__name" data-map-card-name></p>
-          <a class="map-card__link" data-map-card-link href="#" tabindex="-1" data-cover-from="[data-map-card-img]">Album öffnen →</a>
+          <a class="map-card__link" data-map-card-link href="#" tabindex="-1" data-cover-from="[data-map-card-img]">Ansehen →</a>
         </div>
       </div>
 

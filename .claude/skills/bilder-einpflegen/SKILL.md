@@ -96,7 +96,7 @@ Den neuen Block im Stil der bestehenden einfügen und die Bilder dann wie in Sch
 
 1. `check` ausführen. Fehler beheben; Warnungen erklären (z. B. „noch Demo-Bilder neben eigenen“ ist in Ordnung, wenn Nici sie behalten wollte).
 2. Kurz berichten: welche Bilder in welchem Album unter welchem Dateinamen, Titelbild, ob Demo-Bilder ersetzt wurden.
-3. Sagen, wie Nici es ansieht: `npx serve .` → `http://localhost:3000/album.html?ort=<id>` (bei neuem Titelbild auch die Startseite).
+3. Sagen, wie Nici es ansieht: `npx serve .` → `http://localhost:3000/entry.html?id=<id>` (bei neuem Titelbild auch die Startseite).
 4. Erinnern: In GitHub Desktop committen und pushen, dann ist es nach etwa einer Minute online. Selbst nur committen, wenn Nici darum bittet.
 5. Hat danach **kein** Album mehr Demo-Bilder: auf die Checkliste in `docs/Anleitung.md` (Abschnitt 5) hinweisen – picsum-`preconnect` in `index.html` und `album.html` und den Datenschutz-Abschnitt „Demo-Bilder“ entfernen. Anbieten, das direkt zu erledigen.
 

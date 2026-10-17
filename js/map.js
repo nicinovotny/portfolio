@@ -3,8 +3,8 @@
 // Marker, Beschriftungen und Readouts liegen als HTML darüber und werden bei jedem
 // Kamerabild neu positioniert – so bleiben sie gestochen scharf und gleich groß.
 
-import { getMapEntries, getRegions, getCover, imageUrl } from './data.js';
-import { formatCoordsShort, pad2 } from './format.js';
+import { entryUrl, getMapEntries, getRegions, getCover, imageUrl } from './data.js';
+import { KIND_LABELS, formatCoordsShort } from './format.js';
 import { createProjection, graticulePath } from './map-projection.js';
 import { createViews, sameView } from './map-views.js';
 
@@ -402,10 +402,10 @@ function createMarker(data) {
 
   if (data.type === 'album') {
     const { album } = data;
-    el.href = `album.html?ort=${encodeURIComponent(album.id)}`;
-    el.dataset.coverFrom = '[data-map-card-img]';   // Übergang: Bild aus der Vorschau fliegt ins Album
-    el.dataset.albumName = album.name;
-    el.setAttribute('aria-label', `${[album.name, album.year].filter(Boolean).join(' ')}, Album ${pad2(data.number)} – öffnen`);
+    el.href = entryUrl(album);
+    el.dataset.coverFrom = '[data-map-card-img]';   // Übergang: Bild aus der Vorschau fliegt in den Eintrag
+    el.dataset.entryName = album.name;
+    el.setAttribute('aria-label', `${[album.name, album.year].filter(Boolean).join(' ')}, ${KIND_LABELS[album.kind] ?? 'Eintrag'} – öffnen`);
     const seed = seedOf(album.id);
     icon.innerHTML = `
       <circle class="map-marker__ripple" r="6"/>
@@ -419,7 +419,7 @@ function createMarker(data) {
     bindAlbumMarker(el, data);
   } else {
     el.type = 'button';
-    el.setAttribute('aria-label', `${data.name}: ${data.count} Alben – hineinzoomen`);
+    el.setAttribute('aria-label', `${data.name}: ${data.count} Trips – hineinzoomen`);
     // Gipfel: äußere Fläche + innere Linien, je mehr Alben, desto mehr Linien (max. 3)
     const seed = seedOf(data.key);
     const inner = [20, 14, 9].slice(0, Math.min(3, data.count - 1));
@@ -472,8 +472,8 @@ function setActive(marker) {
   ui.cardImg.alt = '';
   ui.cardMeta.textContent = [album.year, formatCoordsShort(album.coords)].filter(Boolean).join(' · ');
   ui.cardName.textContent = album.name;
-  ui.cardLink.href = `album.html?ort=${encodeURIComponent(album.id)}`;
-  ui.cardLink.dataset.albumName = album.name;
+  ui.cardLink.href = entryUrl(album);
+  ui.cardLink.dataset.entryName = album.name;
   ui.card.hidden = false;
   positionCard();
 }
@@ -635,7 +635,7 @@ function updateChrome() {
     const count = views.countOf(view);
     ui.trail.append(Object.assign(document.createElement('span'), {
       className: 'map__trail-count',
-      textContent: `· ${count} ${count === 1 ? 'Album' : 'Alben'}`,
+      textContent: `· ${count} ${count === 1 ? 'Trip' : 'Trips'}`,
     }));
   }
 
@@ -648,7 +648,7 @@ function updateChrome() {
 function announce() {
   if (ui.status.classList.contains('is-error')) return;
   const count = views.countOf(view);
-  ui.status.textContent = `${views.nameOf(view)}${view.level === 'album' ? '' : `, ${count} ${count === 1 ? 'Album' : 'Alben'}`}`;
+  ui.status.textContent = `${views.nameOf(view)}${view.level === 'album' ? '' : `, ${count} ${count === 1 ? 'Trip' : 'Trips'}`}`;
 }
 
 // ---------- Eingaben ----------

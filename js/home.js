@@ -2,7 +2,7 @@
 // Bildwechsel: langsame Überblendung + leichte „Kamerafahrt“ (Zoom 1.08 → 1).
 // Die Fortschrittslinie ist zugleich der Taktgeber: ist sie voll, kommt das nächste Bild.
 
-import { getFeatured, getCover, imageAttrs } from './data.js';
+import { entryUrl, getFeatured, getCover, imageAttrs } from './data.js';
 import { formatCoords, pad2 } from './format.js';
 import { applyScrim } from './scrim.js';
 
@@ -187,8 +187,8 @@ function updateCaption(album, index, initial) {
   if (album.year) el.label.append(`${album.year} `, Object.assign(document.createElement('span'), { className: 'label__dash', textContent: '—' }), ' ');
   el.label.append(formatCoords(album.coords));
   el.title.textContent = album.name;
-  el.open.href = `album.html?ort=${encodeURIComponent(album.id)}`;
-  el.open.dataset.albumName = album.name;
+  el.open.href = entryUrl(album);
+  el.open.dataset.entryName = album.name;
   el.map.href = `karte.html?ort=${encodeURIComponent(album.id)}`;
 
   if (!gsap || reducedMotion) return;

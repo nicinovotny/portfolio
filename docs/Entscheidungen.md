@@ -142,3 +142,16 @@ Spezifikation: `docs/Umbau-Spezifikation.md` (Collections, Eintragsarten, Tags, 
 - `js/data.js`: neue Funktionen `getCollections`, `getCollection`, `getEntries`, `getEntry`, `getMapEntries`, `resolveImage`, `imageRef`. Übergangsweise bleiben `getAlbums` (= alle Trips) und `getFeatured` (= Einträge hinter den Landscape-Favoriten), bis die Seiten umgebaut sind.
 - Karte zeigt nur Einträge mit `coords` (`getMapEntries`).
 - `tools/images.mjs check` prüft das neue Format (kind, collection, alsoIn, Bild-IDs, Tags, Hero-Favoriten, Collection-Cover); `convert --entry <id>` (`--album` geht weiter) liefert die Bild-`id` mit.
+
+### Schritt 2 – Eintragsseite (17.10.2026)
+- `album.html` → **`entry.html?id=<id>`** (`js/entry.js`, `css/entry.css`, per `git mv` umgezogen). Klassen und Datenattribute heißen jetzt `entry-…` statt `album-…`, Übergangsnamen `entry-cover` / `entry-title` / `entry-swap`, sessionStorage-Schlüssel `entry-cover`.
+- **Ein Template, zwei Layouts** (`data-kind` am `<main>`):
+  - `trip`: Bühne + Galerie in Bildzeilen wie bisher.
+  - `shoot`: Bühne + **Bildstrecke** (`.strip`): Querformate einzeln, zwei aufeinanderfolgende Hochformate als Paar, ein einzelnes Hochformat mittig. Jede Zeile höchstens 86 % der Fensterhöhe hoch, nie beschnitten, viel Abstand (bis 6,5 rem). Unter 560 px alles untereinander in voller Breite.
+- **Kopf:** Label `Trip — Aug 2024 · 12 Tage — 62°00′N …` (Art, Zeitangabe, Koordinaten nur wenn vorhanden). Zeitangabe aus `dateStart`/`dateEnd`, sonst `date` (`"2023-10-31"` oder `"2023-03"`), sonst `year` (`formatWhen` in `js/format.js`). Steckbrief: Zeitraum/Datum/Jahr · Land · Region · Bilder, leere Felder entfallen.
+- **Links:** „Auf der Karte zeigen“ nur bei Einträgen mit `coords`; „← Zurück zu <Collection>“ in der Einleitung und unter der Navigation. Bis Schritt 4 führt er auf `alben.html` (`collectionUrl()` in `js/data.js`, dort umstellen).
+- **Voriger/Nächster** nur innerhalb der Heimat-Collection (`getCollectionEntries`, ohne Frames), mit Umlauf. Unten „Voriger Trip — 03“ + voller Name mit Jahr, auf der Bühne der Kurzname (`shortName`) mit Jahr.
+- **Frames** haben keine Seite: `entry.html?id=<frame>` leitet auf die Collection mit `&bild=<entryId>/<imageId>` (wertet die Collection-Seite in Schritt 4 aus).
+- **Alte Adressen:** `album.html` ist jetzt eine kleine Weiterleitung (`?ort=<id>` → `entry.html?id=<id>`, ohne JavaScript zur Übersicht). Alte ids ersetzt `entry.html` in der Adresszeile durch die neuen (`history.replaceState`). In Schritt 5 das Ziel ohne id von `alben.html` auf `collections.html` umstellen.
+- Karte: Texte „Album/Alben“ → „Trip/Trips“, Vorschau-Link „Ansehen →“; Links auf `entry.html` (`entryUrl()`).
+- Behoben: Ein einzelnes Hochformat in einer Zeile (Handy-Galerie, Bildstrecke) war nur zwei Drittel so breit wie die Zeile (`flex-grow` unter 1 verteilt nur einen Teil des Platzes) → `.gallery__item:only-child { flex-grow: 1 }`.

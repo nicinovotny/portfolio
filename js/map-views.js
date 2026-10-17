@@ -124,7 +124,7 @@ export function createViews({ albums, regions, projection, world }) {
       count: list.length,
       subtitle: list.length <= 3
         ? names.join(' · ')
-        : [`${list.length} Alben`, span && (span[0] === span[1] ? span[0] : `${span[0]}–${span[1]}`)].filter(Boolean).join(' · '),
+        : [`${list.length} Trips`, span && (span[0] === span[1] ? span[0] : `${span[0]}–${span[1]}`)].filter(Boolean).join(' · '),
       point: [pts.reduce((s, [x]) => s + x, 0) / pts.length, pts.reduce((s, [, y]) => s + y, 0) / pts.length],
     };
   }

@@ -308,30 +308,30 @@ main { flex: 1; }
 /* „Bild fliegt ins Album“ (js/transitions.js + Bühne der Albumseite): Das angeklickte Bild wächst
    an die Stelle des Titelbilds. Das alte Bild bleibt dabei sichtbar, das neue blendet erst am Ende ein –
    so gibt es keinen Sprung, auch wenn die große Fassung noch lädt. */
-::view-transition-group(album-cover),
-::view-transition-group(album-title) {
+::view-transition-group(entry-cover),
+::view-transition-group(entry-title) {
   animation-duration: 0.8s;
   animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
-::view-transition-old(album-cover),
-::view-transition-new(album-cover) {
+::view-transition-old(entry-cover),
+::view-transition-new(entry-cover) {
   height: 100%;
   object-fit: cover;
   overflow: hidden;
 }
-::view-transition-old(album-cover) { animation: none; }
-::view-transition-new(album-cover) { animation: vt-fade-in 0.4s ease 0.4s both; }
+::view-transition-old(entry-cover) { animation: none; }
+::view-transition-new(entry-cover) { animation: vt-fade-in 0.4s ease 0.4s both; }
 
 /* Nur eine Seite hat ein Titelbild (z. B. Album → Startseite): einfach weich aus- bzw. einblenden,
    sonst bliebe das alte Bild bis zum Ende stehen und verschwände schlagartig */
-::view-transition-old(album-cover):only-child,
-::view-transition-old(album-title):only-child { animation: vt-fade-out 0.3s ease both; }
-::view-transition-new(album-cover):only-child,
-::view-transition-new(album-title):only-child { animation: vt-fade-in 0.35s ease both; }
+::view-transition-old(entry-cover):only-child,
+::view-transition-old(entry-title):only-child { animation: vt-fade-out 0.3s ease both; }
+::view-transition-new(entry-cover):only-child,
+::view-transition-new(entry-title):only-child { animation: vt-fade-in 0.35s ease both; }
 
 /* Album → Album (voriger/nächster Ort): Bühne zu Bühne zügig überblenden – das Bild ist vorgeladen */
-html:active-view-transition-type(album-swap)::view-transition-old(album-cover) { animation: vt-fade-out 0.5s ease both; }
-html:active-view-transition-type(album-swap)::view-transition-new(album-cover) { animation: vt-fade-in 0.5s ease both; }
+html:active-view-transition-type(entry-swap)::view-transition-old(entry-cover) { animation: vt-fade-out 0.5s ease both; }
+html:active-view-transition-type(entry-swap)::view-transition-new(entry-cover) { animation: vt-fade-in 0.5s ease both; }
 
 @keyframes vt-fade-in {
   from { opacity: 0; }

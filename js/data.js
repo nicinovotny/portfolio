@@ -64,6 +64,16 @@ export async function getEntry(id) {
   return (await getEntries()).find((entry) => entry.id === wanted) ?? null;
 }
 
+/** Gehört der Eintrag (als Kachel) zu dieser Collection? Heimat-Collection oder "alsoIn". */
+export function belongsTo(entry, collectionId) {
+  return entry.collection === collectionId || (entry.alsoIn ?? []).includes(collectionId);
+}
+
+/** Trips und Shoots einer Collection in der Reihenfolge von albums.json (neueste zuerst), ohne Frames. */
+export async function getCollectionEntries(collectionId) {
+  return (await getEntries()).filter((entry) => entry.kind !== 'frame' && belongsTo(entry, collectionId));
+}
+
 /** Einträge, die auf der Karte erscheinen: alle mit Koordinaten (in der Regel Trips). */
 export async function getMapEntries() {
   return (await getEntries()).filter((entry) => entry.coords);
@@ -117,6 +127,22 @@ export function imageAttrs(entry, image) {
     height: image.height,
     alt: image.alt,
   };
+}
+
+// ---------- Adressen ----------
+
+/** Seite eines Eintrags (Trip, Shoot). Frames leitet entry.html selbst zur Collection weiter. */
+export function entryUrl(entry) {
+  return `entry.html?id=${encodeURIComponent(entry.id)}`;
+}
+
+/**
+ * Seite einer Collection. Bis Schritt 4 des Umbaus (collection.html?id=…) zeigt sie auf die
+ * bisherige Übersicht; dann nur diese Zeile ändern.
+ */
+// eslint-disable-next-line no-unused-vars
+export function collectionUrl(collectionId) {
+  return 'alben.html';
 }
 
 // ---------- Regionen ----------

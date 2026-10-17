@@ -33,8 +33,9 @@ Lies Briefing und Entscheidungen, bevor du Code schreibst oder Designentscheidun
 - Offen: genauer Ort in Schottland (vorläufig Glencoe).
 - **Umbau zum breiten Portfolio (ab 17.10.2026):** Spezifikation in `docs/Umbau-Spezifikation.md` (Collections Landscape/Automotive/Wildlife/Portrait/Creative, Einträge `trip`/`shoot`/`frame`, Tags, neue Startseite, Lightbox mit Aufnahmedaten). 8 Schritte, nach jedem anhalten, Nici testet, dann Commit. Abweichungen (GSAP selbst gehostet, Höhenlinien-Marker, Import über `tools/images.mjs`) in `docs/Entscheidungen.md`.
   1. ✅ Datenmodell (17.10.2026): `albums.json` mit `collections` + `entries` (21 Trips, Schwarzwald geteilt, `kleinarl-2025`), `js/data.js` mit neuen Funktionen + Übergangsfunktionen `getAlbums`/`getFeatured`, alte IDs leiten weiter, Karte nur Einträge mit `coords`, `images.mjs check` fürs neue Format. Seiten sehen aus wie vorher (im Browser geprüft).
-  2. Eintragsseite `entry.html` (Trip/Shoot) + Weiterleitungen · 3. Lightbox mit Aufnahmedaten · 4. Collection-Seite · 5. Collections-Übersicht + Navigation · 6. Startseite · 7. Import mit EXIF · 8. neue Einträge aus der Bestandsliste
-- **Als Nächstes:** Umbau Schritt 2 (Eintragsseite). Danach eigene Bilder und Texte (Checkliste in `docs/Anleitung.md`, Abschnitt 5 – Anleitung wird in Schritt 7 aufs neue Datenformat umgeschrieben).
+  2. ✅ Eintragsseite (17.10.2026): `entry.html` + `js/entry.js` + `css/entry.css` (aus album.* umgezogen), Trip = Galerie, Shoot = Bildstrecke, Voriger/Nächster innerhalb der Collection, `album.html` leitet weiter, Karte spricht von Trips. Mit einem Test-Shoot im Browser geprüft (Desktop, Handy, Lightbox per Tastatur), Test-Shoot wieder entfernt.
+  3. Lightbox mit Aufnahmedaten · 4. Collection-Seite · 5. Collections-Übersicht + Navigation · 6. Startseite · 7. Import mit EXIF · 8. neue Einträge aus der Bestandsliste
+- **Als Nächstes:** Umbau Schritt 3 (Lightbox mit Aufnahmedaten). Danach eigene Bilder und Texte (Checkliste in `docs/Anleitung.md`, Abschnitt 5 – Anleitung wird in Schritt 7 aufs neue Datenformat umgeschrieben).
 
 ## Rahmen (gilt immer)
 - Vanilla HTML/CSS/JS + GSAP (inkl. ScrollTrigger) selbst gehostet in `vendor/gsap/`, kein Framework, kein Build-Schritt für die Seite, Hosting auf GitHub Pages, alle Pfade relativ.

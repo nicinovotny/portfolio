@@ -1,12 +1,13 @@
-/* Albumseite: Kopf mit Ortsangaben, Galerie in Bildzeilen, Ortsnavigation und Lightbox */
+/* Eintragsseite (Trip, Shoot): Bühne, Einleitung, Galerie (Trip) bzw. Bildstrecke (Shoot),
+   Navigation innerhalb der Collection und Lightbox */
 
 /* ---------- Bühne ---------- */
 /* Titelbild über die ganze Fläche. Die Bühne „klebt“ oben (sticky), der Inhalt darunter hat eigenen
-   Hintergrund und schiebt sich beim Scrollen darüber. Zoom und Abdunkeln steuert js/album.js. */
-.album-stage {
+   Hintergrund und schiebt sich beim Scrollen darüber. Zoom und Abdunkeln steuert js/entry.js. */
+.entry-stage {
   /* Ziel des Seitenübergangs: Das angeklickte Bild wächst hierher. Die ganze Bühne (Bild, Verläufe,
      Beschriftung) nimmt teil, damit beim Überblenden nichts kurz ungeschützt hell aufblitzt. */
-  view-transition-name: album-cover;
+  view-transition-name: entry-cover;
   position: sticky;
   top: 0;
   height: 100vh;
@@ -19,16 +20,16 @@
   transition: --scrim-top 1.2s ease, --scrim-bottom 1.2s ease;
 }
 
-.album-stage__media { position: absolute; inset: 0; }
+.entry-stage__media { position: absolute; inset: 0; }
 
-.album-stage__img {
+.entry-stage__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
 /* dunkle Verläufe unten (Titel) und oben (Navigation), stärker bei hellen Bildern */
-.album-stage__shade {
+.entry-stage__shade {
   position: absolute;
   inset: auto 0 0 0;
   height: calc(55% + 20% * var(--scrim-bottom));
@@ -39,7 +40,7 @@
     rgb(11 13 14 / 0) 100%);
   pointer-events: none;
 }
-.album-stage::before {
+.entry-stage::before {
   content: '';
   position: absolute;
   inset: 0 0 auto 0;
@@ -52,8 +53,8 @@
   pointer-events: none;
 }
 
-/* Abdunkeln beim Rausscrollen (Deckkraft setzt js/album.js) */
-.album-stage::after {
+/* Abdunkeln beim Rausscrollen (Deckkraft setzt js/entry.js) */
+.entry-stage::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -62,7 +63,7 @@
   pointer-events: none;
 }
 
-.album-stage__corner {
+.entry-stage__corner {
   position: absolute;
   bottom: 28px;
   width: 14px;
@@ -70,10 +71,10 @@
   border: 0 solid var(--color-hairline-strong);
   pointer-events: none;
 }
-.album-stage__corner--bl { left: 28px; border-width: 0 0 var(--hairline) var(--hairline); }
-.album-stage__corner--br { right: 28px; border-width: 0 var(--hairline) var(--hairline) 0; }
+.entry-stage__corner--bl { left: 28px; border-width: 0 0 var(--hairline) var(--hairline); }
+.entry-stage__corner--br { right: 28px; border-width: 0 var(--hairline) var(--hairline) 0; }
 
-.album-stage__caption {
+.entry-stage__caption {
   position: absolute;
   left: var(--gutter);
   right: calc(var(--gutter) + 18rem);   /* Platz für die Nachbar-Links rechts */
@@ -84,9 +85,9 @@
   gap: 22px;
   text-shadow: 0 0 2px rgba(11, 13, 14, 0.7), 0 1px 14px rgba(11, 13, 14, 0.55);
 }
-.album-stage__caption .label { color: #C3C9CC; font-weight: 500; }
+.entry-stage__caption .label { color: #C3C9CC; font-weight: 500; }
 
-.album-stage__title {
+.entry-stage__title {
   font-size: var(--text-display);
   font-weight: 200;
   letter-spacing: var(--tracking-display);
@@ -97,18 +98,18 @@
   padding-bottom: 0.12em;
   margin-bottom: -0.12em;
 }
-.album-stage__title-inner {
+.entry-stage__title-inner {
   display: inline-block;
-  /* Übergangsname „album-title“ setzt das Skript in album.html nur bei Ankunft von der Startseite */
+  /* Übergangsname „entry-title“ setzt das Skript in entry.html nur bei Ankunft von der Startseite */
 }
 
 /* Ist die Bühne vom Inhalt verdeckt (nach unten gescrollt), nimmt sie nicht am Seitenübergang teil –
    sonst tauchte das verdeckte Titelbild beim Wechsel kurz über der Galerie auf */
-.album-stage.is-covered,
-.album-stage.is-covered .album-stage__title-inner { view-transition-name: none; }
+.entry-stage.is-covered,
+.entry-stage.is-covered .entry-stage__title-inner { view-transition-name: none; }
 
-/* Voriger / nächster Ort unten rechts, wie Zähler und Steuerung auf der Startseite */
-.album-stage__nav {
+/* Voriger / nächster Eintrag unten rechts, wie Zähler und Steuerung auf der Startseite */
+.entry-stage__nav {
   position: absolute;
   right: var(--gutter);
   bottom: 96px;
@@ -120,10 +121,10 @@
   width: 16rem;
   text-shadow: 0 1px 2px rgba(11, 13, 14, 0.5), 0 0 16px rgba(11, 13, 14, 0.4);
 }
-.album-stage__nav[hidden] { display: none; }
+.entry-stage__nav[hidden] { display: none; }
 
 /* je Zeile: Nummer + Name, rechtsbündig; ganze Zeile ist Klickfläche */
-.album-stage__nav-link {
+.entry-stage__nav-link {
   display: flex;
   align-items: baseline;
   justify-content: flex-end;
@@ -134,11 +135,11 @@
   flex-wrap: nowrap;
   padding: 12px 0;
 }
-.album-stage__nav-link .label { flex: none; }
-.album-stage__nav-link .label { color: var(--color-text-2); transition: color var(--duration-fast) ease; }
-.album-stage__nav-link:hover .label { color: var(--color-accent); }
+.entry-stage__nav-link .label { flex: none; }
+.entry-stage__nav-link .label { color: var(--color-text-2); transition: color var(--duration-fast) ease; }
+.entry-stage__nav-link:hover .label { color: var(--color-accent); }
 
-.album-stage__nav-name {
+.entry-stage__nav-name {
   overflow: hidden;
   font-size: var(--text-nav);
   font-weight: 400;
@@ -148,7 +149,7 @@
 }
 
 /* Hinweis unten Mitte: Anzahl Bilder + Linie, springt zur Galerie */
-.album-stage__scroll {
+.entry-stage__scroll {
   position: absolute;
   left: 50%;
   bottom: 20px;
@@ -160,15 +161,15 @@
   padding: 8px 12px;
   translate: -50% 0;
 }
-.album-stage__scroll .label { color: var(--color-text-2); text-shadow: 0 1px 2px rgba(11, 13, 14, 0.5); }
-.album-stage__scroll-line {
+.entry-stage__scroll .label { color: var(--color-text-2); text-shadow: 0 1px 2px rgba(11, 13, 14, 0.5); }
+.entry-stage__scroll-line {
   width: 1px;
   height: 28px;
   background: rgba(236, 232, 225, 0.35);
   transform-origin: top;
   animation: stage-scroll-line 2.4s var(--ease-out) infinite;
 }
-.album-stage__scroll:hover .label { color: var(--color-accent); }
+.entry-stage__scroll:hover .label { color: var(--color-accent); }
 
 @keyframes stage-scroll-line {
   0% { transform: scaleY(0); opacity: 1; }
@@ -177,7 +178,7 @@
 }
 
 /* ---------- Inhalt über der Bühne ---------- */
-.album-body {
+.entry-body {
   position: relative;
   z-index: 1;
   padding: var(--space-xl) var(--gutter) var(--space-2xl);
@@ -185,7 +186,7 @@
   box-shadow: 0 -48px 96px rgba(11, 13, 14, 0.55);
 }
 
-.album-intro {
+.entry-intro {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
   align-items: end;
@@ -193,7 +194,7 @@
   margin-bottom: var(--space-xl);
 }
 
-.album-intro__text {
+.entry-intro__text {
   max-width: 38rem;
   font-size: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
   font-weight: 300;
@@ -201,7 +202,7 @@
   color: var(--color-text);
 }
 
-.album-intro__info {
+.entry-intro__info {
   display: flex;
   flex-direction: column;
   gap: var(--space-m);
@@ -209,7 +210,7 @@
 }
 
 /* Steckbrief des Ortes in Mono, wie die Readouts der Karte */
-.album-facts {
+.entry-facts {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-s) var(--space-l);
@@ -217,36 +218,40 @@
   padding-top: var(--space-s);
   border-top: var(--hairline) solid var(--color-hairline);
 }
-.album-facts div { display: flex; flex-direction: column; gap: 4px; }
-.album-facts dt { color: var(--color-text-3); }
-.album-facts dd { margin: 0; font-size: var(--text-nav); letter-spacing: var(--tracking-nav); }
+.entry-facts div { display: flex; flex-direction: column; gap: 4px; }
+.entry-facts dt { color: var(--color-text-3); }
+.entry-facts dd { margin: 0; font-size: var(--text-nav); letter-spacing: var(--tracking-nav); }
 
-.album-intro__links {
+.entry-intro__links {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0 36px;
 }
 
-.album-intro__secondary {
+.entry-intro__links .line-link[hidden] { display: none; }   /* Einträge ohne Ort: kein Kartenlink */
+
+.entry-intro__secondary {
   color: #9AA1A5;
   padding: 12px 0;
   font-size: 0.875rem;
   letter-spacing: var(--tracking-nav);
+  transition: color var(--duration-fast) ease;
 }
+.entry-intro__secondary:hover { color: var(--color-accent); }
 
-/* Album nicht gefunden: kleine Bühne ohne Bild */
-.album-missing .album-stage { height: 60svh; position: relative; }
-.album-missing .album-stage__scroll,
-.album-missing .album-facts,
-.album-missing .album-intro__links .line-link { display: none; }
+/* Eintrag nicht gefunden: kleine Bühne ohne Bild */
+.entry-missing .entry-stage { height: 60svh; position: relative; }
+.entry-missing .entry-stage__scroll,
+.entry-missing .entry-facts,
+.entry-missing .entry-intro__links .line-link { display: none; }
 
 /* Handy: Nachbar-Links als schmale Leiste ganz unten, Titel darüber über die volle Breite */
 @media (max-width: 47.99rem) {
-  .album-intro { grid-template-columns: minmax(0, 1fr); }
-  .album-stage__caption { right: var(--gutter); bottom: 104px; gap: 16px; }
-  .album-stage__shade { height: calc(68% + 20% * var(--scrim-bottom)); }   /* Titel bricht hier oft um */
-  .album-stage__nav {
+  .entry-intro { grid-template-columns: minmax(0, 1fr); }
+  .entry-stage__caption { right: var(--gutter); bottom: 104px; gap: 16px; }
+  .entry-stage__shade { height: calc(68% + 20% * var(--scrim-bottom)); }   /* Titel bricht hier oft um */
+  .entry-stage__nav {
     left: var(--gutter);
     bottom: 16px;
     width: auto;
@@ -254,15 +259,15 @@
     justify-content: space-between;
     gap: var(--space-s);
   }
-  .album-stage__nav-link { max-width: 48%; justify-content: flex-start; }
-  .album-stage__nav-link--next { justify-content: flex-end; }
-  .album-stage__nav-link:not(.album-stage__nav-link--next) .label { order: -1; }   /* „← 15 Name“ links */
-  .album-stage__scroll { display: none; }
-  .album-stage__corner { display: none; }
+  .entry-stage__nav-link { max-width: 48%; justify-content: flex-start; }
+  .entry-stage__nav-link--next { justify-content: flex-end; }
+  .entry-stage__nav-link:not(.entry-stage__nav-link--next) .label { order: -1; }   /* „← 15 Name“ links */
+  .entry-stage__scroll { display: none; }
+  .entry-stage__corner { display: none; }
 }
 
 /* ---------- Galerie ---------- */
-/* Die Zeilen setzt js/album.js zusammen; innerhalb einer Zeile verteilt flex-grow die
+/* Die Zeilen setzt js/entry.js zusammen; innerhalb einer Zeile verteilt flex-grow die
    Breite im Verhältnis der Seitenverhältnisse – dadurch sind alle Bilder einer Zeile gleich hoch. */
 .gallery {
   --gallery-gap: clamp(0.75rem, 1.6vw, 1.5rem);
@@ -281,6 +286,9 @@
   flex: var(--ratio) 1 0;
   min-width: 0;
 }
+/* Allein in der Zeile (Handy, Bildstrecke): ganze Breite. Ein flex-grow unter 1 (Hochformat)
+   würde sonst nur einen Teil des freien Platzes verteilen. */
+.gallery__item:only-child { flex-grow: 1; }
 
 .gallery__open {
   position: relative;
@@ -315,8 +323,34 @@
 }
 .gallery__caption .label { padding-top: 2px; color: var(--color-text-3); }
 
-/* ---------- Voriger / nächster Ort ---------- */
-.album-pager {
+/* ---------- Shoot: Bildstrecke ---------- */
+/* Magazin-Look mit viel Luft: Jede Zeile (ein Querformat oder zwei Hochformate) wird so breit, dass ihre
+   Höhe höchstens --strip-height erreicht – nie breiter als der Inhalt, nie beschnitten. */
+.strip {
+  --strip-gap: clamp(0.75rem, 1.6vw, 1.5rem);
+  --strip-height: 86svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(3rem, 7vw, 6.5rem);
+}
+
+.strip__row {
+  display: flex;
+  gap: var(--strip-gap);
+  width: min(100%, calc(var(--row-ratio) * var(--strip-height) + var(--row-gaps) * var(--strip-gap)));
+}
+
+/* Bildunterschrift links unter dem Bild, wie in einem Bildband */
+.strip .gallery__caption { padding-top: 14px; }
+
+@media (max-width: 34.99rem) {
+  .strip__row { flex-direction: column; width: 100%; gap: clamp(3rem, 7vw, 6.5rem); }
+  .strip__row .gallery__item { flex: none; }
+}
+
+/* ---------- Voriger / nächster Eintrag ---------- */
+.entry-pager {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-l);
@@ -324,25 +358,37 @@
   padding-top: var(--space-l);
   border-top: var(--hairline) solid var(--color-hairline);
 }
-.album-pager[hidden] { display: none; }
+.entry-pager[hidden] { display: none; }
 
-.album-pager__link {
+.entry-pager__link {
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 12px 0;
 }
-.album-pager__link--next { align-items: flex-end; text-align: right; }
+.entry-pager__link--next { align-items: flex-end; text-align: right; }
 
-.album-pager__name {
+.entry-pager__name {
   font-size: var(--text-h2);
   font-weight: 200;
   letter-spacing: -0.02em;
   line-height: 1.1;
 }
 
-.album-pager__link .label { transition: color var(--duration-fast) ease; }
-.album-pager__link:hover .label { color: var(--color-accent); }
+.entry-pager__link .label { transition: color var(--duration-fast) ease; }
+.entry-pager__link:hover .label { color: var(--color-accent); }
+
+/* „← Zurück zu <Collection>“ unter der Navigation */
+.entry-back {
+  margin-top: var(--space-l);
+  text-align: center;
+}
+.entry-back a {
+  display: inline-block;
+  padding: 12px 0;
+  transition: color var(--duration-fast) ease;
+}
+.entry-back a:hover { color: var(--color-accent); }
 
 /* ---------- Lightbox ---------- */
 html.has-lightbox {
@@ -474,10 +520,8 @@ html.has-lightbox {
 
 /* ---------- Handy ---------- */
 @media (max-width: 47.99rem) {
-  .album-head { grid-template-columns: minmax(0, 1fr); margin-top: var(--space-l); }
-
-  .album-pager { grid-template-columns: minmax(0, 1fr); gap: var(--space-s); }
-  .album-pager__link--next { align-items: flex-start; text-align: left; }
+  .entry-pager { grid-template-columns: minmax(0, 1fr); gap: var(--space-s); }
+  .entry-pager__link--next { align-items: flex-start; text-align: left; }
 
   /* Lightbox: Bild über die volle Breite, Bedienung unten */
   .lightbox { --lb-top: 88px; --lb-side: 0px; --lb-bottom: 136px; }

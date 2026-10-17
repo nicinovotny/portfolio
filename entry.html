@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nicolas Novotny</title>
+  <meta name="description" content="Fotografie von Nicolas Novotny.">
+  <meta name="theme-color" content="#0B0D0E">
+  <link rel="icon" href="favicon.svg?v=2" type="image/svg+xml">
+  <link rel="preload" href="fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Seiten beim Überfahren eines Links vorab aufbauen (Chrome/Edge), damit der Wechsel sofort da ist -->
+  <script type="speculationrules">
+    { "prerender": [{ "where": { "href_matches": "/*" }, "eagerness": "moderate" }] }
+  </script>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/entry.css">
+  <link rel="preconnect" href="https://fastly.picsum.photos">
+  <script defer src="vendor/gsap/gsap.min.js"></script>
+  <script defer src="vendor/gsap/ScrollTrigger.min.js"></script>
+  <script type="module" src="js/nav.js"></script>
+  <script type="module" src="js/transitions.js"></script>
+  <script type="module" src="js/entry.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+  <!-- Kopfzeile: auf allen Seiten identisch -->
+  <header class="site-header">
+    <a class="site-name" href="./">Nicolas Novotny</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menü</button>
+    <nav class="site-nav" id="site-nav" aria-label="Hauptnavigation">
+      <a href="karte.html">Karte</a>
+      <a href="alben.html">Alben</a>
+      <a href="ueber-mich.html">Über mich</a>
+      <span class="site-nav__divider" aria-hidden="true"></span>
+      <span class="site-nav__social">
+        <a class="site-nav__icon" href="https://www.instagram.com/nici.novotny/" aria-label="Instagram" target="_blank" rel="me noopener">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>
+        </a>
+        <a class="site-nav__icon" href="https://www.linkedin.com/in/nicolas-novotny/" aria-label="LinkedIn" target="_blank" rel="me noopener">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>
+        </a>
+      </span>
+    </nav>
+  </header>
+
+  <!-- Inhalt wird aus data/albums.json befüllt (?id=<id>); Trip und Shoot teilen sich diese Vorlage -->
+  <main id="inhalt" class="entry" data-entry>
+    <!-- Bühne: Titelbild über die ganze Fläche. Beim Scrollen bleibt sie stehen, der Inhalt schiebt sich darüber. -->
+    <section class="entry-stage" data-entry-stage aria-labelledby="entry-title">
+      <div class="entry-stage__media">
+        <img class="entry-stage__img" data-entry-cover alt="" crossorigin="anonymous" fetchpriority="high" decoding="async">
+      </div>
+      <div class="entry-stage__shade" aria-hidden="true"></div>
+      <span class="entry-stage__corner entry-stage__corner--bl" aria-hidden="true"></span>
+      <span class="entry-stage__corner entry-stage__corner--br" aria-hidden="true"></span>
+
+      <div class="entry-stage__caption" data-entry-caption>
+        <p class="label" data-entry-label>&nbsp;</p>
+        <h1 class="entry-stage__title" id="entry-title"><span class="entry-stage__title-inner" data-entry-title>&nbsp;</span></h1>
+      </div>
+      <script>
+        // Kommt man per Klick auf einen Eintrag (js/transitions.js), stehen Bildadresse und Titel im sessionStorage.
+        // Gelesen wird im Moment der Anzeige („pagereveal“) – das klappt auch, wenn der Browser die Seite schon
+        // beim Überfahren des Links vorbereitet hat. js/entry.js lädt danach die passende Bildgröße.
+        (() => {
+          const cover = document.querySelector('[data-entry-cover]');
+          const title = document.querySelector('[data-entry-title]');
+          const read = () => {
+            try {
+              const data = JSON.parse(sessionStorage.getItem('entry-cover') || 'null');
+              sessionStorage.removeItem('entry-cover');   // nur für diesen einen Übergang
+              return data && data.id === new URLSearchParams(location.search).get('id') ? data : null;
+            } catch { return null; }   // ohne sessionStorage einfach normal laden
+          };
+          let data = read();
+          const apply = () => {
+            if (data && !cover.getAttribute('src')) cover.src = data.src;
+            if (data && data.title && !title.textContent.trim()) title.textContent = data.title;
+            // Titel gleitet nur von der Startseite herein (gleiche Größe), sonst blendet er mit der Bühne über
+            title.style.viewTransitionName = data && data.morphTitle ? 'entry-title' : 'none';
+          };
+          apply();
+          addEventListener('pagereveal', (event) => {
+            data = read() || data;
+            apply();
+            // Eintrag → Eintrag: schnellere Überblendung (Typ für css/base.css)
+            if (event.viewTransition && data && data.swap) event.viewTransition.types?.add('entry-swap');
+          });
+        })();
+      </script>
+
+      <!-- Voriger / nächster Eintrag der Collection direkt auf der Bühne (gleiche Ziele wie unten nach den Bildern) -->
+      <nav class="entry-stage__nav" data-stage-nav aria-label="Voriger und nächster Eintrag" hidden>
+        <a class="entry-stage__nav-link" data-pager-prev href="#">
+          <span class="entry-stage__nav-name" data-pager-prev-name></span>
+          <span class="label"><span aria-hidden="true">←</span> <span data-pager-prev-number></span></span>
+        </a>
+        <a class="entry-stage__nav-link entry-stage__nav-link--next" data-pager-next href="#">
+          <span class="entry-stage__nav-name" data-pager-next-name></span>
+          <span class="label"><span data-pager-next-number></span> <span aria-hidden="true">→</span></span>
+        </a>
+      </nav>
+
+      <a class="entry-stage__scroll" href="#bilder" data-entry-scroll>
+        <span class="label" data-entry-count>Bilder</span>
+        <span class="entry-stage__scroll-line" aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <!-- Inhalt: schiebt sich über die Bühne -->
+    <div class="entry-body" id="bilder">
+      <div class="entry-intro">
+        <p class="entry-intro__text" data-entry-text></p>
+        <div class="entry-intro__info">
+          <dl class="entry-facts" data-entry-facts></dl>
+          <div class="entry-intro__links">
+            <a class="line-link" data-entry-map href="karte.html">Auf der Karte zeigen</a>
+            <a class="entry-intro__secondary" data-entry-back href="alben.html"><span aria-hidden="true">←</span> Zurück zu <span data-entry-back-name>Übersicht</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bilder: Trip = Galerie in Bildzeilen gleicher Höhe, Shoot = Bildstrecke (Klasse „strip“, setzt js/entry.js) -->
+      <div class="gallery" data-gallery role="list" aria-label="Bilder"></div>
+
+      <!-- Weiter zum vorigen / nächsten Eintrag derselben Collection -->
+      <nav class="entry-pager" data-entry-pager aria-label="Weitere Einträge" hidden>
+        <a class="entry-pager__link entry-pager__link--prev" data-pager-prev href="#">
+          <span class="label"><span aria-hidden="true">←</span> <span data-pager-prev-kind></span> <span class="label__dash">—</span> <span data-pager-prev-number></span></span>
+          <span class="entry-pager__name" data-pager-prev-name></span>
+        </a>
+        <a class="entry-pager__link entry-pager__link--next" data-pager-next href="#">
+          <span class="label"><span data-pager-next-kind></span> <span class="label__dash">—</span> <span data-pager-next-number></span> <span aria-hidden="true">→</span></span>
+          <span class="entry-pager__name" data-pager-next-name></span>
+        </a>
+      </nav>
+      <p class="entry-back">
+        <a class="label" data-entry-back href="alben.html"><span aria-hidden="true">←</span> Zurück zu <span data-entry-back-name>Übersicht</span></a>
+      </p>
+    </div>
+  </main>
+
+  <!-- Großansicht (Lightbox) -->
+  <dialog class="lightbox" data-lightbox aria-label="Großansicht">
+    <div class="lightbox__backdrop" data-lightbox-backdrop></div>
+    <div class="lightbox__stage" data-lightbox-stage>
+      <img class="lightbox__img" data-lightbox-img alt="">
+    </div>
+
+    <div class="lightbox__chrome" data-lightbox-chrome>
+      <span class="lightbox__corner lightbox__corner--tl" aria-hidden="true"></span>
+      <span class="lightbox__corner lightbox__corner--tr" aria-hidden="true"></span>
+      <span class="lightbox__corner lightbox__corner--bl" aria-hidden="true"></span>
+      <span class="lightbox__corner lightbox__corner--br" aria-hidden="true"></span>
+
+      <div class="lightbox__top">
+        <p class="lightbox__counter" aria-hidden="true">
+          <span class="lightbox__number" data-lightbox-number>01</span>
+          <span class="label label--quiet" data-lightbox-total>/ 01</span>
+        </p>
+        <button class="lightbox__close label" type="button" data-lightbox-close>
+          Schließen
+          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><path d="M5 5l14 14M19 5L5 19"/></svg>
+        </button>
+      </div>
+
+      <button class="lightbox__nav lightbox__nav--prev" type="button" data-lightbox-prev aria-label="Vorheriges Bild">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M15 4l-8 8 8 8"/></svg>
+      </button>
+      <button class="lightbox__nav lightbox__nav--next" type="button" data-lightbox-next aria-label="Nächstes Bild">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M9 4l8 8-8 8"/></svg>
+      </button>
+
+      <div class="lightbox__caption">
+        <p class="lightbox__title" data-lightbox-title></p>
+        <p class="label label--quiet" data-lightbox-meta></p>
+      </div>
+    </div>
+
+    <p class="visually-hidden" data-lightbox-status aria-live="polite"></p>
+  </dialog>
+
+  <footer class="site-footer">
+    <span class="label label--quiet">© 2026 Nicolas Novotny</span>
+    <span class="site-footer__links">
+      <a class="label label--quiet" href="impressum.html">Impressum</a>
+      <a class="label label--quiet" href="impressum.html#datenschutz">Datenschutz</a>
+    </span>
+  </footer>
+</body>
+</html>
