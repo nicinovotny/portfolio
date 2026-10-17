@@ -19,6 +19,13 @@
   <script defer src="vendor/gsap/gsap.min.js"></script>
   <script type="module" src="js/nav.js"></script>
   <script type="module" src="js/transitions.js"></script>
+  <!-- Daten und alle Module sofort mitladen, statt sie nacheinander zu entdecken (schnellerer Aufbau) -->
+  <link rel="preload" href="data/albums.json" as="fetch" crossorigin>
+  <link rel="modulepreload" href="js/data.js">
+  <link rel="modulepreload" href="js/format.js">
+  <link rel="modulepreload" href="js/map-projection.js">
+  <link rel="modulepreload" href="js/map-views.js">
+  <link rel="modulepreload" href="js/contours.js">
   <script type="module" src="js/map.js"></script>
 </head>
 <body>

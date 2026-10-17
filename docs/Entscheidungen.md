@@ -74,7 +74,7 @@ Festlegungen hier haben Vorrang vor dem Projektbriefing.
 ## Über mich, Rechtliches, Feinschliff (15.10.2026)
 - Über mich als Steckbrief: Porträt (4:5, Platzhalter mit Höhenlinien) neben Name, Kurztext und Mono-Steckbrief; darunter nummerierte Abschnitte Ausrüstung · Werdegang · Diese Seite. „Unterwegs“ (Orte · Länder · Bilder) wird aus `albums.json` gezählt.
 - Impressum und Datenschutz auf einer Seite (`impressum.html`, Anker `#datenschutz`), Footer-Links auf allen Seiten. Texte sind nur ein Gerüst und müssen vor der Veröffentlichung geprüft werden.
-- Seitenwechsel: Überblendung per View Transitions (nur bei `prefers-reduced-motion: no-preference`), Kopfzeile bleibt stehen. Browser ohne Unterstützung wechseln ohne Übergang.
+- ~~Seitenwechsel: Überblendung per View Transitions~~ (seit 17.10.2026 ohne Überblenden, siehe „Leistung beim Öffnen eines Eintrags“); Kopfzeile bleibt stehen, Bildflug ins Titelbild bleibt. Nur bei `prefers-reduced-motion: no-preference`.
 - Reduzierte Bewegung: globale CSS-Regel kürzt alle Übergänge; GSAP-Animationen prüfen die Einstellung selbst.
 - Favicon: ~~Fadenkreuz-Marker~~ → seit 15.10.2026 Höhenlinien um einen Punkt (`favicon.svg`), passend zu den Kartenmarkern
 
@@ -236,3 +236,12 @@ Spezifikation: `docs/Umbau-Spezifikation.md` (Collections, Eintragsarten, Tags, 
 - **Brotkrumen** oben unter der Kopfzeile (`<nav aria-label="Brotkrumen">`, Mono 11px, Schnitt 500, kräftiger Textschatten, oberer Verlauf dafür verlängert): `Collections / Landscape / Trip 01 von 21` (Collections und Collection verlinkt, Position innerhalb der Collection). Handy: `← Landscape · 01/21`.
 - **Titel kleiner:** `clamp(2.25rem, 1.5rem + 3vw, 4rem)` statt Display-Größe (bis 6.5rem). Untere Eckmarken und der Hinweis „05 Bilder“ mit laufender Linie entfernt (der Inhalt ist ja sichtbar). Voriger/Nächster auf der Bühne bleibt.
 - Seitenübergang „Bild fliegt in den Eintrag“ unverändert; der Titel blendet mit der Bühne ein (kein Gleiten groß→groß mehr, seit die Startseite Collection-Namen zeigt).
+
+### Leistung beim Öffnen eines Eintrags (17.10.2026)
+Nici: kurzes Einfrieren und schwarze Bühne beim Öffnen eines Eintrags. Gefunden und behoben:
+- **Helligkeitsmessung blockierte den Hauptthread:** `js/scrim.js` hat das 2400er-Titelbild per `drawImage` synchron dekodiert (gemessen 43 ms am PC, auf langsameren Geräten mehr) – genau beim Erscheinen des Bildes. Jetzt verkleinert `createImageBitmap` das Bild im Hintergrund auf 32 × 20 px, gemessen wird daran (asynchron, Ergebnis je Bild zwischengespeichert). Gilt auch für den Hero der Startseite.
+- **Lade-Kette:** Vorher HTML → `entry.js` → dessen Module → `albums.json` → Titelbild, also vier Anfragen nacheinander. Jetzt laden alle Seiten mit Skripten (`index`, `entry`, `collection`, `collections`, `karte`) Module per `<link rel="modulepreload">` und `albums.json` per `<link rel="preload" as="fetch" crossorigin>` sofort parallel – eine Runde statt drei. Neue Module einer Seite dort ergänzen.
+- **Titelbild ohne Seitenübergang:** lädt gleich in der passenden Größe (`srcset`) und blendet weich ein (`.is-fading`). Ein Versuch mit erst kleiner, dann großer Fassung wurde verworfen – die unscharfe Zwischenstufe fiel auf Retina-Bildschirmen auf.
+- **Kein Überblenden der ganzen Seite mehr:** Das 350-ms-Überblenden (`::view-transition-old/new(root)`, seit 15.10.2026) fühlte sich auf jeder Seite wie eine gleich lange Ladepause an – die alte Seite blieb stehen bzw. die neue war noch leer, bis ihr Inhalt per Skript kam (nur „Über mich“ ohne Skript-Inhalt fiel nicht auf). Jetzt wechselt die Seite sofort; erhalten bleiben die stehende Kopfzeile und der Bildflug ins Titelbild (`entry-cover`). Ersetzt die Festlegung „Seitenwechsel: Überblendung“ unter „Über mich, Rechtliches, Feinschliff“.
+- **Galerie:** alle Bilder `loading="lazy"`, kein `fetchpriority="high"` mehr am ersten Galeriebild – es konkurrierte mit dem Titelbild der Bühne.
+- Nicht gemessen werden konnte die Bildrate im sichtbaren Browser (Testfenster verdeckt); bitte im eigenen Browser gegenprüfen, am besten auf der Live-Seite nach dem Push.

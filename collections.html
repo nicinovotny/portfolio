@@ -18,6 +18,10 @@
   <link rel="preconnect" href="https://fastly.picsum.photos">
   <script type="module" src="js/nav.js"></script>
   <script type="module" src="js/transitions.js"></script>
+  <!-- Daten und alle Module sofort mitladen, statt sie nacheinander zu entdecken (schnellerer Aufbau) -->
+  <link rel="preload" href="data/albums.json" as="fetch" crossorigin>
+  <link rel="modulepreload" href="js/data.js">
+  <link rel="modulepreload" href="js/format.js">
   <script type="module" src="js/collections.js"></script>
 </head>
 <body>

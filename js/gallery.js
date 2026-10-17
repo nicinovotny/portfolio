@@ -26,8 +26,9 @@ export function createGalleryItem(entry, image, index, caption = null) {
   // Maße sofort setzen (keine Layout-Sprünge), Quelle erst, wenn die Anzeigebreite feststeht (passende sizes)
   const attrs = imageAttrs(entry, image);
   const img = document.createElement('img');
-  Object.assign(img, { width: attrs.width, height: attrs.height, alt: attrs.alt, decoding: 'async', loading: index < 2 ? 'eager' : 'lazy' });
-  if (index === 0) img.fetchPriority = 'high';
+  // lazy: Bilder im sichtbaren Bereich lädt der Browser trotzdem sofort – aber erst nach dem Titelbild der
+  // Bühne, das Vorrang hat (vorher konkurrierte das erste Galeriebild mit hoher Priorität um die Leitung)
+  Object.assign(img, { width: attrs.width, height: attrs.height, alt: attrs.alt, decoding: 'async', loading: 'lazy' });
   const hint = Object.assign(document.createElement('span'), { className: 'visually-hidden', textContent: ' – Großansicht öffnen' });
   button.append(img, hint);
 

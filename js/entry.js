@@ -175,8 +175,16 @@ function renderStage(entry) {
   const { src, srcset, width, height } = imageAttrs(entry, cover);
   const img = el.cover;
   Object.assign(img, { width, height, alt: cover.alt, sizes: '100vw' });
-  img.srcset = srcset;
-  if (!img.getAttribute('src')) img.src = src;
+  // Direkt aufgerufen (ohne Seitenübergang): gleich die passende Größe laden und weich einblenden,
+  // sobald sie da ist – keine unscharfe Zwischenstufe (die fiel auf Retina-Bildschirmen auf)
+  if (!img.getAttribute('src')) {
+    img.classList.add('is-fading');
+    img.addEventListener('load', () => img.classList.remove('is-fading'), { once: true });
+    img.srcset = srcset;
+    img.src = src;
+  } else {
+    img.srcset = srcset;   // Bild kam schon mit dem Seitenübergang (js/transitions.js)
+  }
 
   const whenReady = () => applyScrim(el.stage, img);   // Verläufe an die Bildhelligkeit anpassen
   if (img.complete && img.naturalWidth) whenReady();

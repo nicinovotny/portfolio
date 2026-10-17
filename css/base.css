@@ -299,10 +299,12 @@ main { flex: 1; }
 
 .site-header { view-transition-name: site-header; }
 
+/* Die Seite selbst wechselt sofort, ohne Überblenden (17.10.2026, Nici: das 350-ms-Überblenden fühlte sich
+   auf jeder Seite wie eine kurze Ladepause an – alte Seite blieb stehen bzw. neue war noch leer).
+   Übergänge gibt es nur noch für das Titelbild (entry-cover) und die Kopfzeile bleibt stehen. */
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation-duration: 350ms;
-  animation-timing-function: ease;
+  animation: none;
 }
 
 /* „Bild fliegt ins Album“ (js/transitions.js + Bühne der Albumseite): Das angeklickte Bild wächst
