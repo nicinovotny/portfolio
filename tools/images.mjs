@@ -3,8 +3,8 @@
 //
 // Aufruf (aus dem Projektordner, einmalig vorher: cd tools && npm install):
 //   node tools/images.mjs inspect [dateien…]               Eingangsordner prüfen (Maße, Aufnahmedaten, GPS, Vorschau)
-//   node tools/images.mjs convert --album <id> <dateien…>   WebP groß + klein nach images/<id>/
-//   node tools/images.mjs check                            albums.json gegen die Bilddateien prüfen
+//   node tools/images.mjs convert --entry <id> <dateien…>   WebP groß + klein nach images/<id>/ (--album geht auch)
+//   node tools/images.mjs check                            albums.json (Collections, Einträge) gegen die Bilddateien prüfen
 //
 // Ausgabe ist JSON, damit Claude (der Skill „bilder-einpflegen“) sie direkt weiterverwenden kann.
 
@@ -119,7 +119,7 @@ function distanceKm(a, b) {
   return 2 * 6371 * Math.asin(Math.sqrt(h));
 }
 
-/** Höchste vergebene Nummer <album>-NN in Ordner und albums.json */
+/** Nächste freie Nummer <entry>-NN in Ordner und albums.json */
 function nextNumber(albumId, album) {
   const pattern = new RegExp(`^${albumId}-(\\d+)(?:-${SMALL_WIDTH})?\\.\\w+$`);
   const names = [
@@ -138,7 +138,7 @@ async function inspect(args) {
     print({ files: [], hint: 'Keine Bilder gefunden. Exporte nach images/_eingang/ legen (JPEG, TIFF, PNG, HEIC, WebP).' });
     return;
   }
-  const { albums } = readAlbums();
+  const albums = (readAlbums().entries ?? []).filter((entry) => entry.coords);   // nur Einträge mit Ort
   mkdirSync(PREVIEWS, { recursive: true });
 
   const results = [];
@@ -192,11 +192,11 @@ function parseConvertArgs(args) {
   const files = [];
   let album = null;
   for (let i = 0; i < args.length; i++) {
-    if (args[i] === '--album') album = args[++i];
+    if (args[i] === '--entry' || args[i] === '--album') album = args[++i];
     else files.push(args[i]);
   }
-  if (!album) fail('Bitte Album angeben: --album <id>');
-  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(album)) fail(`Ungültige Album-ID „${album}“ (nur Kleinbuchstaben, Ziffern, Bindestriche).`);
+  if (!album) fail('Bitte Eintrag angeben: --entry <id>');
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(album)) fail(`Ungültige Eintrags-ID „${album}“ (nur Kleinbuchstaben, Ziffern, Bindestriche).`);
   if (!files.length) fail('Keine Dateien angegeben.');
   return { album, files: files.map(findFile) };
 }
@@ -213,8 +213,7 @@ function archive(file) {
 
 async function convert(args) {
   const { album: albumId, files } = parseConvertArgs(args);
-  const { albums } = readAlbums();
-  const album = albums.find((a) => a.id === albumId);
+  const album = (readAlbums().entries ?? []).find((a) => a.id === albumId);
   const folder = join(IMAGES, albumId);
   mkdirSync(folder, { recursive: true });
 
@@ -224,10 +223,12 @@ async function convert(args) {
     try {
       const source = await openImage(file);
       let name;
+      let imageId;
       do {
-        name = `${albumId}-${String(number).padStart(2, '0')}`;
+        imageId = String(number).padStart(2, '0');
+        name = `${albumId}-${imageId}`;
         number++;
-      } while (existsSync(join(folder, `${name}.webp`)));
+      } while (existsSync(join(folder, `${name}.webp`)) || album?.images.some((image) => image.id === imageId));
 
       // .rotate() dreht nach EXIF-Ausrichtung; sharp wandelt nach sRGB und entfernt Metadaten (auch GPS)
       const large = await sharp(source).rotate()
@@ -244,13 +245,13 @@ async function convert(args) {
         archivedTo: archive(file),
         files: [`images/${albumId}/${name}.webp`, `images/${albumId}/${name}-${SMALL_WIDTH}.webp`],
         sizeKb: { large: Math.round(large.size / 1024), small: Math.round(small.size / 1024) },
-        entry: { file: `${name}.webp`, width: large.width, height: large.height },
+        entry: { id: imageId, file: `${name}.webp`, width: large.width, height: large.height },
       });
     } catch (error) {
       results.push({ source: basename(file), error: error.message });
     }
   }
-  print({ album: albumId, albumInJson: Boolean(album), results });
+  print({ entry: albumId, entryInJson: Boolean(album), results });
 }
 
 // ---------- check ----------
@@ -259,28 +260,50 @@ async function check() {
   const data = readAlbums();
   const errors = [];
   const warnings = [];
+  if (!data.entries) fail('albums.json hat kein "entries" – noch das alte Format mit "albums"?');
+
+  const collectionIds = new Set((data.collections ?? []).map((c) => c.id));
+  const KINDS = ['trip', 'shoot', 'frame', 'series'];
+  const TECH_TAGS = ['analog'];   // Technik-Tags: nur Chip in der Lightbox, keine Collection
   const ids = new Set();
 
-  for (const album of data.albums ?? []) {
-    const where = `Album „${album.id}“`;
-    if (ids.has(album.id)) errors.push(`${where}: ID doppelt vergeben.`);
-    ids.add(album.id);
-    if (!data.regions?.[album.region]) errors.push(`${where}: region „${album.region}“ fehlt unter "regions".`);
-    if (album.year != null && !Number.isInteger(album.year)) errors.push(`${where}: year muss eine Jahreszahl sein (z. B. 2024) oder null.`);
-    if (album.year == null) warnings.push(`${where}: kein Jahr eingetragen.`);
-    if (typeof album.coords?.lat !== 'number' || typeof album.coords?.lon !== 'number') errors.push(`${where}: coords.lat/lon fehlen oder sind keine Zahlen.`);
-    if (!album.images?.length) { errors.push(`${where}: keine Bilder.`); continue; }
-    if (album.cover != null && !album.images[album.cover]) errors.push(`${where}: cover ${album.cover} zeigt auf kein Bild (Zählung ab 0).`);
+  for (const entry of data.entries) {
+    const where = `Eintrag „${entry.id}“`;
+    if (ids.has(entry.id)) errors.push(`${where}: ID doppelt vergeben.`);
+    ids.add(entry.id);
+    if (!KINDS.includes(entry.kind)) errors.push(`${where}: kind „${entry.kind}“ unbekannt (${KINDS.join(', ')}).`);
+    if (!entry.name) errors.push(`${where}: name fehlt.`);
+    if (!collectionIds.has(entry.collection)) errors.push(`${where}: collection „${entry.collection}“ gibt es nicht.`);
+    for (const other of entry.alsoIn ?? []) {
+      if (!collectionIds.has(other)) errors.push(`${where}: alsoIn „${other}“ gibt es nicht.`);
+    }
+    if (entry.region != null && !data.regions?.[entry.region]) errors.push(`${where}: region „${entry.region}“ fehlt unter "regions".`);
+    if (entry.year != null && !Number.isInteger(entry.year)) errors.push(`${where}: year muss eine Jahreszahl sein (z. B. 2024) oder null.`);
+    if (entry.year == null) warnings.push(`${where}: kein Jahr eingetragen.`);
+    if (entry.coords != null && (typeof entry.coords.lat !== 'number' || typeof entry.coords.lon !== 'number')) {
+      errors.push(`${where}: coords.lat/lon fehlen oder sind keine Zahlen.`);
+    }
+    if (entry.coords && !entry.region) errors.push(`${where}: hat coords, aber keine region (braucht die Karte).`);
+    if (entry.kind === 'trip' && !entry.coords) warnings.push(`${where}: Trip ohne coords – erscheint nicht auf der Karte.`);
+    if (!entry.images?.length) { errors.push(`${where}: keine Bilder.`); continue; }
+    if (entry.cover != null && !entry.images[entry.cover]) errors.push(`${where}: cover ${entry.cover} zeigt auf kein Bild (Zählung ab 0).`);
 
     const referenced = new Set();
-    for (const image of album.images) {
+    const imageIds = new Set();
+    for (const image of entry.images) {
       const label = `${where}, ${image.file}`;
+      if (!image.id) errors.push(`${label}: id fehlt (z. B. "01").`);
+      else if (imageIds.has(image.id)) errors.push(`${label}: Bild-id „${image.id}“ doppelt.`);
+      imageIds.add(image.id);
       if (!image.alt) warnings.push(`${label}: Alt-Text fehlt.`);
+      for (const tag of image.tags ?? []) {
+        if (!collectionIds.has(tag) && !TECH_TAGS.includes(tag)) warnings.push(`${label}: Tag „${tag}“ ist weder Collection noch Technik-Tag.`);
+      }
       if (image.demo != null) continue;
-      const large = join(IMAGES, album.id, image.file);
+      const large = join(IMAGES, entry.id, image.file);
       const small = large.replace(/(\.\w+)$/, `-${SMALL_WIDTH}$1`);
       referenced.add(basename(large)).add(basename(small));
-      if (!existsSync(large)) { errors.push(`${label}: Datei fehlt (images/${album.id}/${image.file}).`); continue; }
+      if (!existsSync(large)) { errors.push(`${label}: Datei fehlt (images/${entry.id}/${image.file}).`); continue; }
       if (image.width > SMALL_WIDTH && !existsSync(small)) errors.push(`${label}: kleine Fassung -${SMALL_WIDTH} fehlt.`);
       const meta = await sharp(large).metadata();
       if (meta.width !== image.width || meta.height !== image.height) {
@@ -289,14 +312,14 @@ async function check() {
     }
 
     // Dateien im Ordner, die nirgends eingetragen sind
-    const folder = join(IMAGES, album.id);
+    const folder = join(IMAGES, entry.id);
     if (existsSync(folder)) {
       for (const name of readdirSync(folder)) {
-        if (!name.startsWith('.') && !referenced.has(name)) warnings.push(`${where}: images/${album.id}/${name} ist nicht in albums.json eingetragen.`);
+        if (!name.startsWith('.') && !referenced.has(name)) warnings.push(`${where}: images/${entry.id}/${name} ist nicht in albums.json eingetragen.`);
       }
     }
-    const demos = album.images.filter((image) => image.demo != null).length;
-    if (demos && demos < album.images.length) warnings.push(`${where}: noch ${demos} Demo-Bild(er) neben eigenen Bildern.`);
+    const demos = entry.images.filter((image) => image.demo != null).length;
+    if (demos && demos < entry.images.length) warnings.push(`${where}: noch ${demos} Demo-Bild(er) neben eigenen Bildern.`);
   }
 
   // Regionen: jede "parent"-Angabe muss existieren, ohne Kreis
@@ -309,16 +332,28 @@ async function check() {
     }
   }
 
-  // Favoriten für die Startseite
-  for (const id of data.featured ?? []) {
-    if (!ids.has(id)) errors.push(`featured: Album „${id}“ gibt es nicht.`);
+  // Collections: Titelbild und Hero-Favoriten müssen auf vorhandene Bilder zeigen ("<entryId>/<imageId>")
+  const imageExists = (ref) => {
+    const [entryId, imageId] = String(ref).split('/');
+    return data.entries.some((e) => e.id === entryId && e.images?.some((i) => i.id === imageId));
+  };
+  const seenCollections = new Set();
+  for (const collection of data.collections ?? []) {
+    const where = `Collection „${collection.id}“`;
+    if (seenCollections.has(collection.id)) errors.push(`${where}: ID doppelt vergeben.`);
+    seenCollections.add(collection.id);
+    if (collection.cover && !imageExists(collection.cover)) errors.push(`${where}: cover „${collection.cover}“ gibt es nicht.`);
+    for (const favorite of collection.heroFavorites ?? []) {
+      if (!imageExists(favorite.image)) errors.push(`${where}: Hero-Favorit „${favorite.image}“ gibt es nicht.`);
+    }
+    if (collection.published && !collection.heroFavorites?.length) warnings.push(`${where}: keine Hero-Favoriten – erscheint nicht im Hero der Startseite.`);
   }
-  if (!data.featured?.length) warnings.push('featured: keine Favoriten eingetragen – die Startseite zeigt die ersten fünf Alben.');
 
   const totals = {
-    albums: data.albums.length,
-    images: data.albums.reduce((sum, a) => sum + a.images.length, 0),
-    demoImages: data.albums.reduce((sum, a) => sum + a.images.filter((i) => i.demo != null).length, 0),
+    collections: data.collections?.length ?? 0,
+    entries: data.entries.length,
+    images: data.entries.reduce((sum, e) => sum + (e.images?.length ?? 0), 0),
+    demoImages: data.entries.reduce((sum, e) => sum + (e.images ?? []).filter((i) => i.demo != null).length, 0),
   };
   print({ ok: errors.length === 0, totals, errors, warnings });
   if (errors.length) process.exitCode = 1;
@@ -328,5 +363,5 @@ async function check() {
 
 const [command, ...args] = process.argv.slice(2);
 const commands = { inspect, convert, check };
-if (!commands[command]) fail('Befehl: inspect | convert --album <id> <dateien…> | check');
+if (!commands[command]) fail('Befehl: inspect | convert --entry <id> <dateien…> | check');
 await commands[command](args);

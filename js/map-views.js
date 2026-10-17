@@ -11,7 +11,7 @@
 // Cluster teilen sich von selbst in ihre Unterregionen bzw. Alben auf, solange sich dabei auf dem
 // Bildschirm nichts überschneidet. So bleibt es aufgeräumt, und große Bildschirme brauchen weniger Klicks.
 
-import { regionPath } from './data.js';
+import { canonicalId, regionPath } from './data.js';
 
 // Mindestgröße eines Ausschnitts in Grad Länge, nach Tiefe des Gebiets (Kontinent, Region, Land …)
 // – damit immer Umgebung zur Orientierung sichtbar ist
@@ -264,7 +264,7 @@ export function createViews({ albums, regions, projection, world }) {
   /** Ansichtszustand aus der URL lesen (?ort=faroe-2024, ?gebiet=alps oder ?gebiet=welt) */
   function fromUrl(search) {
     const params = new URLSearchParams(search);
-    const place = params.get('ort');
+    const place = canonicalId(params.get('ort'));   // alte ids führen weiter
     if (place && byId.has(place)) return { level: 'album', id: place };
     const area = params.get('gebiet');
     if (area === 'welt') return { level: 'globe' };

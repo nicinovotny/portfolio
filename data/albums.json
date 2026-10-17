@@ -1,5 +1,57 @@
 {
-  "featured": ["seoul-2026", "iceland-2025", "seiser-alm-2024", "lofoten-2024", "saxon-switzerland-2025"],
+  "collections": [
+    {
+      "id": "landscape",
+      "name": "Landscape",
+      "order": 1,
+      "published": true,
+      "text": "[Platzhalter: 1–2 Sätze Haltung]",
+      "cover": "seoul-2026/01",
+      "heroFavorites": [
+        { "image": "seoul-2026/01", "focus": [50, 50] },
+        { "image": "iceland-2025/01", "focus": [50, 50] },
+        { "image": "seiser-alm-2024/01", "focus": [50, 50] },
+        { "image": "lofoten-2024/01", "focus": [50, 50] },
+        { "image": "saxon-switzerland-2025/01", "focus": [50, 50] }
+      ]
+    },
+    {
+      "id": "automotive",
+      "name": "Automotive",
+      "order": 2,
+      "published": true,
+      "text": "[Platzhalter: 1–2 Sätze Haltung]",
+      "cover": null,
+      "heroFavorites": []
+    },
+    {
+      "id": "wildlife",
+      "name": "Wildlife",
+      "order": 3,
+      "published": true,
+      "text": "[Platzhalter: 1–2 Sätze Haltung]",
+      "cover": null,
+      "heroFavorites": []
+    },
+    {
+      "id": "portrait",
+      "name": "Portrait",
+      "order": 4,
+      "published": true,
+      "text": "[Platzhalter: 1–2 Sätze Haltung]",
+      "cover": null,
+      "heroFavorites": []
+    },
+    {
+      "id": "creative",
+      "name": "Creative",
+      "order": 5,
+      "published": true,
+      "text": "[Platzhalter: 1–2 Sätze Haltung]",
+      "cover": null,
+      "heroFavorites": []
+    }
+  ],
 
   "regions": {
     "europe":          { "name": "Europa" },
@@ -16,11 +68,13 @@
     "korea":           { "name": "Südkorea",     "parent": "asia" }
   },
 
-  "albums": [
+  "entries": [
     {
       "id": "seoul-2026",
+      "kind": "trip",
       "name": "Seoul",
       "shortName": "Seoul",
+      "collection": "landscape",
       "year": 2026,
       "country": "Südkorea",
       "region": "korea",
@@ -28,17 +82,19 @@
       "text": "Paläste zwischen Hochhäusern, Berge am Stadtrand und Gassen, die nachts erst richtig wach werden. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "file": "seoul-2026-01.webp", "width": 2400, "height": 1600, "title": "Sonnenuntergang über Seoul", "alt": "Orange Abendsonne über der Skyline von Seoul, eingerahmt von Baumkronen und fernen Bergen" },
-        { "file": "seoul-2026-02.webp", "width": 2400, "height": 1600, "title": "Stadtmauer am Abend", "alt": "Alte Stadtmauer führt durch bewaldete Hügel auf die Skyline mit dem Namsan-Turm zu" },
-        { "file": "seoul-2026-03.webp", "width": 2400, "height": 1600, "title": "Blaue Stunde", "alt": "Seoul zur blauen Stunde mit beleuchtetem Namsan-Turm und leuchtender Stadtmauer im Vordergrund" },
-        { "file": "seoul-2026-04.webp", "width": 1600, "height": 2400, "title": "Laden unterm Namsan", "alt": "Kleiner Laden mit traditionellem Ziegeldach an einer roten Straße, dahinter der Namsan-Turm" },
-        { "file": "seoul-2026-05.webp", "width": 1600, "height": 2400, "title": "Regen und Neon", "alt": "Frau mit Regenschirm geht nachts durch eine Gasse unter roter Neonreklame" }
+        { "id": "01", "file": "seoul-2026-01.webp", "width": 2400, "height": 1600, "title": "Sonnenuntergang über Seoul", "alt": "Orange Abendsonne über der Skyline von Seoul, eingerahmt von Baumkronen und fernen Bergen" },
+        { "id": "02", "file": "seoul-2026-02.webp", "width": 2400, "height": 1600, "title": "Stadtmauer am Abend", "alt": "Alte Stadtmauer führt durch bewaldete Hügel auf die Skyline mit dem Namsan-Turm zu" },
+        { "id": "03", "file": "seoul-2026-03.webp", "width": 2400, "height": 1600, "title": "Blaue Stunde", "alt": "Seoul zur blauen Stunde mit beleuchtetem Namsan-Turm und leuchtender Stadtmauer im Vordergrund" },
+        { "id": "04", "file": "seoul-2026-04.webp", "width": 1600, "height": 2400, "title": "Laden unterm Namsan", "alt": "Kleiner Laden mit traditionellem Ziegeldach an einer roten Straße, dahinter der Namsan-Turm" },
+        { "id": "05", "file": "seoul-2026-05.webp", "width": 1600, "height": 2400, "title": "Regen und Neon", "alt": "Frau mit Regenschirm geht nachts durch eine Gasse unter roter Neonreklame" }
       ]
     },
     {
       "id": "bergen-2026",
-      "name": "Bergen",
+      "kind": "trip",
+      "name": "Bergen & Hardangerfjord",
       "shortName": "Bergen",
+      "collection": "landscape",
       "year": 2026,
       "country": "Norwegen",
       "region": "norway",
@@ -46,15 +102,17 @@
       "text": "Bunte Holzhäuser am Hafen, sieben Berge rundherum und Regen, der zum Licht gehört. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "file": "bergen-2026-01.webp", "width": 2400, "height": 1600, "title": "Häuser am Hang", "alt": "Bunte Häuser dicht gedrängt an einem steilen Hang über dem Wasser", "demo": 397 },
-        { "file": "bergen-2026-02.webp", "width": 2400, "height": 1600, "title": "Stiller Waldsee", "alt": "Dunkler See vor einem bewaldeten Ufer in der Dämmerung", "demo": 412 },
-        { "file": "bergen-2026-03.webp", "width": 2400, "height": 1600, "title": "Nebel über dem Fjord", "alt": "Graues Wasser, das am Horizont im Nebel verschwindet", "demo": 313 }
+        { "id": "01", "file": "bergen-2026-01.webp", "width": 2400, "height": 1600, "title": "Häuser am Hang", "alt": "Bunte Häuser dicht gedrängt an einem steilen Hang über dem Wasser", "demo": 397 },
+        { "id": "02", "file": "bergen-2026-02.webp", "width": 2400, "height": 1600, "title": "Stiller Waldsee", "alt": "Dunkler See vor einem bewaldeten Ufer in der Dämmerung", "demo": 412 },
+        { "id": "03", "file": "bergen-2026-03.webp", "width": 2400, "height": 1600, "title": "Nebel über dem Fjord", "alt": "Graues Wasser, das am Horizont im Nebel verschwindet", "demo": 313 }
       ]
     },
     {
       "id": "bernese-oberland-2026",
+      "kind": "trip",
       "name": "Berner Oberland",
       "shortName": "Interlaken",
+      "collection": "landscape",
       "year": 2026,
       "country": "Schweiz",
       "region": "switzerland",
@@ -62,16 +120,18 @@
       "text": "Rund um Interlaken: Gletscher, Wasserfälle und Täler, die so steil sind, dass die Sonne im Winter nur Stunden bleibt. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "file": "bernese-oberland-2026-01.webp", "width": 2400, "height": 1600, "title": "Gipfel über dem See", "alt": "Schneebedeckter Gipfel über einem dunklen Bergsee", "demo": 235 },
-        { "file": "bernese-oberland-2026-02.webp", "width": 2400, "height": 1600, "title": "Bergkette", "alt": "Verschneite Bergkette unter tiefblauem Himmel", "demo": 296 },
-        { "file": "bernese-oberland-2026-03.webp", "width": 2400, "height": 1600, "title": "Neuschnee", "alt": "Frisch verschneite Gipfel im Morgenlicht", "demo": 256 },
-        { "file": "bernese-oberland-2026-04.webp", "width": 2400, "height": 1600, "title": "Almweg", "alt": "Grüner Bergrücken mit Wanderweg", "demo": 287 }
+        { "id": "01", "file": "bernese-oberland-2026-01.webp", "width": 2400, "height": 1600, "title": "Gipfel über dem See", "alt": "Schneebedeckter Gipfel über einem dunklen Bergsee", "demo": 235 },
+        { "id": "02", "file": "bernese-oberland-2026-02.webp", "width": 2400, "height": 1600, "title": "Bergkette", "alt": "Verschneite Bergkette unter tiefblauem Himmel", "demo": 296 },
+        { "id": "03", "file": "bernese-oberland-2026-03.webp", "width": 2400, "height": 1600, "title": "Neuschnee", "alt": "Frisch verschneite Gipfel im Morgenlicht", "demo": 256 },
+        { "id": "04", "file": "bernese-oberland-2026-04.webp", "width": 2400, "height": 1600, "title": "Almweg", "alt": "Grüner Bergrücken mit Wanderweg", "demo": 287 }
       ]
     },
     {
       "id": "iceland-2025",
+      "kind": "trip",
       "name": "Island",
       "shortName": "Island",
+      "collection": "landscape",
       "year": 2025,
       "country": "Island",
       "region": "iceland",
@@ -79,17 +139,19 @@
       "text": "Der Südosten rund um Höfn: Gletscherzungen, schwarze Strände und Berge, die direkt aus dem Meer steigen. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "file": "iceland-2025-01.webp", "width": 2400, "height": 1601, "title": "Polarlicht über dem Vestrahorn", "alt": "Grünes Polarlicht und Sterne über den dunklen Gipfeln des Vestrahorn und verschneiten Dünen" },
-        { "file": "iceland-2025-02.webp", "width": 2400, "height": 1601, "title": "Abendlicht am Vestrahorn", "alt": "Wanderer in roter Jacke zwischen verschneiten Dünen vor dem rötlich beleuchteten Vestrahorn" },
-        { "file": "iceland-2025-03.webp", "width": 2400, "height": 1601, "title": "Brandung bei Stokksnes", "alt": "Wellen umspülen verschneite Felsen, dahinter die spitzen Gipfel des Vestrahorn" },
-        { "file": "iceland-2025-04.webp", "width": 2400, "height": 1601, "title": "Kirkjufell im Schneesturm", "alt": "Verschneiter Wasserfall vor dem Kirkjufell, der im Schneetreiben verschwindet" },
-        { "file": "iceland-2025-05.webp", "width": 2400, "height": 1600, "title": "Morgen im Schnee", "alt": "Silhouette einer Person am verschneiten Auto vor einem orangen Sonnenaufgang" }
+        { "id": "01", "file": "iceland-2025-01.webp", "width": 2400, "height": 1601, "title": "Polarlicht über dem Vestrahorn", "alt": "Grünes Polarlicht und Sterne über den dunklen Gipfeln des Vestrahorn und verschneiten Dünen" },
+        { "id": "02", "file": "iceland-2025-02.webp", "width": 2400, "height": 1601, "title": "Abendlicht am Vestrahorn", "alt": "Wanderer in roter Jacke zwischen verschneiten Dünen vor dem rötlich beleuchteten Vestrahorn" },
+        { "id": "03", "file": "iceland-2025-03.webp", "width": 2400, "height": 1601, "title": "Brandung bei Stokksnes", "alt": "Wellen umspülen verschneite Felsen, dahinter die spitzen Gipfel des Vestrahorn" },
+        { "id": "04", "file": "iceland-2025-04.webp", "width": 2400, "height": 1601, "title": "Kirkjufell im Schneesturm", "alt": "Verschneiter Wasserfall vor dem Kirkjufell, der im Schneetreiben verschwindet" },
+        { "id": "05", "file": "iceland-2025-05.webp", "width": 2400, "height": 1600, "title": "Morgen im Schnee", "alt": "Silhouette einer Person am verschneiten Auto vor einem orangen Sonnenaufgang" }
       ]
     },
     {
       "id": "seoul-2025",
+      "kind": "trip",
       "name": "Seoul",
       "shortName": "Seoul",
+      "collection": "landscape",
       "year": 2025,
       "country": "Südkorea",
       "region": "korea",
@@ -97,15 +159,17 @@
       "text": "Die erste Reise nach Seoul: Hochhausschluchten, Märkte und der Han-Fluss bei Nacht. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "file": "seoul-2025-01.webp", "width": 2400, "height": 1600, "title": "Skyline", "alt": "Dicht stehende Hochhäuser einer Großstadt im Abendlicht", "demo": 411 },
-        { "file": "seoul-2025-02.webp", "width": 2400, "height": 1600, "title": "Verkehr", "alt": "Belebte Straßenschlucht mit Autos zwischen hohen Gebäuden", "demo": 382 },
-        { "file": "seoul-2025-03.webp", "width": 2400, "height": 1600, "title": "Am Wasser", "alt": "Blaues Wasser mit einem kleinen Boot vor einer Stadtsilhouette", "demo": 74 }
+        { "id": "01", "file": "seoul-2025-01.webp", "width": 2400, "height": 1600, "title": "Skyline", "alt": "Dicht stehende Hochhäuser einer Großstadt im Abendlicht", "demo": 411 },
+        { "id": "02", "file": "seoul-2025-02.webp", "width": 2400, "height": 1600, "title": "Verkehr", "alt": "Belebte Straßenschlucht mit Autos zwischen hohen Gebäuden", "demo": 382 },
+        { "id": "03", "file": "seoul-2025-03.webp", "width": 2400, "height": 1600, "title": "Am Wasser", "alt": "Blaues Wasser mit einem kleinen Boot vor einer Stadtsilhouette", "demo": 74 }
       ]
     },
     {
       "id": "zermatt-2025",
+      "kind": "trip",
       "name": "Zermatt",
       "shortName": "Zermatt",
+      "collection": "landscape",
       "year": 2025,
       "country": "Schweiz",
       "region": "switzerland",
@@ -113,15 +177,17 @@
       "text": "Am Fuß des Matterhorns: Viertausender, Gletscher und Bergseen, in denen sich die Gipfel spiegeln. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "file": "zermatt-2025-01.webp", "width": 2400, "height": 1600, "title": "Gipfel über dem Bergsee", "alt": "Schneebedeckte Gipfel hinter einem türkisfarbenen Bergsee", "demo": 327 },
-        { "file": "zermatt-2025-02.webp", "width": 2400, "height": 1600, "title": "Grüner Rücken", "alt": "Grüner Bergrücken unter einem Himmel mit weißen Wolken", "demo": 54 },
-        { "file": "zermatt-2025-03.webp", "width": 2400, "height": 1600, "title": "Im Nebel", "alt": "Dichter Nebel, in dem die Landschaft verschwindet", "demo": 228 }
+        { "id": "01", "file": "zermatt-2025-01.webp", "width": 2400, "height": 1600, "title": "Gipfel über dem Bergsee", "alt": "Schneebedeckte Gipfel hinter einem türkisfarbenen Bergsee", "demo": 327 },
+        { "id": "02", "file": "zermatt-2025-02.webp", "width": 2400, "height": 1600, "title": "Grüner Rücken", "alt": "Grüner Bergrücken unter einem Himmel mit weißen Wolken", "demo": 54 },
+        { "id": "03", "file": "zermatt-2025-03.webp", "width": 2400, "height": 1600, "title": "Im Nebel", "alt": "Dichter Nebel, in dem die Landschaft verschwindet", "demo": 228 }
       ]
     },
     {
       "id": "cortina-2025",
+      "kind": "trip",
       "name": "Dolomiten · Cortina d’Ampezzo",
       "shortName": "Cortina",
+      "collection": "landscape",
       "year": 2025,
       "country": "Italien",
       "region": "dolomites",
@@ -129,15 +195,17 @@
       "text": "Rund um Cortina: Drei Zinnen, Pässe über der Baumgrenze und Wolken, die an den Felswänden hängen. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "file": "cortina-2025-01.webp", "width": 2400, "height": 1600, "title": "Wolken an den Gipfeln", "alt": "Verschneite Berggipfel, um die tiefe Wolken ziehen", "demo": 406 },
-        { "file": "cortina-2025-02.webp", "width": 2400, "height": 1600, "title": "Bergsee", "alt": "Stiller Bergsee vor grauen Felshängen", "demo": 66 },
-        { "file": "cortina-2025-03.webp", "width": 2400, "height": 1600, "title": "Weite", "alt": "Ruhige Wasserfläche unter einem weiten, blassen Himmel", "demo": 266 }
+        { "id": "01", "file": "cortina-2025-01.webp", "width": 2400, "height": 1600, "title": "Wolken an den Gipfeln", "alt": "Verschneite Berggipfel, um die tiefe Wolken ziehen", "demo": 406 },
+        { "id": "02", "file": "cortina-2025-02.webp", "width": 2400, "height": 1600, "title": "Bergsee", "alt": "Stiller Bergsee vor grauen Felshängen", "demo": 66 },
+        { "id": "03", "file": "cortina-2025-03.webp", "width": 2400, "height": 1600, "title": "Weite", "alt": "Ruhige Wasserfläche unter einem weiten, blassen Himmel", "demo": 266 }
       ]
     },
     {
       "id": "saxon-switzerland-2025",
+      "kind": "trip",
       "name": "Sächsische Schweiz",
       "shortName": "Sächs. Schweiz",
+      "collection": "landscape",
       "year": 2025,
       "country": "Deutschland",
       "region": "germany",
@@ -145,17 +213,19 @@
       "text": "Sandsteintürme über dem Elbtal, Schluchten und Morgennebel. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "file": "saxon-switzerland-2025-01.webp", "width": 2400, "height": 1601, "title": "Bastei im Morgenrot", "alt": "Basteibrücke zwischen Sandsteinfelsen im Herbstwald unter rosa Morgenhimmel" },
-        { "file": "saxon-switzerland-2025-02.webp", "width": 2400, "height": 1601, "title": "Steinhaus in der Schlucht", "alt": "Altes Steinhaus mit Schieferdach versteckt zwischen herbstlichen Bäumen in einer Felsschlucht" },
-        { "file": "saxon-switzerland-2025-03.webp", "width": 2400, "height": 1601, "title": "Burg Kriebstein im Spiegel", "alt": "Burg auf einem Felsen über dem Wasser, umgeben von Herbstwald, mit Spiegelbild" },
-        { "file": "saxon-switzerland-2025-04.webp", "width": 2400, "height": 1601, "title": "Die Barbarine", "alt": "Freistehende Felsnadel Barbarine im warmen Abendlicht über weitem Waldland" },
-        { "file": "saxon-switzerland-2025-05.webp", "width": 2400, "height": 1600, "title": "Abendsonne auf dem Fels", "alt": "Abendsonne über bewaldeten Tälern, im Vordergrund Sandsteinfelsen mit Birken" }
+        { "id": "01", "file": "saxon-switzerland-2025-01.webp", "width": 2400, "height": 1601, "title": "Bastei im Morgenrot", "alt": "Basteibrücke zwischen Sandsteinfelsen im Herbstwald unter rosa Morgenhimmel" },
+        { "id": "02", "file": "saxon-switzerland-2025-02.webp", "width": 2400, "height": 1601, "title": "Steinhaus in der Schlucht", "alt": "Altes Steinhaus mit Schieferdach versteckt zwischen herbstlichen Bäumen in einer Felsschlucht" },
+        { "id": "03", "file": "saxon-switzerland-2025-03.webp", "width": 2400, "height": 1601, "title": "Burg Kriebstein im Spiegel", "alt": "Burg auf einem Felsen über dem Wasser, umgeben von Herbstwald, mit Spiegelbild" },
+        { "id": "04", "file": "saxon-switzerland-2025-04.webp", "width": 2400, "height": 1601, "title": "Die Barbarine", "alt": "Freistehende Felsnadel Barbarine im warmen Abendlicht über weitem Waldland" },
+        { "id": "05", "file": "saxon-switzerland-2025-05.webp", "width": 2400, "height": 1600, "title": "Abendsonne auf dem Fels", "alt": "Abendsonne über bewaldeten Tälern, im Vordergrund Sandsteinfelsen mit Birken" }
       ]
     },
     {
       "id": "bucharest-2025",
+      "kind": "trip",
       "name": "Bukarest",
       "shortName": "Bukarest",
+      "collection": "landscape",
       "year": 2025,
       "country": "Rumänien",
       "region": "central-europe",
@@ -163,15 +233,35 @@
       "text": "Prachtbauten der Belle Époque neben Plattenbauten, breite Boulevards und abends ein goldenes Licht über der Stadt. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "file": "bucharest-2025-01.webp", "width": 2400, "height": 1600, "title": "Über den Dächern", "alt": "Blick über die Dächer einer Stadt mit hohen Gebäuden", "demo": 410 },
-        { "file": "bucharest-2025-02.webp", "width": 2400, "height": 1600, "title": "Goldene Stunde", "alt": "Stadtansicht im warmen Gegenlicht der untergehenden Sonne", "demo": 417 },
-        { "file": "bucharest-2025-03.webp", "width": 2400, "height": 1600, "title": "Straße ins Weite", "alt": "Leere Straße, die geradeaus zum Horizont führt", "demo": 379 }
+        { "id": "01", "file": "bucharest-2025-01.webp", "width": 2400, "height": 1600, "title": "Über den Dächern", "alt": "Blick über die Dächer einer Stadt mit hohen Gebäuden", "demo": 410 },
+        { "id": "02", "file": "bucharest-2025-02.webp", "width": 2400, "height": 1600, "title": "Goldene Stunde", "alt": "Stadtansicht im warmen Gegenlicht der untergehenden Sonne", "demo": 417 },
+        { "id": "03", "file": "bucharest-2025-03.webp", "width": 2400, "height": 1600, "title": "Straße ins Weite", "alt": "Leere Straße, die geradeaus zum Horizont führt", "demo": 379 }
+      ]
+    },
+    {
+      "id": "kleinarl-2025",
+      "kind": "trip",
+      "name": "Kleinarl · Ski",
+      "shortName": "Kleinarl",
+      "collection": "landscape",
+      "year": 2025,
+      "country": "Österreich",
+      "region": "austria",
+      "coords": { "lat": 47.27, "lon": 13.32 },
+      "text": "Skitage im Salzburger Land: frisch präparierte Pisten, Pulver zwischen den Bäumen und klare Wintertage über dem Tal. [Platzhalter – Jahr ergänzen]",
+      "cover": 0,
+      "images": [
+        { "id": "01", "file": "kleinarl-2025-01.webp", "width": 2400, "height": 1600, "title": "Verschneite Hügel", "alt": "Sanfte, verschneite Hügel unter klarem Himmel", "demo": 393 },
+        { "id": "02", "file": "kleinarl-2025-02.webp", "width": 2400, "height": 1600, "title": "Schnee im Wind", "alt": "Verschneiter Berg mit Schneefahnen und bewegtem Wasser davor", "demo": 295 },
+        { "id": "03", "file": "kleinarl-2025-03.webp", "width": 2400, "height": 1600, "title": "Winternacht", "alt": "Dunkle Winterlandschaft unter einem nächtlichen Himmel", "demo": 120 }
       ]
     },
     {
       "id": "lofoten-2024",
+      "kind": "trip",
       "name": "Lofoten",
       "shortName": "Lofoten",
+      "collection": "landscape",
       "year": 2024,
       "country": "Norwegen",
       "region": "norway",
@@ -179,35 +269,39 @@
       "text": "Granitgipfel, die direkt aus dem Nordmeer steigen. Im Winter blaue Stunden, die den halben Tag dauern. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "file": "lofoten-2024-01.webp", "width": 2400, "height": 1601, "title": "Blick vom Reinebringen", "alt": "Blick von oben auf Reine, Fjorde und schroffe Gipfel unter grauem Himmel" },
-        { "file": "lofoten-2024-02.webp", "width": 2400, "height": 1601, "title": "Rote Rorbuer", "alt": "Rote Fischerhütten am Ufer eines Fjords unter wolkenverhangenen Bergen" },
-        { "file": "lofoten-2024-03.webp", "width": 2400, "height": 1601, "title": "Über der Bucht", "alt": "Wanderer mit Rucksack steht auf einem Felsen hoch über einer Bucht zwischen steilen Bergen" },
-        { "file": "lofoten-2024-04.webp", "width": 2400, "height": 1500, "title": "Brandung im Sturmlicht", "alt": "Welle bricht an dunklen Felsen, dahinter Berge unter orange leuchtenden Sturmwolken" },
-        { "file": "lofoten-2024-05.webp", "width": 2400, "height": 1600, "title": "Hamnøy zur blauen Stunde", "alt": "Rote Hütten von Hamnøy auf Felsen am Wasser vor einem mächtigen Berg in der Dämmerung" }
+        { "id": "01", "file": "lofoten-2024-01.webp", "width": 2400, "height": 1601, "title": "Blick vom Reinebringen", "alt": "Blick von oben auf Reine, Fjorde und schroffe Gipfel unter grauem Himmel" },
+        { "id": "02", "file": "lofoten-2024-02.webp", "width": 2400, "height": 1601, "title": "Rote Rorbuer", "alt": "Rote Fischerhütten am Ufer eines Fjords unter wolkenverhangenen Bergen" },
+        { "id": "03", "file": "lofoten-2024-03.webp", "width": 2400, "height": 1601, "title": "Über der Bucht", "alt": "Wanderer mit Rucksack steht auf einem Felsen hoch über einer Bucht zwischen steilen Bergen" },
+        { "id": "04", "file": "lofoten-2024-04.webp", "width": 2400, "height": 1500, "title": "Brandung im Sturmlicht", "alt": "Welle bricht an dunklen Felsen, dahinter Berge unter orange leuchtenden Sturmwolken" },
+        { "id": "05", "file": "lofoten-2024-05.webp", "width": 2400, "height": 1600, "title": "Hamnøy zur blauen Stunde", "alt": "Rote Hütten von Hamnøy auf Felsen am Wasser vor einem mächtigen Berg in der Dämmerung" }
       ]
     },
     {
       "id": "faroe-2024",
+      "kind": "trip",
       "name": "Färöer-Inseln",
       "shortName": "Färöer",
+      "collection": "landscape",
       "year": 2024,
       "country": "Färöer (Dänemark)",
       "region": "northern-europe",
-      "coords": { "lat": 62.0, "lon": -6.9 },
+      "coords": { "lat": 62, "lon": -6.9 },
       "text": "Achtzehn Inseln zwischen Island und Norwegen. Steilklippen, Nebel, der in Minuten kommt und geht, und ein Licht, das nie ganz hell wird. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "file": "faroe-2024-01.webp", "width": 2400, "height": 1600, "title": "Brandung an den Felsnadeln", "alt": "Felsnadeln in der Brandung vor einer dunklen Steilküste", "demo": 179 },
-        { "file": "faroe-2024-02.webp", "width": 1600, "height": 2400, "title": "Klippen über dem Fjord", "alt": "Senkrechte Felsklippen über türkisfarbenem Wasser", "demo": 218 },
-        { "file": "faroe-2024-03.webp", "width": 2400, "height": 1600, "title": "Nebel über der Weide", "alt": "Grüne Wiese mit Bachlauf, darüber dichter Nebel", "demo": 11 },
-        { "file": "faroe-2024-04.webp", "width": 2400, "height": 1600, "title": "Kieselstrand", "alt": "Kieselstrand an einer bewaldeten Küste unter hellem Himmel", "demo": 13 },
-        { "file": "faroe-2024-05.webp", "width": 2400, "height": 1600, "title": "Offener Atlantik", "alt": "Dunkle Wellen auf dem offenen Meer", "demo": 147 }
+        { "id": "01", "file": "faroe-2024-01.webp", "width": 2400, "height": 1600, "title": "Brandung an den Felsnadeln", "alt": "Felsnadeln in der Brandung vor einer dunklen Steilküste", "demo": 179 },
+        { "id": "02", "file": "faroe-2024-02.webp", "width": 1600, "height": 2400, "title": "Klippen über dem Fjord", "alt": "Senkrechte Felsklippen über türkisfarbenem Wasser", "demo": 218 },
+        { "id": "03", "file": "faroe-2024-03.webp", "width": 2400, "height": 1600, "title": "Nebel über der Weide", "alt": "Grüne Wiese mit Bachlauf, darüber dichter Nebel", "demo": 11 },
+        { "id": "04", "file": "faroe-2024-04.webp", "width": 2400, "height": 1600, "title": "Kieselstrand", "alt": "Kieselstrand an einer bewaldeten Küste unter hellem Himmel", "demo": 13 },
+        { "id": "05", "file": "faroe-2024-05.webp", "width": 2400, "height": 1600, "title": "Offener Atlantik", "alt": "Dunkle Wellen auf dem offenen Meer", "demo": 147 }
       ]
     },
     {
       "id": "scotland-2024",
+      "kind": "trip",
       "name": "Schottland",
       "shortName": "Schottland",
+      "collection": "landscape",
       "year": 2024,
       "country": "Schottland (Vereinigtes Königreich)",
       "region": "northern-europe",
@@ -215,15 +309,17 @@
       "text": "Highlands rund um Glencoe: nasse Täler, Nebel in den Hängen und Küsten, an denen der Atlantik anrollt. [Platzhalter – genauen Ort ergänzen]",
       "cover": 0,
       "images": [
-        { "file": "scotland-2024-01.webp", "width": 2400, "height": 1600, "title": "Nebel in den Hügeln", "alt": "Bewaldete Hügel, zwischen denen Nebelschwaden hängen", "demo": 353 },
-        { "file": "scotland-2024-02.webp", "width": 2400, "height": 1600, "title": "Steilküste", "alt": "Grüne Steilküste über einer blauen Bucht", "demo": 323 },
-        { "file": "scotland-2024-03.webp", "width": 2400, "height": 1600, "title": "Hügelland", "alt": "Schwarzweißaufnahme sanfter Hügel mit einem Zaun", "demo": 241 }
+        { "id": "01", "file": "scotland-2024-01.webp", "width": 2400, "height": 1600, "title": "Nebel in den Hügeln", "alt": "Bewaldete Hügel, zwischen denen Nebelschwaden hängen", "demo": 353 },
+        { "id": "02", "file": "scotland-2024-02.webp", "width": 2400, "height": 1600, "title": "Steilküste", "alt": "Grüne Steilküste über einer blauen Bucht", "demo": 323 },
+        { "id": "03", "file": "scotland-2024-03.webp", "width": 2400, "height": 1600, "title": "Hügelland", "alt": "Schwarzweißaufnahme sanfter Hügel mit einem Zaun", "demo": 241 }
       ]
     },
     {
       "id": "seiser-alm-2024",
+      "kind": "trip",
       "name": "Dolomiten",
       "shortName": "Dolomiten",
+      "collection": "landscape",
       "year": 2024,
       "country": "Italien",
       "region": "dolomites",
@@ -231,17 +327,19 @@
       "text": "Von der Seiser Alm über das Villnößtal und den Pragser Wildsee bis zu den Drei Zinnen – Kalkzinnen, die im Abendlicht glühen, und Gewitter, die über die Grate ziehen. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "file": "seiser-alm-2024-01.webp", "width": 2400, "height": 1600, "title": "Seiser Alm am Abend", "alt": "Grüne Almwiesen mit Holzhütten vor Langkofel und Plattkofel im warmen Abendlicht" },
-        { "file": "seiser-alm-2024-02.webp", "width": 2400, "height": 1601, "title": "St. Magdalena im Villnößtal", "alt": "Kirche von St. Magdalena zwischen Wiesen und Wäldern vor den Geislerspitzen" },
-        { "file": "seiser-alm-2024-03.webp", "width": 2400, "height": 1601, "title": "Bootshaus am Pragser Wildsee", "alt": "Hölzernes Bootshaus und Ruderboote spiegeln sich im stillen Pragser Wildsee" },
-        { "file": "seiser-alm-2024-04.webp", "width": 2400, "height": 1601, "title": "Dreizinnenhütte im Gewitterlicht", "alt": "Dreizinnenhütte unter dem Toblinger Knoten vor dunklen Gewitterwolken" },
-        { "file": "seiser-alm-2024-05.webp", "width": 2400, "height": 1600, "title": "Drei Zinnen", "alt": "Die Drei Zinnen ragen über einem Schneefeld in einen dramatischen Wolkenhimmel" }
+        { "id": "01", "file": "seiser-alm-2024-01.webp", "width": 2400, "height": 1600, "title": "Seiser Alm am Abend", "alt": "Grüne Almwiesen mit Holzhütten vor Langkofel und Plattkofel im warmen Abendlicht" },
+        { "id": "02", "file": "seiser-alm-2024-02.webp", "width": 2400, "height": 1601, "title": "St. Magdalena im Villnößtal", "alt": "Kirche von St. Magdalena zwischen Wiesen und Wäldern vor den Geislerspitzen" },
+        { "id": "03", "file": "seiser-alm-2024-03.webp", "width": 2400, "height": 1601, "title": "Bootshaus am Pragser Wildsee", "alt": "Hölzernes Bootshaus und Ruderboote spiegeln sich im stillen Pragser Wildsee" },
+        { "id": "04", "file": "seiser-alm-2024-04.webp", "width": 2400, "height": 1601, "title": "Dreizinnenhütte im Gewitterlicht", "alt": "Dreizinnenhütte unter dem Toblinger Knoten vor dunklen Gewitterwolken" },
+        { "id": "05", "file": "seiser-alm-2024-05.webp", "width": 2400, "height": 1600, "title": "Drei Zinnen", "alt": "Die Drei Zinnen ragen über einem Schneefeld in einen dramatischen Wolkenhimmel" }
       ]
     },
     {
       "id": "gran-canaria-2024",
+      "kind": "trip",
       "name": "Gran Canaria",
       "shortName": "Gran Canaria",
+      "collection": "landscape",
       "year": 2024,
       "country": "Spanien",
       "region": "southern-europe",
@@ -249,32 +347,51 @@
       "text": "Ein Kontinent im Kleinen: Dünen, Vulkanschluchten und Pinienwälder über den Wolken. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "file": "gran-canaria-2024-01.webp", "width": 2400, "height": 1600, "title": "Küstenlinie", "alt": "Geschwungene Küste mit Sandstrand und türkisfarbenem Wasser", "demo": 374 },
-        { "file": "gran-canaria-2024-02.webp", "width": 2400, "height": 1600, "title": "Abend über den Hügeln", "alt": "Hügelketten als Silhouette vor tief stehender Sonne", "demo": 416 },
-        { "file": "gran-canaria-2024-03.webp", "width": 2400, "height": 1600, "title": "Strand", "alt": "Heller Sandstrand mit sanften Wellen", "demo": 199 }
+        { "id": "01", "file": "gran-canaria-2024-01.webp", "width": 2400, "height": 1600, "title": "Küstenlinie", "alt": "Geschwungene Küste mit Sandstrand und türkisfarbenem Wasser", "demo": 374 },
+        { "id": "02", "file": "gran-canaria-2024-02.webp", "width": 2400, "height": 1600, "title": "Abend über den Hügeln", "alt": "Hügelketten als Silhouette vor tief stehender Sonne", "demo": 416 },
+        { "id": "03", "file": "gran-canaria-2024-03.webp", "width": 2400, "height": 1600, "title": "Strand", "alt": "Heller Sandstrand mit sanften Wellen", "demo": 199 }
       ]
     },
     {
-      "id": "black-forest-2023",
-      "name": "Schwarzwald",
-      "shortName": "Schwarzwald",
+      "id": "black-forest-autumn-2023",
+      "kind": "trip",
+      "name": "Schwarzwald · Herbst",
+      "shortName": "Bühlertal",
+      "collection": "landscape",
       "year": 2023,
       "country": "Deutschland",
       "region": "germany",
-      "coords": { "lat": 48.0, "lon": 8.2 },
+      "coords": { "lat": 48.69, "lon": 8.19 },
+      "text": "[Platzhalter]",
+      "cover": 0,
+      "images": [
+        { "id": "01", "file": "black-forest-autumn-2023-01.webp", "width": 2400, "height": 1600, "title": "Nebelwald", "alt": "Hohe Nadelbäume in dichtem Nebel", "demo": 229 },
+        { "id": "02", "file": "black-forest-autumn-2023-02.webp", "width": 2400, "height": 1600, "title": "Waldweg", "alt": "Schmaler Weg zwischen Wiese und Waldrand", "demo": 17 }
+      ]
+    },
+    {
+      "id": "black-forest-summer-2023",
+      "kind": "trip",
+      "name": "Schwarzwald · Sommer",
+      "shortName": "Triberg",
+      "collection": "landscape",
+      "year": 2023,
+      "country": "Deutschland",
+      "region": "germany",
+      "coords": { "lat": 48.13, "lon": 8.23 },
       "text": "Nebelwälder, Hochmoore und weite Blicke bis zu den Alpen. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "file": "black-forest-2023-01.webp", "width": 2400, "height": 1600, "title": "Nebelwald", "alt": "Hohe Nadelbäume in dichtem Nebel", "demo": 229 },
-        { "file": "black-forest-2023-02.webp", "width": 2400, "height": 1600, "title": "Waldweg", "alt": "Schmaler Weg zwischen Wiese und Waldrand", "demo": 17 },
-        { "file": "black-forest-2023-03.webp", "width": 2400, "height": 1600, "title": "Hochwiese", "alt": "Hohes Gras im Gegenlicht vor einem Waldrand", "demo": 127 },
-        { "file": "black-forest-2023-04.webp", "width": 2400, "height": 1600, "title": "Weitblick", "alt": "Blick über Hügel und Wald bis zum Horizont", "demo": 10 }
+        { "id": "01", "file": "black-forest-summer-2023-01.webp", "width": 2400, "height": 1600, "title": "Hochwiese", "alt": "Hohes Gras im Gegenlicht vor einem Waldrand", "demo": 127 },
+        { "id": "02", "file": "black-forest-summer-2023-02.webp", "width": 2400, "height": 1600, "title": "Weitblick", "alt": "Blick über Hügel und Wald bis zum Horizont", "demo": 10 }
       ]
     },
     {
       "id": "neuschwanstein-2023",
+      "kind": "trip",
       "name": "Allgäu · Neuschwanstein",
       "shortName": "Neuschwanstein",
+      "collection": "landscape",
       "year": 2023,
       "country": "Deutschland",
       "region": "germany",
@@ -282,15 +399,17 @@
       "text": "Das Märchenschloss über der Pöllatschlucht, davor das Alpenvorland mit seinen Seen. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "file": "neuschwanstein-2023-01.webp", "width": 2400, "height": 1600, "title": "Felder im Abendlicht", "alt": "Goldene Felder unter einem hellen Abendhimmel", "demo": 337 },
-        { "file": "neuschwanstein-2023-02.webp", "width": 2400, "height": 1600, "title": "Sonnenuntergang", "alt": "Weite Wiese mit einzelnen Bäumen im Licht der untergehenden Sonne", "demo": 110 },
-        { "file": "neuschwanstein-2023-03.webp", "width": 2400, "height": 1600, "title": "Wiese", "alt": "Hohes grünes Gras vor einem Waldrand", "demo": 18 }
+        { "id": "01", "file": "neuschwanstein-2023-01.webp", "width": 2400, "height": 1600, "title": "Felder im Abendlicht", "alt": "Goldene Felder unter einem hellen Abendhimmel", "demo": 337 },
+        { "id": "02", "file": "neuschwanstein-2023-02.webp", "width": 2400, "height": 1600, "title": "Sonnenuntergang", "alt": "Weite Wiese mit einzelnen Bäumen im Licht der untergehenden Sonne", "demo": 110 },
+        { "id": "03", "file": "neuschwanstein-2023-03.webp", "width": 2400, "height": 1600, "title": "Wiese", "alt": "Hohes grünes Gras vor einem Waldrand", "demo": 18 }
       ]
     },
     {
       "id": "iceland-2021",
+      "kind": "trip",
       "name": "Island",
       "shortName": "Island",
+      "collection": "landscape",
       "year": 2021,
       "country": "Island",
       "region": "iceland",
@@ -298,15 +417,17 @@
       "text": "Die erste Island-Reise, von Reykjavík aus: Wasserfälle, Lavafelder und Strände aus schwarzem Sand. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "file": "iceland-2021-01.webp", "width": 2400, "height": 1600, "title": "Wasserfall", "alt": "Wasser stürzt über dunkle, nasse Felsen", "demo": 404 },
-        { "file": "iceland-2021-02.webp", "width": 2400, "height": 1600, "title": "Strand unter Klippen", "alt": "Breiter Strand vor dunklen Klippen unter bewölktem Himmel", "demo": 350 },
-        { "file": "iceland-2021-03.webp", "width": 2400, "height": 1600, "title": "Brandung", "alt": "Schwarzweißaufnahme eines Strandes mit auslaufenden Wellen", "demo": 51 }
+        { "id": "01", "file": "iceland-2021-01.webp", "width": 2400, "height": 1600, "title": "Wasserfall", "alt": "Wasser stürzt über dunkle, nasse Felsen", "demo": 404 },
+        { "id": "02", "file": "iceland-2021-02.webp", "width": 2400, "height": 1600, "title": "Strand unter Klippen", "alt": "Breiter Strand vor dunklen Klippen unter bewölktem Himmel", "demo": 350 },
+        { "id": "03", "file": "iceland-2021-03.webp", "width": 2400, "height": 1600, "title": "Brandung", "alt": "Schwarzweißaufnahme eines Strandes mit auslaufenden Wellen", "demo": 51 }
       ]
     },
     {
       "id": "stockholm-2021",
+      "kind": "trip",
       "name": "Stockholm",
       "shortName": "Stockholm",
+      "collection": "landscape",
       "year": 2021,
       "country": "Schweden",
       "region": "northern-europe",
@@ -314,15 +435,17 @@
       "text": "Eine Stadt auf vierzehn Inseln: Wasser an jeder Ecke, Gassen in Gamla stan und das kühle Licht des Nordens. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "file": "stockholm-2021-01.webp", "width": 2400, "height": 1600, "title": "Am Wasser", "alt": "Person am Ufer mit Blick über das Wasser auf eine Stadt", "demo": 349 },
-        { "file": "stockholm-2021-02.webp", "width": 2400, "height": 1600, "title": "Stille Bucht", "alt": "Spiegelglatte Wasserfläche unter einem hellen Himmel", "demo": 385 },
-        { "file": "stockholm-2021-03.webp", "width": 2400, "height": 1600, "title": "Steg", "alt": "Schwarzweißaufnahme eines langen Holzstegs, der ins Wasser führt", "demo": 47 }
+        { "id": "01", "file": "stockholm-2021-01.webp", "width": 2400, "height": 1600, "title": "Am Wasser", "alt": "Person am Ufer mit Blick über das Wasser auf eine Stadt", "demo": 349 },
+        { "id": "02", "file": "stockholm-2021-02.webp", "width": 2400, "height": 1600, "title": "Stille Bucht", "alt": "Spiegelglatte Wasserfläche unter einem hellen Himmel", "demo": 385 },
+        { "id": "03", "file": "stockholm-2021-03.webp", "width": 2400, "height": 1600, "title": "Steg", "alt": "Schwarzweißaufnahme eines langen Holzstegs, der ins Wasser führt", "demo": 47 }
       ]
     },
     {
       "id": "algarve-2020",
+      "kind": "trip",
       "name": "Algarve",
       "shortName": "Algarve",
+      "collection": "landscape",
       "year": 2020,
       "country": "Portugal",
       "region": "southern-europe",
@@ -330,25 +453,9 @@
       "text": "Goldene Felsküsten, Grotten und Buchten mit türkisem Wasser am südwestlichsten Zipfel Europas. [Platzhalter]",
       "cover": 0,
       "images": [
-        { "file": "algarve-2020-01.webp", "width": 2400, "height": 1600, "title": "Blühende Steilküste", "alt": "Felsige Küste mit blühenden Pflanzen über dem Meer", "demo": 37 },
-        { "file": "algarve-2020-02.webp", "width": 2400, "height": 1600, "title": "Boot in der Bucht", "alt": "Kleines Boot auf türkisfarbenem, klarem Wasser", "demo": 124 },
-        { "file": "algarve-2020-03.webp", "width": 2400, "height": 1600, "title": "Abendrot", "alt": "Sonnenuntergang mit warm leuchtendem Himmel über dem Horizont", "demo": 71 }
-      ]
-    },
-    {
-      "id": "kleinarl",
-      "name": "Kleinarl · Ski",
-      "shortName": "Kleinarl",
-      "year": null,
-      "country": "Österreich",
-      "region": "austria",
-      "coords": { "lat": 47.27, "lon": 13.32 },
-      "text": "Skitage im Salzburger Land: frisch präparierte Pisten, Pulver zwischen den Bäumen und klare Wintertage über dem Tal. [Platzhalter – Jahr ergänzen]",
-      "cover": 0,
-      "images": [
-        { "file": "kleinarl-01.webp", "width": 2400, "height": 1600, "title": "Verschneite Hügel", "alt": "Sanfte, verschneite Hügel unter klarem Himmel", "demo": 393 },
-        { "file": "kleinarl-02.webp", "width": 2400, "height": 1600, "title": "Schnee im Wind", "alt": "Verschneiter Berg mit Schneefahnen und bewegtem Wasser davor", "demo": 295 },
-        { "file": "kleinarl-03.webp", "width": 2400, "height": 1600, "title": "Winternacht", "alt": "Dunkle Winterlandschaft unter einem nächtlichen Himmel", "demo": 120 }
+        { "id": "01", "file": "algarve-2020-01.webp", "width": 2400, "height": 1600, "title": "Blühende Steilküste", "alt": "Felsige Küste mit blühenden Pflanzen über dem Meer", "demo": 37 },
+        { "id": "02", "file": "algarve-2020-02.webp", "width": 2400, "height": 1600, "title": "Boot in der Bucht", "alt": "Kleines Boot auf türkisfarbenem, klarem Wasser", "demo": 124 },
+        { "id": "03", "file": "algarve-2020-03.webp", "width": 2400, "height": 1600, "title": "Abendrot", "alt": "Sonnenuntergang mit warm leuchtendem Himmel über dem Horizont", "demo": 71 }
       ]
     }
   ]

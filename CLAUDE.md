@@ -30,8 +30,11 @@ Lies Briefing und Entscheidungen, bevor du Code schreibst oder Designentscheidun
 - ✅ Feinschliff 15.10.2026: Höhenlinien-Marker statt Fadenkreuz, neues Favicon, bildabhängige Verläufe im Hero, kräftigere Kopfzeile; neue Alben Stockholm 2021 und Algarve 2020 (Region Südeuropa), 20 Reisen. Koordinaten aller Alben geprüft (passen).
 - ✅ Album-Bühne + „Bild fliegt ins Album“ (15.10.2026): `album.html`/`css/album.css`/`js/album.js` umgebaut, neu `js/transitions.js` und `js/scrim.js` (Details in `docs/Entscheidungen.md`). Logik getestet; Übergang und Scroll-Effekte nicht im sichtbaren Browser angesehen.
 - ✅ Qualitätsrunde 15.10.2026: Aufklapp-Animation der Galerie entfernt, Voriger/Nächster Ort direkt auf der Bühne, Album-Wechsel ohne harten Schnitt, schnellere Seitenwechsel (Vorab-Laden, schlankere Übergänge), bessere Lesbarkeit der Labels. Im sichtbaren Browser getestet (Desktop + Handy). Details in `docs/Entscheidungen.md`, „Qualitätsrunde“.
-- Offen: Jahr für Kleinarl (`"year": null`), genauer Ort in Schottland (vorläufig Glencoe).
-- **Als Nächstes:** eigene Bilder (per Skill) und Texte einpflegen (Checkliste in `docs/Anleitung.md`, Abschnitt 5).
+- Offen: genauer Ort in Schottland (vorläufig Glencoe).
+- **Umbau zum breiten Portfolio (ab 17.10.2026):** Spezifikation in `docs/Umbau-Spezifikation.md` (Collections Landscape/Automotive/Wildlife/Portrait/Creative, Einträge `trip`/`shoot`/`frame`, Tags, neue Startseite, Lightbox mit Aufnahmedaten). 8 Schritte, nach jedem anhalten, Nici testet, dann Commit. Abweichungen (GSAP selbst gehostet, Höhenlinien-Marker, Import über `tools/images.mjs`) in `docs/Entscheidungen.md`.
+  1. ✅ Datenmodell (17.10.2026): `albums.json` mit `collections` + `entries` (21 Trips, Schwarzwald geteilt, `kleinarl-2025`), `js/data.js` mit neuen Funktionen + Übergangsfunktionen `getAlbums`/`getFeatured`, alte IDs leiten weiter, Karte nur Einträge mit `coords`, `images.mjs check` fürs neue Format. Seiten sehen aus wie vorher (im Browser geprüft).
+  2. Eintragsseite `entry.html` (Trip/Shoot) + Weiterleitungen · 3. Lightbox mit Aufnahmedaten · 4. Collection-Seite · 5. Collections-Übersicht + Navigation · 6. Startseite · 7. Import mit EXIF · 8. neue Einträge aus der Bestandsliste
+- **Als Nächstes:** Umbau Schritt 2 (Eintragsseite). Danach eigene Bilder und Texte (Checkliste in `docs/Anleitung.md`, Abschnitt 5 – Anleitung wird in Schritt 7 aufs neue Datenformat umgeschrieben).
 
 ## Rahmen (gilt immer)
 - Vanilla HTML/CSS/JS + GSAP (inkl. ScrollTrigger) selbst gehostet in `vendor/gsap/`, kein Framework, kein Build-Schritt für die Seite, Hosting auf GitHub Pages, alle Pfade relativ.

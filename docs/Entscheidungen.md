@@ -122,3 +122,23 @@ Festlegungen hier haben Vorrang vor dem Projektbriefing.
 - Handy hochkant: Welt, Startansicht und Regionen füllen die Höhe statt als schmaler Streifen mit 20–30 % Leerraum oben und unten zu erscheinen. Sichtbar bleibt mindestens 35 % (Welt, Startansicht) bzw. 80 % (Regionen) der Ausschnittbreite; Welt und Startansicht richten sich auf den Schwerpunkt der Alben aus (Europa). Album-Ansichten unverändert.
 - Karte lässt sich mit einem Finger (bzw. der Maus) verschieben; danach löst das Loslassen keinen Marker-Klick aus. Hinweis auf dem Handy: „Ziehen zum Verschieben · Tippen zum Zoomen“.
 - Behoben: Tippen auf freie Fläche zoomte auf Touch-Geräten nicht heraus.
+
+## Umbau zum breiten Portfolio (ab 17.10.2026)
+Spezifikation: `docs/Umbau-Spezifikation.md` (Collections, Eintragsarten, Tags, neue Startseite, Lightbox mit Aufnahmedaten). Wo sie früheren Festlegungen widerspricht, gilt (mit Nici abgestimmt 17.10.2026):
+- **GSAP bleibt selbst gehostet** (`vendor/gsap/`), nicht per CDN – siehe „Bibliotheken“. Gilt auch für Flip, falls nötig.
+- **Höhenlinien-Marker bleiben**, auch im neuen Kartenstreifen der Startseite – kein Fadenkreuz.
+- **Import:** kein neues `tools/import.mjs`, sondern `tools/images.mjs` + Skill `bilder-einpflegen` werden erweitert (EXIF bleibt bei `exif-reader`).
+- **Commits:** nach jedem Umbau-Schritt, sobald Nici ihn abgenommen hat. Gepusht wird weiter von Nici über GitHub Desktop.
+- Bestandsliste: Die Tabelle ergibt 29 Trips und 7 Automotive-Shoots (die Zusammenfassung nennt 30 bzw. 8); maßgeblich ist die Tabelle, bis Nici etwas ergänzt.
+
+### Schritt 1 – Datenmodell (17.10.2026)
+- `albums.json` hat jetzt `collections` (Landscape, Automotive, Wildlife, Portrait, Creative; `order`, `published`, `text`, `cover`, `heroFavorites`), `regions` (unverändert) und `entries` statt `albums`. `featured` entfällt.
+- Alle bisherigen Alben sind Einträge mit `"kind": "trip"`, `"collection": "landscape"`. Felder `shortName`, `country`, `region` bleiben (Karte, Steckbrief). Jedes Bild hat eine `id` (`"01"` …), Dateinamen bleiben unverändert. Bildreferenz überall `"<entryId>/<imageId>"`.
+- Demo-Bilder bleiben im bisherigen Format `"demo": <picsum-ID>` (statt `"demo": true`), weil die ID das Bild festlegt.
+- Hero-Favoriten von Landscape = die bisherigen fünf Startseiten-Favoriten (jeweils Titelbild, `focus: [50, 50]`). Die übrigen Collections haben noch keine Favoriten.
+- `black-forest-2023` aufgeteilt in `black-forest-autumn-2023` („Schwarzwald · Herbst“, Bühlertal 48,69° N 8,19° O) und `black-forest-summer-2023` („Schwarzwald · Sommer“, Triberg 48,13° N 8,23° O), je zwei der vier Demo-Bilder. Herbst steht als neuere Reise vor Sommer.
+- `kleinarl` → `kleinarl-2025` (`year: 2025`, einsortiert am Ende von 2025). `bergen-2026` heißt „Bergen & Hardangerfjord“ (Kurzname auf der Karte weiter „Bergen“).
+- **Alte IDs** leiten in `js/data.js` (`LEGACY_IDS`, `canonicalId()`) weiter: `album.html?ort=kleinarl` und `karte.html?ort=black-forest-2023` funktionieren. Die eigenen Weiterleitungsseiten kommen in Schritt 2.
+- `js/data.js`: neue Funktionen `getCollections`, `getCollection`, `getEntries`, `getEntry`, `getMapEntries`, `resolveImage`, `imageRef`. Übergangsweise bleiben `getAlbums` (= alle Trips) und `getFeatured` (= Einträge hinter den Landscape-Favoriten), bis die Seiten umgebaut sind.
+- Karte zeigt nur Einträge mit `coords` (`getMapEntries`).
+- `tools/images.mjs check` prüft das neue Format (kind, collection, alsoIn, Bild-IDs, Tags, Hero-Favoriten, Collection-Cover); `convert --entry <id>` (`--album` geht weiter) liefert die Bild-`id` mit.

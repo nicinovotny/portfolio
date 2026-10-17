@@ -2,7 +2,7 @@
 // (Einleitung, Galerie in Bildzeilen, Navigation zum vorigen/nächsten Ort).
 // Die Großansicht steckt in js/lightbox.js.
 
-import { getAlbums, getRegions, getCover, imageAttrs, imageUrl, regionPath } from './data.js';
+import { canonicalId, getAlbums, getRegions, getCover, imageAttrs, imageUrl, regionPath } from './data.js';
 import { formatCoords, pad2 } from './format.js';
 import { createLightbox } from './lightbox.js';
 import { applyScrim } from './scrim.js';
@@ -33,7 +33,7 @@ let lastWidth = 0;
 init();
 
 async function init() {
-  const id = new URLSearchParams(location.search).get('ort');
+  const id = canonicalId(new URLSearchParams(location.search).get('ort'));   // alte ids führen weiter
   let albums;
   let regions;
   try {

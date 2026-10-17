@@ -11,6 +11,8 @@ Die Bilder sind der Star der Seite und Nici ist der Fotograf – deshalb schläg
 
 Alle Befehle laufen im Projektordner (Repo-Wurzel). Kommuniziere auf Deutsch.
 
+> **Neues Datenformat (seit 17.10.2026, Umbau zum breiten Portfolio):** `albums.json` hat statt `albums` jetzt `entries` (Trips, Shoots, Frames mit `kind` und `collection`) und `collections`. „Album“ in diesem Skill heißt „Eintrag“. Jedes Bild braucht eine `id` (`"01"`, `"02"` …, liefert `convert` mit). `"featured"` gibt es nicht mehr – Startseiten-Favoriten stehen pro Bild unter `collections[].heroFavorites` als `"<entryId>/<imageId>"`. `convert` nimmt `--entry <id>` (`--album` geht weiter). Der Skill wird in Schritt 7 des Umbaus (Aufnahmedaten/EXIF) vollständig überarbeitet.
+
 ## Werkzeug
 
 `tools/images.mjs` erledigt alles Mechanische und gibt JSON aus:

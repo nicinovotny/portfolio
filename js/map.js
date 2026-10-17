@@ -3,7 +3,7 @@
 // Marker, Beschriftungen und Readouts liegen als HTML darüber und werden bei jedem
 // Kamerabild neu positioniert – so bleiben sie gestochen scharf und gleich groß.
 
-import { getAlbums, getRegions, getCover, imageUrl } from './data.js';
+import { getMapEntries, getRegions, getCover, imageUrl } from './data.js';
 import { formatCoordsShort, pad2 } from './format.js';
 import { createProjection, graticulePath } from './map-projection.js';
 import { createViews, sameView } from './map-views.js';
@@ -65,7 +65,7 @@ init();
 async function init() {
   try {
     const [albums, regions, worldData] = await Promise.all([
-      getAlbums(),
+      getMapEntries(),   // nur Einträge mit Koordinaten
       getRegions(),
       fetch(new URL('world.json', MAP_DATA)).then((res) => res.json()),
     ]);
