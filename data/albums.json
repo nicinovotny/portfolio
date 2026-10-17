@@ -6,7 +6,7 @@
       "order": 1,
       "published": true,
       "groupByYear": true,
-      "text": "[Platzhalter: 1–2 Sätze Haltung]",
+      "text": "Berge, Küsten und raues Wetter – meine Reisen von Schottland bis Seoul, am liebsten früh am Morgen oder zur blauen Stunde.",
       "cover": "seoul-2026/01",
       "heroFavorites": [
         { "image": "seoul-2026/01", "focus": [50, 50] },
@@ -21,7 +21,7 @@
       "name": "Automotive",
       "order": 2,
       "published": true,
-      "text": "[Platzhalter: 1–2 Sätze Haltung]",
+      "text": "Motorräder und Autos, meist in und um Stuttgart – meine eigenen und die von Freunden.",
       "cover": null,
       "heroFavorites": [
         { "image": "tuono-660-2022/01", "focus": [50, 50] },
@@ -34,7 +34,7 @@
       "name": "Wildlife",
       "order": 3,
       "published": true,
-      "text": "[Platzhalter: 1–2 Sätze Haltung]",
+      "text": "Tiere, die mir unterwegs vor die Linse laufen – in freier Natur und im Wildpark.",
       "cover": null,
       "heroFavorites": [
         { "image": "black-forest-summer-2023/03", "focus": [50, 50] },
@@ -46,7 +46,7 @@
       "name": "Portrait",
       "order": 4,
       "published": true,
-      "text": "[Platzhalter: 1–2 Sätze Haltung]",
+      "text": "Menschen vor der Kamera – bisher vor allem Hochzeiten von Freunden.",
       "cover": null,
       "heroFavorites": [
         { "image": "wedding-1-2026/01", "focus": [50, 50] },
@@ -58,7 +58,7 @@
       "name": "Creative",
       "order": 5,
       "published": true,
-      "text": "[Platzhalter: 1–2 Sätze Haltung]",
+      "text": "Ideen und Experimente abseits der klassischen Fotografie.",
       "cover": null,
       "heroFavorites": [
         { "image": "halloween-2023/02", "focus": [50, 50] },
@@ -93,7 +93,7 @@
       "country": "Südkorea",
       "region": "korea",
       "coords": { "lat": 37.57, "lon": 126.98 },
-      "text": "Paläste zwischen Hochhäusern, Berge am Stadtrand und Gassen, die nachts erst richtig wach werden. [Platzhalter]",
+      "text": "Paläste zwischen Hochhäusern, Berge am Stadtrand und Gassen, die nachts erst richtig wach werden.",
       "cover": 0,
       "images": [
         { "id": "01", "file": "seoul-2026-01.webp", "width": 2400, "height": 1600, "title": "Sonnenuntergang über Seoul", "alt": "Orange Abendsonne über der Skyline von Seoul, eingerahmt von Baumkronen und fernen Bergen", "exif": { "camera": "Sony α7 V", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 70, "aperture": 8, "shutter": "1/800", "iso": 1250, "film": null, "source": "file" } },
@@ -113,7 +113,7 @@
       "country": "Schweiz",
       "region": "switzerland",
       "coords": { "lat": 46.69, "lon": 7.86 },
-      "text": "Rund um Interlaken: Gletscher, Wasserfälle und Täler, die so steil sind, dass die Sonne im Winter nur Stunden bleibt. [Platzhalter]",
+      "text": "Rund um Interlaken: Gletscher, Wasserfälle und Täler, die so steil sind, dass die Sonne im Winter nur Stunden bleibt.",
       "cover": 0,
       "images": [
         { "id": "01", "file": "bernese-oberland-2026-01.webp", "width": 2400, "height": 1600, "title": "Gipfel über dem See", "alt": "Schneebedeckter Gipfel über einem dunklen Bergsee", "demo": 235 },
@@ -129,13 +129,13 @@
       "collection": "portrait",
       "year": 2026,
       "coords": null,
-      "text": "[Platzhalter]",
+      "text": "Eine Hochzeit im Freundeskreis: Getting Ready, Trauung und die ruhigen Momente zwischendurch.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "wedding-2-2026-01.webp", "width": 1600, "height": 2400, "title": "[Platzhalter]", "alt": "Porträt einer Frau mit lockigem Haar", "demo": 1027 },
-        { "id": "02", "file": "wedding-2-2026-02.webp", "width": 1600, "height": 2400, "title": "[Platzhalter]", "alt": "Frau im Profil vor hellem Hintergrund", "demo": 996 },
-        { "id": "03", "file": "wedding-2-2026-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Frau sitzt im warmen Sonnenlicht", "demo": 777 },
-        { "id": "04", "file": "wedding-2-2026-04.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Frau mit Sonnenbrille auf einem Feld", "demo": 64 }
+        { "id": "01", "file": "wedding-2-2026-01.webp", "width": 1600, "height": 2400, "title": "Locken im Licht", "alt": "Porträt einer Frau mit lockigem Haar", "demo": 1027 },
+        { "id": "02", "file": "wedding-2-2026-02.webp", "width": 1600, "height": 2400, "title": "Im Profil", "alt": "Frau im Profil vor hellem Hintergrund", "demo": 996 },
+        { "id": "03", "file": "wedding-2-2026-03.webp", "width": 2400, "height": 1600, "title": "Sonne am Nachmittag", "alt": "Frau sitzt im warmen Sonnenlicht", "demo": 777 },
+        { "id": "04", "file": "wedding-2-2026-04.webp", "width": 2400, "height": 1600, "title": "Auf dem Feld", "alt": "Frau mit Sonnenbrille auf einem Feld", "demo": 64 }
       ]
     },
     {
@@ -145,13 +145,13 @@
       "collection": "portrait",
       "year": 2026,
       "coords": null,
-      "text": "[Platzhalter]",
+      "text": "Eine Hochzeit im Freundeskreis – zwischen offiziellen Bildern und den Augenblicken, die keiner geplant hat.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "wedding-1-2026-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Paar sitzt auf einer Bank am Strand", "demo": 129 },
-        { "id": "02", "file": "wedding-1-2026-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Hände formen ein Herz vor der Sonne", "demo": 815 },
-        { "id": "03", "file": "wedding-1-2026-03.webp", "width": 1600, "height": 2400, "title": "[Platzhalter]", "alt": "Paar spaziert am Strand", "demo": 1001 },
-        { "id": "04", "file": "wedding-1-2026-04.webp", "width": 1600, "height": 2400, "title": "[Platzhalter]", "alt": "Frau im Gegenlicht auf einer Wiese", "demo": 65 }
+        { "id": "01", "file": "wedding-1-2026-01.webp", "width": 2400, "height": 1600, "title": "Auf der Bank", "alt": "Paar sitzt auf einer Bank am Strand", "demo": 129 },
+        { "id": "02", "file": "wedding-1-2026-02.webp", "width": 2400, "height": 1600, "title": "Herz in der Sonne", "alt": "Hände formen ein Herz vor der Sonne", "demo": 815 },
+        { "id": "03", "file": "wedding-1-2026-03.webp", "width": 1600, "height": 2400, "title": "Spaziergang am Strand", "alt": "Paar spaziert am Strand", "demo": 1001 },
+        { "id": "04", "file": "wedding-1-2026-04.webp", "width": 1600, "height": 2400, "title": "Gegenlicht", "alt": "Frau im Gegenlicht auf einer Wiese", "demo": 65 }
       ]
     },
     {
@@ -164,7 +164,7 @@
       "country": "Norwegen",
       "region": "norway",
       "coords": { "lat": 60.39, "lon": 5.32 },
-      "text": "Bunte Holzhäuser am Hafen, sieben Berge rundherum und Regen, der zum Licht gehört. [Platzhalter]",
+      "text": "Bunte Holzhäuser am Hafen, sieben Berge rundherum und Regen, der zum Licht gehört.",
       "cover": 0,
       "images": [
         { "id": "01", "file": "bergen-2026-01.webp", "width": 2400, "height": 1600, "title": "Häuser am Hang", "alt": "Bunte Häuser dicht gedrängt an einem steilen Hang über dem Wasser", "demo": 397 },
@@ -179,12 +179,12 @@
       "collection": "automotive",
       "year": 2026,
       "coords": null,
-      "text": "[Platzhalter]",
+      "text": "Ein kleiner Nachmittag mit den Motorrädern von Freunden.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "motorcycles-friends-2026-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Frau auf einem Fahrrad auf einer Landstraße", "demo": 839 },
-        { "id": "02", "file": "motorcycles-friends-2026-02.webp", "width": 1600, "height": 2400, "title": "[Platzhalter]", "alt": "Person schaut aus dem Fenster eines Busses", "demo": 1013 },
-        { "id": "03", "file": "motorcycles-friends-2026-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Altes Autowrack im hohen Gras", "demo": 555 }
+        { "id": "01", "file": "motorcycles-friends-2026-01.webp", "width": 2400, "height": 1600, "title": "Auf der Landstraße", "alt": "Frau auf einem Fahrrad auf einer Landstraße", "demo": 839 },
+        { "id": "02", "file": "motorcycles-friends-2026-02.webp", "width": 1600, "height": 2400, "title": "Aus dem Fenster", "alt": "Person schaut aus dem Fenster eines Busses", "demo": 1013 },
+        { "id": "03", "file": "motorcycles-friends-2026-03.webp", "width": 2400, "height": 1600, "title": "Im hohen Gras", "alt": "Altes Autowrack im hohen Gras", "demo": 555 }
       ]
     },
     {
@@ -194,12 +194,12 @@
       "collection": "automotive",
       "year": 2026,
       "coords": null,
-      "text": "[Platzhalter]",
+      "text": "Die Aprilia RS 660 in Marlin Blue, unterwegs in Stuttgart.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "rs660-2026-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Straße führt auf Berge zu", "demo": 563 },
-        { "id": "02", "file": "rs660-2026-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Autobahnkreuz von oben", "demo": 576 },
-        { "id": "03", "file": "rs660-2026-03.webp", "width": 1600, "height": 2400, "title": "[Platzhalter]", "alt": "Bergstraße in Serpentinen", "demo": 191 }
+        { "id": "01", "file": "rs660-2026-01.webp", "width": 2400, "height": 1600, "title": "Richtung Berge", "alt": "Straße führt auf Berge zu", "demo": 563 },
+        { "id": "02", "file": "rs660-2026-02.webp", "width": 2400, "height": 1600, "title": "Kreuz von oben", "alt": "Autobahnkreuz von oben", "demo": 576 },
+        { "id": "03", "file": "rs660-2026-03.webp", "width": 1600, "height": 2400, "title": "Serpentinen", "alt": "Bergstraße in Serpentinen", "demo": 191 }
       ]
     },
     {
@@ -212,7 +212,7 @@
       "country": "Island",
       "region": "iceland",
       "coords": { "lat": 64.25, "lon": -15.21 },
-      "text": "Der Südosten rund um Höfn: Gletscherzungen, schwarze Strände und Berge, die direkt aus dem Meer steigen. [Platzhalter]",
+      "text": "Der Südosten rund um Höfn: Gletscherzungen, schwarze Strände und Berge, die direkt aus dem Meer steigen.",
       "cover": 0,
       "images": [
         { "id": "01", "file": "iceland-2025-01.webp", "width": 2400, "height": 1601, "title": "Polarlicht über dem Vestrahorn", "alt": "Grünes Polarlicht und Sterne über den dunklen Gipfeln des Vestrahorn und verschneiten Dünen", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 14, "aperture": 2.8, "shutter": "5", "iso": 5000, "film": null, "source": "file" } },
@@ -232,7 +232,7 @@
       "country": "Südkorea",
       "region": "korea",
       "coords": { "lat": 37.57, "lon": 126.98 },
-      "text": "Die erste Reise nach Seoul: Hochhausschluchten, Märkte und der Han-Fluss bei Nacht. [Platzhalter]",
+      "text": "Die erste Reise nach Seoul: Hochhausschluchten, Märkte und der Han-Fluss bei Nacht.",
       "cover": 0,
       "images": [
         { "id": "01", "file": "seoul-2025-01.webp", "width": 2400, "height": 1600, "title": "Skyline", "alt": "Dicht stehende Hochhäuser einer Großstadt im Abendlicht", "demo": 411 },
@@ -250,7 +250,7 @@
       "country": "Schweiz",
       "region": "switzerland",
       "coords": { "lat": 46.02, "lon": 7.75 },
-      "text": "Am Fuß des Matterhorns: Viertausender, Gletscher und Bergseen, in denen sich die Gipfel spiegeln. [Platzhalter]",
+      "text": "Am Fuß des Matterhorns: Viertausender, Gletscher und Bergseen, in denen sich die Gipfel spiegeln.",
       "cover": 0,
       "images": [
         { "id": "01", "file": "zermatt-2025-01.webp", "width": 2400, "height": 1600, "title": "Gipfel über dem Bergsee", "alt": "Schneebedeckte Gipfel hinter einem türkisfarbenen Bergsee", "demo": 327 },
@@ -268,7 +268,7 @@
       "country": "Italien",
       "region": "dolomites",
       "coords": { "lat": 46.54, "lon": 12.14 },
-      "text": "Rund um Cortina: Drei Zinnen, Pässe über der Baumgrenze und Wolken, die an den Felswänden hängen. [Platzhalter]",
+      "text": "Rund um Cortina: Drei Zinnen, Pässe über der Baumgrenze und Wolken, die an den Felswänden hängen.",
       "cover": 0,
       "images": [
         { "id": "01", "file": "cortina-2025-01.webp", "width": 2400, "height": 1600, "title": "Wolken an den Gipfeln", "alt": "Verschneite Berggipfel, um die tiefe Wolken ziehen", "demo": 406 },
@@ -286,7 +286,7 @@
       "country": "Deutschland",
       "region": "germany",
       "coords": { "lat": 50.92, "lon": 14.1 },
-      "text": "Sandsteintürme über dem Elbtal, Schluchten und Morgennebel. [Platzhalter]",
+      "text": "Sandsteintürme über dem Elbtal, Schluchten und Morgennebel.",
       "cover": 0,
       "images": [
         { "id": "01", "file": "saxon-switzerland-2025-01.webp", "width": 2400, "height": 1601, "title": "Bastei im Morgenrot", "alt": "Basteibrücke zwischen Sandsteinfelsen im Herbstwald unter rosa Morgenhimmel", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 14.6, "aperture": 2.8, "shutter": "1/200", "iso": 320, "film": null, "source": "file" } },
@@ -306,7 +306,7 @@
       "country": "Rumänien",
       "region": "central-europe",
       "coords": { "lat": 44.43, "lon": 26.1 },
-      "text": "Prachtbauten der Belle Époque neben Plattenbauten, breite Boulevards und abends ein goldenes Licht über der Stadt. [Platzhalter]",
+      "text": "Prachtbauten der Belle Époque neben Plattenbauten, breite Boulevards und abends ein goldenes Licht über der Stadt.",
       "cover": 0,
       "images": [
         { "id": "01", "file": "bucharest-2025-01.webp", "width": 2400, "height": 1600, "title": "Über den Dächern", "alt": "Blick über die Dächer einer Stadt mit hohen Gebäuden", "demo": 410 },
@@ -324,7 +324,7 @@
       "country": "Österreich",
       "region": "austria",
       "coords": { "lat": 47.27, "lon": 13.32 },
-      "text": "Skitage im Salzburger Land: frisch präparierte Pisten, Pulver zwischen den Bäumen und klare Wintertage über dem Tal. [Platzhalter – Jahr ergänzen]",
+      "text": "Skitage im Salzburger Land: frisch präparierte Pisten, Pulver zwischen den Bäumen und klare Wintertage über dem Tal.",
       "cover": 0,
       "images": [
         { "id": "01", "file": "kleinarl-2025-01.webp", "width": 2400, "height": 1600, "title": "Verschneite Hügel", "alt": "Sanfte, verschneite Hügel unter klarem Himmel", "demo": 393 },
@@ -339,12 +339,12 @@
       "collection": "automotive",
       "year": 2025,
       "coords": null,
-      "text": "[Platzhalter]",
+      "text": "Eine BMW S 1000 RR und zum ersten Mal ein Auto vor der Kamera: ein Porsche.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "s1000rr-porsche-2025-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Auto wirbelt Staub auf einer Wüstenpiste auf", "demo": 551 },
-        { "id": "02", "file": "s1000rr-porsche-2025-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Geländewagen vor einer Häuserzeile", "demo": 514 },
-        { "id": "03", "file": "s1000rr-porsche-2025-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Dunkle Motorhaube im Streiflicht", "demo": 892 }
+        { "id": "01", "file": "s1000rr-porsche-2025-01.webp", "width": 2400, "height": 1600, "title": "Staubwolke", "alt": "Auto wirbelt Staub auf einer Wüstenpiste auf", "demo": 551 },
+        { "id": "02", "file": "s1000rr-porsche-2025-02.webp", "width": 2400, "height": 1600, "title": "Vor der Häuserzeile", "alt": "Geländewagen vor einer Häuserzeile", "demo": 514 },
+        { "id": "03", "file": "s1000rr-porsche-2025-03.webp", "width": 2400, "height": 1600, "title": "Im Streiflicht", "alt": "Dunkle Motorhaube im Streiflicht", "demo": 892 }
       ]
     },
     {
@@ -354,12 +354,12 @@
       "collection": "automotive",
       "year": 2025,
       "coords": null,
-      "text": "[Platzhalter]",
+      "text": "Ein kleines Shooting mit der BMW S 1000 RR.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "s1000rr-2025-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Radfahrer in Bewegungsunschärfe", "demo": 1077 },
-        { "id": "02", "file": "s1000rr-2025-02.webp", "width": 1600, "height": 2400, "title": "[Platzhalter]", "alt": "Lichtspuren auf einer nächtlichen Straße", "demo": 352 },
-        { "id": "03", "file": "s1000rr-2025-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Verkehr in einer Stadt bei Nacht", "demo": 579 }
+        { "id": "01", "file": "s1000rr-2025-01.webp", "width": 2400, "height": 1600, "title": "In Bewegung", "alt": "Radfahrer in Bewegungsunschärfe", "demo": 1077 },
+        { "id": "02", "file": "s1000rr-2025-02.webp", "width": 1600, "height": 2400, "title": "Lichtspuren", "alt": "Lichtspuren auf einer nächtlichen Straße", "demo": 352 },
+        { "id": "03", "file": "s1000rr-2025-03.webp", "width": 2400, "height": 1600, "title": "Stadt bei Nacht", "alt": "Verkehr in einer Stadt bei Nacht", "demo": 579 }
       ]
     },
     {
@@ -372,7 +372,7 @@
       "country": "Norwegen",
       "region": "norway",
       "coords": { "lat": 68.2, "lon": 13.9 },
-      "text": "Granitgipfel, die direkt aus dem Nordmeer steigen. Im Winter blaue Stunden, die den halben Tag dauern. [Platzhalter]",
+      "text": "Granitgipfel, die direkt aus dem Nordmeer steigen. Im Winter blaue Stunden, die den halben Tag dauern.",
       "cover": 0,
       "images": [
         { "id": "01", "file": "lofoten-2024-01.webp", "width": 2400, "height": 1601, "title": "Blick vom Reinebringen", "alt": "Blick von oben auf Reine, Fjorde und schroffe Gipfel unter grauem Himmel", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 14, "aperture": 6.3, "shutter": "1/100", "iso": 200, "film": null, "source": "file" } },
@@ -392,7 +392,7 @@
       "country": "Färöer (Dänemark)",
       "region": "northern-europe",
       "coords": { "lat": 62, "lon": -6.9 },
-      "text": "Achtzehn Inseln zwischen Island und Norwegen. Steilklippen, Nebel, der in Minuten kommt und geht, und ein Licht, das nie ganz hell wird. [Platzhalter]",
+      "text": "Achtzehn Inseln zwischen Island und Norwegen. Steilklippen, Nebel, der in Minuten kommt und geht, und ein Licht, das nie ganz hell wird.",
       "cover": 0,
       "images": [
         { "id": "01", "file": "faroe-2024-01.webp", "width": 2400, "height": 1600, "title": "Brandung an den Felsnadeln", "alt": "Felsnadeln in der Brandung vor einer dunklen Steilküste", "demo": 179 },
@@ -412,7 +412,7 @@
       "country": "Schottland (Vereinigtes Königreich)",
       "region": "northern-europe",
       "coords": { "lat": 56.68, "lon": -5.1 },
-      "text": "Highlands rund um Glencoe: nasse Täler, Nebel in den Hängen und Küsten, an denen der Atlantik anrollt. [Platzhalter – genauen Ort ergänzen]",
+      "text": "Highlands rund um Glencoe: nasse Täler, Nebel in den Hängen und Küsten, an denen der Atlantik anrollt.",
       "cover": 0,
       "images": [
         { "id": "01", "file": "scotland-2024-01.webp", "width": 2400, "height": 1600, "title": "Nebel in den Hügeln", "alt": "Bewaldete Hügel, zwischen denen Nebelschwaden hängen", "demo": 353 },
@@ -430,7 +430,7 @@
       "country": "Italien",
       "region": "dolomites",
       "coords": { "lat": 46.54, "lon": 11.62 },
-      "text": "Von der Seiser Alm über das Villnößtal und den Pragser Wildsee bis zu den Drei Zinnen – Kalkzinnen, die im Abendlicht glühen, und Gewitter, die über die Grate ziehen. [Platzhalter]",
+      "text": "Von der Seiser Alm über das Villnößtal und den Pragser Wildsee bis zu den Drei Zinnen – Kalkzinnen, die im Abendlicht glühen, und Gewitter, die über die Grate ziehen.",
       "cover": 0,
       "images": [
         { "id": "01", "file": "seiser-alm-2024-01.webp", "width": 2400, "height": 1600, "title": "Seiser Alm am Abend", "alt": "Grüne Almwiesen mit Holzhütten vor Langkofel und Plattkofel im warmen Abendlicht", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 31.3, "aperture": 8, "shutter": "1/640", "iso": 800, "film": null, "source": "file" } },
@@ -447,12 +447,12 @@
       "collection": "automotive",
       "year": 2024,
       "coords": null,
-      "text": "[Platzhalter]",
+      "text": "Wieder die Tuono 660 – diesmal mit mehr Ruhe für Licht und Details.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "tuono-660-2024-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Blauer Bus vor Abendhimmel", "demo": 655 },
-        { "id": "02", "file": "tuono-660-2024-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Bus im Straßenverkehr", "demo": 183 },
-        { "id": "03", "file": "tuono-660-2024-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Blick aus dem Auto auf eine Landstraße", "demo": 757 }
+        { "id": "01", "file": "tuono-660-2024-01.webp", "width": 2400, "height": 1600, "title": "Blau am Abend", "alt": "Blauer Bus vor Abendhimmel", "demo": 655 },
+        { "id": "02", "file": "tuono-660-2024-02.webp", "width": 2400, "height": 1600, "title": "Im Verkehr", "alt": "Bus im Straßenverkehr", "demo": 183 },
+        { "id": "03", "file": "tuono-660-2024-03.webp", "width": 2400, "height": 1600, "title": "Landstraße", "alt": "Blick aus dem Auto auf eine Landstraße", "demo": 757 }
       ]
     },
     {
@@ -465,7 +465,7 @@
       "country": "Spanien",
       "region": "southern-europe",
       "coords": { "lat": 27.96, "lon": -15.6 },
-      "text": "Ein Kontinent im Kleinen: Dünen, Vulkanschluchten und Pinienwälder über den Wolken. [Platzhalter]",
+      "text": "Ein Kontinent im Kleinen: Dünen, Vulkanschluchten und Pinienwälder über den Wolken.",
       "cover": 0,
       "images": [
         { "id": "01", "file": "gran-canaria-2024-01.webp", "width": 2400, "height": 1600, "title": "Küstenlinie", "alt": "Geschwungene Küste mit Sandstrand und türkisfarbenem Wasser", "demo": 374 },
@@ -483,12 +483,12 @@
       "country": "Deutschland",
       "region": "germany",
       "coords": { "lat": 47.46, "lon": 10.97 },
-      "text": "[Platzhalter]",
+      "text": "Ein Tagesausflug an den gefrorenen Eibsee, über ihm das Zugspitzmassiv im Schnee.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "eibsee-winter-2023-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Schneebedeckte Gipfel über einem See", "demo": 905 },
-        { "id": "02", "file": "eibsee-winter-2023-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Verschneiter Berg mit Vögeln am Himmel", "demo": 565 },
-        { "id": "03", "file": "eibsee-winter-2023-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Schneebedeckte Bergkette unter blauem Himmel", "demo": 908 }
+        { "id": "01", "file": "eibsee-winter-2023-01.webp", "width": 2400, "height": 1600, "title": "Gipfel über dem See", "alt": "Schneebedeckte Gipfel über einem See", "demo": 905 },
+        { "id": "02", "file": "eibsee-winter-2023-02.webp", "width": 2400, "height": 1600, "title": "Vögel am Berg", "alt": "Verschneiter Berg mit Vögeln am Himmel", "demo": 565 },
+        { "id": "03", "file": "eibsee-winter-2023-03.webp", "width": 2400, "height": 1600, "title": "Kette im Schnee", "alt": "Schneebedeckte Bergkette unter blauem Himmel", "demo": 908 }
       ]
     },
     {
@@ -498,13 +498,13 @@
       "collection": "creative",
       "year": 2023,
       "coords": null,
-      "text": "[Platzhalter]",
+      "text": "Ein Halloween-Shooting mit Licht, Schatten und ein paar Requisiten.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "halloween-2023-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Zwei Silhouetten am Ende eines dunklen Tunnels", "demo": 209 },
-        { "id": "02", "file": "halloween-2023-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Leuchtender Lichtkreis in einem dunklen Raum", "demo": 1079 },
-        { "id": "03", "file": "halloween-2023-03.webp", "width": 1600, "height": 2400, "title": "[Platzhalter]", "alt": "Geweih mit rotem Stoff vor schwarzem Grund", "demo": 891 },
-        { "id": "04", "file": "halloween-2023-04.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Wunderkerze in einer Hand", "demo": 407 }
+        { "id": "01", "file": "halloween-2023-01.webp", "width": 2400, "height": 1600, "title": "Am Ende des Tunnels", "alt": "Zwei Silhouetten am Ende eines dunklen Tunnels", "demo": 209 },
+        { "id": "02", "file": "halloween-2023-02.webp", "width": 2400, "height": 1600, "title": "Lichtkreis", "alt": "Leuchtender Lichtkreis in einem dunklen Raum", "demo": 1079 },
+        { "id": "03", "file": "halloween-2023-03.webp", "width": 1600, "height": 2400, "title": "Geweih und Stoff", "alt": "Geweih mit rotem Stoff vor schwarzem Grund", "demo": 891 },
+        { "id": "04", "file": "halloween-2023-04.webp", "width": 2400, "height": 1600, "title": "Funken", "alt": "Wunderkerze in einer Hand", "demo": 407 }
       ]
     },
     {
@@ -517,7 +517,7 @@
       "country": "Deutschland",
       "region": "germany",
       "coords": { "lat": 47.56, "lon": 10.75 },
-      "text": "Das Märchenschloss über der Pöllatschlucht, davor das Alpenvorland mit seinen Seen. [Platzhalter]",
+      "text": "Das Märchenschloss über der Pöllatschlucht, davor das Alpenvorland mit seinen Seen.",
       "cover": 0,
       "images": [
         { "id": "01", "file": "neuschwanstein-2023-01.webp", "width": 2400, "height": 1600, "title": "Felder im Abendlicht", "alt": "Goldene Felder unter einem hellen Abendhimmel", "demo": 337 },
@@ -535,12 +535,12 @@
       "country": "Deutschland",
       "region": "germany",
       "coords": { "lat": 48.32, "lon": 8.97 },
-      "text": "[Platzhalter]",
+      "text": "Die Burg Hohenzollern auf ihrem Bergkegel über der Schwäbischen Alb, oft über einem Nebelmeer.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "hohenzollern-2023-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Weg führt auf ein Schloss mit Türmen zu", "demo": 142 },
-        { "id": "02", "file": "hohenzollern-2023-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Herbstwald im Nebel", "demo": 923 },
-        { "id": "03", "file": "hohenzollern-2023-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Historisches Gebäude hinter einer Rasenfläche", "demo": 193 }
+        { "id": "01", "file": "hohenzollern-2023-01.webp", "width": 2400, "height": 1600, "title": "Weg zur Burg", "alt": "Weg führt auf ein Schloss mit Türmen zu", "demo": 142 },
+        { "id": "02", "file": "hohenzollern-2023-02.webp", "width": 2400, "height": 1600, "title": "Herbstnebel", "alt": "Herbstwald im Nebel", "demo": 923 },
+        { "id": "03", "file": "hohenzollern-2023-03.webp", "width": 2400, "height": 1600, "title": "Vor dem Schloss", "alt": "Historisches Gebäude hinter einer Rasenfläche", "demo": 193 }
       ]
     },
     {
@@ -553,12 +553,12 @@
       "country": "Deutschland",
       "region": "germany",
       "coords": { "lat": 48.69, "lon": 8.19 },
-      "text": "[Platzhalter]",
+      "text": "Ein Roadtrip durch den herbstlichen Nordschwarzwald rund um das Bühlertal.",
       "cover": 0,
       "images": [
         { "id": "01", "file": "black-forest-autumn-2023-01.webp", "width": 2400, "height": 1600, "title": "Nebelwald", "alt": "Hohe Nadelbäume in dichtem Nebel", "demo": 229 },
         { "id": "02", "file": "black-forest-autumn-2023-02.webp", "width": 2400, "height": 1600, "title": "Waldweg", "alt": "Schmaler Weg zwischen Wiese und Waldrand", "demo": 17 },
-        { "id": "03", "file": "black-forest-autumn-2023-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter] Wolf- und Bärenpark", "alt": "Braunbär blickt in die Kamera", "tags": ["wildlife"], "demo": 433 }
+        { "id": "03", "file": "black-forest-autumn-2023-03.webp", "width": 2400, "height": 1600, "title": "Bär im Wolf- und Bärenpark", "alt": "Braunbär blickt in die Kamera", "tags": ["wildlife"], "demo": 433 }
       ]
     },
     {
@@ -571,12 +571,12 @@
       "country": "Deutschland",
       "region": "germany",
       "coords": { "lat": 48.13, "lon": 8.23 },
-      "text": "Nebelwälder, Hochmoore und weite Blicke bis zu den Alpen. [Platzhalter]",
+      "text": "Nebelwälder, Hochmoore und weite Blicke bis zu den Alpen.",
       "cover": 0,
       "images": [
         { "id": "01", "file": "black-forest-summer-2023-01.webp", "width": 2400, "height": 1600, "title": "Hochwiese", "alt": "Hohes Gras im Gegenlicht vor einem Waldrand", "demo": 127 },
         { "id": "02", "file": "black-forest-summer-2023-02.webp", "width": 2400, "height": 1600, "title": "Weitblick", "alt": "Blick über Hügel und Wald bis zum Horizont", "demo": 10 },
-        { "id": "03", "file": "black-forest-summer-2023-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter] Wolf- und Bärenpark", "alt": "Wolf steht auf einem Waldboden", "tags": ["wildlife"], "demo": 718 }
+        { "id": "03", "file": "black-forest-summer-2023-03.webp", "width": 2400, "height": 1600, "title": "Wolf im Wolf- und Bärenpark", "alt": "Wolf steht auf einem Waldboden", "tags": ["wildlife"], "demo": 718 }
       ]
     },
     {
@@ -587,12 +587,12 @@
       "year": 2023,
       "date": "2023-03",
       "coords": null,
-      "text": "[Platzhalter]",
+      "text": "Die Aprilia Tuono 660 im Frühjahr 2023.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "tuono-660-2023-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Zwei klassische Autos vor gelben Toren", "demo": 133 },
-        { "id": "02", "file": "tuono-660-2023-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Alter Pick-up auf einer Wiese", "demo": 1072 },
-        { "id": "03", "file": "tuono-660-2023-03.webp", "width": 1600, "height": 2400, "title": "[Platzhalter]", "alt": "Lenkrad und Armaturen eines alten Autos", "demo": 605 }
+        { "id": "01", "file": "tuono-660-2023-01.webp", "width": 2400, "height": 1600, "title": "Vor gelben Toren", "alt": "Zwei klassische Autos vor gelben Toren", "demo": 133 },
+        { "id": "02", "file": "tuono-660-2023-02.webp", "width": 2400, "height": 1600, "title": "Auf der Wiese", "alt": "Alter Pick-up auf einer Wiese", "demo": 1072 },
+        { "id": "03", "file": "tuono-660-2023-03.webp", "width": 1600, "height": 2400, "title": "Armaturen", "alt": "Lenkrad und Armaturen eines alten Autos", "demo": 605 }
       ]
     },
     {
@@ -602,12 +602,12 @@
       "collection": "automotive",
       "year": 2022,
       "coords": null,
-      "text": "[Platzhalter]",
+      "text": "Mein erstes Motorrad-Shooting: die Aprilia Tuono 660.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "tuono-660-2022-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Front eines klassischen Autos", "demo": 1071 },
-        { "id": "02", "file": "tuono-660-2022-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Altes Auto vor einer Hauswand", "demo": 111 },
-        { "id": "03", "file": "tuono-660-2022-03.webp", "width": 1600, "height": 2400, "title": "[Platzhalter]", "alt": "Blick durch die Windschutzscheibe auf Bäume", "demo": 1070 }
+        { "id": "01", "file": "tuono-660-2022-01.webp", "width": 2400, "height": 1600, "title": "Front", "alt": "Front eines klassischen Autos", "demo": 1071 },
+        { "id": "02", "file": "tuono-660-2022-02.webp", "width": 2400, "height": 1600, "title": "An der Hauswand", "alt": "Altes Auto vor einer Hauswand", "demo": 111 },
+        { "id": "03", "file": "tuono-660-2022-03.webp", "width": 1600, "height": 2400, "title": "Durch die Scheibe", "alt": "Blick durch die Windschutzscheibe auf Bäume", "demo": 1070 }
       ]
     },
     {
@@ -620,7 +620,7 @@
       "country": "Island",
       "region": "iceland",
       "coords": { "lat": 64.15, "lon": -21.94 },
-      "text": "Die erste Island-Reise, von Reykjavík aus: Wasserfälle, Lavafelder und Strände aus schwarzem Sand. [Platzhalter]",
+      "text": "Die erste Island-Reise, von Reykjavík aus: Wasserfälle, Lavafelder und Strände aus schwarzem Sand.",
       "cover": 0,
       "images": [
         { "id": "01", "file": "iceland-2021-01.webp", "width": 2400, "height": 1600, "title": "Wasserfall", "alt": "Wasser stürzt über dunkle, nasse Felsen", "demo": 404 },
@@ -638,7 +638,7 @@
       "country": "Schweden",
       "region": "northern-europe",
       "coords": { "lat": 59.33, "lon": 18.07 },
-      "text": "Eine Stadt auf vierzehn Inseln: Wasser an jeder Ecke, Gassen in Gamla stan und das kühle Licht des Nordens. [Platzhalter]",
+      "text": "Eine Stadt auf vierzehn Inseln: Wasser an jeder Ecke, Gassen in Gamla stan und das kühle Licht des Nordens.",
       "cover": 0,
       "images": [
         { "id": "01", "file": "stockholm-2021-01.webp", "width": 2400, "height": 1600, "title": "Am Wasser", "alt": "Person am Ufer mit Blick über das Wasser auf eine Stadt", "demo": 349 },
@@ -656,12 +656,12 @@
       "country": "Deutschland",
       "region": "germany",
       "coords": { "lat": 47.5, "lon": 10.37 },
-      "text": "[Platzhalter]",
+      "text": "Winter im Allgäu: Bad Hindelang, Nesselwang und St. Coloman unter Schnee.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "allgaeu-winter-2021-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Verschneiter Waldweg zwischen kahlen Bäumen", "demo": 559 },
-        { "id": "02", "file": "allgaeu-winter-2021-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Mit Raureif überzogener Wald", "demo": 730 },
-        { "id": "03", "file": "allgaeu-winter-2021-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Straße durch eine verschneite Ebene", "demo": 964 }
+        { "id": "01", "file": "allgaeu-winter-2021-01.webp", "width": 2400, "height": 1600, "title": "Weg durch den Winterwald", "alt": "Verschneiter Waldweg zwischen kahlen Bäumen", "demo": 559 },
+        { "id": "02", "file": "allgaeu-winter-2021-02.webp", "width": 2400, "height": 1600, "title": "Raureif", "alt": "Mit Raureif überzogener Wald", "demo": 730 },
+        { "id": "03", "file": "allgaeu-winter-2021-03.webp", "width": 2400, "height": 1600, "title": "Straße im Schnee", "alt": "Straße durch eine verschneite Ebene", "demo": 964 }
       ]
     },
     {
@@ -674,7 +674,7 @@
       "country": "Portugal",
       "region": "southern-europe",
       "coords": { "lat": 37.12, "lon": -8.3 },
-      "text": "Goldene Felsküsten, Grotten und Buchten mit türkisem Wasser am südwestlichsten Zipfel Europas. [Platzhalter]",
+      "text": "Goldene Felsküsten, Grotten und Buchten mit türkisem Wasser am südwestlichsten Zipfel Europas.",
       "cover": 0,
       "images": [
         { "id": "01", "file": "algarve-2020-01.webp", "width": 2400, "height": 1600, "title": "Blühende Steilküste", "alt": "Felsige Küste mit blühenden Pflanzen über dem Meer", "demo": 37 },
@@ -692,12 +692,12 @@
       "country": "Italien",
       "region": "dolomites",
       "coords": { "lat": 46.58, "lon": 11.68 },
-      "text": "[Platzhalter]",
+      "text": "Die erste Reise in die Dolomiten, mit Basis im Grödnertal.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "dolomites-2020-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Bergsee spiegelt Gipfel und Wolken", "demo": 980 },
-        { "id": "02", "file": "dolomites-2020-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Rötliche Felsen im Abendlicht", "demo": 1016 },
-        { "id": "03", "file": "dolomites-2020-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Verschneite Berge mit Zelten im Vordergrund", "demo": 1036 }
+        { "id": "01", "file": "dolomites-2020-01.webp", "width": 2400, "height": 1600, "title": "Spiegelung", "alt": "Bergsee spiegelt Gipfel und Wolken", "demo": 980 },
+        { "id": "02", "file": "dolomites-2020-02.webp", "width": 2400, "height": 1600, "title": "Rote Felsen", "alt": "Rötliche Felsen im Abendlicht", "demo": 1016 },
+        { "id": "03", "file": "dolomites-2020-03.webp", "width": 2400, "height": 1600, "title": "Lager im Schnee", "alt": "Verschneite Berge mit Zelten im Vordergrund", "demo": 1036 }
       ]
     },
     {
@@ -710,12 +710,12 @@
       "country": "Deutschland",
       "region": "germany",
       "coords": { "lat": 47.57, "lon": 10.7 },
-      "text": "[Platzhalter]",
+      "text": "Ein Wochenende zwischen Oberstdorf, Neuschwanstein, St. Coloman, Geroldsee und Eibsee.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "allgaeu-zugspitze-2020-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Märchenschloss auf einem bewaldeten Felsen", "demo": 1040 },
-        { "id": "02", "file": "allgaeu-zugspitze-2020-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Herbstliche Bäume vor einer Bergkette", "demo": 678 },
-        { "id": "03", "file": "allgaeu-zugspitze-2020-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Bergwiese im Abendlicht", "demo": 547 }
+        { "id": "01", "file": "allgaeu-zugspitze-2020-01.webp", "width": 2400, "height": 1600, "title": "Das Märchenschloss", "alt": "Märchenschloss auf einem bewaldeten Felsen", "demo": 1040 },
+        { "id": "02", "file": "allgaeu-zugspitze-2020-02.webp", "width": 2400, "height": 1600, "title": "Herbst vor den Bergen", "alt": "Herbstliche Bäume vor einer Bergkette", "demo": 678 },
+        { "id": "03", "file": "allgaeu-zugspitze-2020-03.webp", "width": 2400, "height": 1600, "title": "Abendwiese", "alt": "Bergwiese im Abendlicht", "demo": 547 }
       ]
     },
     {
@@ -728,12 +728,12 @@
       "country": "Deutschland",
       "region": "germany",
       "coords": { "lat": 50.96, "lon": 14.07 },
-      "text": "[Platzhalter]",
+      "text": "Sandsteinfelsen in der Sächsischen Schweiz, ein Abstecher nach Dresden und die Wälder des Harzes.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "saxony-harz-2020-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Steile Felswände über einem bewaldeten Tal", "demo": 1043 },
-        { "id": "02", "file": "saxony-harz-2020-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Bizarre Felsformationen zwischen Bäumen", "demo": 136 },
-        { "id": "03", "file": "saxony-harz-2020-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Lichtstrahlen in einem hohen Wald", "demo": 543 }
+        { "id": "01", "file": "saxony-harz-2020-01.webp", "width": 2400, "height": 1600, "title": "Über dem Tal", "alt": "Steile Felswände über einem bewaldeten Tal", "demo": 1043 },
+        { "id": "02", "file": "saxony-harz-2020-02.webp", "width": 2400, "height": 1600, "title": "Felsformationen", "alt": "Bizarre Felsformationen zwischen Bäumen", "demo": 136 },
+        { "id": "03", "file": "saxony-harz-2020-03.webp", "width": 2400, "height": 1600, "title": "Licht im Wald", "alt": "Lichtstrahlen in einem hohen Wald", "demo": 543 }
       ]
     },
     {
@@ -746,12 +746,12 @@
       "country": "Österreich",
       "region": "austria",
       "coords": { "lat": 47.56, "lon": 13.65 },
-      "text": "[Platzhalter]",
+      "text": "Gollinger Wasserfall, Hallstatt und die Seen rund um Gosau.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "salzkammergut-2020-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Holzsteg an einem Bergsee zwischen Wäldern", "demo": 434 },
-        { "id": "02", "file": "salzkammergut-2020-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Wasserfall in sattgrüner Schlucht", "demo": 1039 },
-        { "id": "03", "file": "salzkammergut-2020-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "See vor Bergen im Abendlicht", "demo": 128 }
+        { "id": "01", "file": "salzkammergut-2020-01.webp", "width": 2400, "height": 1600, "title": "Steg am See", "alt": "Holzsteg an einem Bergsee zwischen Wäldern", "demo": 434 },
+        { "id": "02", "file": "salzkammergut-2020-02.webp", "width": 2400, "height": 1600, "title": "Gollinger Wasserfall", "alt": "Wasserfall in sattgrüner Schlucht", "demo": 1039 },
+        { "id": "03", "file": "salzkammergut-2020-03.webp", "width": 2400, "height": 1600, "title": "Abend am See", "alt": "See vor Bergen im Abendlicht", "demo": 128 }
       ]
     },
     {
@@ -764,12 +764,12 @@
       "country": "Schottland (Vereinigtes Königreich)",
       "region": "northern-europe",
       "coords": { "lat": 55.95, "lon": -3.19 },
-      "text": "[Platzhalter]",
+      "text": "Meine erste Fotoreise, mit der Nikon D3300 von Edinburgh aus.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "scotland-2019-01.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Grüne Hügel fallen steil zum Meer ab", "demo": 1018 },
-        { "id": "02", "file": "scotland-2019-02.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Hügelige Küstenlandschaft unter Wolken", "demo": 482 },
-        { "id": "03", "file": "scotland-2019-03.webp", "width": 2400, "height": 1600, "title": "[Platzhalter]", "alt": "Felsige Küste mit Brandung", "demo": 483 }
+        { "id": "01", "file": "scotland-2019-01.webp", "width": 2400, "height": 1600, "title": "Grüne Klippen", "alt": "Grüne Hügel fallen steil zum Meer ab", "demo": 1018 },
+        { "id": "02", "file": "scotland-2019-02.webp", "width": 2400, "height": 1600, "title": "Küstenhügel", "alt": "Hügelige Küstenlandschaft unter Wolken", "demo": 482 },
+        { "id": "03", "file": "scotland-2019-03.webp", "width": 2400, "height": 1600, "title": "Brandung", "alt": "Felsige Küste mit Brandung", "demo": 483 }
       ]
     }
   ]
