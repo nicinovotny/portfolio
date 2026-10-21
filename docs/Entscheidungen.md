@@ -65,6 +65,20 @@ Festlegungen hier haben Vorrang vor dem Projektbriefing.
 - **Leistung:** Nur das sichtbare Hero-Bild bekommt eine eigene Grafikebene (`will-change`), vorher alle fünf in voller Größe. Erstes Hero-Bild blendet weich ein statt aufzupoppen. Albumtitel ohne eigene Einblend-Animation (überschnitt sich mit dem Seitenübergang). Label über Bildern in Geist Mono 500, heller, stärkerer Schatten.
 - Gemessen (Chrome, 1440 × 900): Startseite, Albumseite beim Scrollen und alle Kamerafahrten der Karte durchgehend ohne Ruckler (kein Bild über 20 ms).
 
+## Qualitäts- und Leistungstest (17.10.2026)
+- Automatisch geprüft (Chromium, 18 Seiten × 9 Größen von 320 bis 1920 px inkl. Handy quer): kein seitliches Scrollen, keine Konsolenfehler, keine kaputten Bilder, alle Bilder mit Alt-Text, je Seite genau ein `h1`. Dazu Lightbox, Handy-Menü, Hero, Karte, Weiterleitungen, Tastatur und reduzierte Bewegung durchgespielt; Scrollen durchgehend 60 fps.
+- **Alle Bilder laden mit `crossorigin="anonymous"`** (steht jetzt in `imageAttrs` in `js/data.js`, auch Galerie und Lightbox). Vorher luden Galerie und Bühne dieselbe Datei zweimal (z. B. Titelbild der Eintragsseite, 585 KB doppelt).
+- **`sizes` passend zum Layout:** Collections-Übersicht (Bild = halbe Listenbreite, höchstens 36rem) und Kacheln (ab ca. 1660 px vier Spalten). Große Bildschirme laden dadurch meist die 1200er- statt der 2400er-Fassung.
+- Bildfenster der Startseite lädt unter 64rem gar nicht mehr (dort ausgeblendet).
+- **Footer springt nicht mehr:** `main` ist mindestens eine Bildschirmhöhe hoch (vorher Layout-Verschiebung bis 0,16 auf Collection-Seiten, jetzt unter 0,1).
+- Collections-Übersicht am Handy: langer Zähler („2 Bilder · aus 2 Einträgen“) rutscht in die nächste Zeile statt den Namen zu überdecken.
+- Nur zwei Einträge in einer Collection (Portrait): nur „Nächster“, nicht zweimal derselbe Link.
+- Steckbrief: „Region“ zeigt den Kontinent, wenn die zweite Ebene schon das Land ist (Seoul: Asien statt zweimal Südkorea).
+- Karte: Überdecken sich die Beschriftungen einzelner Alben, bleibt die des neueren stehen; die ältere erscheint beim Überfahren bzw. Fokus (z. B. Glencoe/Edinburgh). Am Handy zählt dabei nur der Name (Unterzeile ist dort ausgeblendet).
+- Hero: Bei schnellem Klicken auf die Fortschrittslinie konnte ein überholter Wechsel noch Helligkeit und Übergangsquelle setzen – behoben.
+- Navigation ab Tablet: Links mit größerer Tippfläche (44 px), Layout unverändert.
+- **Offen (Vorschlag, nicht umgesetzt):** Mitteleuropa am Handy – vier Cluster (Deutschland, Schweiz, Österreich, Dolomiten) liegen übereinander. Lösung bräuchte eine Änderung an der Kartengliederung (z. B. Cluster zusammenfassen, solange sie sich überdecken, oder engerer Ausschnitt). Ebenso eine mittlere Bildgröße (ca. 1800 px) für große Bildschirme – braucht neue Bilddateien über `tools/images.mjs`.
+
 ## Albumseite (15.10.2026)
 - Kopf zweispaltig: links Label (Album-Nr. + Koordinaten) und Titel in Geist 200, rechts Kurztext, Steckbrief in Mono (Land · Region · Bilder) und „Zurück zur Karte“ (→ `karte.html?ort=<id>`) / „Alle Alben“
 - Galerie als Bildzeilen gleicher Höhe (wie Flickr/Google Fotos): Bilder werden nie beschnitten, Hoch- und Querformate mischen sich. Zeilenumbruch rechnet `js/album.js`, die Breiten verteilt CSS (`flex-grow` = Seitenverhältnis). Unter 560 px ein Bild pro Zeile. Darunter dezent Nummer + Titel.

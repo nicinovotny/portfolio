@@ -138,6 +138,11 @@ a:hover { color: var(--color-accent); }
   letter-spacing: var(--tracking-nav);
 }
 
+/* Größere Tippfläche (Tablet), ohne die Zeile zu verschieben */
+@media (min-width: 48rem) {
+  .site-nav > a { padding: 12px 0; margin: -12px 0; }
+}
+
 .site-nav a[aria-current] { color: var(--color-accent); }   /* aktuelle Seite bzw. Bereich (Collection, Eintrag → Collections) */
 
 .site-nav__divider {
@@ -215,7 +220,13 @@ a:hover { color: var(--color-accent); }
 }
 
 /* ---------- Seitenrahmen ---------- */
-main { flex: 1; }
+/* Mindestens eine Bildschirmhöhe: Der Footer steht anfangs unterhalb des sichtbaren Bereichs und springt
+   nicht nach unten, wenn das Skript den Inhalt einsetzt (Layout-Verschiebung, CLS) */
+main {
+  flex: 1;
+  min-height: 100vh;
+  min-height: 100svh;
+}
 
 .page {
   padding: var(--header-height) var(--gutter) var(--space-2xl);

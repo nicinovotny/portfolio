@@ -18,8 +18,8 @@ export function createTile(entry, position, { yearShown = false } = {}) {
   const figure = document.createElement('div');
   figure.className = 'tile__image';
   // gleiche Lademethode wie das Titelbild der Eintragsseite → beim Übergang kommt es direkt aus dem Cache
-  const img = Object.assign(document.createElement('img'), { crossOrigin: 'anonymous' }, imageAttrs(entry, getCover(entry)));
-  img.sizes = '(min-width: 72rem) 33vw, (min-width: 48rem) 50vw, 100vw';
+  const img = Object.assign(document.createElement('img'), imageAttrs(entry, getCover(entry)));
+  img.sizes = '(min-width: 104rem) 25vw, (min-width: 72rem) 33vw, (min-width: 48rem) 50vw, 100vw';   // ab ca. 1660 px vier Spalten
   img.loading = position < 3 ? 'eager' : 'lazy';
   img.decoding = 'async';
   figure.append(img);

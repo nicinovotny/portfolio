@@ -142,13 +142,18 @@ export function createViews({ albums, regions, projection, world }) {
 
   // ---------- Überschneidungen ----------
 
+  /** Geschätzte Breite der Beschriftung in px (compact: Handy, dort ohne Unterzeile) */
+  function textWidthOf(item, compact = false) {
+    const name = item.type === 'album' ? (item.album.shortName ?? item.album.name) : item.name;
+    const sub = item.type === 'album' ? `${item.album.year ?? ''} 00.0°N 00.0°W` : item.subtitle;
+    return Math.max(name.length * MARKER.nameCharWidth, compact ? 0 : sub.length * MARKER.subCharWidth);
+  }
+
   /** Ungefähre Fläche eines Markers samt Beschriftung auf dem Bildschirm */
   function boxOf(item, screen) {
     const [x, y] = screen.project(item.point);
     const spec = MARKER[item.type];
-    const name = item.type === 'album' ? (item.album.shortName ?? item.album.name) : item.name;
-    const sub = item.type === 'album' ? `${item.album.year ?? ''} 00.0°N 00.0°W` : item.subtitle;
-    const textWidth = Math.max(name.length * MARKER.nameCharWidth, sub.length * MARKER.subCharWidth);
+    const textWidth = textWidthOf(item);
     const m = MARKER.margin;
     return {
       x0: x - spec.radius - m,
@@ -199,6 +204,32 @@ export function createViews({ albums, regions, projection, world }) {
     }
   }
 
+  /** Fläche der Beschriftung (Name + Koordinaten rechts neben dem Ring, siehe .map-marker__text) */
+  function textBoxOf(item, screen) {
+    const [x, y] = screen.project(item.point);
+    const [dx, dy] = item.offset ?? [0, 0];
+    const left = x + dx + MARKER[item.type].textOffset;
+    return { x0: left, x1: left + textWidthOf(item, screen.compact), y0: y + dy - 14, y1: y + dy + (screen.compact ? 4 : 22) };
+  }
+
+  /**
+   * Einzelne Alben, die nicht aufgeteilt werden können (z. B. Glencoe und Edinburgh in Nordeuropa am Handy),
+   * dürfen sich nicht gegenseitig überschreiben: Überdeckt eine Beschriftung eine andere, bleibt die des
+   * neueren Albums stehen, die ältere erscheint erst beim Überfahren bzw. Fokus („quiet“, css/map.css).
+   */
+  function quietOverlaps(markers, screen) {
+    const kept = [];
+    const ordered = [
+      ...markers.filter((m) => m.type === 'cluster'),
+      ...markers.filter((m) => m.type === 'album').sort((a, b) => a.number - b.number),
+    ];
+    for (const marker of ordered) {
+      const box = textBoxOf(marker, screen);
+      marker.quiet = marker.type === 'album' && kept.some((other) => overlap(box, other));
+      if (!marker.quiet) kept.push(box);
+    }
+  }
+
   /**
    * Marker einer Ansicht. „screen“ ({ project(point) → [x, y] }) beschreibt den Ausschnitt,
    * in dem sie erscheinen – damit wird geprüft, ob ein Cluster sich aufteilen darf.
@@ -209,6 +240,7 @@ export function createViews({ albums, regions, projection, world }) {
     let markers = groupItems(albums, base);
     if (screen) markers = splitWhileRoom(markers, screen);
     spreadStacks(markers);
+    if (screen) quietOverlaps(markers, screen);
     return markers;
   }
 

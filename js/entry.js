@@ -132,8 +132,7 @@ function renderHead(entry, collection, regions) {
   const facts = [
     [timeTerm, when],
     ['Land', entry.country],
-    // Großregion (z. B. Nordeuropa, Mitteleuropa) – das Land steht schon daneben
-    ['Region', entry.region && regions[regionPath(regions, entry.region)[1] ?? entry.region]?.name],
+    ['Region', regionName(entry, regions)],
     ['Bilder', pad2(entry.images.length)],
   ];
   el.facts.replaceChildren(...facts.filter(([, value]) => value).map(([term, value]) => {
@@ -143,6 +142,17 @@ function renderHead(entry, collection, regions) {
     wrap.append(dt, dd);
     return wrap;
   }));
+}
+
+/**
+ * Großregion (z. B. Nordeuropa, Mitteleuropa) – das Land steht schon daneben. Ist die zweite Ebene selbst
+ * das Land (Asien → Südkorea), gilt der Kontinent; sonst stünde zweimal „Südkorea“ da.
+ */
+function regionName(entry, regions) {
+  if (!entry.region) return null;
+  const country = entry.country?.replace(/\s*\(.*\)$/, '');
+  const names = regionPath(regions, entry.region).map((id) => regions[id]?.name);
+  return [names[1], names[0]].find((name) => name && name !== country) ?? null;
 }
 
 /**
@@ -281,7 +291,12 @@ function renderStrip(entry) {
  */
 function renderPager(siblings, index) {
   if (index === -1 || siblings.length < 2) return;
-  const neighbours = [-1, 1].map((offset) => {
+  // Nur zwei Einträge: Voriger und Nächster wären derselbe – dann nur „Nächster“
+  const offsets = siblings.length === 2 ? [1] : [-1, 1];
+  if (offsets.length === 1) {
+    for (const scope of [el.pager, el.stageNav]) scope.querySelector('[data-pager-prev]').hidden = true;
+  }
+  const neighbours = offsets.map((offset) => {
     const position = (index + offset + siblings.length) % siblings.length;
     const entry = siblings[position];
     return {

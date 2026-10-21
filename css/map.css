@@ -142,6 +142,8 @@
   pointer-events: none;
   transition: opacity var(--duration-fast) ease;
 }
+/* Beschriftung würde eine andere überdecken: nur beim Überfahren bzw. Fokus zeigen (js/map-views.js) */
+.map-marker.is-quiet:not(:hover):not(:focus-visible) .map-marker__text { opacity: 0; }
 .map-marker.is-left .map-marker__text {
   left: auto;
   right: var(--text-offset);
