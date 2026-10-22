@@ -17,7 +17,8 @@
         { "image": "bernese-oberland-2026/04", "focus": [50, 50] },
         { "image": "zermatt-2025/06", "focus": [50, 50] },
         { "image": "lofoten-2024/10", "focus": [50, 50] },
-        { "image": "southern-germany-autumn-2023/04", "focus": [50, 50] }
+        { "image": "southern-germany-autumn-2023/04", "focus": [50, 50] },
+        { "image": "iceland-2021/02", "focus": [50, 50] }
       ]
     },
     {
@@ -686,12 +687,26 @@
       "country": "Island",
       "region": "iceland",
       "coords": { "lat": 64.15, "lon": -21.94 },
-      "text": "Die erste Island-Reise, von Reykjavík aus: Wasserfälle, Lavafelder und Strände aus schwarzem Sand.",
-      "cover": 0,
+      "text": "Die erste Island-Reise, einmal rund um die Insel: Wasserfälle, Basaltschluchten und Strände aus schwarzem Sand.",
+      "cover": 1,
       "images": [
-        { "id": "01", "file": "iceland-2021-01.webp", "width": 2400, "height": 1600, "title": "Wasserfall", "alt": "Wasser stürzt über dunkle, nasse Felsen", "demo": 404 },
-        { "id": "02", "file": "iceland-2021-02.webp", "width": 2400, "height": 1600, "title": "Strand unter Klippen", "alt": "Breiter Strand vor dunklen Klippen unter bewölktem Himmel", "demo": 350 },
-        { "id": "03", "file": "iceland-2021-03.webp", "width": 2400, "height": 1600, "title": "Brandung", "alt": "Schwarzweißaufnahme eines Strandes mit auslaufenden Wellen", "demo": 51 }
+        { "id": "01", "file": "iceland-2021-01.webp", "width": 1920, "height": 2400, "title": "Gullfoss", "alt": "Mächtiger Wasserfall stürzt in eine grüne Schlucht, Gischt steigt auf", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 15-30mm F2.8 Di VC USD A012N", "focal": 25, "aperture": 8, "shutter": "1/100", "iso": 640, "film": null, "source": "file" } },
+        { "id": "02", "file": "iceland-2021-02.webp", "width": 2400, "height": 1602, "title": "Háifoss von oben", "alt": "Hoher Wasserfall stürzt in eine weite Schlucht mit Fluss und grünen Hängen", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 15-30mm F2.8 Di VC USD A012N", "focal": 15, "aperture": 8, "shutter": "1/400", "iso": 100, "film": null, "source": "file" } },
+        { "id": "03", "file": "iceland-2021-03.webp", "width": 1800, "height": 2400, "title": "Háifoss aus der Luft", "alt": "Luftbild des Háifoss vor geschichteten Basaltwänden unter Wolken", "exif": { "camera": "DJI Mavic Air 2", "lens": null, "focal": 4.5, "aperture": 2.8, "shutter": "1/1000", "iso": 100, "film": null, "source": "file" } },
+        { "id": "04", "file": "iceland-2021-04.webp", "width": 1800, "height": 2400, "title": "Seljalandsfoss", "alt": "Luftbild des Seljalandsfoss, der über eine bemooste Felskante fällt", "exif": { "camera": "DJI Mavic Air 2", "lens": null, "focal": 4.5, "aperture": 2.8, "shutter": "1/60", "iso": 100, "film": null, "source": "file" } },
+        { "id": "05", "file": "iceland-2021-05.webp", "width": 1920, "height": 2400, "title": "Vor dem Skógafoss", "alt": "Person in gelber Regenjacke steht vor der Gischtwand des Skógafoss", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 24-70mm F/2.8 Di VC USD G2 A032N", "focal": 58, "aperture": 8, "shutter": "1/80", "iso": 100, "film": null, "source": "file" } },
+        { "id": "06", "file": "iceland-2021-06.webp", "width": 1920, "height": 2400, "title": "Flugzeugwrack am Sólheimasandur", "alt": "Schwarz-weiß: Rumpf eines Flugzeugwracks im schwarzen Sand unter strahlender Sonne", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 24-70mm F/2.8 Di VC USD G2 A032N", "focal": 24, "aperture": 18, "shutter": "1/100", "iso": 100, "film": null, "source": "file" } },
+        { "id": "07", "file": "iceland-2021-07.webp", "width": 2400, "height": 1800, "title": "Wrack in der Sandwüste", "alt": "Luftbild des Flugzeugwracks allein in einer weiten schwarzen Sandfläche", "exif": { "camera": "DJI Mavic Air 2", "lens": "24.0 mm f/2.8", "focal": 4.5, "aperture": 2.8, "shutter": "1/730", "iso": 100, "film": null, "source": "file" } },
+        { "id": "08", "file": "iceland-2021-08.webp", "width": 1930, "height": 2400, "title": "Papageientaucher im Gras", "alt": "Papageientaucher zwischen unscharfen Grashalmen im warmen Licht", "exif": { "camera": "Nikon D750", "lens": "Tamron 100-400mm F4.5-6.3 Di VC USD", "focal": 400, "aperture": 8, "shutter": "1/500", "iso": 2000, "film": null, "source": "mixed" } },
+        { "id": "09", "file": "iceland-2021-09.webp", "width": 1600, "height": 2400, "title": "Am Vestrahorn", "alt": "Person in gelber Jacke am schwarzen Strand vor dem Vestrahorn unter dunklen Wolken", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 15-30mm F2.8 Di VC USD A012N", "focal": 15, "aperture": 8, "shutter": "1/100", "iso": 800, "film": null, "source": "file" } },
+        { "id": "10", "file": "iceland-2021-10.webp", "width": 2400, "height": 1800, "title": "Stokksnes von oben", "alt": "Luftbild der Halbinsel Stokksnes mit rotem Leuchtturm vor wolkenverhangenen Bergen", "exif": { "camera": "DJI Mavic Air 2", "lens": "24.0 mm f/2.8", "focal": 4.5, "aperture": 2.8, "shutter": "1/60", "iso": 100, "film": null, "source": "file" } },
+        { "id": "11", "file": "iceland-2021-11.webp", "width": 1920, "height": 2400, "title": "Hengifoss", "alt": "Luftbild des Hengifoss vor Felswänden mit roten Gesteinsschichten", "exif": { "camera": "DJI Mavic Air 2", "lens": "24.0 mm f/2.8", "focal": 4.5, "aperture": 2.8, "shutter": "1/15", "iso": 100, "film": null, "source": "file" } },
+        { "id": "12", "file": "iceland-2021-12.webp", "width": 2400, "height": 1800, "title": "Stuðlagil", "alt": "Türkiser Fluss in einer Schlucht aus Basaltsäulen", "exif": { "camera": "DJI Mavic Air 2", "lens": null, "focal": 4.5, "aperture": 2.8, "shutter": "1/125", "iso": 100, "film": null, "source": "file" } },
+        { "id": "13", "file": "iceland-2021-13.webp", "width": 2400, "height": 1602, "title": "Goðafoss", "alt": "Breiter, hufeisenförmiger Wasserfall unter violetten Wolken, vorne Steine im Wasser", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 15-30mm F2.8 Di VC USD A012N", "focal": 18, "aperture": 18, "shutter": "1.6", "iso": 50, "film": null, "source": "file" } },
+        { "id": "14", "file": "iceland-2021-14.webp", "width": 2400, "height": 1602, "title": "Kirkjufellsfoss", "alt": "Kleine Wasserfälle vor dem kegelförmigen Kirkjufell unter grauem Himmel", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 24-70mm F/2.8 Di VC USD G2 A032N", "focal": 24, "aperture": 8, "shutter": "1", "iso": 100, "film": null, "source": "file" } },
+        { "id": "15", "file": "iceland-2021-15.webp", "width": 1800, "height": 2400, "title": "Damm im Kolgrafafjörður", "alt": "Luftbild einer Straße auf einem Damm quer durch einen Fjord vor Bergen", "exif": { "camera": "DJI Mavic Air 2", "lens": "24.0 mm f/2.8", "focal": 4.5, "aperture": 2.8, "shutter": "1/100", "iso": 100, "film": null, "source": "file" } },
+        { "id": "16", "file": "iceland-2021-16.webp", "width": 1920, "height": 2400, "title": "Kirche mit rotem Dach", "alt": "Weiße Kirche mit rotem Dach auf einem Hügel, vorne unscharfe Wildblumen", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 24-70mm F/2.8 Di VC USD G2 A032N", "focal": 60, "aperture": 8, "shutter": "1/250", "iso": 100, "film": null, "source": "file" } },
+        { "id": "17", "file": "iceland-2021-17.webp", "width": 1920, "height": 2400, "title": "Hallgrímskirkja", "alt": "Person in oranger Jacke vor der Betonfassade der Hallgrímskirkja", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 15-30mm F2.8 Di VC USD A012N", "focal": 15, "aperture": 8, "shutter": "1/50", "iso": 640, "film": null, "source": "file" } }
       ]
     },
     {
@@ -705,29 +720,39 @@
       "region": "northern-europe",
       "coords": { "lat": 59.33, "lon": 18.07 },
       "text": "Eine Stadt auf vierzehn Inseln: Wasser an jeder Ecke, Gassen in Gamla stan und das kühle Licht des Nordens.",
-      "cover": 0,
+      "cover": 3,
       "images": [
-        { "id": "01", "file": "stockholm-2021-01.webp", "width": 2400, "height": 1600, "title": "Am Wasser", "alt": "Person am Ufer mit Blick über das Wasser auf eine Stadt", "demo": 349 },
-        { "id": "02", "file": "stockholm-2021-02.webp", "width": 2400, "height": 1600, "title": "Stille Bucht", "alt": "Spiegelglatte Wasserfläche unter einem hellen Himmel", "demo": 385 },
-        { "id": "03", "file": "stockholm-2021-03.webp", "width": 2400, "height": 1600, "title": "Steg", "alt": "Schwarzweißaufnahme eines langen Holzstegs, der ins Wasser führt", "demo": 47 }
+        { "id": "01", "file": "stockholm-2021-01.webp", "width": 1600, "height": 2400, "title": "U-Bahn-Station", "alt": "Rolltreppen unter einer Decke mit leuchtenden Wellenlinien in einer U-Bahn-Station", "exif": { "camera": "Apple iPhone 12 Pro Max", "lens": "iPhone 12 Pro Max back triple camera 1.54mm f/2.4", "focal": 1.5, "aperture": 2.4, "shutter": "1/120", "iso": 250, "film": null, "source": "file" } },
+        { "id": "02", "file": "stockholm-2021-02.webp", "width": 1602, "height": 2400, "title": "Riddarholmskyrkan", "alt": "Gusseiserne Turmspitze der Riddarholmskyrkan vor Abendhimmel mit rosa Wolken", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 24-70mm F/2.8 Di VC USD G2 A032N", "focal": 52, "aperture": 8, "shutter": "1/30", "iso": 100, "film": null, "source": "file" } },
+        { "id": "03", "file": "stockholm-2021-03.webp", "width": 1602, "height": 2400, "title": "Af Chapman", "alt": "Weißes Segelschiff am Ufer von Skeppsholmen unter dunklen Wolken", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 24-70mm F/2.8 Di VC USD G2 A032N", "focal": 70, "aperture": 2.8, "shutter": "1/500", "iso": 800, "film": null, "source": "file" } },
+        { "id": "04", "file": "stockholm-2021-04.webp", "width": 2400, "height": 1602, "title": "Blick auf Riddarholmen", "alt": "Abendlicher Blick über das Wasser auf Riddarholmen mit Kirchturm und Schiff", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 24-70mm F/2.8 Di VC USD G2 A032N", "focal": 50, "aperture": 8, "shutter": "1/50", "iso": 2500, "film": null, "source": "file" } },
+        { "id": "05", "file": "stockholm-2021-05.webp", "width": 1920, "height": 2400, "title": "Möwe auf dem Fels", "alt": "Heringsmöwe auf einem Felsen vor Bäumen und blauem Himmel", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 24-70mm F/2.8 Di VC USD G2 A032N", "focal": 70, "aperture": 8, "shutter": "1/400", "iso": 200, "film": null, "source": "file" } },
+        { "id": "06", "file": "stockholm-2021-06.webp", "width": 1920, "height": 2400, "title": "Rotes Haus in den Schären", "alt": "Rotes Holzhaus zwischen Bäumen auf einer felsigen Schäreninsel", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 24-70mm F/2.8 Di VC USD G2 A032N", "focal": 70, "aperture": 8, "shutter": "1/500", "iso": 200, "film": null, "source": "file" } },
+        { "id": "07", "file": "stockholm-2021-07.webp", "width": 1920, "height": 2400, "title": "Gröna Lund", "alt": "Freizeitpark Gröna Lund mit Achterbahnen und Falltürmen vom Wasser aus", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 24-70mm F/2.8 Di VC USD G2 A032N", "focal": 26, "aperture": 8, "shutter": "1/640", "iso": 200, "film": null, "source": "file" } }
       ]
     },
     {
       "id": "allgaeu-winter-2021",
       "kind": "trip",
-      "name": "Allgäu im Winter",
+      "name": "Allgäu & Oberbayern im Winter",
       "shortName": "Bad Hindelang",
       "collection": "landscape",
       "year": 2021,
       "country": "Deutschland",
       "region": "germany",
       "coords": { "lat": 47.5, "lon": 10.37 },
-      "text": "Winter im Allgäu: Bad Hindelang, Nesselwang und St. Coloman unter Schnee.",
+      "text": "Winter im Allgäu: Bad Hindelang, Nesselwang und St. Coloman unter Schnee – und ein Abstecher nach Oberbayern zum Sylvensteinspeicher und an den Kochelsee.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "allgaeu-winter-2021-01.webp", "width": 2400, "height": 1600, "title": "Weg durch den Winterwald", "alt": "Verschneiter Waldweg zwischen kahlen Bäumen", "demo": 559 },
-        { "id": "02", "file": "allgaeu-winter-2021-02.webp", "width": 2400, "height": 1600, "title": "Raureif", "alt": "Mit Raureif überzogener Wald", "demo": 730 },
-        { "id": "03", "file": "allgaeu-winter-2021-03.webp", "width": 2400, "height": 1600, "title": "Straße im Schnee", "alt": "Straße durch eine verschneite Ebene", "demo": 964 }
+        { "id": "01", "file": "allgaeu-winter-2021-01.webp", "width": 2400, "height": 1602, "title": "Bad Hindelang zur blauen Stunde", "alt": "Verschneites Tal mit beleuchteten Orten und Lichtspuren auf der Straße, dahinter Berge im Abendrot", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 15-30mm F2.8 Di VC USD A012N", "focal": 15, "aperture": 8, "shutter": "13", "iso": 125, "film": null, "source": "file" } },
+        { "id": "02", "file": "allgaeu-winter-2021-02.webp", "width": 2400, "height": 1800, "title": "Kurven am Jochpass", "alt": "Senkrechtes Luftbild einer kurvigen Passstraße durch verschneiten Fichtenwald", "exif": { "camera": "DJI Mavic Air 2", "lens": "24.0 mm f/2.8", "focal": 4.5, "aperture": 2.8, "shutter": "1/160", "iso": 100, "film": null, "source": "file" } },
+        { "id": "03", "file": "allgaeu-winter-2021-03.webp", "width": 2400, "height": 1800, "title": "St. Coloman von oben", "alt": "Luftbild der Wallfahrtskirche St. Coloman in verschneiter Ebene vor Bergen", "exif": { "camera": "DJI Mavic Air 2", "lens": "24.0 mm f/2.8", "focal": 4.5, "aperture": 2.8, "shutter": "1/320", "iso": 100, "film": null, "source": "file" } },
+        { "id": "04", "file": "allgaeu-winter-2021-04.webp", "width": 1602, "height": 2400, "title": "Neuschwanstein im Schnee", "alt": "Schloss Neuschwanstein vor einem verschneiten Felsberg im Abendlicht", "exif": { "camera": "Nikon D750", "lens": "70.0-300.0 mm f/4.0-5.6", "focal": 135, "aperture": 8, "shutter": "1/60", "iso": 125, "film": null, "source": "file" } },
+        { "id": "05", "file": "allgaeu-winter-2021-05.webp", "width": 1920, "height": 2400, "title": "St. Coloman im Abendrot", "alt": "Kirche St. Coloman im Schnee vor verschneiten Gipfeln unter orangem Himmel", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 50, "aperture": 8, "shutter": "1/250", "iso": 200, "film": null, "source": "file" } },
+        { "id": "06", "file": "allgaeu-winter-2021-06.webp", "width": 2400, "height": 1600, "title": "Nesselwang zur blauen Stunde", "alt": "Verschneite Dächer von Nesselwang mit beleuchteter Kirche, dahinter Alpengipfel", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 28, "aperture": 2.8, "shutter": "5", "iso": 125, "film": null, "source": "file" } },
+        { "id": "07", "file": "allgaeu-winter-2021-07.webp", "width": 2400, "height": 1602, "title": "Sylvensteinbrücke", "alt": "Brücke über den zugefrorenen Sylvensteinspeicher zwischen Kiefern", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 15-30mm F2.8 Di VC USD A012N", "focal": 18, "aperture": 8, "shutter": "1/250", "iso": 250, "film": null, "source": "file" } },
+        { "id": "08", "file": "allgaeu-winter-2021-08.webp", "width": 2400, "height": 1602, "title": "Bootshäuser am Kochelsee", "alt": "Steg zu alten Bootshäusern am Kochelsee, vorne Schilf, dahinter Berge", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 15-30mm F2.8 Di VC USD A012N", "focal": 22, "aperture": 8, "shutter": "1/250", "iso": 200, "film": null, "source": "file" } },
+        { "id": "09", "file": "allgaeu-winter-2021-09.webp", "width": 2400, "height": 1800, "title": "Sylvensteinspeicher von oben", "alt": "Luftbild der Brücke über den vereisten Sylvensteinspeicher zwischen bewaldeten Hängen", "exif": { "camera": "DJI Mavic Air 2", "lens": "24.0 mm f/2.8", "focal": 4.5, "aperture": 2.8, "shutter": "1/125", "iso": 100, "film": null, "source": "file" } }
       ]
     },
     {
