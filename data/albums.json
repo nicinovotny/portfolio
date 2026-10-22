@@ -19,7 +19,8 @@
         { "image": "lofoten-2024/10", "focus": [50, 50] },
         { "image": "southern-germany-autumn-2023/04", "focus": [50, 50] },
         { "image": "iceland-2021/02", "focus": [50, 50] },
-        { "image": "saxony-harz-2020/05", "focus": [50, 50] }
+        { "image": "saxony-harz-2020/05", "focus": [50, 50] },
+        { "image": "scotland-2019/09", "focus": [50, 50] }
       ]
     },
     {
@@ -878,18 +879,24 @@
       "id": "scotland-2019",
       "kind": "trip",
       "name": "Schottland",
-      "shortName": "Edinburgh",
+      "shortName": "Highlands",
       "collection": "landscape",
       "year": 2019,
       "country": "Schottland (Vereinigtes Königreich)",
       "region": "northern-europe",
-      "coords": { "lat": 55.95, "lon": -3.19 },
-      "text": "Meine erste Fotoreise, mit der Nikon D3300 von Edinburgh aus.",
-      "cover": 0,
+      "coords": { "lat": 56.82, "lon": -5.11 },
+      "text": "Meine erste Fotoreise, mit der Nikon D3300 von Stirling durch die Highlands bis auf die Isle of Skye.",
+      "cover": 5,
       "images": [
-        { "id": "01", "file": "scotland-2019-01.webp", "width": 2400, "height": 1600, "title": "Grüne Klippen", "alt": "Grüne Hügel fallen steil zum Meer ab", "demo": 1018 },
-        { "id": "02", "file": "scotland-2019-02.webp", "width": 2400, "height": 1600, "title": "Küstenhügel", "alt": "Hügelige Küstenlandschaft unter Wolken", "demo": 482 },
-        { "id": "03", "file": "scotland-2019-03.webp", "width": 2400, "height": 1600, "title": "Brandung", "alt": "Felsige Küste mit Brandung", "demo": 483 }
+        { "id": "01", "file": "scotland-2019-01.webp", "width": 1920, "height": 2400, "title": "Wallace Monument", "alt": "Turm des Wallace Monument auf einem bewaldeten Hügel über Stirling, vorne eine Steinbrüstung", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 50, "aperture": 11, "shutter": "1/500", "iso": 400, "film": null, "source": "file" } },
+        { "id": "02", "file": "scotland-2019-02.webp", "width": 1600, "height": 2400, "title": "Ebereschen vor dem Berg", "alt": "Rote Vogelbeeren vor Nadelwald und einem grasigen Berg unter tiefen Wolken", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 32, "aperture": 10, "shutter": "1/125", "iso": 100, "film": null, "source": "file" } },
+        { "id": "03", "file": "scotland-2019-03.webp", "width": 2400, "height": 1600, "title": "Kilchurn Castle am Loch Awe", "alt": "Burgruine Kilchurn am Ufer von Loch Awe zwischen grünen Bergen", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 38, "aperture": 10, "shutter": "1/400", "iso": 200, "film": null, "source": "file" } },
+        { "id": "04", "file": "scotland-2019-04.webp", "width": 1920, "height": 2400, "title": "Cottage unterm Buachaille", "alt": "Weißes Cottage am Fuß des Buachaille Etive Mòr, vorne blühende Heide", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 17, "aperture": 11, "shutter": "1/500", "iso": 360, "film": null, "source": "file" } },
+        { "id": "05", "file": "scotland-2019-05.webp", "width": 1920, "height": 2400, "title": "Wrack von Corpach im Abendlicht", "alt": "Rostiges Fischerboot auf einem Kiesstrand unter rosa leuchtenden Wolken", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 17, "aperture": 8, "shutter": "1/80", "iso": 100, "film": null, "source": "file" } },
+        { "id": "06", "file": "scotland-2019-06.webp", "width": 2400, "height": 1600, "title": "Dampfzug am Glenfinnan-Viadukt", "alt": "Dampfzug auf dem Glenfinnan-Viadukt vor grünen Hügeln unter Quellwolken", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 17, "aperture": 8, "shutter": "1/320", "iso": 100, "film": null, "source": "file" } },
+        { "id": "07", "file": "scotland-2019-07.webp", "width": 2400, "height": 1589, "title": "Old Man of Storr im Dunst", "alt": "Felsnadeln des Old Man of Storr über grünen Hängen, dahinter Seen und Berge im Dunst", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 28, "aperture": 8, "shutter": "1/500", "iso": 100, "film": null, "source": "mixed" } },
+        { "id": "08", "file": "scotland-2019-08.webp", "width": 1920, "height": 2400, "title": "Straße am Quiraing", "alt": "Schmale Straße schlängelt sich unter den grünen Felskanten des Quiraing", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 17, "aperture": 10, "shutter": "1/250", "iso": 100, "film": null, "source": "file" } },
+        { "id": "09", "file": "scotland-2019-09.webp", "width": 1920, "height": 2400, "title": "Neist Point", "alt": "Steilklippen von Neist Point mit Leuchtturm unter rosa Abendwolken", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 19, "aperture": 10, "shutter": "1/8", "iso": 100, "film": null, "source": "file" } }
       ]
     }
   ]
