@@ -30,6 +30,9 @@ import sharp from 'sharp';
 import { ANALOG_FIELDS, EXIF_FIELDS, readExif } from './lib/exif.mjs';
 import { readAlbumsFile, writeAlbumsFile } from './lib/albums-file.mjs';
 
+// ohne Cache hält sharp keine Originale offen – sonst scheitert unter Windows das Verschieben nach erledigt/ (EBUSY)
+sharp.cache(false);
+
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const IMAGES = join(ROOT, 'images');
 const INBOX = join(IMAGES, '_eingang');

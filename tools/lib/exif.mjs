@@ -14,6 +14,7 @@ const CAMERA_NAMES = {
   'NIKON D750': 'Nikon D750',
   'NIKON D3300': 'Nikon D3300',
   'X100VI': 'Fujifilm X100VI',
+  'FC3170': 'DJI Mavic Air 2',
 };
 
 // Herstellernamen in normaler Schreibweise

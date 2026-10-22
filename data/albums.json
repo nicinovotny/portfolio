@@ -14,7 +14,8 @@
         { "image": "seiser-alm-2024/01", "focus": [50, 50] },
         { "image": "lofoten-2024/01", "focus": [50, 50] },
         { "image": "saxon-switzerland-2025/01", "focus": [50, 50] },
-        { "image": "bernese-oberland-2026/04", "focus": [50, 50] }
+        { "image": "bernese-oberland-2026/04", "focus": [50, 50] },
+        { "image": "zermatt-2025/06", "focus": [50, 50] }
       ]
     },
     {
@@ -240,7 +241,14 @@
         { "id": "02", "file": "iceland-2025-02.webp", "width": 2400, "height": 1601, "title": "Abendlicht am Vestrahorn", "alt": "Wanderer in roter Jacke zwischen verschneiten Dünen vor dem rötlich beleuchteten Vestrahorn", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 14.6, "aperture": 18, "shutter": "1/160", "iso": 800, "film": null, "source": "file" } },
         { "id": "03", "file": "iceland-2025-03.webp", "width": 2400, "height": 1601, "title": "Brandung bei Stokksnes", "alt": "Wellen umspülen verschneite Felsen, dahinter die spitzen Gipfel des Vestrahorn", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 14, "aperture": 22, "shutter": "1/3", "iso": 50, "film": null, "source": "file" } },
         { "id": "04", "file": "iceland-2025-04.webp", "width": 2400, "height": 1601, "title": "Kirkjufell im Schneesturm", "alt": "Verschneiter Wasserfall vor dem Kirkjufell, der im Schneetreiben verschwindet", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 15.5, "aperture": 22, "shutter": "1/5", "iso": 50, "film": null, "source": "file" } },
-        { "id": "05", "file": "iceland-2025-05.webp", "width": 2400, "height": 1600, "title": "Morgen im Schnee", "alt": "Silhouette einer Person am verschneiten Auto vor einem orangen Sonnenaufgang", "exif": { "camera": "Fujifilm X100VI", "lens": null, "focal": 23, "aperture": 4, "shutter": "1/3000", "iso": 500, "film": null, "source": "file" } }
+        { "id": "05", "file": "iceland-2025-05.webp", "width": 2400, "height": 1600, "title": "Morgen im Schnee", "alt": "Silhouette einer Person am verschneiten Auto vor einem orangen Sonnenaufgang", "exif": { "camera": "Fujifilm X100VI", "lens": null, "focal": 23, "aperture": 4, "shutter": "1/3000", "iso": 500, "film": null, "source": "file" } },
+        { "id": "06", "file": "iceland-2025-06.webp", "width": 1600, "height": 2400, "title": "In der Gischt", "alt": "Person in dunkler Regenjacke auf nassem Fels vor einer Wand aus Wasserfallgischt", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 67.1, "aperture": 8, "shutter": "1/400", "iso": 1000, "film": null, "source": "file" } },
+        { "id": "07", "file": "iceland-2025-07.webp", "width": 2400, "height": 1601, "title": "Skógafoss", "alt": "Breiter Wasserfall stürzt zwischen braunen Grashängen in ein steiniges Flussbett", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 33.1, "aperture": 8, "shutter": "1/400", "iso": 1000, "film": null, "source": "file" } },
+        { "id": "08", "file": "iceland-2025-08.webp", "width": 2400, "height": 1600, "title": "Gletscherzunge von oben", "alt": "Luftbild einer zerklüfteten Gletscherzunge, die in einer türkisen Lagune endet", "exif": { "camera": "DJI Mavic Air 2", "lens": "24.0 mm f/2.8", "focal": 4.5, "aperture": 2.8, "shutter": "1/320", "iso": 100, "film": null, "source": "file" } },
+        { "id": "09", "file": "iceland-2025-09.webp", "width": 2400, "height": 1538, "title": "Stokksnes von oben", "alt": "Luftbild der verschneiten Halbinsel Stokksnes mit Leuchtturm vor dem Vestrahorn", "exif": { "camera": "DJI Mavic Air 2", "lens": "24.0 mm f/2.8", "focal": 4.5, "aperture": 2.8, "shutter": "1/800", "iso": 100, "film": null, "source": "file" } },
+        { "id": "10", "file": "iceland-2025-10.webp", "width": 2400, "height": 1601, "title": "Welle am Vestrahorn", "alt": "Welle läuft über schwarzen Sand, dahinter das rötlich beleuchtete Vestrahorn", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 14, "aperture": 8, "shutter": "1/125", "iso": 320, "film": null, "source": "file" } },
+        { "id": "11", "file": "iceland-2025-11.webp", "width": 1601, "height": 2400, "title": "Polarlicht über den Dünen", "alt": "Grünes Polarlicht wölbt sich über dem Vestrahorn und verschneiten Dünen", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 24, "aperture": 2.8, "shutter": "5", "iso": 5000, "film": null, "source": "file" } },
+        { "id": "12", "file": "iceland-2025-12.webp", "width": 1601, "height": 2400, "title": "Búðakirkja", "alt": "Schwarze Holzkirche in einer verschneiten Ebene vor weißen Bergen", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 25.7, "aperture": 2.8, "shutter": "1/5000", "iso": 500, "film": null, "source": "file" } }
       ]
     },
     {
@@ -254,17 +262,28 @@
       "region": "korea",
       "coords": { "lat": 37.57, "lon": 126.98 },
       "text": "Die erste Reise nach Seoul: Hochhausschluchten, Märkte und der Han-Fluss bei Nacht.",
-      "cover": 0,
+      "cover": 13,
       "images": [
-        { "id": "01", "file": "seoul-2025-01.webp", "width": 2400, "height": 1600, "title": "Skyline", "alt": "Dicht stehende Hochhäuser einer Großstadt im Abendlicht", "demo": 411 },
-        { "id": "02", "file": "seoul-2025-02.webp", "width": 2400, "height": 1600, "title": "Verkehr", "alt": "Belebte Straßenschlucht mit Autos zwischen hohen Gebäuden", "demo": 382 },
-        { "id": "03", "file": "seoul-2025-03.webp", "width": 2400, "height": 1600, "title": "Am Wasser", "alt": "Blaues Wasser mit einem kleinen Boot vor einer Stadtsilhouette", "demo": 74 }
+        { "id": "01", "file": "seoul-2025-01.webp", "width": 2400, "height": 1601, "title": "Brücken im Abendrot", "alt": "Brücken über den Han vor Hochhäusern und Bergen im Abendrot, rechts eine Kiefer", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 70, "aperture": 4, "shutter": "1/80", "iso": 640, "film": null, "source": "file" } },
+        { "id": "02", "file": "seoul-2025-02.webp", "width": 2400, "height": 1601, "title": "Lichterstrom am Han", "alt": "Stadtautobahn mit Lichtspuren am Han-Fluss unter rosa Abendhimmel", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 70, "aperture": 4.5, "shutter": "1/40", "iso": 5000, "film": null, "source": "file" } },
+        { "id": "03", "file": "seoul-2025-03.webp", "width": 1601, "height": 2400, "title": "Namsan-Turm im Dunst", "alt": "Namsan-Turm im Dunst zwischen zwei Hochhäusern, davor gelbes Herbstlaub", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 70, "aperture": 5.6, "shutter": "1/640", "iso": 100, "film": null, "source": "file" } },
+        { "id": "04", "file": "seoul-2025-04.webp", "width": 2400, "height": 1600, "title": "Weg durchs Viertel", "alt": "Geschwungener Fußweg zwischen Herbstbäumen und Wohnhäusern, auf dem eine Person geht", "exif": { "camera": "Fujifilm X100VI", "lens": null, "focal": 23, "aperture": 4, "shutter": "1/640", "iso": 250, "film": null, "source": "file" } },
+        { "id": "05", "file": "seoul-2025-05.webp", "width": 2400, "height": 1601, "title": "Herbst über der Stadt", "alt": "Blick über Dächer und rote Herbstbäume auf die Hochhäuser von Seoul im warmen Licht", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 39.7, "aperture": 7.1, "shutter": "1/400", "iso": 200, "film": null, "source": "file" } },
+        { "id": "06", "file": "seoul-2025-06.webp", "width": 2400, "height": 1601, "title": "Abendrot hinter dem Namsan", "alt": "Skyline mit beleuchteten Bürotürmen und dem Namsan-Turm unter rosa Abendhimmel", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 39.7, "aperture": 3.5, "shutter": "1/100", "iso": 3200, "film": null, "source": "file" } },
+        { "id": "07", "file": "seoul-2025-07.webp", "width": 1600, "height": 2400, "title": "Dichte Stadt", "alt": "Dicht gedrängte Büro- und Wohnhäuser mit Herbstbäumen unter blassem Himmel", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 70, "aperture": 9, "shutter": "1/320", "iso": 125, "film": null, "source": "file" } },
+        { "id": "08", "file": "seoul-2025-08.webp", "width": 2400, "height": 1601, "title": "Dachterrasse am Abend", "alt": "Leere Dachterrasse mit Lichtleisten, dahinter Hochhäuser im Abendrot", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 24, "aperture": 2.8, "shutter": "1/125", "iso": 1250, "film": null, "source": "file" } },
+        { "id": "09", "file": "seoul-2025-09.webp", "width": 2400, "height": 1601, "title": "Viertel zur blauen Stunde", "alt": "Blick über ein beleuchtetes Ausgehviertel mit Hochhäusern zur blauen Stunde", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 24, "aperture": 2.8, "shutter": "1/80", "iso": 4000, "film": null, "source": "file" } },
+        { "id": "10", "file": "seoul-2025-10.webp", "width": 1600, "height": 2400, "title": "Glasturm im Gegenlicht", "alt": "Gläserner Wolkenkratzer vor blauem Himmel, die Sonne spiegelt sich in der Fassade", "exif": { "camera": "Fujifilm X100VI", "lens": null, "focal": 23, "aperture": 10, "shutter": "1/240", "iso": 250, "film": null, "source": "file" } },
+        { "id": "11", "file": "seoul-2025-11.webp", "width": 1601, "height": 2400, "title": "Brücke im Abendlicht", "alt": "Stahlbrücke über den Han vor Wohnblöcken und Hochhäusern im orangen Abendlicht", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 70, "aperture": 10, "shutter": "1/250", "iso": 250, "film": null, "source": "file" } },
+        { "id": "12", "file": "seoul-2025-12.webp", "width": 1601, "height": 2400, "title": "Aussicht vom Pavillon", "alt": "Blick unter einem Pavillondach auf den Han mit Brücken und dem Lotte World Tower", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 48.4, "aperture": 8, "shutter": "1/250", "iso": 250, "film": null, "source": "file" } },
+        { "id": "13", "file": "seoul-2025-13.webp", "width": 2400, "height": 1601, "title": "Türme im Abenddunst", "alt": "Drei Hochhaustürme vor Bergen im rosa Abenddunst, vorne gelbes Herbstlaub", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 70, "aperture": 8, "shutter": "1/250", "iso": 250, "film": null, "source": "file" } },
+        { "id": "14", "file": "seoul-2025-14.webp", "width": 2400, "height": 1601, "title": "Han zur blauen Stunde", "alt": "Han-Fluss mit beleuchteten Brücken und dem Lotte World Tower zur blauen Stunde", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 53.9, "aperture": 2.8, "shutter": "1/125", "iso": 3200, "film": null, "source": "file" } }
       ]
     },
     {
       "id": "zermatt-2025",
       "kind": "trip",
-      "name": "Zermatt",
+      "name": "Berner Oberland & Zermatt",
       "shortName": "Zermatt",
       "collection": "landscape",
       "year": 2025,
@@ -272,11 +291,17 @@
       "region": "switzerland",
       "coords": { "lat": 46.02, "lon": 7.75 },
       "text": "Am Fuß des Matterhorns: Viertausender, Gletscher und Bergseen, in denen sich die Gipfel spiegeln.",
-      "cover": 0,
+      "cover": 5,
       "images": [
-        { "id": "01", "file": "zermatt-2025-01.webp", "width": 2400, "height": 1600, "title": "Gipfel über dem Bergsee", "alt": "Schneebedeckte Gipfel hinter einem türkisfarbenen Bergsee", "demo": 327 },
-        { "id": "02", "file": "zermatt-2025-02.webp", "width": 2400, "height": 1600, "title": "Grüner Rücken", "alt": "Grüner Bergrücken unter einem Himmel mit weißen Wolken", "demo": 54 },
-        { "id": "03", "file": "zermatt-2025-03.webp", "width": 2400, "height": 1600, "title": "Im Nebel", "alt": "Dichter Nebel, in dem die Landschaft verschwindet", "demo": 228 }
+        { "id": "01", "file": "zermatt-2025-01.webp", "width": 2400, "height": 1600, "title": "Zahnradbahn in der Blumenwiese", "alt": "Rote Zahnradbahn zwischen gelben Trollblumen, dahinter vergletscherte Gipfel und Quellwolken", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 17.4, "aperture": 2.8, "shutter": "1/2000", "iso": 100, "film": null, "source": "file" } },
+        { "id": "02", "file": "zermatt-2025-02.webp", "width": 2400, "height": 1600, "title": "Lauterbrunnen mit Staubbachfall", "alt": "Kirche von Lauterbrunnen im Tal, rechts stürzt der Staubbachfall über die Felswand", "exif": { "camera": "Fujifilm X100VI", "lens": null, "focal": 23, "aperture": 5, "shutter": "1/640", "iso": 250, "film": null, "source": "file" } },
+        { "id": "03", "file": "zermatt-2025-03.webp", "width": 1600, "height": 2400, "title": "Eiger über der Kleinen Scheidegg", "alt": "Altes Berghotel im Schatten, dahinter der Eiger im Abendrot zwischen Wolken", "exif": { "camera": "Fujifilm X100VI", "lens": null, "focal": 23, "aperture": 2, "shutter": "1/1600", "iso": 500, "film": null, "source": "file" } },
+        { "id": "04", "file": "zermatt-2025-04.webp", "width": 2400, "height": 1600, "title": "Letztes Licht am Gipfel", "alt": "Verschneiter Gipfel leuchtet orange zwischen dunklen Wolken", "exif": { "camera": "Fujifilm X100VI", "lens": null, "focal": 23, "aperture": 2, "shutter": "1/2400", "iso": 500, "film": null, "source": "file" } },
+        { "id": "05", "file": "zermatt-2025-05.webp", "width": 1601, "height": 2400, "title": "Matterhorn im Abendlicht", "alt": "Matterhorn mit Schneefeldern im warmen Licht vor dunklen Wolken", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 70, "aperture": 8, "shutter": "1/80", "iso": 100, "film": null, "source": "file" } },
+        { "id": "06", "file": "zermatt-2025-06.webp", "width": 2400, "height": 1601, "title": "Matterhorn im Abendrot", "alt": "Matterhorn zwischen Bergketten unter rosa Wolken, vorne dunkles Gebüsch", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 34.4, "aperture": 6.3, "shutter": "1/160", "iso": 2000, "film": null, "source": "file" } },
+        { "id": "07", "file": "zermatt-2025-07.webp", "width": 1332, "height": 1665, "title": "Chalets unterm Matterhorn", "alt": "Dunkle Holzchalets in Zermatt, darüber das Matterhorn mit Wolkenfahne", "exif": { "camera": "Fujifilm X100VI", "lens": null, "focal": 23, "aperture": 2, "shutter": "1/14000", "iso": 500, "film": null, "source": "file" } },
+        { "id": "08", "file": "zermatt-2025-08.webp", "width": 2400, "height": 1600, "title": "Sternwarte am Gornergrat", "alt": "Sternwartenkuppel des Kulmhotels am Gornergrat, dahinter Matterhorn und Gletscherberge", "exif": { "camera": "Fujifilm X100VI", "lens": null, "focal": 23, "aperture": 2, "shutter": "1/30000", "iso": 500, "film": null, "source": "file" } },
+        { "id": "09", "file": "zermatt-2025-09.webp", "width": 1536, "height": 2048, "title": "Matterhorn über den Dächern", "alt": "Matterhorn hinter bewaldeten Hängen, vorne ein dunkles Hausdach", "exif": { "camera": "Apple iPhone 15 Pro Max", "lens": "iPhone 15 Pro Max back triple camera 15.66mm f/2.8", "focal": 15.7, "aperture": 2.8, "shutter": "1/840", "iso": 50, "film": null, "source": "file" } }
       ]
     },
     {
@@ -290,11 +315,14 @@
       "region": "dolomites",
       "coords": { "lat": 46.54, "lon": 12.14 },
       "text": "Rund um Cortina: Drei Zinnen, Pässe über der Baumgrenze und Wolken, die an den Felswänden hängen.",
-      "cover": 0,
+      "cover": 1,
       "images": [
-        { "id": "01", "file": "cortina-2025-01.webp", "width": 2400, "height": 1600, "title": "Wolken an den Gipfeln", "alt": "Verschneite Berggipfel, um die tiefe Wolken ziehen", "demo": 406 },
-        { "id": "02", "file": "cortina-2025-02.webp", "width": 2400, "height": 1600, "title": "Bergsee", "alt": "Stiller Bergsee vor grauen Felshängen", "demo": 66 },
-        { "id": "03", "file": "cortina-2025-03.webp", "width": 2400, "height": 1600, "title": "Weite", "alt": "Ruhige Wasserfläche unter einem weiten, blassen Himmel", "demo": 266 }
+        { "id": "01", "file": "cortina-2025-01.webp", "width": 2400, "height": 1600, "title": "Rast im Abendlicht", "alt": "Zwei Personen als Silhouette auf einer Bergwiese vor Gipfeln im Abenddunst", "exif": { "camera": "Fujifilm X100VI", "lens": null, "focal": 23, "aperture": 2.8, "shutter": "1/280", "iso": 500, "film": null, "source": "file" } },
+        { "id": "02", "file": "cortina-2025-02.webp", "width": 2400, "height": 1600, "title": "Hütte am Grat", "alt": "Berghütte auf einem grünen Grat, links die Felszacken der Cadini di Misurina", "exif": { "camera": "Fujifilm X100VI", "lens": null, "focal": 23, "aperture": 2.8, "shutter": "1/3000", "iso": 250, "film": null, "source": "file" } },
+        { "id": "03", "file": "cortina-2025-03.webp", "width": 2400, "height": 1600, "title": "Zacken über dem Wald", "alt": "Gezackte Felsgipfel in Wolken über dichtem Lärchenwald", "exif": { "camera": "Fujifilm X100VI", "lens": null, "focal": 23, "aperture": 2.8, "shutter": "1/420", "iso": 250, "film": null, "source": "file" } },
+        { "id": "04", "file": "cortina-2025-04.webp", "width": 2400, "height": 1600, "title": "Unterwegs im Tal", "alt": "Blick durch die Windschutzscheibe auf eine Bergstraße zwischen Wald und Gipfeln im Dunst", "exif": { "camera": "Fujifilm X100VI", "lens": null, "focal": 23, "aperture": 2.8, "shutter": "1/1600", "iso": 250, "film": null, "source": "file" } },
+        { "id": "05", "file": "cortina-2025-05.webp", "width": 1920, "height": 2400, "title": "Karersee", "alt": "Die Gipfel des Latemar spiegeln sich im türkisen Karersee hinter dichtem Wald", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 28.6, "aperture": 5, "shutter": "1/100", "iso": 100, "film": null, "source": "file" } },
+        { "id": "06", "file": "cortina-2025-06.webp", "width": 1601, "height": 2400, "title": "Latemar im Abendlicht", "alt": "Rosa angestrahlte Felswand über dunklem Fichtenwald", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 70, "aperture": 5, "shutter": "1/500", "iso": 100, "film": null, "source": "file" } }
       ]
     },
     {
@@ -314,7 +342,18 @@
         { "id": "02", "file": "saxon-switzerland-2025-02.webp", "width": 2400, "height": 1601, "title": "Steinhaus in der Schlucht", "alt": "Altes Steinhaus mit Schieferdach versteckt zwischen herbstlichen Bäumen in einer Felsschlucht", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 14, "aperture": 3.5, "shutter": "1/100", "iso": 400, "film": null, "source": "file" } },
         { "id": "03", "file": "saxon-switzerland-2025-03.webp", "width": 2400, "height": 1601, "title": "Burg Kriebstein im Spiegel", "alt": "Burg auf einem Felsen über dem Wasser, umgeben von Herbstwald, mit Spiegelbild", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 18.6, "aperture": 8, "shutter": "1/100", "iso": 400, "film": null, "source": "file" } },
         { "id": "04", "file": "saxon-switzerland-2025-04.webp", "width": 2400, "height": 1601, "title": "Die Barbarine", "alt": "Freistehende Felsnadel Barbarine im warmen Abendlicht über weitem Waldland", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 14.6, "aperture": 8, "shutter": "1/250", "iso": 500, "film": null, "source": "file" } },
-        { "id": "05", "file": "saxon-switzerland-2025-05.webp", "width": 2400, "height": 1600, "title": "Abendsonne auf dem Fels", "alt": "Abendsonne über bewaldeten Tälern, im Vordergrund Sandsteinfelsen mit Birken", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 14, "aperture": 8, "shutter": "1/320", "iso": 500, "film": null, "source": "file" } }
+        { "id": "05", "file": "saxon-switzerland-2025-05.webp", "width": 2400, "height": 1600, "title": "Abendsonne auf dem Fels", "alt": "Abendsonne über bewaldeten Tälern, im Vordergrund Sandsteinfelsen mit Birken", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 14, "aperture": 8, "shutter": "1/320", "iso": 500, "film": null, "source": "file" } },
+        { "id": "06", "file": "saxon-switzerland-2025-06.webp", "width": 1601, "height": 2400, "title": "Basteibrücke über dem Nebel", "alt": "Basteibrücke zwischen Sandsteintürmen, dahinter Nebelbänke und rosa Morgenhimmel", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 24, "aperture": 6.3, "shutter": "1/60", "iso": 500, "film": null, "source": "file" } },
+        { "id": "07", "file": "saxon-switzerland-2025-07.webp", "width": 1601, "height": 2400, "title": "Basteibrücke im Herbstlaub", "alt": "Basteibrücke und Felsnadeln im warmen Licht, eingerahmt von orangem Laub", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 59.2, "aperture": 2.8, "shutter": "1/400", "iso": 100, "film": null, "source": "file" } },
+        { "id": "08", "file": "saxon-switzerland-2025-08.webp", "width": 1601, "height": 2400, "title": "Auf der Basteibrücke", "alt": "Person mit Rucksack geht über die Basteibrücke zwischen hohen Sandsteinfelsen", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 46.1, "aperture": 2.8, "shutter": "1/200", "iso": 100, "film": null, "source": "file" } },
+        { "id": "09", "file": "saxon-switzerland-2025-09.webp", "width": 1601, "height": 2400, "title": "Elbe bei Rathen", "alt": "Blick vom Fels hinunter auf die Elbschleife und den Ort Rathen im Morgenlicht", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 41.1, "aperture": 2.8, "shutter": "1/6400", "iso": 1000, "film": null, "source": "file" } },
+        { "id": "10", "file": "saxon-switzerland-2025-10.webp", "width": 1601, "height": 2400, "title": "Felsen im Herbstwald", "alt": "Sandsteinfelsen zwischen goldenen Laubbäumen im Gegenlicht", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 15.3, "aperture": 2.8, "shutter": "1/1000", "iso": 1000, "film": null, "source": "file" } },
+        { "id": "11", "file": "saxon-switzerland-2025-11.webp", "width": 1601, "height": 2400, "title": "Steinhaus mit Treppe", "alt": "Altes Steinhaus über einer bemoosten Brunnenanlage mit Treppe, umgeben von Herbstwald", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 18.9, "aperture": 3.5, "shutter": "1/80", "iso": 400, "film": null, "source": "file" } },
+        { "id": "12", "file": "saxon-switzerland-2025-12.webp", "width": 1601, "height": 2400, "title": "Herbstblatt vor dem Steinhaus", "alt": "Orangefarbenes Ahornblatt auf bemoostem Fels, dahinter ein Steinhaus in der Schlucht", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 14.6, "aperture": 3.5, "shutter": "1/100", "iso": 400, "film": null, "source": "file" } },
+        { "id": "13", "file": "saxon-switzerland-2025-13.webp", "width": 2400, "height": 1800, "title": "Festung Königstein", "alt": "Luftbild der Festung Königstein auf ihrem Tafelberg, umgeben von Herbstwald im Gegenlicht", "exif": { "camera": "DJI Mavic Air 2", "lens": "24.0 mm f/2.8", "focal": 4.5, "aperture": 2.8, "shutter": "1/60", "iso": 100, "film": null, "source": "file" } },
+        { "id": "14", "file": "saxon-switzerland-2025-14.webp", "width": 1601, "height": 2400, "title": "Burg Kriebstein", "alt": "Burg Kriebstein auf einem Felsen über dem Wasser unter grauem Himmel", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 51.9, "aperture": 8, "shutter": "1/320", "iso": 400, "film": null, "source": "file" } },
+        { "id": "15", "file": "saxon-switzerland-2025-15.webp", "width": 2400, "height": 1601, "title": "Ausblick vom Sandstein", "alt": "Sandsteinfelsen und junge Kiefer über weitem Herbstwald im Gegenlicht", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 14.6, "aperture": 8, "shutter": "1/160", "iso": 500, "film": null, "source": "file" } },
+        { "id": "16", "file": "saxon-switzerland-2025-16.webp", "width": 2400, "height": 1601, "title": "Burg über den Herbstwiesen", "alt": "Burg mit grünem Turmdach auf einem Hügel über Wiesen und Herbstbäumen", "exif": { "camera": "Sony α7R III", "lens": "FE 70-200mm F4 G OSS", "focal": 77, "aperture": 8, "shutter": "1/640", "iso": 500, "film": null, "source": "file" } }
       ]
     },
     {
@@ -328,11 +367,15 @@
       "region": "austria",
       "coords": { "lat": 47.27, "lon": 13.32 },
       "text": "Skitage im Salzburger Land: frisch präparierte Pisten, Pulver zwischen den Bäumen und klare Wintertage über dem Tal.",
-      "cover": 0,
+      "cover": 4,
       "images": [
-        { "id": "01", "file": "kleinarl-2025-01.webp", "width": 2400, "height": 1600, "title": "Verschneite Hügel", "alt": "Sanfte, verschneite Hügel unter klarem Himmel", "demo": 393 },
-        { "id": "02", "file": "kleinarl-2025-02.webp", "width": 2400, "height": 1600, "title": "Schnee im Wind", "alt": "Verschneiter Berg mit Schneefahnen und bewegtem Wasser davor", "demo": 295 },
-        { "id": "03", "file": "kleinarl-2025-03.webp", "width": 2400, "height": 1600, "title": "Winternacht", "alt": "Dunkle Winterlandschaft unter einem nächtlichen Himmel", "demo": 120 }
+        { "id": "01", "file": "kleinarl-2025-01.webp", "width": 2400, "height": 1600, "title": "Sonnenalm", "alt": "Volle Sonnenterrasse einer Skihütte im Schnee, dahinter das verschneite Dachsteinmassiv", "exif": { "camera": "Fujifilm X100VI", "lens": null, "focal": 23, "aperture": 2.8, "shutter": "1/2400", "iso": 250, "film": null, "source": "file" } },
+        { "id": "02", "file": "kleinarl-2025-02.webp", "width": 2400, "height": 1600, "title": "Mittagspause", "alt": "Ski und Stöcke stecken im Schnee vor einer weiten verschneiten Bergkette", "exif": { "camera": "Fujifilm X100VI", "lens": null, "focal": 23, "aperture": 2.8, "shutter": "1/4400", "iso": 250, "film": null, "source": "file" } },
+        { "id": "03", "file": "kleinarl-2025-03.webp", "width": 2400, "height": 1600, "title": "Abfahrt Richtung Dachstein", "alt": "Piste zwischen Fichten, unten ein zugefrorener See vor dem verschneiten Dachstein", "exif": { "camera": "Fujifilm X100VI", "lens": null, "focal": 23, "aperture": 2.8, "shutter": "1/2000", "iso": 250, "film": null, "source": "file" } },
+        { "id": "04", "file": "kleinarl-2025-04.webp", "width": 2400, "height": 1600, "title": "Sprung ins Blau", "alt": "Skifahrer springt vor blauem Himmel über eine Schneekante", "exif": { "camera": "Fujifilm X100VI", "lens": null, "focal": 23, "aperture": 2.8, "shutter": "1/4000", "iso": 250, "film": null, "source": "file" } },
+        { "id": "05", "file": "kleinarl-2025-05.webp", "width": 2400, "height": 1600, "title": "Sprung vor der Alpenkette", "alt": "Skifahrer springt über eine Schanze, dahinter eine weite verschneite Alpenkette", "exif": { "camera": "Fujifilm X100VI", "lens": null, "focal": 23, "aperture": 2.5, "shutter": "1/6400", "iso": 250, "film": null, "source": "file" } },
+        { "id": "06", "file": "kleinarl-2025-06.webp", "width": 2400, "height": 1600, "title": "Pisten im Sonnenlicht", "alt": "Verschneite Hänge mit Pisten und Lärchen, dahinter schroffe Gipfel", "exif": { "camera": "Fujifilm X100VI", "lens": null, "focal": 23, "aperture": 2.5, "shutter": "1/5400", "iso": 250, "film": null, "source": "file" } },
+        { "id": "07", "file": "kleinarl-2025-07.webp", "width": 1600, "height": 2400, "title": "Sessellift", "alt": "Sessellift über einer Piste, dahinter verschneite Berge unter blauem Himmel", "exif": { "camera": "Fujifilm X100VI", "lens": null, "focal": 23, "aperture": 2.5, "shutter": "1/5000", "iso": 250, "film": null, "source": "file" } }
       ]
     },
     {
