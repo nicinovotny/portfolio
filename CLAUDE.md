@@ -45,6 +45,10 @@ Lies Briefing und Entscheidungen, bevor du Code schreibst oder Designentscheidun
 - ✅ Startseite (17.10.2026): Collections als Index mit Bildfenster (wie „Anlässe“ auf huppermans.netlify.app), Details in `docs/Entscheidungen.md`.
 - ✅ Qualitäts- und Leistungstest (17.10.2026, Cloud-Sitzung): automatischer Test aller Seiten auf 9 Bildschirmgrößen, Korrekturen (doppelte Bild-Downloads, `sizes`, Footer-Sprung, Überlappungen in Collections-Übersicht und Karte, doppelter Nachbar-Link, Region im Steckbrief, Hero-Wettlauf, Tippflächen). Details und offene Vorschläge (Mitteleuropa-Karte am Handy, mittlere Bildgröße) in `docs/Entscheidungen.md`.
 - ✅ Alben ausgedünnt (22.10.2026): Burg Hohenzollern 2023 und Bukarest 2025 entfernt, Schwarzwald Sommer/Herbst und Neuschwanstein 2023 zu „Süddeutschland im Herbst 2023“ (`southern-germany-autumn-2023`) zusammengelegt; alte IDs leiten dorthin weiter. Jetzt 35 Einträge (25 Trips). Wildlife hat damit nur noch ein Bild (Bär, Demo).
+- **Eigene Bilder aus 24 ZIPs (ab 22.10.2026):** entpackt nach `images/_eingang/<ZIP-Name>/`, ZIPs in `erledigt/`. `convert` archiviert jetzt auch Originale aus Unterordnern des Eingangs. Jahr für Jahr, neuestes zuerst, nach jedem Jahr anhalten. Keine Collection-Tags (Verlinkung kommt später).
+  - ✅ 2026: `bergen-2026` (17 Bilder, Titelbild Nr. 14) und `bernese-oberland-2026` (11 Bilder, Titelbild Nr. 4, Hero-Favorit), Demo-Bilder ersetzt, kein Zeitraum.
+  - Als Nächstes 2025: Seoul, Zermatt, Cortina, Kleinarl (Demo ersetzen?), Island und Sächsische Schweiz (ergänzen). Danach 2024 (Dolomiten_24 → vermutlich `seiser-alm-2024`, ergänzen), 2023, 2021, 2020 (Dolomiten_Hallstatt → `dolomites-2020` prüfen), 2019.
+  - `Geret Kosar.zip` im Eingang enthält keine Bilder (Chat-Dateien), nicht angerührt.
 - **Umbau abgeschlossen.** Jetzt pushen (GitHub Desktop) – erst dann ist alles live. Danach: eigene Bilder und Texte einpflegen (Skill `bilder-einpflegen`, Checkliste `docs/Anleitung.md` Abschnitt 5), die beiden Hochzeiten unterscheidbar benennen, pro Collection `published` und Hero-Favoriten festlegen.
 
 ## Rahmen (gilt immer)

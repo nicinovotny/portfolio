@@ -22,7 +22,7 @@
 
 import { existsSync, mkdirSync, readdirSync, renameSync, statSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { basename, extname, join, resolve } from 'node:path';
+import { basename, extname, join, resolve, sep } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { createInterface } from 'node:readline';
 import { fileURLToPath } from 'node:url';
@@ -185,9 +185,11 @@ function nextNumber(entryId, entry) {
   return Math.max(0, ...fromFiles, ...fromIds) + 1;
 }
 
-/** Original nach _eingang/erledigt/ verschieben (nur wenn es im Eingangsordner lag); Präfix = Eintrag */
+/** Original nach _eingang/erledigt/ verschieben (nur wenn es im Eingangsordner oder einem Unterordner lag); Präfix = Eintrag */
 function archive(file, entryId) {
-  if (resolve(file, '..') !== resolve(INBOX)) return null;
+  const folder = resolve(file, '..');
+  const inInbox = folder === resolve(INBOX) || (folder.startsWith(resolve(INBOX) + sep) && !folder.startsWith(resolve(DONE)));
+  if (!inInbox) return null;
   mkdirSync(DONE, { recursive: true });
   const name = basename(file).startsWith(`${entryId}__`) ? basename(file) : `${entryId}__${basename(file)}`;
   let target = join(DONE, name);
