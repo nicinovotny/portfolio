@@ -18,7 +18,8 @@
         { "image": "zermatt-2025/06", "focus": [50, 50] },
         { "image": "lofoten-2024/10", "focus": [50, 50] },
         { "image": "southern-germany-autumn-2023/04", "focus": [50, 50] },
-        { "image": "iceland-2021/02", "focus": [50, 50] }
+        { "image": "iceland-2021/02", "focus": [50, 50] },
+        { "image": "saxony-harz-2020/05", "focus": [50, 50] }
       ]
     },
     {
@@ -766,29 +767,40 @@
       "region": "southern-europe",
       "coords": { "lat": 37.12, "lon": -8.3 },
       "text": "Goldene Felsküsten, Grotten und Buchten mit türkisem Wasser am südwestlichsten Zipfel Europas.",
-      "cover": 0,
+      "cover": 2,
       "images": [
-        { "id": "01", "file": "algarve-2020-01.webp", "width": 2400, "height": 1600, "title": "Blühende Steilküste", "alt": "Felsige Küste mit blühenden Pflanzen über dem Meer", "demo": 37 },
-        { "id": "02", "file": "algarve-2020-02.webp", "width": 2400, "height": 1600, "title": "Boot in der Bucht", "alt": "Kleines Boot auf türkisfarbenem, klarem Wasser", "demo": 124 },
-        { "id": "03", "file": "algarve-2020-03.webp", "width": 2400, "height": 1600, "title": "Abendrot", "alt": "Sonnenuntergang mit warm leuchtendem Himmel über dem Horizont", "demo": 71 }
+        { "id": "01", "file": "algarve-2020-01.webp", "width": 1920, "height": 2400, "title": "Cabo de São Vicente", "alt": "Leuchtturm auf der Steilküste von Cabo de São Vicente im Sonnenuntergang", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP 15-30mm F2.8 Di VC USD A012N", "focal": 17, "aperture": 8, "shutter": "1/20", "iso": 100, "film": null, "source": "file" } },
+        { "id": "02", "file": "algarve-2020-02.webp", "width": 1600, "height": 2400, "title": "Klippen am Atlantik", "alt": "Goldene Steilklippen über dem dunkelblauen Atlantik unter rosa Abendwolken", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP 15-30mm F2.8 Di VC USD A012N", "focal": 19, "aperture": 4, "shutter": "1/60", "iso": 400, "film": null, "source": "file" } },
+        { "id": "03", "file": "algarve-2020-03.webp", "width": 2400, "height": 1600, "title": "Praia da Marinha", "alt": "Sandbucht zwischen goldenen Felsen und Felsnadeln im Abendlicht", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP 15-30mm F2.8 Di VC USD A012N", "focal": 15, "aperture": 6.3, "shutter": "1/160", "iso": 400, "film": null, "source": "file" } },
+        { "id": "04", "file": "algarve-2020-04.webp", "width": 2400, "height": 1600, "title": "Felsnadel und Bögen", "alt": "Felsnadel und Felsbögen vor glattem Meer im Abendlicht, vorne Sträucher", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP 15-30mm F2.8 Di VC USD A012N", "focal": 15, "aperture": 7.1, "shutter": "1/200", "iso": 400, "film": null, "source": "file" } },
+        { "id": "05", "file": "algarve-2020-05.webp", "width": 1933, "height": 2400, "title": "Doppelbogen", "alt": "Doppelter Felsbogen über dem Meer im warmen Abendlicht", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP 15-30mm F2.8 Di VC USD A012N", "focal": 15, "aperture": 5, "shutter": "1/100", "iso": 400, "film": null, "source": "mixed" } },
+        { "id": "06", "file": "algarve-2020-06.webp", "width": 2400, "height": 1600, "title": "Felsnadeln in der Dämmerung", "alt": "Zerklüftete Felsküste mit Felsnadeln im rosa Dämmerlicht", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP 15-30mm F2.8 Di VC USD A012N", "focal": 15, "aperture": 5.6, "shutter": "1/125", "iso": 400, "film": null, "source": "file" } }
       ]
     },
     {
       "id": "dolomites-2020",
       "kind": "trip",
-      "name": "Dolomiten",
+      "name": "Dolomiten & Hallstatt",
       "shortName": "Grödnertal",
       "collection": "landscape",
       "year": 2020,
       "country": "Italien",
       "region": "dolomites",
       "coords": { "lat": 46.58, "lon": 11.68 },
-      "text": "Die erste Reise in die Dolomiten, mit Basis im Grödnertal.",
-      "cover": 0,
+      "text": "Die erste Reise in die Dolomiten, von der Seceda bis zu den Drei Zinnen – und auf dem Heimweg Hallstatt und das Berchtesgadener Land.",
+      "cover": 2,
       "images": [
-        { "id": "01", "file": "dolomites-2020-01.webp", "width": 2400, "height": 1600, "title": "Spiegelung", "alt": "Bergsee spiegelt Gipfel und Wolken", "demo": 980 },
-        { "id": "02", "file": "dolomites-2020-02.webp", "width": 2400, "height": 1600, "title": "Rote Felsen", "alt": "Rötliche Felsen im Abendlicht", "demo": 1016 },
-        { "id": "03", "file": "dolomites-2020-03.webp", "width": 2400, "height": 1600, "title": "Lager im Schnee", "alt": "Verschneite Berge mit Zelten im Vordergrund", "demo": 1036 }
+        { "id": "01", "file": "dolomites-2020-01.webp", "width": 1600, "height": 2400, "title": "Seceda", "alt": "Gelbe Bergblumen vor den Felszacken der Seceda unter Quellwolken", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 17, "aperture": 8, "shutter": "1/1250", "iso": 100, "film": null, "source": "file" } },
+        { "id": "02", "file": "dolomites-2020-02.webp", "width": 1638, "height": 2048, "title": "Vor den Cadini", "alt": "Winzige Person in Gelb auf einem Grat vor den riesigen Felszacken der Cadini di Misurina", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 50, "aperture": 8, "shutter": "1/250", "iso": 100, "film": null, "source": "file" } },
+        { "id": "03", "file": "dolomites-2020-03.webp", "width": 2048, "height": 1365, "title": "Dreizinnenhütte im Abendlicht", "alt": "Dreizinnenhütte und Kapelle vor dem Paternkofel im glühenden Abendlicht", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 17, "aperture": 11, "shutter": "1/500", "iso": 220, "film": null, "source": "file" } },
+        { "id": "04", "file": "dolomites-2020-04.webp", "width": 1920, "height": 2400, "title": "Pragser Wildsee", "alt": "Holzboote am Bootshaus im grünen Pragser Wildsee vor nebligen Bergen", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 20, "aperture": 8, "shutter": "1/8", "iso": 100, "film": null, "source": "file" } },
+        { "id": "05", "file": "dolomites-2020-05.webp", "width": 1940, "height": 2400, "title": "Hallstatt am See", "alt": "Holzhäuser und Bootshütten von Hallstatt am See unter einer Felswand im Abendlicht", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 26, "aperture": 10, "shutter": "1/250", "iso": 400, "film": null, "source": "mixed" } },
+        { "id": "06", "file": "dolomites-2020-06.webp", "width": 1949, "height": 2400, "title": "Kirchturm über dem See", "alt": "Spitzer Kirchturm über Dächern, dahinter der Hallstätter See und Berge im Abendlicht", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 17, "aperture": 10, "shutter": "1/200", "iso": 400, "film": null, "source": "mixed" } },
+        { "id": "07", "file": "dolomites-2020-07.webp", "width": 1600, "height": 2400, "title": "Stiege zur Kirche", "alt": "Steintreppe zwischen alten Holzhäusern mit dem Wegweiser „Zur Kirche“", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 25, "aperture": 5.6, "shutter": "1/125", "iso": 400, "film": null, "source": "file" } },
+        { "id": "08", "file": "dolomites-2020-08.webp", "width": 1946, "height": 2400, "title": "Hallstatt im Abendlicht", "alt": "Hallstatt mit Kirchturm am See, die Berge dahinter im letzten Sonnenlicht", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 17, "aperture": 9, "shutter": "1/125", "iso": 400, "film": null, "source": "mixed" } },
+        { "id": "09", "file": "dolomites-2020-09.webp", "width": 1956, "height": 2400, "title": "Katze in Hallstatt", "alt": "Rote Katze auf einer Gasse vor einer efeubewachsenen Mauer", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 50, "aperture": 5, "shutter": "1/100", "iso": 400, "film": null, "source": "mixed" } },
+        { "id": "10", "file": "dolomites-2020-10.webp", "width": 2400, "height": 1600, "title": "Hallstatt bei Nacht", "alt": "Das beleuchtete Hallstatt spiegelt sich nachts im See", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 17, "aperture": 25, "shutter": "170", "iso": 100, "film": null, "source": "file" } },
+        { "id": "11", "file": "dolomites-2020-11.webp", "width": 2048, "height": 1365, "title": "Maria Gern vor dem Watzmann", "alt": "Wallfahrtskirche Maria Gern auf grünem Hang vor dem verschneiten Watzmann", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 32, "aperture": 11, "shutter": "1/500", "iso": 220, "film": null, "source": "file" } }
       ]
     },
     {
@@ -802,11 +814,19 @@
       "region": "germany",
       "coords": { "lat": 47.57, "lon": 10.7 },
       "text": "Ein Wochenende zwischen Oberstdorf, Neuschwanstein, St. Coloman, Geroldsee und Eibsee.",
-      "cover": 0,
+      "cover": 9,
       "images": [
-        { "id": "01", "file": "allgaeu-zugspitze-2020-01.webp", "width": 2400, "height": 1600, "title": "Das Märchenschloss", "alt": "Märchenschloss auf einem bewaldeten Felsen", "demo": 1040 },
-        { "id": "02", "file": "allgaeu-zugspitze-2020-02.webp", "width": 2400, "height": 1600, "title": "Herbst vor den Bergen", "alt": "Herbstliche Bäume vor einer Bergkette", "demo": 678 },
-        { "id": "03", "file": "allgaeu-zugspitze-2020-03.webp", "width": 2400, "height": 1600, "title": "Abendwiese", "alt": "Bergwiese im Abendlicht", "demo": 547 }
+        { "id": "01", "file": "allgaeu-zugspitze-2020-01.webp", "width": 1664, "height": 2081, "title": "Hütte am See", "alt": "Holzhütte am Ufer eines dunklen Sees vor dichtem Wald und Felswand", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 38, "aperture": 9, "shutter": "1/200", "iso": 100, "film": null, "source": "file" } },
+        { "id": "02", "file": "allgaeu-zugspitze-2020-02.webp", "width": 1707, "height": 2133, "title": "Enten auf dem See", "alt": "Drei Stockenten schwimmen auf dunklem Wasser, dahinter Schilf und eine Hütte am Waldrand", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 17, "aperture": 10, "shutter": "1/250", "iso": 400, "film": null, "source": "file" } },
+        { "id": "03", "file": "allgaeu-zugspitze-2020-03.webp", "width": 1692, "height": 2114, "title": "Villa über dem See", "alt": "Alte Villa auf einem bewaldeten Hang über einem dunklen See unter grauen Wolken", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 42, "aperture": 10, "shutter": "1/320", "iso": 400, "film": null, "source": "file" } },
+        { "id": "04", "file": "allgaeu-zugspitze-2020-04.webp", "width": 1707, "height": 2133, "title": "Holzlager am Waldrand", "alt": "Holzschuppen mit Brennholz auf einer Wiese, dahinter ein türkiser See und ein Berg", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 17, "aperture": 10, "shutter": "1/250", "iso": 400, "film": null, "source": "file" } },
+        { "id": "05", "file": "allgaeu-zugspitze-2020-05.webp", "width": 1707, "height": 2133, "title": "Stadel auf der Bergwiese", "alt": "Holzstadel am Rand einer Wiese zwischen Fichten, dahinter wolkenverhangene Berge", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 17, "aperture": 10, "shutter": "1/250", "iso": 400, "film": null, "source": "file" } },
+        { "id": "06", "file": "allgaeu-zugspitze-2020-06.webp", "width": 2400, "height": 1600, "title": "Tal unter Wolken", "alt": "Bewaldete Bergflanken öffnen den Blick in ein Tal unter dichten Wolken", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 17, "aperture": 10, "shutter": "1/320", "iso": 400, "film": null, "source": "file" } },
+        { "id": "07", "file": "allgaeu-zugspitze-2020-07.webp", "width": 1600, "height": 2400, "title": "Alm über dem See", "alt": "Blick von oben auf eine Almwiese mit Hütten im Wald, rechts ein See", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 17, "aperture": 5.6, "shutter": "1/125", "iso": 400, "film": null, "source": "file" } },
+        { "id": "08", "file": "allgaeu-zugspitze-2020-08.webp", "width": 2400, "height": 1600, "title": "Neuschwanstein im Sommer", "alt": "Schloss Neuschwanstein über grünem Bergwald, dahinter Seen und Quellwolken", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 17, "aperture": 11, "shutter": "1/500", "iso": 280, "film": null, "source": "file" } },
+        { "id": "09", "file": "allgaeu-zugspitze-2020-09.webp", "width": 2400, "height": 1920, "title": "Hohenschwangau am Alpsee", "alt": "Schloss Hohenschwangau über dem Ort, links der Alpsee zwischen bewaldeten Bergen", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 32, "aperture": 8, "shutter": "1/200", "iso": 100, "film": null, "source": "file" } },
+        { "id": "10", "file": "allgaeu-zugspitze-2020-10.webp", "width": 2400, "height": 1600, "title": "Heustadel am Geroldsee", "alt": "Heustadel auf einer Sommerwiese am Geroldsee vor dem Karwendel", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 22, "aperture": 8, "shutter": "1/400", "iso": 100, "film": null, "source": "file" } },
+        { "id": "11", "file": "allgaeu-zugspitze-2020-11.webp", "width": 1707, "height": 2133, "title": "Zugspitze im Abendrot", "alt": "Zugspitzmassiv leuchtet orange über dem Eibsee, in dem es sich spiegelt", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 17, "aperture": 4.5, "shutter": "1/80", "iso": 400, "film": null, "source": "file" } }
       ]
     },
     {
@@ -820,11 +840,19 @@
       "region": "germany",
       "coords": { "lat": 50.96, "lon": 14.07 },
       "text": "Sandsteinfelsen in der Sächsischen Schweiz, ein Abstecher nach Dresden und die Wälder des Harzes.",
-      "cover": 0,
+      "cover": 4,
       "images": [
-        { "id": "01", "file": "saxony-harz-2020-01.webp", "width": 2400, "height": 1600, "title": "Über dem Tal", "alt": "Steile Felswände über einem bewaldeten Tal", "demo": 1043 },
-        { "id": "02", "file": "saxony-harz-2020-02.webp", "width": 2400, "height": 1600, "title": "Felsformationen", "alt": "Bizarre Felsformationen zwischen Bäumen", "demo": 136 },
-        { "id": "03", "file": "saxony-harz-2020-03.webp", "width": 2400, "height": 1600, "title": "Licht im Wald", "alt": "Lichtstrahlen in einem hohen Wald", "demo": 543 }
+        { "id": "01", "file": "saxony-harz-2020-01.webp", "width": 1600, "height": 2400, "title": "Basteibrücke im Abendlicht", "alt": "Basteibrücke zwischen Sandsteintürmen und Bäumen unter rosa Wolken", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 17, "aperture": 2.8, "shutter": "1/60", "iso": 900, "film": null, "source": "file" } },
+        { "id": "02", "file": "saxony-harz-2020-02.webp", "width": 1600, "height": 2400, "title": "Felsen im Gegenlicht", "alt": "Sandsteinfelsen über Nadelwald im warmen Licht, oben kleine Gestalten", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 17, "aperture": 7.1, "shutter": "1/200", "iso": 400, "film": null, "source": "file" } },
+        { "id": "03", "file": "saxony-harz-2020-03.webp", "width": 1600, "height": 2400, "title": "Felswände der Bastei", "alt": "Zerklüftete Sandsteinwände über weitem Wald im Gegenlicht", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 17, "aperture": 8, "shutter": "1/250", "iso": 400, "film": null, "source": "file" } },
+        { "id": "04", "file": "saxony-harz-2020-04.webp", "width": 1600, "height": 2400, "title": "Basteibrücke und Lilienstein", "alt": "Basteibrücke zwischen Sandsteintürmen, dahinter der Tafelberg Lilienstein", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 20, "aperture": 8, "shutter": "1/250", "iso": 280, "film": null, "source": "file" } },
+        { "id": "05", "file": "saxony-harz-2020-05.webp", "width": 2400, "height": 1600, "title": "Canalettoblick", "alt": "Dresdner Altstadt mit Frauenkirche und Hofkirche spiegelt sich in der Elbe unter Gewitterwolken", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 22, "aperture": 8, "shutter": "1/20", "iso": 100, "film": null, "source": "mixed" } },
+        { "id": "06", "file": "saxony-harz-2020-06.webp", "width": 1600, "height": 2400, "title": "Frauenkirche bei Nacht", "alt": "Beleuchtete Frauenkirche unter dunklen Wolken, davor nasses Pflaster", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 17, "aperture": 10, "shutter": "1/2", "iso": 100, "film": null, "source": "file" } },
+        { "id": "07", "file": "saxony-harz-2020-07.webp", "width": 1600, "height": 2400, "title": "Kuppel der Frauenkirche", "alt": "Kuppel der Frauenkirche über bunten Häuserfassaden vor rosa Wolken", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 35, "aperture": 6.3, "shutter": "1/160", "iso": 400, "film": null, "source": "file" } },
+        { "id": "08", "file": "saxony-harz-2020-08.webp", "width": 1600, "height": 2400, "title": "Kunstakademie", "alt": "Säulenfassade der Kunstakademie mit Statue vor rosa Abendhimmel", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 20, "aperture": 5, "shutter": "1/100", "iso": 400, "film": null, "source": "mixed" } },
+        { "id": "09", "file": "saxony-harz-2020-09.webp", "width": 1600, "height": 2400, "title": "Saigerturm in Stolberg", "alt": "Backsteinturm mit Uhr und Schieferhaube über Fachwerkhäusern, vorne Ahornblätter", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 36, "aperture": 11, "shutter": "1/500", "iso": 250, "film": null, "source": "file" } },
+        { "id": "10", "file": "saxony-harz-2020-10.webp", "width": 1600, "height": 2400, "title": "Gasse in Stolberg", "alt": "Kopfsteinpflastergasse mit Fachwerkhäusern und Wirtshausschildern, hinten der Saigerturm", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 40, "aperture": 11, "shutter": "1/500", "iso": 200, "film": null, "source": "mixed" } },
+        { "id": "11", "file": "saxony-harz-2020-11.webp", "width": 2400, "height": 1600, "title": "Schloss Wernigerode", "alt": "Schloss Wernigerode zwischen Bäumen im Gegenlicht, dahinter die Harzberge", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 19, "aperture": 22, "shutter": "1/20", "iso": 100, "film": null, "source": "file" } }
       ]
     },
     {
@@ -838,11 +866,12 @@
       "region": "austria",
       "coords": { "lat": 47.56, "lon": 13.65 },
       "text": "Gollinger Wasserfall, Hallstatt und die Seen rund um Gosau.",
-      "cover": 0,
+      "cover": 3,
       "images": [
-        { "id": "01", "file": "salzkammergut-2020-01.webp", "width": 2400, "height": 1600, "title": "Steg am See", "alt": "Holzsteg an einem Bergsee zwischen Wäldern", "demo": 434 },
-        { "id": "02", "file": "salzkammergut-2020-02.webp", "width": 2400, "height": 1600, "title": "Gollinger Wasserfall", "alt": "Wasserfall in sattgrüner Schlucht", "demo": 1039 },
-        { "id": "03", "file": "salzkammergut-2020-03.webp", "width": 2400, "height": 1600, "title": "Abend am See", "alt": "See vor Bergen im Abendlicht", "demo": 128 }
+        { "id": "01", "file": "salzkammergut-2020-01.webp", "width": 1920, "height": 2400, "title": "Gollinger Wasserfall", "alt": "Wasserfall stürzt über dunkle Felsen, davor bemooste Steine und ein Baumstamm", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 17, "aperture": 10, "shutter": "1", "iso": 100, "film": null, "source": "file" } },
+        { "id": "02", "file": "salzkammergut-2020-02.webp", "width": 1600, "height": 2400, "title": "Verschneiter Gosaukamm", "alt": "Verschneite Felsgipfel über Fichtenwald und Hütten im Schnee", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 26, "aperture": 10, "shutter": "1/640", "iso": 100, "film": null, "source": "file" } },
+        { "id": "03", "file": "salzkammergut-2020-03.webp", "width": 1463, "height": 2194, "title": "Straße im Schnee", "alt": "Kurvige Straße zwischen verschneiten Fichten", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 17, "aperture": 8, "shutter": "1/500", "iso": 100, "film": null, "source": "file" } },
+        { "id": "04", "file": "salzkammergut-2020-04.webp", "width": 1600, "height": 2400, "title": "Hallstatt im Winter", "alt": "Hallstatt mit Kirchturm am See vor verschneiten Bergen", "exif": { "camera": "Nikon D3300", "lens": "TAMRON SP AF 17-50mm F2.8 XR Di II VC LD Aspherical IF B005N", "focal": 25, "aperture": 8, "shutter": "1/125", "iso": 100, "film": null, "source": "file" } }
       ]
     },
     {
