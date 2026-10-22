@@ -65,6 +65,12 @@ Festlegungen hier haben Vorrang vor dem Projektbriefing.
 - **Leistung:** Nur das sichtbare Hero-Bild bekommt eine eigene Grafikebene (`will-change`), vorher alle fünf in voller Größe. Erstes Hero-Bild blendet weich ein statt aufzupoppen. Albumtitel ohne eigene Einblend-Animation (überschnitt sich mit dem Seitenübergang). Label über Bildern in Geist Mono 500, heller, stärkerer Schatten.
 - Gemessen (Chrome, 1440 × 900): Startseite, Albumseite beim Scrollen und alle Kamerafahrten der Karte durchgehend ohne Ruckler (kein Bild über 20 ms).
 
+## Alben ausgedünnt (22.10.2026)
+- Entfernt: Burg Hohenzollern 2023, Bukarest 2025 (alte Adressen zeigen „Nicht gefunden“).
+- Zusammengelegt: Schwarzwald · Sommer 2023, Schwarzwald · Herbst 2023 und Allgäu · Neuschwanstein 2023 → **„Süddeutschland im Herbst“ 2023** (`southern-germany-autumn-2023`, Kurzname „Süddeutschland“). Bilder aus Herbst + Neuschwanstein (6 Demo-Bilder), die Sommer-Bilder entfallen. Kartenpunkt vorläufig in der Mitte zwischen Bühlertal und Neuschwanstein (48,13° N · 9,47° O).
+- Alte IDs `black-forest-2023`, `black-forest-summer-2023`, `black-forest-autumn-2023`, `neuschwanstein-2023` leiten auf das neue Album weiter (`LEGACY_IDS` in `js/data.js`).
+- Wildlife: Hero-Favorit „Wolf“ entfällt (stammte aus Schwarzwald Sommer), es bleibt der Bär. Die Collection hat damit nur noch ein Bild.
+
 ## Qualitäts- und Leistungstest (17.10.2026)
 - Automatisch geprüft (Chromium, 18 Seiten × 9 Größen von 320 bis 1920 px inkl. Handy quer): kein seitliches Scrollen, keine Konsolenfehler, keine kaputten Bilder, alle Bilder mit Alt-Text, je Seite genau ein `h1`. Dazu Lightbox, Handy-Menü, Hero, Karte, Weiterleitungen, Tastatur und reduzierte Bewegung durchgespielt; Scrollen durchgehend 60 fps.
 - **Alle Bilder laden mit `crossorigin="anonymous"`** (steht jetzt in `imageAttrs` in `js/data.js`, auch Galerie und Lightbox). Vorher luden Galerie und Bühne dieselbe Datei zweimal (z. B. Titelbild der Eintragsseite, 585 KB doppelt).

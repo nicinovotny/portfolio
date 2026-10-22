@@ -17,7 +17,11 @@ const SMALL_WIDTH = 1200;
 // Umbenannte Einträge: alte Links (live geteilt) führen weiter auf den neuen
 const LEGACY_IDS = {
   'kleinarl': 'kleinarl-2025',
-  'black-forest-2023': 'black-forest-summer-2023',
+  // 22.10.2026: Schwarzwald (Sommer, Herbst) und Neuschwanstein 2023 → ein Album „Süddeutschland im Herbst“
+  'black-forest-2023': 'southern-germany-autumn-2023',
+  'black-forest-summer-2023': 'southern-germany-autumn-2023',
+  'black-forest-autumn-2023': 'southern-germany-autumn-2023',
+  'neuschwanstein-2023': 'southern-germany-autumn-2023',
 };
 
 let cache = null;

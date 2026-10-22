@@ -37,8 +37,7 @@
       "text": "Tiere, die mir unterwegs vor die Linse laufen – in freier Natur und im Wildpark.",
       "cover": null,
       "heroFavorites": [
-        { "image": "black-forest-summer-2023/03", "focus": [50, 50] },
-        { "image": "black-forest-autumn-2023/03", "focus": [50, 50] }
+        { "image": "southern-germany-autumn-2023/03", "focus": [50, 50] }
       ]
     },
     {
@@ -297,24 +296,6 @@
       ]
     },
     {
-      "id": "bucharest-2025",
-      "kind": "trip",
-      "name": "Bukarest",
-      "shortName": "Bukarest",
-      "collection": "landscape",
-      "year": 2025,
-      "country": "Rumänien",
-      "region": "central-europe",
-      "coords": { "lat": 44.43, "lon": 26.1 },
-      "text": "Prachtbauten der Belle Époque neben Plattenbauten, breite Boulevards und abends ein goldenes Licht über der Stadt.",
-      "cover": 0,
-      "images": [
-        { "id": "01", "file": "bucharest-2025-01.webp", "width": 2400, "height": 1600, "title": "Über den Dächern", "alt": "Blick über die Dächer einer Stadt mit hohen Gebäuden", "demo": 410 },
-        { "id": "02", "file": "bucharest-2025-02.webp", "width": 2400, "height": 1600, "title": "Goldene Stunde", "alt": "Stadtansicht im warmen Gegenlicht der untergehenden Sonne", "demo": 417 },
-        { "id": "03", "file": "bucharest-2025-03.webp", "width": 2400, "height": 1600, "title": "Straße ins Weite", "alt": "Leere Straße, die geradeaus zum Horizont führt", "demo": 379 }
-      ]
-    },
-    {
       "id": "kleinarl-2025",
       "kind": "trip",
       "name": "Kleinarl · Ski",
@@ -508,75 +489,24 @@
       ]
     },
     {
-      "id": "neuschwanstein-2023",
+      "id": "southern-germany-autumn-2023",
       "kind": "trip",
-      "name": "Allgäu · Neuschwanstein",
-      "shortName": "Neuschwanstein",
+      "name": "Süddeutschland im Herbst",
+      "shortName": "Süddeutschland",
       "collection": "landscape",
       "year": 2023,
       "country": "Deutschland",
       "region": "germany",
-      "coords": { "lat": 47.56, "lon": 10.75 },
-      "text": "Das Märchenschloss über der Pöllatschlucht, davor das Alpenvorland mit seinen Seen.",
+      "coords": { "lat": 48.13, "lon": 9.47 },
+      "text": "Ein herbstlicher Roadtrip vom Nordschwarzwald rund um das Bühlertal bis ins Allgäu zum Schloss Neuschwanstein.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "neuschwanstein-2023-01.webp", "width": 2400, "height": 1600, "title": "Felder im Abendlicht", "alt": "Goldene Felder unter einem hellen Abendhimmel", "demo": 337 },
-        { "id": "02", "file": "neuschwanstein-2023-02.webp", "width": 2400, "height": 1600, "title": "Sonnenuntergang", "alt": "Weite Wiese mit einzelnen Bäumen im Licht der untergehenden Sonne", "demo": 110 },
-        { "id": "03", "file": "neuschwanstein-2023-03.webp", "width": 2400, "height": 1600, "title": "Wiese", "alt": "Hohes grünes Gras vor einem Waldrand", "demo": 18 }
-      ]
-    },
-    {
-      "id": "hohenzollern-2023",
-      "kind": "trip",
-      "name": "Burg Hohenzollern",
-      "shortName": "Hohenzollern",
-      "collection": "landscape",
-      "year": 2023,
-      "country": "Deutschland",
-      "region": "germany",
-      "coords": { "lat": 48.32, "lon": 8.97 },
-      "text": "Die Burg Hohenzollern auf ihrem Bergkegel über der Schwäbischen Alb, oft über einem Nebelmeer.",
-      "cover": 0,
-      "images": [
-        { "id": "01", "file": "hohenzollern-2023-01.webp", "width": 2400, "height": 1600, "title": "Weg zur Burg", "alt": "Weg führt auf ein Schloss mit Türmen zu", "demo": 142 },
-        { "id": "02", "file": "hohenzollern-2023-02.webp", "width": 2400, "height": 1600, "title": "Herbstnebel", "alt": "Herbstwald im Nebel", "demo": 923 },
-        { "id": "03", "file": "hohenzollern-2023-03.webp", "width": 2400, "height": 1600, "title": "Vor dem Schloss", "alt": "Historisches Gebäude hinter einer Rasenfläche", "demo": 193 }
-      ]
-    },
-    {
-      "id": "black-forest-autumn-2023",
-      "kind": "trip",
-      "name": "Schwarzwald · Herbst",
-      "shortName": "Bühlertal",
-      "collection": "landscape",
-      "year": 2023,
-      "country": "Deutschland",
-      "region": "germany",
-      "coords": { "lat": 48.69, "lon": 8.19 },
-      "text": "Ein Roadtrip durch den herbstlichen Nordschwarzwald rund um das Bühlertal.",
-      "cover": 0,
-      "images": [
-        { "id": "01", "file": "black-forest-autumn-2023-01.webp", "width": 2400, "height": 1600, "title": "Nebelwald", "alt": "Hohe Nadelbäume in dichtem Nebel", "demo": 229 },
-        { "id": "02", "file": "black-forest-autumn-2023-02.webp", "width": 2400, "height": 1600, "title": "Waldweg", "alt": "Schmaler Weg zwischen Wiese und Waldrand", "demo": 17 },
-        { "id": "03", "file": "black-forest-autumn-2023-03.webp", "width": 2400, "height": 1600, "title": "Bär im Wolf- und Bärenpark", "alt": "Braunbär blickt in die Kamera", "tags": ["wildlife"], "demo": 433 }
-      ]
-    },
-    {
-      "id": "black-forest-summer-2023",
-      "kind": "trip",
-      "name": "Schwarzwald · Sommer",
-      "shortName": "Triberg",
-      "collection": "landscape",
-      "year": 2023,
-      "country": "Deutschland",
-      "region": "germany",
-      "coords": { "lat": 48.13, "lon": 8.23 },
-      "text": "Nebelwälder, Hochmoore und weite Blicke bis zu den Alpen.",
-      "cover": 0,
-      "images": [
-        { "id": "01", "file": "black-forest-summer-2023-01.webp", "width": 2400, "height": 1600, "title": "Hochwiese", "alt": "Hohes Gras im Gegenlicht vor einem Waldrand", "demo": 127 },
-        { "id": "02", "file": "black-forest-summer-2023-02.webp", "width": 2400, "height": 1600, "title": "Weitblick", "alt": "Blick über Hügel und Wald bis zum Horizont", "demo": 10 },
-        { "id": "03", "file": "black-forest-summer-2023-03.webp", "width": 2400, "height": 1600, "title": "Wolf im Wolf- und Bärenpark", "alt": "Wolf steht auf einem Waldboden", "tags": ["wildlife"], "demo": 718 }
+        { "id": "01", "file": "southern-germany-autumn-2023-01.webp", "width": 2400, "height": 1600, "title": "Nebelwald", "alt": "Hohe Nadelbäume in dichtem Nebel", "demo": 229 },
+        { "id": "02", "file": "southern-germany-autumn-2023-02.webp", "width": 2400, "height": 1600, "title": "Waldweg", "alt": "Schmaler Weg zwischen Wiese und Waldrand", "demo": 17 },
+        { "id": "03", "file": "southern-germany-autumn-2023-03.webp", "width": 2400, "height": 1600, "title": "Bär im Wolf- und Bärenpark", "alt": "Braunbär blickt in die Kamera", "tags": ["wildlife"], "demo": 433 },
+        { "id": "04", "file": "southern-germany-autumn-2023-04.webp", "width": 2400, "height": 1600, "title": "Felder im Abendlicht", "alt": "Goldene Felder unter einem hellen Abendhimmel", "demo": 337 },
+        { "id": "05", "file": "southern-germany-autumn-2023-05.webp", "width": 2400, "height": 1600, "title": "Sonnenuntergang", "alt": "Weite Wiese mit einzelnen Bäumen im Licht der untergehenden Sonne", "demo": 110 },
+        { "id": "06", "file": "southern-germany-autumn-2023-06.webp", "width": 2400, "height": 1600, "title": "Wiese", "alt": "Hohes grünes Gras vor einem Waldrand", "demo": 18 }
       ]
     },
     {
