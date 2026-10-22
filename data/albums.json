@@ -16,7 +16,8 @@
         { "image": "saxon-switzerland-2025/01", "focus": [50, 50] },
         { "image": "bernese-oberland-2026/04", "focus": [50, 50] },
         { "image": "zermatt-2025/06", "focus": [50, 50] },
-        { "image": "lofoten-2024/10", "focus": [50, 50] }
+        { "image": "lofoten-2024/10", "focus": [50, 50] },
+        { "image": "southern-germany-autumn-2023/04", "focus": [50, 50] }
       ]
     },
     {
@@ -592,12 +593,17 @@
       "country": "Deutschland",
       "region": "germany",
       "coords": { "lat": 47.46, "lon": 10.97 },
-      "text": "Ein Tagesausflug an den gefrorenen Eibsee, über ihm das Zugspitzmassiv im Schnee.",
-      "cover": 0,
+      "text": "Ein Tagesausflug an den verschneiten Eibsee, über ihm das Zugspitzmassiv im Schnee.",
+      "cover": 4,
       "images": [
-        { "id": "01", "file": "eibsee-winter-2023-01.webp", "width": 2400, "height": 1600, "title": "Gipfel über dem See", "alt": "Schneebedeckte Gipfel über einem See", "demo": 905 },
-        { "id": "02", "file": "eibsee-winter-2023-02.webp", "width": 2400, "height": 1600, "title": "Vögel am Berg", "alt": "Verschneiter Berg mit Vögeln am Himmel", "demo": 565 },
-        { "id": "03", "file": "eibsee-winter-2023-03.webp", "width": 2400, "height": 1600, "title": "Kette im Schnee", "alt": "Schneebedeckte Bergkette unter blauem Himmel", "demo": 908 }
+        { "id": "01", "file": "eibsee-winter-2023-01.webp", "width": 1601, "height": 2400, "title": "Spaziergang im Neuschnee", "alt": "Zwei Personen gehen Hand in Hand auf einem verschneiten Waldweg im Gegenlicht", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 70, "aperture": 3.5, "shutter": "1/2500", "iso": 640, "film": null, "source": "file" } },
+        { "id": "02", "file": "eibsee-winter-2023-02.webp", "width": 1601, "height": 2400, "title": "Hotel am Eibsee", "alt": "Hotel am Ufer vor verschneitem Bergwald, Dunst über dem stillen Wasser", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 70, "aperture": 8, "shutter": "1/160", "iso": 100, "film": null, "source": "file" } },
+        { "id": "03", "file": "eibsee-winter-2023-03.webp", "width": 2400, "height": 1600, "title": "Sonnenstern über dem Eibsee", "alt": "Verschneite Bäume am Eibsee, dahinter das Zugspitzmassiv, rechts ein Sonnenstern", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 25.1, "aperture": 22, "shutter": "1/40", "iso": 100, "film": null, "source": "file" } },
+        { "id": "04", "file": "eibsee-winter-2023-04.webp", "width": 1601, "height": 2400, "title": "Stiebender Schnee", "alt": "Schnee rieselt von Ästen, dahinter der Eibsee mit Steg und dem verschneiten Zugspitzmassiv", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 24, "aperture": 8, "shutter": "1/200", "iso": 100, "film": null, "source": "file" } },
+        { "id": "05", "file": "eibsee-winter-2023-05.webp", "width": 2400, "height": 1601, "title": "Zugspitze im Spiegel", "alt": "Verschneite Bäume und das Zugspitzmassiv spiegeln sich im dunklen Eibsee", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 24, "aperture": 8, "shutter": "1/160", "iso": 80, "film": null, "source": "file" } },
+        { "id": "06", "file": "eibsee-winter-2023-06.webp", "width": 2400, "height": 1641, "title": "Eibsee von oben", "alt": "Luftbild des Eibsees mit verschneiten Inseln und Wäldern vor dem Zugspitzmassiv", "exif": { "camera": "DJI Mavic Air 2", "lens": "24.0 mm f/2.8", "focal": 4.5, "aperture": 2.8, "shutter": "1/240", "iso": 100, "film": null, "source": "file" } },
+        { "id": "07", "file": "eibsee-winter-2023-07.webp", "width": 2400, "height": 1800, "title": "Inseln im Türkis", "alt": "Senkrechtes Luftbild verschneiter Inseln im türkis und tiefblau leuchtenden Eibsee", "exif": { "camera": "DJI Mavic Air 2", "lens": "24.0 mm f/2.8", "focal": 4.5, "aperture": 2.8, "shutter": "1/50", "iso": 100, "film": null, "source": "file" } },
+        { "id": "08", "file": "eibsee-winter-2023-08.webp", "width": 2400, "height": 1800, "title": "Burgruine Ehrenberg", "alt": "Luftbild eines verschneiten Bergrückens mit Burgruine und Hängebrücke im Morgenlicht", "exif": { "camera": "DJI Mavic Air 2", "lens": "24.0 mm f/2.8", "focal": 4.5, "aperture": 2.8, "shutter": "1/730", "iso": 100, "film": null, "source": "file" } }
       ]
     },
     {
@@ -629,12 +635,14 @@
       "text": "Ein herbstlicher Roadtrip vom Nordschwarzwald rund um das Bühlertal bis ins Allgäu zum Schloss Neuschwanstein.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "southern-germany-autumn-2023-01.webp", "width": 2400, "height": 1600, "title": "Nebelwald", "alt": "Hohe Nadelbäume in dichtem Nebel", "demo": 229 },
-        { "id": "02", "file": "southern-germany-autumn-2023-02.webp", "width": 2400, "height": 1600, "title": "Waldweg", "alt": "Schmaler Weg zwischen Wiese und Waldrand", "demo": 17 },
-        { "id": "03", "file": "southern-germany-autumn-2023-03.webp", "width": 2400, "height": 1600, "title": "Bär im Wolf- und Bärenpark", "alt": "Braunbär blickt in die Kamera", "tags": ["wildlife"], "demo": 433 },
-        { "id": "04", "file": "southern-germany-autumn-2023-04.webp", "width": 2400, "height": 1600, "title": "Felder im Abendlicht", "alt": "Goldene Felder unter einem hellen Abendhimmel", "demo": 337 },
-        { "id": "05", "file": "southern-germany-autumn-2023-05.webp", "width": 2400, "height": 1600, "title": "Sonnenuntergang", "alt": "Weite Wiese mit einzelnen Bäumen im Licht der untergehenden Sonne", "demo": 110 },
-        { "id": "06", "file": "southern-germany-autumn-2023-06.webp", "width": 2400, "height": 1600, "title": "Wiese", "alt": "Hohes grünes Gras vor einem Waldrand", "demo": 18 }
+        { "id": "04", "file": "southern-germany-autumn-2023-04.webp", "width": 2400, "height": 1601, "title": "Neuschwanstein im Herbst", "alt": "Schloss Neuschwanstein über bunt gefärbtem Bergwald, dahinter Seen im Flachland", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 14, "aperture": 8, "shutter": "1/60", "iso": 320, "film": null, "source": "file" } },
+        { "id": "05", "file": "southern-germany-autumn-2023-05.webp", "width": 2400, "height": 1601, "title": "Pöllatschlucht", "alt": "Herbstlicher Mischwald in einer Schlucht unter wolkenverhangenen Gipfeln", "exif": { "camera": "Sony α7R III", "lens": "14-24mm F2.8 DG DN Art 019", "focal": 14, "aperture": 8, "shutter": "1/60", "iso": 640, "film": null, "source": "file" } },
+        { "id": "06", "file": "southern-germany-autumn-2023-06.webp", "width": 2400, "height": 1601, "title": "Hohenschwangau und Alpsee", "alt": "Schloss Hohenschwangau über dem Ort, links der Alpsee zwischen herbstlichen Bergen", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 39, "aperture": 8, "shutter": "1/60", "iso": 160, "film": null, "source": "file" } },
+        { "id": "07", "file": "southern-germany-autumn-2023-07.webp", "width": 1920, "height": 2400, "title": "Steg über dem Bach", "alt": "Wildbach fließt über bemooste Felsen voller Herbstlaub, oben ein Holzsteg", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 25.1, "aperture": 8, "shutter": "4", "iso": 200, "film": null, "source": "file" } },
+        { "id": "08", "file": "southern-germany-autumn-2023-08.webp", "width": 1920, "height": 2400, "title": "Laub auf Moos", "alt": "Bach umspült bemooste Steine, auf denen orangefarbenes Ahornlaub liegt", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 25.4, "aperture": 8, "shutter": "2.5", "iso": 400, "film": null, "source": "file" } },
+        { "id": "09", "file": "southern-germany-autumn-2023-09.webp", "width": 1601, "height": 2400, "title": "Alte Mühle", "alt": "Holzmühle mit Wasserrad an einem Bach, eingerahmt von unscharfem Herbstlaub", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 25.1, "aperture": 2.8, "shutter": "1/100", "iso": 100, "film": null, "source": "file" } },
+        { "id": "10", "file": "southern-germany-autumn-2023-10.webp", "width": 1800, "height": 2400, "title": "Waldweg von oben", "alt": "Senkrechtes Luftbild eines geschwungenen Wegs durch Nadelwald mit orangen Lärchen im Nebel", "exif": { "camera": "DJI Mavic Air 2", "lens": "24.0 mm f/2.8", "focal": 4.5, "aperture": 2.8, "shutter": "1/40", "iso": 100, "film": null, "source": "file" } },
+        { "id": "03", "file": "southern-germany-autumn-2023-03.webp", "width": 2400, "height": 1600, "title": "Bär im Wolf- und Bärenpark", "alt": "Braunbär blickt in die Kamera", "tags": ["wildlife"], "demo": 433 }
       ]
     },
     {
