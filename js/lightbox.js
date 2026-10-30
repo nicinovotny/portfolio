@@ -8,7 +8,7 @@
 // Das Markup erzeugt dieses Modul selbst, damit jede Seite (Eintrag, Collection) dieselbe Großansicht hat.
 // Styles: css/lightbox.css
 
-import { collectionUrl, entryUrl, imageAttrs } from './data.js';
+import { collectionUrl, entryUrl, hasOwnPage, imageAttrs } from './data.js';
 import { KIND_LABELS, TECH_TAGS, formatExif, monoUpper, pad2 } from './format.js';
 
 const gsap = window.gsap;
@@ -179,11 +179,14 @@ export function createLightbox({ images, thumbs, collections = [], currentEntryI
 
   // ---------- Infobereich ----------
 
-  /** Herkunft: „Trip · Seoul · 2026 →“ als Link zum Eintrag; auf dessen eigener Seite und bei Frames nur Text */
+  /**
+   * Herkunft: „Trip · Seoul · 2026 →“ als Link zum Eintrag. Nur Text auf dessen eigener Seite und bei
+   * Einträgen ohne eigene Seite (Frames ohne Namen, Bildwand-Shoots mit Namen: „Shoot · Aprilia Tuono 660 · 2022“).
+   */
   function renderOrigin(entry) {
     const isFrame = entry.kind === 'frame';
     const text = monoUpper([KIND_LABELS[entry.kind], isFrame ? null : entry.name, entry.year].filter(Boolean).join(' · '));
-    const linked = !isFrame && entry.id !== currentEntryId;
+    const linked = hasOwnPage(entry) && entry.id !== currentEntryId;
     const origin = document.createElement(linked ? 'a' : 'span');
     origin.className = 'lightbox__origin label';
     origin.dataset.lightboxOrigin = '';

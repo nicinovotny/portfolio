@@ -26,15 +26,30 @@ const LEGACY_IDS = {
 
 let cache = null;
 
+// Einträge ohne eigene Seite: Frames und alle Einträge aus Collections mit "layout": "wall"
+// (ihre Bilder stehen gemeinsam in der Bildwand der Collection). Wird beim Laden gefüllt.
+const loose = new Set();
+
 /** Lädt albums.json einmal und merkt sich das Ergebnis. */
 export async function loadData() {
   if (!cache) {
     cache = fetch(DATA_URL).then((res) => {
       if (!res.ok) throw new Error(`albums.json konnte nicht geladen werden (${res.status})`);
       return res.json();
+    }).then((data) => {
+      const walls = new Set((data.collections ?? []).filter((c) => c.layout === 'wall').map((c) => c.id));
+      for (const entry of data.entries) {
+        if (entry.kind === 'frame' || walls.has(entry.collection)) loose.add(entry.id);
+      }
+      return data;
     });
   }
   return cache;
+}
+
+/** Hat der Eintrag eine eigene Seite (entry.html)? Nein bei Frames und Einträgen aus Bildwand-Collections. */
+export function hasOwnPage(entry) {
+  return !loose.has(entry.id);
 }
 
 // ---------- Collections ----------
@@ -73,14 +88,14 @@ export function belongsTo(entry, collectionId) {
   return entry.collection === collectionId || (entry.alsoIn ?? []).includes(collectionId);
 }
 
-/** Trips und Shoots einer Collection in der Reihenfolge von albums.json (neueste zuerst), ohne Frames. */
+/** Trips und Shoots einer Collection mit eigener Seite, in der Reihenfolge von albums.json (neueste zuerst). */
 export async function getCollectionEntries(collectionId) {
-  return (await getEntries()).filter((entry) => entry.kind !== 'frame' && belongsTo(entry, collectionId));
+  return (await getEntries()).filter((entry) => hasOwnPage(entry) && belongsTo(entry, collectionId));
 }
 
 /**
  * Einzelbilder einer Collection, neueste zuerst (Reihenfolge der Einträge in albums.json):
- *   - alle Bilder ihrer eigenen Frames
+ *   - alle Bilder ihrer eigenen Einträge ohne eigene Seite (Frames; in Bildwand-Collections alle Shoots)
  *   - Bilder aus anderen Einträgen, die per "tags" dazugehören (z. B. der Papageientaucher aus Island
  *     in Wildlife). Gehört der ganze Eintrag schon als Kachel zur Collection, erscheinen sie nicht doppelt.
  * Ergebnis: [{ entry, image, tagged }] – tagged = stammt aus einem anderen Eintrag (Herkunftszeile).
@@ -89,7 +104,7 @@ export async function getCollectionFrames(collectionId) {
   const frames = [];
   for (const entry of await getEntries()) {
     const own = belongsTo(entry, collectionId);
-    if (entry.kind === 'frame' && own) {
+    if (!hasOwnPage(entry) && own) {
       entry.images.forEach((image) => frames.push({ entry, image, tagged: false }));
     } else if (!own) {
       entry.images
@@ -211,9 +226,13 @@ export function imageAttrs(entry, image) {
 
 // ---------- Adressen ----------
 
-/** Seite eines Eintrags (Trip, Shoot). Frames leitet entry.html selbst zur Collection weiter. */
-export function entryUrl(entry) {
-  return `entry.html?id=${encodeURIComponent(entry.id)}`;
+/**
+ * Seite eines Eintrags (Trip, Shoot). Einträge ohne eigene Seite (Frames, Bildwand) öffnen ihre Collection,
+ * dort zeigt die Großansicht das Bild (Standard: Titelbild des Eintrags).
+ */
+export function entryUrl(entry, image = getCover(entry)) {
+  if (hasOwnPage(entry)) return `entry.html?id=${encodeURIComponent(entry.id)}`;
+  return `${collectionUrl(entry.collection)}&bild=${encodeURIComponent(imageRef(entry, image))}`;
 }
 
 /** Seite einer Collection */

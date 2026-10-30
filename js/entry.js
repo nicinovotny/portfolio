@@ -2,12 +2,12 @@
 // Zwei Layouts je nach Art des Eintrags ("kind" in albums.json):
 //   trip  – Galerie in Bildzeilen gleicher Höhe (viele Bilder, Ort im Mittelpunkt)
 //   shoot – großzügige Bildstrecke: Querformate einzeln groß, zwei Hochformate nebeneinander
-// Frames haben keine eigene Seite und werden zur Collection weitergeleitet.
+// Frames und Einträge aus Bildwand-Collections haben keine eigene Seite und werden zur Collection weitergeleitet.
 // Voriger/nächster Eintrag bleibt innerhalb der Collection. Die Großansicht steckt in js/lightbox.js.
 
 import {
   canonicalId, collectionUrl, entryUrl, getCollection, getCollectionEntries, getCollections, getCover, getEntry, getRegions,
-  imageAttrs, imageRef, imageUrl, regionPath,
+  hasOwnPage, imageAttrs, imageUrl, regionPath,
 } from './data.js';
 import { KIND_LABELS, formatCoords, formatWhen, nameWithYear, pad2 } from './format.js';
 import { createGalleryItem, justifyGallery, loadGalleryImage } from './gallery.js';
@@ -59,11 +59,10 @@ async function init() {
     return;
   }
 
-  // Frames haben keine eigene Seite: Collection öffnen, dort zeigt die Lightbox das Bild
-  if (entry.kind === 'frame') {
-    const target = new URL(collectionUrl(entry.collection), location.href);
-    target.searchParams.set('bild', imageRef(entry, entry.images[0]));
-    location.replace(target);
+  // Frames und Einträge aus Bildwand-Collections haben keine eigene Seite: Collection öffnen,
+  // dort zeigt die Lightbox das Titelbild (alte Links auf Shoots führen so weiter)
+  if (!hasOwnPage(entry)) {
+    location.replace(new URL(entryUrl(entry), location.href));
     return;
   }
 

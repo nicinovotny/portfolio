@@ -28,6 +28,7 @@
       "name": "Automotive",
       "order": 2,
       "published": true,
+      "layout": "wall",
       "text": "Motorräder und Autos, meist in und um Stuttgart – meine eigenen und die von Freunden.",
       "cover": null,
       "heroFavorites": [
@@ -52,6 +53,7 @@
       "name": "Portrait",
       "order": 4,
       "published": true,
+      "layout": "wall",
       "text": "Menschen vor der Kamera – bisher vor allem Hochzeiten von Freunden.",
       "cover": null,
       "heroFavorites": [
@@ -64,6 +66,7 @@
       "name": "Creative",
       "order": 5,
       "published": true,
+      "layout": "wall",
       "text": "Ideen und Experimente abseits der klassischen Fotografie.",
       "cover": null,
       "heroFavorites": [

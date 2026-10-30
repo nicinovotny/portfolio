@@ -128,7 +128,8 @@ export function formatCollectionCounts(entries, frames) {
     if (entries.length) {
       parts.push(countOf(frames.length, 'frame'));
     } else {
-      const sources = new Set(frames.map(({ entry }) => entry.id)).size;
+      // „aus 6 Einträgen“ nur bei getaggten Bildern aus anderen Collections (Wildlife), nicht bei der Bildwand
+      const sources = new Set(frames.filter(({ tagged }) => tagged).map(({ entry }) => entry.id)).size;
       parts.push(`${frames.length} ${frames.length === 1 ? 'Bild' : 'Bilder'}`);
       if (sources > 1) parts.push(`aus ${sources} Einträgen`);
     }

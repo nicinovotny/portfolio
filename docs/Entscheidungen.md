@@ -281,3 +281,10 @@ Nici: kurzes Einfrieren und schwarze Bühne beim Öffnen eines Eintrags. Gefunde
 - Links die Liste: Nummer · Name (Geist 200, bis 4rem, inaktiv gedämpft in `--color-text-3`) · Pfeil im Kreis. Aktive Zeile (Überfahren oder Tastaturfokus; Standard: 01): Name hell, Zeile rückt leicht ein, Zähler (`29 Trips`) und Text klappen darunter auf, Pfeil-Kreis gefüllt in Gletscherfarbe und um −45° gedreht.
 - Rechts ein festes Bildfenster (sticky, **3:2 quer** statt 4:5 hochkant wie bei Dany): Titelbild der aktiven Collection blendet mit leichtem Zoom über (0,7 s / 1,4 s), unten `01 / 05` und Name. Bilder werden vorgeladen, sobald die Liste in die Nähe kommt.
 - Unter 64rem: kein Bildfenster, jede Zeile mit eigenem Bild (16:10) darunter, Angaben immer sichtbar.
+
+### Bildwand für Automotive, Portrait und Creative (30.10.2026)
+- Nici: Bei Automotive (und ebenso Portrait, Creative) passt die starre Gliederung in Alben mit Datum nicht – oft nur 2–3 Bilder pro Termin. Entschieden: **Bildwand statt Kacheln**.
+- Schalter an der Collection in `albums.json`: `"layout": "wall"`. Gesetzt bei `automotive`, `portrait`, `creative`. Landscape bleibt bei Trips mit Jahren, Wildlife (getaggte Bilder) unverändert.
+- Die Collection-Seite zeigt dann nur eine Galerie in Bildzeilen gleicher Höhe (wie Frames) mit allen Bildern ihrer Einträge, neueste Einträge zuerst; keine Abschnittsüberschrift, Zähler „Automotive · 21 Bilder“. Unter jedem Bild Titel und Name des Shoots („Aprilia Tuono 660 · 2022“), in der Großansicht „Shoot · Aprilia Tuono 660 · 2022“ ohne Link.
+- Die Shoots bleiben in `albums.json` als Gruppierung bestehen (Name, Jahr, Aufnahmedaten, Reihenfolge), haben aber **keine eigene Seite** mehr: `hasOwnPage(entry)` in `js/data.js` (falsch bei Frames und Einträgen aus Bildwand-Collections). `entryUrl(entry, image)` führt dann auf `collection.html?id=…&bild=<entry>/<bild>` (Großansicht öffnet sich), `entry.html?id=<shoot>` leitet dorthin weiter (alte Links). Gilt überall: „Zuletzt“, Hero-Herkunft, Lightbox, Herkunftszeilen.
+- Zurückschalten: `"layout"` entfernen, dann gibt es wieder Kacheln und Eintragsseiten.

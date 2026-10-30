@@ -19,6 +19,7 @@ Alle Befehle laufen im Projektordner (Repo-Wurzel). Kommuniziere auf Deutsch. Sp
   - `shoot`: Motiv, Person oder Thema, ein Termin
   - `frame`: einzelnes Bild ohne Zusammenhang
   - Entscheidend ist die Absicht, nicht die Dauer.
+- **Bildwand:** Collections mit `"layout": "wall"` (Automotive, Portrait, Creative) zeigen alle Bilder gemeinsam statt Kacheln; ihre Shoots haben keine eigene Seite. Shoots dort trotzdem pro Termin anlegen (Name und Jahr erscheinen unter jedem Bild), auch mit nur 1–3 Bildern. Gute Bildtitel sind hier besonders wichtig.
 - **Heimat-Collection** `collection` (Pflicht), dazu optional `alsoIn`: Dort erscheint der ganze Eintrag zusätzlich als Kachel.
 - **Tags am Bild** (`tags`):
   - Collection-IDs, z. B. `wildlife`: Das Bild erscheint zusätzlich in dieser Collection.

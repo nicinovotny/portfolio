@@ -58,6 +58,7 @@ Lies Briefing und Entscheidungen, bevor du Code schreibst oder Designentscheidun
   - Als Nächstes: Verlinkung zwischen Collections und Wildlife-Bilder (Kandidaten: `iceland-2021/08` Papageientaucher, `stockholm-2021/05` Möwe, `scotland-2024/04` Highland-Rind, `dolomites-2020/09` Katze?, `allgaeu-zugspitze-2020/02` Enten?).
   - `Geret Kosar.zip` im Eingang enthält keine Bilder (Chat-Dateien), nicht angerührt.
 - ✅ Porträt (23.10.2026): `images/about/portrait.webp` (1000 × 1250, 4:5-Ausschnitt aus Nicis Foto im Moor mit Rucksack) auf „Über mich“ und im Intro der Startseite; Platzhalter-Grafik samt CSS entfernt.
+- ✅ Bildwand (30.10.2026): Automotive, Portrait und Creative mit `"layout": "wall"` – alle Bilder in einer Galerie statt Shoot-Kacheln, Shoots ohne eigene Seite (Links öffnen das Bild in der Collection). Details in `docs/Entscheidungen.md`. Im Browser geprüft (1440 und 375 px). Als Nächstes: eigene Automotive-Bilder einpflegen (Eingang war am 30.10. leer).
 - **Umbau abgeschlossen.** Jetzt pushen (GitHub Desktop) – erst dann ist alles live. Danach: eigene Bilder und Texte einpflegen (Skill `bilder-einpflegen`, Checkliste `docs/Anleitung.md` Abschnitt 5), die beiden Hochzeiten unterscheidbar benennen, pro Collection `published` und Hero-Favoriten festlegen.
 
 ## Rahmen (gilt immer)

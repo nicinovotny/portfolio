@@ -9,7 +9,7 @@
 
 import {
   collectionUrl, entryUrl, getCollectionCover, getCollectionEntries, getCollectionFrames, getCollections, getCover,
-  getEntries, getHeroCollections, getMapEntries, getNewestEntries, imageAttrs,
+  getEntries, getHeroCollections, getMapEntries, getNewestEntries, hasOwnPage, imageAttrs,
 } from './data.js';
 import { KIND_LABELS, formatCollectionCounts, nameWithYear, pad2 } from './format.js';
 import { contourPath, seedOf } from './contours.js';
@@ -246,12 +246,13 @@ function updateCaption({ collection, entry, image, counts }, initial) {
   el.title.textContent = collection.name;
   el.open.href = collectionUrl(collection.id);
 
-  // „Aus: Trip · Seoul · 2026 →“ – bei Frames ohne eigene Seite nur „Aus: Frame · 2025“ ohne Link
+  // „Aus: Trip · Seoul · 2026 →“ – bei Frames „Aus: Frame · 2025“; ohne eigene Seite (Frames, Bildwand)
+  // öffnet der Link die Collection mit diesem Bild in der Großansicht
   const isFrame = entry.kind === 'frame';
   el.origin.textContent = `Aus: ${[KIND_LABELS[entry.kind], isFrame ? null : entry.name, entry.year].filter(Boolean).join(' · ')}${isFrame ? '' : ' →'}`;
-  el.origin.href = isFrame ? collectionUrl(collection.id) : entryUrl(entry);
+  el.origin.href = entryUrl(entry, image);
   // Ist das Bild das Titelbild des Eintrags, fliegt es beim Klick in dessen Bühne (js/transitions.js)
-  if (!isFrame && getCover(entry) === image) {
+  if (hasOwnPage(entry) && getCover(entry) === image) {
     el.origin.dataset.coverFrom = '.hero__slide[data-current] img';
     el.origin.dataset.entryName = entry.name;
   } else {
