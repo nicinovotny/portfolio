@@ -32,8 +32,6 @@
       "text": "Motorräder und Autos, meist in und um Stuttgart – meine eigenen und die von Freunden.",
       "cover": null,
       "heroFavorites": [
-        { "image": "tuono-660-2022/01", "focus": [50, 50] },
-        { "image": "s1000rr-porsche-2025/01", "focus": [50, 50] },
         { "image": "rs660-2026/01", "focus": [50, 50] }
       ]
     },
@@ -226,18 +224,38 @@
       ]
     },
     {
+      "id": "swiss-passes-2026",
+      "kind": "shoot",
+      "name": "Schweizer Pässe",
+      "collection": "automotive",
+      "year": 2026,
+      "dateStart": "2026-06-26",
+      "dateEnd": "2026-06-27",
+      "coords": null,
+      "text": "Sportwagen auf den Pässen im Berner Oberland, unterwegs auf der Reise im Juni 2026.",
+      "cover": 0,
+      "images": [
+        { "id": "01", "file": "swiss-passes-2026-01.webp", "width": 1600, "height": 2400, "title": "Grüner Sportwagen in der Kehre", "alt": "Grüner Mittelmotor-Sportwagen in einer Passkehre, dahinter dunstige Berge", "exif": { "camera": "Sony α7 V", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 70, "aperture": 3.2, "shutter": "1/800", "iso": 200, "film": null, "source": "file" } },
+        { "id": "02", "file": "swiss-passes-2026-02.webp", "width": 1600, "height": 2400, "title": "Gelbe Corvette am Pass", "alt": "Gelbe Corvette fährt eine Bergstraße mit Steinbegrenzung hinauf", "exif": { "camera": "Sony α7 V", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 52.7, "aperture": 2.8, "shutter": "1/800", "iso": 200, "film": null, "source": "file" } },
+        { "id": "03", "file": "swiss-passes-2026-03.webp", "width": 1600, "height": 2400, "title": "Rennlackierung im Dorf", "alt": "Roter Porsche 911 mit Startnummer 69 fährt durch ein Dorf mit Schweizer und Berner Flagge", "exif": { "camera": "Sony α7 V", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 53.9, "aperture": 8, "shutter": "1/400", "iso": 2500, "film": null, "source": "file" } },
+        { "id": "04", "file": "swiss-passes-2026-04.webp", "width": 1600, "height": 2400, "title": "Dachzelt am Pass", "alt": "Grauer Kombi mit aufgeklapptem Dachzelt auf einem Bergparkplatz vor Gipfeln", "exif": { "camera": "Sony α7 V", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 24, "aperture": 8, "shutter": "1/500", "iso": 400, "film": null, "source": "file" } }
+      ]
+    },
+    {
       "id": "motorcycles-friends-2026",
       "kind": "shoot",
-      "name": "Motorräder · Freunde",
+      "name": "Unterwegs mit Freunden",
       "collection": "automotive",
       "year": 2026,
       "coords": null,
       "text": "Ein kleiner Nachmittag mit den Motorrädern von Freunden.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "motorcycles-friends-2026-01.webp", "width": 2400, "height": 1600, "title": "Auf der Landstraße", "alt": "Frau auf einem Fahrrad auf einer Landstraße", "demo": 839 },
-        { "id": "02", "file": "motorcycles-friends-2026-02.webp", "width": 1600, "height": 2400, "title": "Aus dem Fenster", "alt": "Person schaut aus dem Fenster eines Busses", "demo": 1013 },
-        { "id": "03", "file": "motorcycles-friends-2026-03.webp", "width": 2400, "height": 1600, "title": "Im hohen Gras", "alt": "Altes Autowrack im hohen Gras", "demo": 555 }
+        { "id": "01", "file": "motorcycles-friends-2026-01.webp", "width": 2400, "height": 1600, "title": "Knie am Boden", "alt": "Fahrer auf grünem Supersportler legt sich mit dem Knie am Boden in eine Kurve", "exif": { "camera": "Sony α7 V", "lens": "FE 70-200mm F4 G OSS", "focal": 200, "aperture": 4, "shutter": "1/1600", "iso": 1000, "film": null, "source": "file" } },
+        { "id": "02", "file": "motorcycles-friends-2026-02.webp", "width": 2400, "height": 1600, "title": "Tief in der Kurve", "alt": "Fahrer auf dunklem Supersportler in starker Schräglage, die Hand fast am Asphalt", "exif": { "camera": "Sony α7 V", "lens": "FE 70-200mm F4 G OSS", "focal": 172, "aperture": 4, "shutter": "1/1600", "iso": 2500, "film": null, "source": "file" } },
+        { "id": "03", "file": "motorcycles-friends-2026-03.webp", "width": 2400, "height": 1600, "title": "Abendlicht auf der Wiese", "alt": "Schwarzes Superbike im hohen Gras bei Sonnenuntergang, daneben ein Helm", "exif": { "camera": "Sony α7 V", "lens": "FE 70-200mm F4 G OSS", "focal": 147, "aperture": 4, "shutter": "1/1600", "iso": 1600, "film": null, "source": "file" } },
+        { "id": "04", "file": "motorcycles-friends-2026-04.webp", "width": 1600, "height": 2400, "title": "Auf der Waldstraße", "alt": "Blaue Aprilia mit roten Felgen auf einer Waldstraße, Hintergrund weich unscharf", "exif": { "camera": "Sony α7 V", "lens": "FE 70-200mm F4 G OSS", "focal": 200, "aperture": 4, "shutter": "1/200", "iso": 400, "film": null, "source": "file" } },
+        { "id": "05", "file": "motorcycles-friends-2026-05.webp", "width": 1600, "height": 2400, "title": "G-Klasse im Wald", "alt": "Dunkle Mercedes G-Klasse fährt auf einer Waldstraße frontal auf die Kamera zu", "exif": { "camera": "Sony α7 V", "lens": "FE 70-200mm F4 G OSS", "focal": 200, "aperture": 4, "shutter": "1/200", "iso": 640, "film": null, "source": "file" } }
       ]
     },
     {
@@ -250,9 +268,9 @@
       "text": "Die Aprilia RS 660 in Marlin Blue, unterwegs in Stuttgart.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "rs660-2026-01.webp", "width": 2400, "height": 1600, "title": "Richtung Berge", "alt": "Straße führt auf Berge zu", "demo": 563 },
-        { "id": "02", "file": "rs660-2026-02.webp", "width": 2400, "height": 1600, "title": "Kreuz von oben", "alt": "Autobahnkreuz von oben", "demo": 576 },
-        { "id": "03", "file": "rs660-2026-03.webp", "width": 1600, "height": 2400, "title": "Serpentinen", "alt": "Bergstraße in Serpentinen", "demo": 191 }
+        { "id": "01", "file": "rs660-2026-01.webp", "width": 2400, "height": 1600, "title": "Vor der Graffitiwand", "alt": "Fahrer mit rotem Helm auf blauer Aprilia vor bunter Graffitiwand, Scheinwerfer leuchten", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 57.9, "aperture": 2.8, "shutter": "1/100", "iso": 100, "film": null, "source": "file" } },
+        { "id": "02", "file": "rs660-2026-02.webp", "width": 2400, "height": 1601, "title": "Der Weg zur Maschine", "alt": "Fahrer im schwarzen Hoodie geht auf die blaue Aprilia vor einem Bürogebäude zu", "exif": { "camera": "Sony α7R III", "lens": "FE 70-200mm F4 G OSS", "focal": 70, "aperture": 4, "shutter": "1/640", "iso": 100, "film": null, "source": "file" } },
+        { "id": "03", "file": "rs660-2026-03.webp", "width": 900, "height": 1200, "title": "Abfahrbereit", "alt": "Fahrer mit rotem Helm auf blauer Aprilia mit roten Felgen vor einer Glasfassade", "exif": { "camera": "Sony α7R III", "lens": "FE 70-200mm F4 G OSS", "focal": 155, "aperture": 4, "shutter": "1/400", "iso": 100, "film": null, "source": "file" } }
       ]
     },
     {
@@ -419,9 +437,11 @@
       "text": "Eine BMW S 1000 RR und zum ersten Mal ein Auto vor der Kamera: ein Porsche.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "s1000rr-porsche-2025-01.webp", "width": 2400, "height": 1600, "title": "Staubwolke", "alt": "Auto wirbelt Staub auf einer Wüstenpiste auf", "demo": 551 },
-        { "id": "02", "file": "s1000rr-porsche-2025-02.webp", "width": 2400, "height": 1600, "title": "Vor der Häuserzeile", "alt": "Geländewagen vor einer Häuserzeile", "demo": 514 },
-        { "id": "03", "file": "s1000rr-porsche-2025-03.webp", "width": 2400, "height": 1600, "title": "Im Streiflicht", "alt": "Dunkle Motorhaube im Streiflicht", "demo": 892 }
+        { "id": "01", "file": "s1000rr-porsche-2025-01.webp", "width": 1601, "height": 2400, "title": "Rote Linien", "alt": "Fahrer auf BMW S 1000 RR bei Nacht vor einem Gebäude mit roten Lichtbändern", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 54.3, "aperture": 2.8, "shutter": "1/50", "iso": 2000, "film": null, "source": "file" } },
+        { "id": "02", "file": "s1000rr-porsche-2025-02.webp", "width": 1601, "height": 2400, "title": "Porsche im roten Licht", "alt": "Weißer Porsche 911 nachts auf einem Parkplatz, rot angestrahlt", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 24, "aperture": 2.8, "shutter": "1/30", "iso": 640, "film": null, "source": "file" } },
+        { "id": "03", "file": "s1000rr-porsche-2025-03.webp", "width": 1601, "height": 2400, "title": "Wappen im Regen", "alt": "Porsche-Wappen auf roter Motorhaube voller Regentropfen", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 70, "aperture": 2.8, "shutter": "1/80", "iso": 800, "film": null, "source": "file" } },
+        { "id": "04", "file": "s1000rr-porsche-2025-04.webp", "width": 1601, "height": 2400, "title": "Carbon und Rot", "alt": "Verkleidung der BMW S 1000 RR mit Logo im roten Licht, Nahaufnahme", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 70, "aperture": 2.8, "shutter": "1/8", "iso": 2000, "film": null, "source": "file" } },
+        { "id": "05", "file": "s1000rr-porsche-2025-05.webp", "width": 1601, "height": 2400, "title": "Tacho im Regen", "alt": "Rot beleuchteter Drehzahlmesser hinter regennasser Scheibe", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 59.2, "aperture": 2.8, "shutter": "1/25", "iso": 3200, "film": null, "source": "file" } }
       ]
     },
     {
@@ -434,9 +454,10 @@
       "text": "Ein kleines Shooting mit der BMW S 1000 RR.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "s1000rr-2025-01.webp", "width": 2400, "height": 1600, "title": "In Bewegung", "alt": "Radfahrer in Bewegungsunschärfe", "demo": 1077 },
-        { "id": "02", "file": "s1000rr-2025-02.webp", "width": 1600, "height": 2400, "title": "Lichtspuren", "alt": "Lichtspuren auf einer nächtlichen Straße", "demo": 352 },
-        { "id": "03", "file": "s1000rr-2025-03.webp", "width": 2400, "height": 1600, "title": "Stadt bei Nacht", "alt": "Verkehr in einer Stadt bei Nacht", "demo": 579 }
+        { "id": "01", "file": "s1000rr-2025-01.webp", "width": 2400, "height": 1601, "title": "Nach Sonnenuntergang", "alt": "BMW S 1000 RR am Straßenrand vor orangem Abendhimmel und Baumsilhouetten", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 70, "aperture": 2.8, "shutter": "1/80", "iso": 100, "film": null, "source": "file" } },
+        { "id": "02", "file": "s1000rr-2025-02.webp", "width": 2400, "height": 1601, "title": "Lichtung", "alt": "BMW S 1000 RR im Wald, seitlich von der Sonne angestrahlt", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 70, "aperture": 2.8, "shutter": "1/320", "iso": 100, "film": null, "source": "file" } },
+        { "id": "03", "file": "s1000rr-2025-03.webp", "width": 1601, "height": 2400, "title": "Scheinwerfer", "alt": "Frontpartie der BMW S 1000 RR mit Scheinwerfern und roten Akzenten aus der Nähe", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 61.2, "aperture": 2.8, "shutter": "1/250", "iso": 100, "film": null, "source": "file" } },
+        { "id": "04", "file": "s1000rr-2025-04.webp", "width": 2400, "height": 1601, "title": "Kurze Pause", "alt": "Fahrer lehnt sich auf einem Waldweg im Frühlingsgrün über die BMW S 1000 RR", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 58.8, "aperture": 2.8, "shutter": "1/80", "iso": 100, "film": null, "source": "file" } }
       ]
     },
     {
@@ -551,18 +572,35 @@
       ]
     },
     {
+      "id": "mercedes-gle-2024",
+      "kind": "shoot",
+      "name": "Mercedes GLE im Schnee",
+      "collection": "automotive",
+      "year": 2024,
+      "date": "2024-12-15",
+      "coords": null,
+      "text": "Ein Mercedes GLE im ersten Schnee, zwischen Nebel und Tannen.",
+      "cover": 0,
+      "images": [
+        { "id": "01", "file": "mercedes-gle-2024-01.webp", "width": 2400, "height": 1601, "title": "Kurve im Schnee", "alt": "Mercedes GLE mit Scheinwerfern in einer verschneiten Kurve zwischen Tannen", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 64.1, "aperture": 2.8, "shutter": "1/320", "iso": 320, "film": null, "source": "file" } },
+        { "id": "02", "file": "mercedes-gle-2024-02.webp", "width": 1601, "height": 2400, "title": "Im Nebel", "alt": "Blauer Mercedes GLE auf nasser Straße vor verschneitem Hang im Nebel", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 54.3, "aperture": 2.8, "shutter": "1/1600", "iso": 800, "film": null, "source": "file" } },
+        { "id": "03", "file": "mercedes-gle-2024-03.webp", "width": 1800, "height": 2400, "title": "Allein im Weiß", "alt": "Dunkler SUV auf einer verschneiten Fläche, dahinter Nebel und Tannen", "exif": { "camera": "Apple iPhone 15 Pro Max", "lens": "iPhone 15 Pro Max back triple camera 6.765mm f/1.78", "focal": 6.8, "aperture": 1.8, "shutter": "1/560", "iso": 100, "film": null, "source": "file" } }
+      ]
+    },
+    {
       "id": "tuono-660-2024",
       "kind": "shoot",
-      "name": "Aprilia Tuono 660",
+      "name": "Tuono 660 & S 1000 RR",
       "collection": "automotive",
       "year": 2024,
       "coords": null,
       "text": "Wieder die Tuono 660 – diesmal mit mehr Ruhe für Licht und Details.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "tuono-660-2024-01.webp", "width": 2400, "height": 1600, "title": "Blau am Abend", "alt": "Blauer Bus vor Abendhimmel", "demo": 655 },
-        { "id": "02", "file": "tuono-660-2024-02.webp", "width": 2400, "height": 1600, "title": "Im Verkehr", "alt": "Bus im Straßenverkehr", "demo": 183 },
-        { "id": "03", "file": "tuono-660-2024-03.webp", "width": 2400, "height": 1600, "title": "Landstraße", "alt": "Blick aus dem Auto auf eine Landstraße", "demo": 757 }
+        { "id": "01", "file": "tuono-660-2024-01.webp", "width": 1920, "height": 2400, "title": "Tuono von oben", "alt": "Schwarze Aprilia Tuono 660 auf grauem Pflaster, schräg von oben", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 41.8, "aperture": 2.8, "shutter": "1/1000", "iso": 100, "film": null, "source": "file" } },
+        { "id": "02", "file": "tuono-660-2024-02.webp", "width": 1601, "height": 2400, "title": "Auf der Treppe", "alt": "Fahrer in Lederkombi auf schwarzer Aprilia vor Glasfassade und Treppe", "exif": { "camera": "Sony α7R III", "lens": "FE 70-200mm F4 G OSS", "focal": 158, "aperture": 8, "shutter": "1/160", "iso": 100, "film": null, "source": "file" } },
+        { "id": "03", "file": "tuono-660-2024-03.webp", "width": 1601, "height": 2400, "title": "Zwischen Ruinen", "alt": "Fahrer im roten Pullover auf BMW S 1000 RR vor verfallener Halle mit Graffiti", "exif": { "camera": "Sony α7R III", "lens": "FE 85mm F1.8", "focal": 85, "aperture": 1.8, "shutter": "1/320", "iso": 100, "film": null, "source": "file" } },
+        { "id": "04", "file": "tuono-660-2024-04.webp", "width": 1350, "height": 2400, "title": "Rot und Schwarz", "alt": "Schwarz-rote BMW S 1000 RR auf Pflaster vor grauer Wand", "exif": { "camera": "Sony α7R III", "lens": "FE 70-200mm F4 G OSS", "focal": 99, "aperture": 4, "shutter": "1/125", "iso": 100, "film": null, "source": "file" } }
       ]
     },
     {
@@ -660,9 +698,23 @@
       "text": "Die Aprilia Tuono 660 im Frühjahr 2023.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "tuono-660-2023-01.webp", "width": 2400, "height": 1600, "title": "Vor gelben Toren", "alt": "Zwei klassische Autos vor gelben Toren", "demo": 133 },
-        { "id": "02", "file": "tuono-660-2023-02.webp", "width": 2400, "height": 1600, "title": "Auf der Wiese", "alt": "Alter Pick-up auf einer Wiese", "demo": 1072 },
-        { "id": "03", "file": "tuono-660-2023-03.webp", "width": 1600, "height": 2400, "title": "Armaturen", "alt": "Lenkrad und Armaturen eines alten Autos", "demo": 605 }
+        { "id": "01", "file": "tuono-660-2023-01.webp", "width": 2400, "height": 2400, "title": "Lichtmalerei am Museum", "alt": "Fahrer auf schwarzer Aprilia vor dem Mercedes-Benz Museum, umrahmt von Lichtschleifen", "exif": { "camera": "Sony α7R III", "lens": "E 28-200mm F2.8-5.6 A071", "focal": 30, "aperture": 8, "shutter": "13", "iso": 100, "film": null, "source": "file" } },
+        { "id": "02", "file": "tuono-660-2023-02.webp", "width": 2400, "height": 2400, "title": "Mitzieher", "alt": "Fahrer in Schwarz auf Aprilia Tuono 660, Hintergrund durch Mitziehen verwischt", "exif": { "camera": "Sony α7R III", "lens": "E 28-200mm F2.8-5.6 A071", "focal": null, "aperture": null, "shutter": null, "iso": null, "film": null, "source": "manual" } }
+      ]
+    },
+    {
+      "id": "lamborghini-2023",
+      "kind": "shoot",
+      "name": "Lamborghini Huracán",
+      "collection": "automotive",
+      "year": 2023,
+      "date": "2023-03-13",
+      "coords": null,
+      "text": "Ein Lamborghini Huracán in Tarnfolierung mit goldenen Felgen.",
+      "cover": 0,
+      "images": [
+        { "id": "01", "file": "lamborghini-2023-01.webp", "width": 2400, "height": 1601, "title": "Camouflage", "alt": "Lamborghini Huracán mit Tarnfolierung und goldenen Felgen in der Stadt", "exif": { "camera": "Sony α7R III", "lens": "E 28-200mm F2.8-5.6 A071", "focal": null, "aperture": null, "shutter": null, "iso": null, "film": null, "source": "manual" } },
+        { "id": "02", "file": "lamborghini-2023-02.webp", "width": 1350, "height": 2400, "title": "Goldene Felge", "alt": "Goldene Felge eines tarnfolierten Lamborghini aus der Nähe", "exif": { "camera": "Sony α7R III", "lens": "E 28-200mm F2.8-5.6 A071", "focal": 124, "aperture": 5, "shutter": "1/125", "iso": 640, "film": null, "source": "file" } }
       ]
     },
     {
@@ -675,9 +727,10 @@
       "text": "Mein erstes Motorrad-Shooting: die Aprilia Tuono 660.",
       "cover": 0,
       "images": [
-        { "id": "01", "file": "tuono-660-2022-01.webp", "width": 2400, "height": 1600, "title": "Front", "alt": "Front eines klassischen Autos", "demo": 1071 },
-        { "id": "02", "file": "tuono-660-2022-02.webp", "width": 2400, "height": 1600, "title": "An der Hauswand", "alt": "Altes Auto vor einer Hauswand", "demo": 111 },
-        { "id": "03", "file": "tuono-660-2022-03.webp", "width": 1600, "height": 2400, "title": "Durch die Scheibe", "alt": "Blick durch die Windschutzscheibe auf Bäume", "demo": 1070 }
+        { "id": "01", "file": "tuono-660-2022-01.webp", "width": 1920, "height": 2400, "title": "Vor dem Museum", "alt": "Fahrer sitzt nachts auf Aprilia Tuono 660 vor dem Mercedes-Benz Museum", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 24-70mm F/2.8 Di VC USD G2 A032N", "focal": 24, "aperture": 2.8, "shutter": "1/8", "iso": 4000, "film": null, "source": "file" } },
+        { "id": "02", "file": "tuono-660-2022-02.webp", "width": 1920, "height": 2400, "title": "Zu zweit", "alt": "BMW S 1000 RR und Aprilia Tuono 660 nachts auf Pflaster, Scheinwerfer an", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 24-70mm F/2.8 Di VC USD G2 A032N", "focal": 31, "aperture": 2.8, "shutter": "1/30", "iso": 1250, "film": null, "source": "file" } },
+        { "id": "03", "file": "tuono-660-2022-03.webp", "width": 1920, "height": 2400, "title": "Vor der Glasfront", "alt": "Zwei schwarze Motorräder nachts vor einer beleuchteten Glasfront", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 24-70mm F/2.8 Di VC USD G2 A032N", "focal": 52, "aperture": 4, "shutter": "1/30", "iso": 1250, "film": null, "source": "file" } },
+        { "id": "04", "file": "tuono-660-2022-04.webp", "width": 1920, "height": 2400, "title": "Zwischen Säulen", "alt": "Aprilia Tuono 660 nachts vor Säulen und Glasfassade", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 24-70mm F/2.8 Di VC USD G2 A032N", "focal": 62, "aperture": 2.8, "shutter": "1/60", "iso": 1250, "film": null, "source": "file" } }
       ]
     },
     {
