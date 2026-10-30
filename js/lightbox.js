@@ -9,7 +9,7 @@
 // Styles: css/lightbox.css
 
 import { collectionUrl, entryUrl, hasOwnPage, imageAttrs } from './data.js';
-import { KIND_LABELS, TECH_TAGS, formatExif, monoUpper, pad2 } from './format.js';
+import { TECH_TAGS, formatExif, monoUpper, nameWithYear, pad2 } from './format.js';
 
 const gsap = window.gsap;
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -180,12 +180,11 @@ export function createLightbox({ images, thumbs, collections = [], currentEntryI
   // ---------- Infobereich ----------
 
   /**
-   * Herkunft: „Trip · Seoul · 2026 →“ als Link zum Eintrag. Nur Text auf dessen eigener Seite und bei
-   * Einträgen ohne eigene Seite (Frames ohne Namen, Bildwand-Shoots mit Namen: „Shoot · Aprilia Tuono 660 · 2022“).
+   * Herkunft: „Seoul · 2026 →“ als Link zum Eintrag. Nur Text auf dessen eigener Seite und bei Einträgen
+   * ohne eigene Seite (Bildwand: „Aprilia Tuono 660 · 2022“, Frames nur das Jahr).
    */
   function renderOrigin(entry) {
-    const isFrame = entry.kind === 'frame';
-    const text = monoUpper([KIND_LABELS[entry.kind], isFrame ? null : entry.name, entry.year].filter(Boolean).join(' · '));
+    const text = monoUpper(entry.kind === 'frame' ? String(entry.year ?? '') : nameWithYear(entry));
     const linked = hasOwnPage(entry) && entry.id !== currentEntryId;
     const origin = document.createElement(linked ? 'a' : 'span');
     origin.className = 'lightbox__origin label';

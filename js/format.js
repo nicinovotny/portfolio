@@ -114,25 +114,16 @@ export const KIND_ORDER = ['trip', 'shoot', 'series'];
 const countOf = (count, kind) => `${count} ${count === 1 ? KIND_LABELS[kind] : KIND_PLURALS[kind]}`;
 
 /**
- * Zähler einer Collection, z. B. ["21 Trips"], ["8 Shoots"], ["21 Trips", "4 Frames"]
- * oder – nur Einzelbilder – ["23 Bilder", "aus 6 Einträgen"].
- * @param entries  Trips/Shoots der Collection (getCollectionEntries)
- * @param frames   Einzelbilder der Collection (getCollectionFrames)
+ * Zähler einer Collection, z. B. ["21 Trips"] (Alben) oder ["21 Bilder"] (Bildwand),
+ * bei Alben mit zusätzlichen Einzelbildern ["21 Trips", "4 Bilder"].
+ * @param entries  Einträge mit eigener Seite (getCollectionEntries)
+ * @param frames   Bilder der Bildwand (getCollectionFrames)
  */
 export function formatCollectionCounts(entries, frames) {
   const parts = KIND_ORDER
     .map((kind) => [kind, entries.filter((entry) => entry.kind === kind).length])
     .filter(([, count]) => count)
     .map(([kind, count]) => countOf(count, kind));
-  if (frames.length) {
-    if (entries.length) {
-      parts.push(countOf(frames.length, 'frame'));
-    } else {
-      // „aus 6 Einträgen“ nur bei getaggten Bildern aus anderen Collections (Wildlife), nicht bei der Bildwand
-      const sources = new Set(frames.filter(({ tagged }) => tagged).map(({ entry }) => entry.id)).size;
-      parts.push(`${frames.length} ${frames.length === 1 ? 'Bild' : 'Bilder'}`);
-      if (sources > 1) parts.push(`aus ${sources} Einträgen`);
-    }
-  }
+  if (frames.length) parts.push(`${frames.length} ${frames.length === 1 ? 'Bild' : 'Bilder'}`);
   return parts;
 }

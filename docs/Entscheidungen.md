@@ -282,9 +282,13 @@ Nici: kurzes Einfrieren und schwarze Bühne beim Öffnen eines Eintrags. Gefunde
 - Rechts ein festes Bildfenster (sticky, **3:2 quer** statt 4:5 hochkant wie bei Dany): Titelbild der aktiven Collection blendet mit leichtem Zoom über (0,7 s / 1,4 s), unten `01 / 05` und Name. Bilder werden vorgeladen, sobald die Liste in die Nähe kommt.
 - Unter 64rem: kein Bildfenster, jede Zeile mit eigenem Bild (16:10) darunter, Angaben immer sichtbar.
 
-### Bildwand für Automotive, Portrait und Creative (30.10.2026)
-- Nici: Bei Automotive (und ebenso Portrait, Creative) passt die starre Gliederung in Alben mit Datum nicht – oft nur 2–3 Bilder pro Termin. Entschieden: **Bildwand statt Kacheln**.
-- Schalter an der Collection in `albums.json`: `"layout": "wall"`. Gesetzt bei `automotive`, `portrait`, `creative`. Landscape bleibt bei Trips mit Jahren, Wildlife (getaggte Bilder) unverändert.
-- Die Collection-Seite zeigt dann nur eine Galerie in Bildzeilen gleicher Höhe (wie Frames) mit allen Bildern ihrer Einträge, neueste Einträge zuerst; keine Abschnittsüberschrift, Zähler „Automotive · 21 Bilder“. Unter jedem Bild Titel und Name des Shoots („Aprilia Tuono 660 · 2022“), in der Großansicht „Shoot · Aprilia Tuono 660 · 2022“ ohne Link.
-- Die Shoots bleiben in `albums.json` als Gruppierung bestehen (Name, Jahr, Aufnahmedaten, Reihenfolge), haben aber **keine eigene Seite** mehr: `hasOwnPage(entry)` in `js/data.js` (falsch bei Frames und Einträgen aus Bildwand-Collections). `entryUrl(entry, image)` führt dann auf `collection.html?id=…&bild=<entry>/<bild>` (Großansicht öffnet sich), `entry.html?id=<shoot>` leitet dorthin weiter (alte Links). Gilt überall: „Zuletzt“, Hero-Herkunft, Lightbox, Herkunftszeilen.
-- Zurückschalten: `"layout"` entfernen, dann gibt es wieder Kacheln und Eintragsseiten.
+### Zwei Arten von Collection: Alben und Bildwand (30.10.2026)
+- Nici: Bei Automotive, Portrait und Creative passt die starre Gliederung in Alben mit Datum nicht – oft nur 2–3 Bilder pro Termin. Außerdem wirkte es uneinheitlich („Kraut und Rüben“: Wildlife mit Überschrift „Frames“, „Shoot · …“ in der Großansicht). Landscape ist mit Abstand der größte Teil und behält seine Alben.
+- **Genau zwei Arten**, Schalter `"layout"` an der Collection in `albums.json`:
+  - `"layout": "albums"` (nur Landscape): Einträge als Kacheln mit eigener Seite, nach Jahren gegliedert.
+  - ohne `"layout"` (Standard; Automotive, Wildlife, Portrait, Creative): **Bildwand** – alle Bilder in einer Galerie (Bildzeilen gleicher Höhe), neueste Einträge zuerst, ohne Abschnittsüberschrift, Zähler „Automotive · 21 Bilder“.
+- **Unter jedem Bild immer dasselbe Muster:** Titel, darunter die Herkunft mit Jahr. Mit Link, wenn es eine Seite dazu gibt (getaggte Bilder aus Landscape: „Island · 2021 →“), sonst als Text („Aprilia Tuono 660 · 2022“; bei Frames nur das Jahr). Die Großansicht zeigt dieselbe Herkunft, die Startseite „Aus: Seoul · 2026 →“.
+- **Keine internen Begriffe mehr in der Oberfläche:** kein „Frame“, kein „Shoot“. „Trip“ bleibt für die Landscape-Alben (Kacheln, Eintragsseite, Zähler). Der Intro-Zähler der Startseite zählt Trips statt „Einträge“.
+- Einträge in Bildwand-Collections bleiben in `albums.json` als Gruppierung (Name, Jahr, Aufnahmedaten, Reihenfolge), haben aber **keine eigene Seite**: `hasOwnPage(entry)` / `hasAlbums(collection)` in `js/data.js`. `entryUrl(entry, image)` führt dann auf `collection.html?id=…&bild=<entry>/<bild>` (Großansicht öffnet sich), `entry.html?id=<shoot>` leitet dorthin weiter (alte Links).
+- „Zuletzt“ auf der Startseite zeigt nur Alben – eine Kachel verspricht eine Seite.
+- Wildlife: getaggt `iceland-2021/08` (Papageientaucher), `stockholm-2021/05` (Möwe), `scotland-2024/04` (Highland-Rind), dazu der Demo-Bär – 4 Bilder.

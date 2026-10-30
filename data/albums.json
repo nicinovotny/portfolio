@@ -5,6 +5,7 @@
       "name": "Landscape",
       "order": 1,
       "published": true,
+      "layout": "albums",
       "groupByYear": true,
       "text": "Berge, Küsten und raues Wetter – meine Reisen von Schottland bis Seoul, am liebsten früh am Morgen oder zur blauen Stunde.",
       "cover": "seoul-2026/01",
@@ -28,7 +29,6 @@
       "name": "Automotive",
       "order": 2,
       "published": true,
-      "layout": "wall",
       "text": "Motorräder und Autos, meist in und um Stuttgart – meine eigenen und die von Freunden.",
       "cover": null,
       "heroFavorites": [
@@ -53,7 +53,6 @@
       "name": "Portrait",
       "order": 4,
       "published": true,
-      "layout": "wall",
       "text": "Menschen vor der Kamera – bisher vor allem Hochzeiten von Freunden.",
       "cover": null,
       "heroFavorites": [
@@ -66,7 +65,6 @@
       "name": "Creative",
       "order": 5,
       "published": true,
-      "layout": "wall",
       "text": "Ideen und Experimente abseits der klassischen Fotografie.",
       "cover": null,
       "heroFavorites": [
@@ -512,7 +510,7 @@
         { "id": "01", "file": "scotland-2024-01.webp", "width": 1601, "height": 2400, "title": "Eilean Donan Castle", "alt": "Burg Eilean Donan auf ihrer Insel im Loch, vorne unscharfe pinke Blüten", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 55.9, "aperture": 2.8, "shutter": "1/1600", "iso": 500, "film": null, "source": "file" } },
         { "id": "02", "file": "scotland-2024-02.webp", "width": 2400, "height": 1601, "title": "Quiraing", "alt": "Grüne Hänge und Felskanten des Quiraing mit Straße, Seen und knorrigem Baum unter Wolken", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 24, "aperture": 8, "shutter": "1/400", "iso": 100, "film": null, "source": "file" } },
         { "id": "03", "file": "scotland-2024-03.webp", "width": 2400, "height": 1601, "title": "Cottage vor den Cuillins", "alt": "Weißes Cottage in der Heide vor den dunklen Gipfeln der Cuillin Hills", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 44.3, "aperture": 9, "shutter": "1/125", "iso": 100, "film": null, "source": "file" } },
-        { "id": "04", "file": "scotland-2024-04.webp", "width": 2400, "height": 1601, "title": "Highland-Rind", "alt": "Zottiges Hochlandrind mit langen Hörnern blickt frontal in die Kamera", "exif": { "camera": "Sony α7R III", "lens": "FE 70-200mm F4 G OSS", "focal": 81, "aperture": 4, "shutter": "1/800", "iso": 320, "film": null, "source": "file" } },
+        { "id": "04", "file": "scotland-2024-04.webp", "width": 2400, "height": 1601, "title": "Highland-Rind", "alt": "Zottiges Hochlandrind mit langen Hörnern blickt frontal in die Kamera", "tags": ["wildlife"], "exif": { "camera": "Sony α7R III", "lens": "FE 70-200mm F4 G OSS", "focal": 81, "aperture": 4, "shutter": "1/800", "iso": 320, "film": null, "source": "file" } },
         { "id": "05", "file": "scotland-2024-05.webp", "width": 2400, "height": 1601, "title": "Old Man of Storr", "alt": "Felsnadeln des Old Man of Storr über grünen Hängen und Seen im wechselnden Licht", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 26.9, "aperture": 8, "shutter": "1/100", "iso": 125, "film": null, "source": "file" } },
         { "id": "06", "file": "scotland-2024-06.webp", "width": 2400, "height": 1601, "title": "Glenfinnan-Viadukt", "alt": "Dampfzug fährt über das gebogene Glenfinnan-Viadukt durch ein grünes Tal", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 37.3, "aperture": 8, "shutter": "1/500", "iso": 200, "film": null, "source": "file" } },
         { "id": "07", "file": "scotland-2024-07.webp", "width": 1601, "height": 2400, "title": "Wrack von Corpach", "alt": "Rostiges Fischerboot liegt auf einem Kiesstrand vor wolkenverhangenen Bergen", "exif": { "camera": "Sony α7R III", "lens": "24-70mm F2.8 DG DN Art 019", "focal": 61.6, "aperture": 2.8, "shutter": "1/100", "iso": 320, "film": null, "source": "file" } },
@@ -702,7 +700,7 @@
         { "id": "05", "file": "iceland-2021-05.webp", "width": 1920, "height": 2400, "title": "Vor dem Skógafoss", "alt": "Person in gelber Regenjacke steht vor der Gischtwand des Skógafoss", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 24-70mm F/2.8 Di VC USD G2 A032N", "focal": 58, "aperture": 8, "shutter": "1/80", "iso": 100, "film": null, "source": "file" } },
         { "id": "06", "file": "iceland-2021-06.webp", "width": 1920, "height": 2400, "title": "Flugzeugwrack am Sólheimasandur", "alt": "Schwarz-weiß: Rumpf eines Flugzeugwracks im schwarzen Sand unter strahlender Sonne", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 24-70mm F/2.8 Di VC USD G2 A032N", "focal": 24, "aperture": 18, "shutter": "1/100", "iso": 100, "film": null, "source": "file" } },
         { "id": "07", "file": "iceland-2021-07.webp", "width": 2400, "height": 1800, "title": "Wrack in der Sandwüste", "alt": "Luftbild des Flugzeugwracks allein in einer weiten schwarzen Sandfläche", "exif": { "camera": "DJI Mavic Air 2", "lens": "24.0 mm f/2.8", "focal": 4.5, "aperture": 2.8, "shutter": "1/730", "iso": 100, "film": null, "source": "file" } },
-        { "id": "08", "file": "iceland-2021-08.webp", "width": 1930, "height": 2400, "title": "Papageientaucher im Gras", "alt": "Papageientaucher zwischen unscharfen Grashalmen im warmen Licht", "exif": { "camera": "Nikon D750", "lens": "Tamron 100-400mm F4.5-6.3 Di VC USD", "focal": 400, "aperture": 8, "shutter": "1/500", "iso": 2000, "film": null, "source": "mixed" } },
+        { "id": "08", "file": "iceland-2021-08.webp", "width": 1930, "height": 2400, "title": "Papageientaucher im Gras", "alt": "Papageientaucher zwischen unscharfen Grashalmen im warmen Licht", "tags": ["wildlife"], "exif": { "camera": "Nikon D750", "lens": "Tamron 100-400mm F4.5-6.3 Di VC USD", "focal": 400, "aperture": 8, "shutter": "1/500", "iso": 2000, "film": null, "source": "mixed" } },
         { "id": "09", "file": "iceland-2021-09.webp", "width": 1600, "height": 2400, "title": "Am Vestrahorn", "alt": "Person in gelber Jacke am schwarzen Strand vor dem Vestrahorn unter dunklen Wolken", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 15-30mm F2.8 Di VC USD A012N", "focal": 15, "aperture": 8, "shutter": "1/100", "iso": 800, "film": null, "source": "file" } },
         { "id": "10", "file": "iceland-2021-10.webp", "width": 2400, "height": 1800, "title": "Stokksnes von oben", "alt": "Luftbild der Halbinsel Stokksnes mit rotem Leuchtturm vor wolkenverhangenen Bergen", "exif": { "camera": "DJI Mavic Air 2", "lens": "24.0 mm f/2.8", "focal": 4.5, "aperture": 2.8, "shutter": "1/60", "iso": 100, "film": null, "source": "file" } },
         { "id": "11", "file": "iceland-2021-11.webp", "width": 1920, "height": 2400, "title": "Hengifoss", "alt": "Luftbild des Hengifoss vor Felswänden mit roten Gesteinsschichten", "exif": { "camera": "DJI Mavic Air 2", "lens": "24.0 mm f/2.8", "focal": 4.5, "aperture": 2.8, "shutter": "1/15", "iso": 100, "film": null, "source": "file" } },
@@ -731,7 +729,7 @@
         { "id": "02", "file": "stockholm-2021-02.webp", "width": 1602, "height": 2400, "title": "Riddarholmskyrkan", "alt": "Gusseiserne Turmspitze der Riddarholmskyrkan vor Abendhimmel mit rosa Wolken", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 24-70mm F/2.8 Di VC USD G2 A032N", "focal": 52, "aperture": 8, "shutter": "1/30", "iso": 100, "film": null, "source": "file" } },
         { "id": "03", "file": "stockholm-2021-03.webp", "width": 1602, "height": 2400, "title": "Af Chapman", "alt": "Weißes Segelschiff am Ufer von Skeppsholmen unter dunklen Wolken", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 24-70mm F/2.8 Di VC USD G2 A032N", "focal": 70, "aperture": 2.8, "shutter": "1/500", "iso": 800, "film": null, "source": "file" } },
         { "id": "04", "file": "stockholm-2021-04.webp", "width": 2400, "height": 1602, "title": "Blick auf Riddarholmen", "alt": "Abendlicher Blick über das Wasser auf Riddarholmen mit Kirchturm und Schiff", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 24-70mm F/2.8 Di VC USD G2 A032N", "focal": 50, "aperture": 8, "shutter": "1/50", "iso": 2500, "film": null, "source": "file" } },
-        { "id": "05", "file": "stockholm-2021-05.webp", "width": 1920, "height": 2400, "title": "Möwe auf dem Fels", "alt": "Heringsmöwe auf einem Felsen vor Bäumen und blauem Himmel", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 24-70mm F/2.8 Di VC USD G2 A032N", "focal": 70, "aperture": 8, "shutter": "1/400", "iso": 200, "film": null, "source": "file" } },
+        { "id": "05", "file": "stockholm-2021-05.webp", "width": 1920, "height": 2400, "title": "Möwe auf dem Fels", "alt": "Heringsmöwe auf einem Felsen vor Bäumen und blauem Himmel", "tags": ["wildlife"], "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 24-70mm F/2.8 Di VC USD G2 A032N", "focal": 70, "aperture": 8, "shutter": "1/400", "iso": 200, "film": null, "source": "file" } },
         { "id": "06", "file": "stockholm-2021-06.webp", "width": 1920, "height": 2400, "title": "Rotes Haus in den Schären", "alt": "Rotes Holzhaus zwischen Bäumen auf einer felsigen Schäreninsel", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 24-70mm F/2.8 Di VC USD G2 A032N", "focal": 70, "aperture": 8, "shutter": "1/500", "iso": 200, "film": null, "source": "file" } },
         { "id": "07", "file": "stockholm-2021-07.webp", "width": 1920, "height": 2400, "title": "Gröna Lund", "alt": "Freizeitpark Gröna Lund mit Achterbahnen und Falltürmen vom Wasser aus", "exif": { "camera": "Nikon D750", "lens": "TAMRON SP 24-70mm F/2.8 Di VC USD G2 A032N", "focal": 26, "aperture": 8, "shutter": "1/640", "iso": 200, "film": null, "source": "file" } }
       ]

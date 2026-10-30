@@ -1,13 +1,13 @@
-// Collection-Seite (collection.html?id=<collection>): Kopf mit Ziffer, Name, Text und Zählern,
-// darunter die Einträge als Kacheln (gruppiert nach Art, neueste zuerst, ohne Jahresüberschriften)
-// und die Frames: eigene Einzelbilder plus getaggte Bilder aus anderen Einträgen (mit Herkunftszeile).
-// Frames öffnen direkt die Großansicht; &bild=<entryId>/<imageId> öffnet sie beim Laden (Ziel von
-// entry.html?id=<frame>). Zum Schluss: nächste Collection (mit Umlauf) und Übersicht.
-// Collections mit "layout": "wall" (Automotive, Portrait, Creative) zeigen statt Kacheln nur eine Bildwand:
-// Ihre Shoots haben keine eigene Seite, alle Bilder stehen wie Frames in einer Galerie (js/data.js, hasOwnPage).
+// Collection-Seite (collection.html?id=<collection>): Kopf mit Ziffer, Name, Text und Zählern, darunter
+// je nach Art der Collection (js/data.js, hasAlbums):
+//   Alben (Landscape) – Einträge als Kacheln mit eigener Seite, nach Jahren gegliedert
+//   Bildwand (alle anderen) – alle Bilder in einer Galerie, unter jedem Titel und Herkunft
+//                             („Aprilia Tuono 660 · 2022“; mit Link „Island · 2021 →“, wenn es die Seite gibt)
+// Die Bilder öffnen die Großansicht; &bild=<entryId>/<imageId> öffnet sie beim Laden (Ziel aller Links
+// auf Einträge ohne eigene Seite). Zum Schluss: nächste Collection (mit Umlauf) und Übersicht.
 
 import {
-  OVERVIEW_URL, collectionUrl, entryUrl, getCollectionEntries, getCollectionFrames, getCollections, imageRef,
+  OVERVIEW_URL, collectionUrl, entryUrl, getCollectionEntries, getCollectionFrames, getCollections, hasAlbums, hasOwnPage, imageRef,
 } from './data.js';
 import { KIND_ORDER, KIND_PLURALS as PLURAL, formatCollectionCounts, nameWithYear, pad2 } from './format.js';
 import { createGalleryItem, justifyGallery } from './gallery.js';
@@ -56,7 +56,7 @@ async function init() {
 
   renderHead(collection, index, published.length, entries, frames);
   renderEntries(entries, Boolean(collection.groupByYear));
-  const frameItems = renderFrames(frames, collection.layout === 'wall');
+  const frameItems = renderFrames(frames, !hasAlbums(collection));
   if (!entries.length && !frames.length) renderEmpty();
   renderPager(published, index);
 
@@ -84,7 +84,7 @@ function renderHead(collection, index, total, entries, frames) {
   );
   el.name.textContent = collection.name;
   el.text.textContent = collection.text ?? '';
-  // z. B. „Landscape · 21 Trips“ oder „Wildlife · 23 Bilder · aus 6 Einträgen“
+  // z. B. „Landscape · 21 Trips“ oder „Automotive · 21 Bilder“
   el.readout.textContent = [collection.name, ...formatCollectionCounts(entries, frames)].join(' · ');
 }
 
@@ -159,40 +159,37 @@ function yearGroups(list, grid) {
   });
 }
 
-// ---------- Frames ----------
+// ---------- Bildwand ----------
 
 /**
- * Bildunterschrift: Titel; darunter bei getaggten Bildern „Aus: Island · 2025 →“ (Link zum Eintrag),
- * bei Bildwand-Shoots der Name ohne Link („Aprilia Tuono 660 · 2022“), bei Frames das Jahr
+ * Bildunterschrift: Titel, darunter die Herkunft – mit Link, wenn der Eintrag eine eigene Seite hat
+ * („Island · 2021 →“), sonst als Text („Aprilia Tuono 660 · 2022“; bei Frames nur das Jahr)
  */
-function frameCaption({ entry, image, tagged }) {
+function frameCaption({ entry, image }) {
   const wrap = document.createElement('span');
   wrap.className = 'frame-caption';
   wrap.append(Object.assign(document.createElement('span'), { textContent: image.title ?? '' }));
-  const quiet = (textContent) => Object.assign(document.createElement('span'), { className: 'label label--quiet', textContent });
-  if (tagged && entry.kind !== 'frame') {
-    const origin = Object.assign(document.createElement('a'), {
+  if (hasOwnPage(entry)) {
+    wrap.append(Object.assign(document.createElement('a'), {
       className: 'frame-caption__origin label',
       href: entryUrl(entry, image),
-      textContent: `Aus: ${nameWithYear(entry)} →`,
-    });
-    wrap.append(origin);
-  } else if (entry.kind !== 'frame') {
-    wrap.append(quiet(nameWithYear(entry)));
-  } else if (entry.year) {
-    wrap.append(quiet(String(entry.year)));
+      textContent: `${nameWithYear(entry)} →`,
+    }));
+  } else {
+    const origin = entry.kind === 'frame' ? String(entry.year ?? '') : nameWithYear(entry);
+    if (origin) wrap.append(Object.assign(document.createElement('span'), { className: 'label label--quiet', textContent: origin }));
   }
   return wrap;
 }
 
-/** Frames als Abschnitt unter den Kacheln; bei "layout": "wall" ist die Galerie die ganze Seite (ohne Überschrift) */
+/** Bildwand: die ganze Seite ohne Überschrift; bei Alben-Collections ein Abschnitt „Weitere Bilder“ unter den Kacheln */
 function renderFrames(frames, wall = false) {
   if (!frames.length) return [];
-  const wrap = wall ? el.sections : section(PLURAL.frame, frames.length, 'abschnitt-frames');
+  const wrap = wall ? el.sections : section('Weitere Bilder', frames.length, 'abschnitt-bilder');
   const gallery = document.createElement('div');
-  gallery.className = wall ? 'gallery gallery--wall' : 'gallery';
+  gallery.className = 'gallery';
   gallery.setAttribute('role', 'list');
-  gallery.setAttribute('aria-label', wall ? 'Bilder' : 'Frames');
+  gallery.setAttribute('aria-label', 'Bilder');
   wrap.append(gallery);
 
   const items = frames.map((frame, index) => createGalleryItem(frame.entry, frame.image, index, frameCaption(frame)));
@@ -200,7 +197,7 @@ function renderFrames(frames, wall = false) {
   return items;
 }
 
-/** &bild=<entryId>/<imageId>: Frame in der Großansicht öffnen (z. B. von entry.html?id=<frame>) */
+/** &bild=<entryId>/<imageId>: Bild in der Großansicht öffnen (Ziel von entryUrl bei Einträgen ohne eigene Seite) */
 function openRequested(ref, frames, items, lightbox) {
   if (!ref) return;
   const index = frames.findIndex(({ entry, image }) => imageRef(entry, image) === ref);

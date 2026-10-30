@@ -5,13 +5,13 @@
 //      ist zugleich der Taktgeber: ist sie voll, kommt die nächste Collection.
 //   2. Persönliches Intro mit Zahlen aus albums.json
 //   3. Collections als Index: Liste links, Bildfenster rechts (Handy: Bild je Zeile)
-//   4. Die drei neuesten Einträge + Kartenstreifen
+//   4. Die drei neuesten Alben + Kartenstreifen
 
 import {
   collectionUrl, entryUrl, getCollectionCover, getCollectionEntries, getCollectionFrames, getCollections, getCover,
   getEntries, getHeroCollections, getMapEntries, getNewestEntries, hasOwnPage, imageAttrs,
 } from './data.js';
-import { KIND_LABELS, formatCollectionCounts, nameWithYear, pad2 } from './format.js';
+import { formatCollectionCounts, nameWithYear, pad2 } from './format.js';
 import { contourPath, seedOf } from './contours.js';
 import { createProjection, graticulePath } from './map-projection.js';
 import { applyScrim } from './scrim.js';
@@ -246,10 +246,10 @@ function updateCaption({ collection, entry, image, counts }, initial) {
   el.title.textContent = collection.name;
   el.open.href = collectionUrl(collection.id);
 
-  // „Aus: Trip · Seoul · 2026 →“ – bei Frames „Aus: Frame · 2025“; ohne eigene Seite (Frames, Bildwand)
-  // öffnet der Link die Collection mit diesem Bild in der Großansicht
-  const isFrame = entry.kind === 'frame';
-  el.origin.textContent = `Aus: ${[KIND_LABELS[entry.kind], isFrame ? null : entry.name, entry.year].filter(Boolean).join(' · ')}${isFrame ? '' : ' →'}`;
+  // „Aus: Seoul · 2026 →“ (bei Frames nur das Jahr); ohne eigene Seite (Bildwand, Frames) öffnet der Link
+  // die Collection mit diesem Bild in der Großansicht
+  const origin = entry.kind === 'frame' ? String(entry.year ?? '') : nameWithYear(entry);
+  el.origin.textContent = origin ? `Aus: ${origin} →` : 'Ansehen →';
   el.origin.href = entryUrl(entry, image);
   // Ist das Bild das Titelbild des Eintrags, fliegt es beim Klick in dessen Bühne (js/transitions.js)
   if (hasOwnPage(entry) && getCover(entry) === image) {
@@ -397,7 +397,7 @@ function setupReveal() {
 // 2. Persönliches Intro
 // =====================================================================
 
-/** Readout: „· Seit 2019 · 13 Länder · 30 Einträge“ (Ort steht von Hand im HTML) */
+/** Readout: „· Seit 2019 · 13 Länder · 25 Trips“ (Ort steht von Hand im HTML) */
 async function initIntro() {
   const target = document.querySelector('[data-intro-stats]');
   try {
@@ -405,10 +405,12 @@ async function initIntro() {
     const years = entries.map((entry) => entry.year).filter(Number.isInteger);
     // Land ohne Zusatz in Klammern zählen, z. B. „Färöer (Dänemark)“ → „Färöer“
     const countries = new Set(entries.filter((entry) => entry.country).map((entry) => entry.country.replace(/\s*\(.*\)$/, '')));
+    const trips = entries.filter((entry) => entry.kind === 'trip' && hasOwnPage(entry)).length;
     const parts = [
       years.length && `Seit ${Math.min(...years)}`,
       countries.size && `${countries.size} ${countries.size === 1 ? 'Land' : 'Länder'}`,
-      `${entries.length} ${entries.length === 1 ? 'Eintrag' : 'Einträge'}`,
+      // nur Alben zählen – Termine der Bildwand-Collections sind keine eigenen Seiten
+      trips && `${trips} ${trips === 1 ? 'Trip' : 'Trips'}`,
     ].filter(Boolean);
     target.textContent = ` · ${parts.join(' · ')}`;
   } catch (error) {

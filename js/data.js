@@ -26,9 +26,17 @@ const LEGACY_IDS = {
 
 let cache = null;
 
-// Einträge ohne eigene Seite: Frames und alle Einträge aus Collections mit "layout": "wall"
-// (ihre Bilder stehen gemeinsam in der Bildwand der Collection). Wird beim Laden gefüllt.
+// Zwei Arten von Collection:
+//   "layout": "albums" (Landscape) – Einträge als Kacheln mit eigener Seite
+//   sonst (Standard)               – Bildwand: alle Bilder in einer Galerie, Einträge ohne eigene Seite
+//                                    (Name und Jahr erscheinen nur als Herkunft unter dem Bild)
+// Einträge ohne eigene Seite: Frames und alle Einträge aus Bildwand-Collections. Wird beim Laden gefüllt.
 const loose = new Set();
+
+/** Zeigt die Collection Alben (Kacheln mit eigener Seite) statt einer Bildwand? */
+export function hasAlbums(collection) {
+  return collection?.layout === 'albums';
+}
 
 /** Lädt albums.json einmal und merkt sich das Ergebnis. */
 export async function loadData() {
@@ -37,9 +45,9 @@ export async function loadData() {
       if (!res.ok) throw new Error(`albums.json konnte nicht geladen werden (${res.status})`);
       return res.json();
     }).then((data) => {
-      const walls = new Set((data.collections ?? []).filter((c) => c.layout === 'wall').map((c) => c.id));
+      const albums = new Set((data.collections ?? []).filter(hasAlbums).map((c) => c.id));
       for (const entry of data.entries) {
-        if (entry.kind === 'frame' || walls.has(entry.collection)) loose.add(entry.id);
+        if (entry.kind === 'frame' || !albums.has(entry.collection)) loose.add(entry.id);
       }
       return data;
     });
@@ -137,10 +145,10 @@ function dateKey(entry) {
   return String(value).padEnd(10, '-');   // "2023" → "2023------": steht vor allen Daten aus 2023
 }
 
-/** Die neuesten Trips und Shoots (ohne Frames), neueste zuerst; gleiche Daten in der Reihenfolge der Datei */
+/** Die neuesten Einträge mit eigener Seite (Alben), neueste zuerst; gleiche Daten in der Reihenfolge der Datei */
 export async function getNewestEntries(count = 3) {
   return (await getEntries())
-    .filter((entry) => entry.kind !== 'frame')
+    .filter(hasOwnPage)
     .map((entry, index) => ({ entry, index, key: dateKey(entry) }))
     .sort((a, b) => b.key.localeCompare(a.key) || a.index - b.index)
     .slice(0, count)
