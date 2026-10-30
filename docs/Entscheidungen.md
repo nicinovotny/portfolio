@@ -292,3 +292,5 @@ Nici: kurzes Einfrieren und schwarze Bühne beim Öffnen eines Eintrags. Gefunde
 - Einträge in Bildwand-Collections bleiben in `albums.json` als Gruppierung (Name, Jahr, Aufnahmedaten, Reihenfolge), haben aber **keine eigene Seite**: `hasOwnPage(entry)` / `hasAlbums(collection)` in `js/data.js`. `entryUrl(entry, image)` führt dann auf `collection.html?id=…&bild=<entry>/<bild>` (Großansicht öffnet sich), `entry.html?id=<shoot>` leitet dorthin weiter (alte Links).
 - „Zuletzt“ auf der Startseite zeigt nur Alben – eine Kachel verspricht eine Seite.
 - Wildlife: getaggt `iceland-2021/08` (Papageientaucher), `stockholm-2021/05` (Möwe), `scotland-2024/04` (Highland-Rind), dazu der Demo-Bär – 4 Bilder.
+- Wildlife-Hero (und damit Titelbild der Collection): Highland-Rind `scotland-2024/04`, Fokus 50/40 – statt des Demo-Bären, der nur noch in der Bildwand steht.
+- Hochzeiten nach dem Paar benannt (Nici): `wedding-1-2026` = „Jan & Meike“ (früher im Jahr), `wedding-2-2026` = „Joelle & Luca“. IDs bleiben.

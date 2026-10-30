@@ -45,7 +45,7 @@
       "text": "Tiere, die mir unterwegs vor die Linse laufen – in freier Natur und im Wildpark.",
       "cover": null,
       "heroFavorites": [
-        { "image": "southern-germany-autumn-2023/03", "focus": [50, 50] }
+        { "image": "scotland-2024/04", "focus": [50, 40] }
       ]
     },
     {
@@ -164,7 +164,7 @@
     {
       "id": "wedding-2-2026",
       "kind": "shoot",
-      "name": "Hochzeit",
+      "name": "Joelle & Luca",
       "collection": "portrait",
       "year": 2026,
       "coords": null,
@@ -180,7 +180,7 @@
     {
       "id": "wedding-1-2026",
       "kind": "shoot",
-      "name": "Hochzeit",
+      "name": "Jan & Meike",
       "collection": "portrait",
       "year": 2026,
       "coords": null,
